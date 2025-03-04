@@ -1,0 +1,705 @@
+{# is_cizelgesi.html #}
+{% macro progress_class(yuzde) %}
+    {%- if yuzde >= 75 -%}
+        bg-success
+    {%- elif yuzde >= 25 -%}
+        bg-warning
+    {%- else -%}
+        bg-danger
+    {%- endif -%}
+{% endmacro %}
+
+{% extends "base.html" %}
+
+{% block title %}İş Çizelgesi{% endblock %}
+
+{% block styles %}
+<style>
+.progress-bar-0 { width: 0%; }
+.progress-bar-10 { width: 10%; }
+.progress-bar-20 { width: 20%; }
+.progress-bar-30 { width: 30%; }
+.progress-bar-40 { width: 40%; }
+.progress-bar-50 { width: 50%; }
+.progress-bar-60 { width: 60%; }
+.progress-bar-70 { width: 70%; }
+.progress-bar-80 { width: 80%; }
+.progress-bar-90 { width: 90%; }
+.progress-bar-100 { width: 100%; }
+
+.table-danger td {
+    background-color: #ffe2e2 !important;
+}
+
+/* Optimizasyon card düzeltmeleri */
+.card.mb-4 {
+    margin-bottom: 1rem !important;
+    clear: both;
+}
+
+.card-header {
+    position: relative;
+}
+
+.card-header .btn {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Atama detayları card düzeltmeleri */
+#atamaDetaylari {
+    margin-top: 2rem;
+    clear: both;
+}
+
+/* Modal düzeltmeleri */
+.modal-lg {
+    max-width: 90%;
+}
+
+.table-responsive {
+    max-height: 70vh;
+    overflow-y: auto;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>İş Çizelgesi</h1>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#yeniIsModal">
+            <i class="bi bi-plus-circle"></i> Yeni İş Ekle
+        </button>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card bg-primary text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Toplam İş</h5>
+                    <h2 class="mb-0">{{ is_listesi|length }}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-warning text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Devam Eden</h5>
+                    <h2 class="mb-0">{{ is_listesi|selectattr('durum', 'equalto', 'devam_ediyor')|list|length }}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-success text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Tamamlanan</h5>
+                    <h2 class="mb-0">{{ is_listesi|selectattr('durum', 'equalto', 'tamamlandi')|list|length }}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-danger text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Geciken</h5>
+                    <h2 class="mb-0" id="gecikenIsSayisi">0</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- İş Listesi -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="mb-0">Aktif İşler</h5>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th style="width: 5%">ID</th>
+                        <th style="width: 10%">Tasarım Kodu</th>
+                        <th style="width: 15%">Proje</th>
+                        <th style="width: 15%">Çalışan</th>
+                        <th style="width: 12%">Teslimat Tarihi</th>
+                        <th style="width: 8%">Öncelik</th>
+                        <th style="width: 10%">Durum</th>
+                        <th style="width: 12%">Kalan Süre (dk)</th>
+                        <th style="width: 4%">Güncelle</th>
+                        <th style="width: 4%">Sil</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for is in is_listesi %}
+                    {% if is.durum != 'tamamlandi' %}
+                    <tr data-is-id="{{ is.id }}" data-tasarim-kodu="{{ is.tasarim_kodu }}">
+                        <td>{{ is.id }}</td>
+                        <td>{{ is.tasarim_kodu }}</td>
+                        <td>{{ is.proje_adi }}</td>
+                        <td>
+                            {% if is.atanan_calisan is mapping %}
+                                <div class="mb-1">
+                                    <strong>Ustabaşı:</strong>
+                                    {% if is.atanan_calisan.ustabasi %}
+                                        {{ is.atanan_calisan.ustabasi|join(', ') }}
+                                    {% else %}
+                                        -
+                                    {% endif %}
+                                </div>
+                                <div class="mb-1">
+                                    <strong>Kalifiye:</strong>
+                                    {% if is.atanan_calisan.kalifiyeli %}
+                                        {{ is.atanan_calisan.kalifiyeli|join(', ') }}
+                                    {% else %}
+                                        -
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    <strong>Çırak:</strong>
+                                    {% if is.atanan_calisan.cirak %}
+                                        {{ is.atanan_calisan.cirak|join(', ') }}
+                                    {% else %}
+                                        -
+                                    {% endif %}
+                                </div>
+                            {% else %}
+                                {{ is.atanan_calisan }}
+                            {% endif %}
+                        </td>
+                        <td>{{ is.teslimat_tarihi }}</td>
+                        <td>
+                            <span class="badge oncelik-badge {% if is.oncelik == 'kritik' %}bg-danger{% else %}bg-info{% endif %}">
+                                {{ is.oncelik|title }}
+                            </span>
+                        </td>
+                        <td>
+                            <span class="badge durum-badge {% if is.durum=='devam_ediyor' %}bg-warning{% else %}bg-secondary{% endif %}">
+                                {{ is.durum|replace('_', ' ')|title }}
+                            </span>
+                        </td>
+                        <td>
+                            <span class="kalanSureText" data-kod="{{ is.tasarim_kodu }}">
+                                {% if is.kalan_sure is defined %}
+                                    {{ is.kalan_sure }}
+                                {% else %}
+                                    ?
+                                {% endif %}
+                            </span>
+                            <button class="btn btn-sm btn-outline-secondary ms-2 startStopBtn" data-kod="{{ is.tasarim_kodu }}">
+                                Başlat
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="isGuncelle('{{ is.tasarim_kodu }}')">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-danger" onclick="isSil('{{ is.id }}')">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Son Personel Atama Detayları -->
+    <div class="card mb-4" id="atamaDetaylari" style="display: none;">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Son Personel Atama Detayları</h5>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tumAtamaDetaylariModal">
+                Tüm Atama Detayları
+            </button>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h6>Atanan İş</h6>
+                    <p id="atananIs" class="mb-3"></p>
+                    
+                    <h6>Atanan Personel</h6>
+                    <p id="atananPersonel" class="mb-3"></p>
+                    
+                    <h6>Alternatif Personeller</h6>
+                    <div id="alternatifPersoneller">
+                        <!-- Alternatif personeller buraya eklenecek -->
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h6>Atama Kriterleri</h6>
+                    <ul class="list-unstyled">
+                        <li><strong>Yetkinlik Uyumu:</strong> <span id="yetkinlikUyumu"></span></li>
+                        <li><strong>Tecrübe Puanı:</strong> <span id="tecrubePuani"></span></li>
+                        <li><strong>Verimlilik Puanı:</strong> <span id="verimlilikPuani"></span></li>
+                        <li class="mt-2"><strong>Toplam Uygunluk:</strong> <span id="toplamUygunluk" class="badge bg-success"></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optimizasyon Sonuçları -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="mb-0">Optimizasyon Sonuçları</h5>
+            <button class="btn btn-primary" onclick="optimizasyonuBaslat()">
+                <i class="bi bi-play-circle"></i> Optimizasyonu Başlat
+            </button>
+        </div>
+        <div class="card-body">
+            <!-- Yükleniyor göstergesi -->
+            <div id="optimizasyonYukleniyor" style="display: none;">
+                <div class="text-center p-4">
+                    <div class="spinner-border text-primary mb-3" role="status">
+                        <span class="visually-hidden">Yükleniyor...</span>
+                    </div>
+                    <h5>Optimizasyon çalışıyor...</h5>
+                    <p class="text-muted">Optimizasyon işlemi devam ediyor. Bu işlem birkaç dakika sürebilir.</p>
+                    <div class="progress mt-3" style="height: 10px;">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Hata mesajı -->
+            <div id="optimizasyonHata" style="display: none;"></div>
+            
+            <!-- Taguchi Sonuçları -->
+            <div id="taguchiSonuclar" style="display: none;">
+                <h5 class="mt-4 mb-3">Taguchi Optimizasyon Sonuçları</h5>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Tasarım Kodu</th>
+                                <th>Optimum Süre (dk)</th>
+                                <th>İyileştirme Oranı</th>
+                            </tr>
+                        </thead>
+                        <tbody id="taguchiTablo">
+                            <!-- Taguchi sonuçları buraya eklenecek -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Genetik Algoritma Sonuçları -->
+            <div id="genetikSonuclar" style="display: none;">
+                <h5 class="mt-4 mb-3">Genetik Algoritma Sonuçları</h5>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th style="width: 20%">Tasarım Kodu</th>
+                                <th style="width: 60%">Atanan Çalışanlar</th>
+                                <th style="width: 20%">Durum</th>
+                            </tr>
+                        </thead>
+                        <tbody id="genetikTablo">
+                            <!-- Genetik algoritma sonuçları buraya eklenecek -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tüm Atama Detayları Modal -->
+    <div class="modal fade" id="tumAtamaDetaylariModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Tüm Personel Atama Detayları</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Tarih</th>
+                                    <th>Tasarım Kodu</th>
+                                    <th>Proje</th>
+                                    <th>Atanan Personel</th>
+                                    <th>Uygunluk Skoru</th>
+                                    <th>Alternatif Personeller</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tumAtamaDetaylariTablo"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Monte Carlo ve İş Yükü Optimizasyonu Bölümü -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Monte Carlo Simülasyonu ve İş Yükü Optimizasyonu</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <button id="monteCarloBaslat" class="btn btn-primary">
+                                Simülasyonu Başlat
+                            </button>
+                        </div>
+                        <div class="col-md-8">
+                            <div id="monteCarloLoading" style="display: none;">
+                                <div class="d-flex align-items-center">
+                                    <div class="spinner-border text-primary me-2" role="status">
+                                        <span class="visually-hidden">Yükleniyor...</span>
+                                    </div>
+                                    <span>Monte Carlo simülasyonu çalışıyor...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="monteCarloSonuc" style="display: none;">
+                        <!-- Temel Metrikler -->
+                        <div class="row mt-3">
+                            <div class="col-md-3">
+                                <div class="card bg-light">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Ortalama Uygunluk</h6>
+                                        <h4 id="mcAvg" class="mb-0">-</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card bg-light">
+                                    <div class="card-body">
+                                        <h6 class="card-title">En İyi Uygunluk</h6>
+                                        <h4 id="mcBest" class="mb-0">-</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card bg-light">
+                                    <div class="card-body">
+                                        <h6 class="card-title">En Kötü Uygunluk</h6>
+                                        <h4 id="mcWorst" class="mb-0">-</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card bg-light">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Standart Sapma</h6>
+                                        <h4 id="mcStd" class="mb-0">-</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Gelişmiş Analiz Sonuçları -->
+                        <div id="advancedAnalysis"></div>
+
+                        <!-- Risk Değerlendirmesi -->
+                        <div id="riskAssessment"></div>
+
+                        <!-- Optimizasyon Önerileri -->
+                        <div id="optimizationSuggestions"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gerçek Zamanlı Performans İzleme -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Gerçek Zamanlı Performans İzleme</h5>
+                </div>
+                <div class="card-body">
+                    <!-- Performans Uyarıları -->
+                    <div id="performanceAlerts"></div>
+
+                    <!-- Performans Metrikleri -->
+                    <div class="row mt-3">
+                        <div class="col-md-3">
+                            <div class="card bg-primary text-white">
+                                <div class="card-body">
+                                    <h6 class="card-title">Verimlilik</h6>
+                                    <h3 id="verimlilikMetrik">0%</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card bg-info text-white">
+                                <div class="card-body">
+                                    <h6 class="card-title">İş Yükü</h6>
+                                    <h3 id="isYukuMetrik">0%</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card bg-success text-white">
+                                <div class="card-body">
+                                    <h6 class="card-title">Tamamlanma</h6>
+                                    <h3 id="tamamlanmaMetrik">0%</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card bg-warning text-white">
+                                <div class="card-body">
+                                    <h6 class="card-title">Gecikme</h6>
+                                    <h3 id="gecikmeMetrik">0%</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Performans Grafiği -->
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <canvas id="performanceTrendChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Akıllı İş Planlama -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Akıllı İş Planlama</h5>
+                </div>
+                <div class="card-body">
+                    <!-- İş Yükü Analizi -->
+                    <h6 class="mb-3">İş Yükü Analizi</h6>
+                    <div id="workloadAnalysis"></div>
+
+                    <!-- Darboğazlar -->
+                    <h6 class="mb-3 mt-4">Tespit Edilen Darboğazlar</h6>
+                    <div id="bottlenecks"></div>
+
+                    <!-- Öneriler -->
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6 class="mb-0">Önerilen İş Atamaları</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div id="suggestedAssignments"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6 class="mb-0">Kaynak Kullanım Analizi</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div id="resourceUtilization"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- İş Güncelleme Modal -->
+<div class="modal fade" id="isGuncellemeModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">İş Güncelle</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="isGuncellemeForm">
+                    <input type="hidden" name="tasarim_kodu">
+                    <div class="mb-3">
+                        <label class="form-label">Durum</label>
+                        <select class="form-select" name="durum" required>
+                            <option value="beklemede">Beklemede</option>
+                            <option value="devam_ediyor">Devam Ediyor</option>
+                            <option value="tamamlandi">Tamamlandı</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Öncelik</label>
+                        <select class="form-select" name="oncelik" required>
+                            <option value="normal">Normal</option>
+                            <option value="kritik">Kritik</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                <button type="button" class="btn btn-primary" id="isGuncellemeKaydet">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Yeni İş Modal -->
+<div class="modal fade" id="yeniIsModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Yeni İş Ekle</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="yeniIsForm">
+                    <div class="mb-3">
+                        <label class="form-label">Tasarım Kodu</label>
+                        <select class="form-select" name="kod" id="tasarimKoduSelect" required>
+                            {% for kod, bilgi in tasarim_kodlari.items() %}
+                            <option value="{{ kod }}" data-sure="{{ bilgi.tahmini_montaj_suresi|int }}">
+                                {{ kod }} - {{ bilgi.urun_adi }}
+                              </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Optimum Süre (dk)</label>
+                        <input type="number" class="form-control" name="kalan_sure" id="kalanSureInput" readonly>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Firma/Proje Adı</label>
+                        <input type="text" class="form-control" name="proje_adi" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Teslimat Tarihi</label>
+                        <input type="date" class="form-control" name="teslimat_tarihi" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Durum</label>
+                        <select class="form-select" name="durum" required>
+                            <option value="beklemede">Beklemede</option>
+                            <option value="devam_ediyor">Devam Ediyor</option>
+                            <option value="tamamlandi">Tamamlandı</option>
+                        </select>
+                    </div>
+                    <!-- (İsteğe bağlı) Öncelik -->
+                    <div class="mb-3">
+                        <label class="form-label">Öncelik Durumu</label>
+                        <select class="form-select" name="oncelik">
+                            <option value="normal">Normal</option>
+                            <option value="kritik">Kritik</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                <button type="button" class="btn btn-primary" id="isKaydet">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<!-- İş listesi verilerini hidden input olarak ekle -->
+<input type="hidden" id="isListesiData" value='{{ is_listesi|tojson|safe }}'>
+
+<!-- Chart.js Kütüphanesi -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- JavaScript dosyalarını ekle -->
+<script src="{{ url_for('static', filename='js/is_cizelgesi.js') }}"></script>
+
+<!-- Performans Trend Grafiği için Script -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Performans trend grafiği için Chart.js konfigürasyonu
+    const ctx = document.getElementById('performanceTrendChart').getContext('2d');
+    const performanceChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [], // Zaman etiketleri
+            datasets: [{
+                label: 'Verimlilik',
+                data: [], // Verimlilik verileri
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            }, {
+                label: 'İş Yükü',
+                data: [], // İş yükü verileri
+                borderColor: 'rgb(255, 99, 132)',
+                tension: 0.1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Performans Trendi'
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100,
+                    title: {
+                        display: true,
+                        text: 'Yüzde (%)'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Zaman'
+                    }
+                }
+            }
+        }
+    });
+
+    // Grafiği güncelleme fonksiyonu
+    window.updatePerformanceChart = function(newData) {
+        const chart = performanceChart;
+        
+        // Yeni veriyi ekle
+        chart.data.labels.push(new Date().toLocaleTimeString());
+        chart.data.datasets[0].data.push(newData.efficiency);
+        chart.data.datasets[1].data.push(newData.workload);
+        
+        // Son 10 veriyi göster
+        if (chart.data.labels.length > 10) {
+            chart.data.labels.shift();
+            chart.data.datasets[0].data.shift();
+            chart.data.datasets[1].data.shift();
+        }
+        
+        chart.update();
+    };
+});
+</script>
+{% endblock %}

@@ -1,0 +1,117 @@
+{
+    "best_parameters": {
+        "M-KAM-001": {
+            "sure": 1821.49529955857,
+            "optimum_seviye": 1,
+            "iyilestirme_orani": 21.739145584960617,
+            "method": "Taguchi (Geçmiş Veriler)",
+            "departman": "Montaj"
+        },
+        "M-KKK-002": {
+            "sure": 176.86519291358124,
+            "optimum_seviye": 1,
+            "iyilestirme_orani": 46.00635201579895,
+            "method": "Taguchi (Geçmiş Veriler)",
+            "departman": "Montaj"
+        },
+        "M-OSK1.5-003": {
+            "sure": 72.88399575047768,
+            "optimum_seviye": 1,
+            "iyilestirme_orani": 65.54491218855452,
+            "method": "Taguchi (Geçmiş Veriler)",
+            "departman": "Montaj"
+        },
+        "M-PA-005": {
+            "sure": 35.47073493614904,
+            "optimum_seviye": 1,
+            "iyilestirme_orani": 53.743879674658935,
+            "method": "Taguchi (Geçmiş Veriler)",
+            "departman": "Montaj"
+        },
+        "M-RPV3.5-006": {
+            "sure": 129.0264357029113,
+            "optimum_seviye": 1,
+            "iyilestirme_orani": 51.01192088733355,
+            "method": "Taguchi (Geçmiş Veriler)",
+            "departman": "Montaj"
+        },
+        "M-MOD4-007": {
+            "sure": 171.96709887085956,
+            "optimum_seviye": 1,
+            "iyilestirme_orani": 46.50823820700102,
+            "method": "Taguchi (Geçmiş Veriler)",
+            "departman": "Montaj"
+        },
+        "M-MOD3-008": {
+            "sure": 165.26782513095958,
+            "optimum_seviye": 1,
+            "iyilestirme_orani": 47.4923510306721,
+            "method": "Taguchi (Geçmiş Veriler)",
+            "departman": "Montaj"
+        },
+        "M-RPV2.5-009": {
+            "sure": 124.14961496905859,
+            "optimum_seviye": 1,
+            "iyilestirme_orani": 52.8486080634035,
+            "method": "Taguchi (Geçmiş Veriler)",
+            "departman": "Montaj"
+        },
+        "M-TK1-010": {
+            "sure": 114.67823077855454,
+            "optimum_seviye": 1,
+            "iyilestirme_orani": 58.35435270116649,
+            "method": "Taguchi (Geçmiş Veriler)",
+            "departman": "Montaj"
+        },
+        "M-AVK-011": {
+            "sure": 75.48332911743117,
+            "optimum_seviye": 1,
+            "iyilestirme_orani": 62.16058361562477,
+            "method": "Taguchi (Geçmiş Veriler)",
+            "departman": "Montaj"
+        },
+        "M-CKM-012": {
+            "sure": 127.73662632136829,
+            "optimum_seviye": 1,
+            "iyilestirme_orani": 53.16713975385213,
+            "method": "Taguchi (Geçmiş Veriler)",
+            "departman": "Montaj"
+        },
+        "M-MOD2-014": {
+            "sure": 170.3538836002833,
+            "optimum_seviye": 1,
+            "iyilestirme_orani": 46.00225571336575,
+            "method": "Taguchi (Geçmiş Veriler)",
+            "departman": "Montaj"
+        },
+        "M-DUK-015": {
+            "sure": 685.7561759530184,
+            "optimum_seviye": 1,
+            "iyilestirme_orani": 26.40258548781686,
+            "method": "Taguchi (Geçmiş Veriler)",
+            "departman": "Montaj"
+        },
+        "M-KK-016": {
+            "sure": 524.670545474509,
+            "optimum_seviye": 1,
+            "iyilestirme_orani": 33.54534899311701,
+            "method": "Taguchi (Geçmiş Veriler)",
+            "departman": "Montaj"
+        },
+        "M-D90K-017": {
+            "sure": 390.9424632115363,
+            "optimum_seviye": 1,
+            "iyilestirme_orani": 35.154541252613335,
+            "method": "Taguchi (Geçmiş Veriler)",
+            "departman": "Montaj"
+        },
+        "M-YK-004": {
+            "sure": 241.5455048944985,
+            "optimum_seviye": 1,
+            "iyilestirme_orani": 47.69666789249013,
+            "method": "Taguchi (Geçmiş Veriler)",
+            "departman": "Montaj"
+        }
+    },
+    "average_improvement": 46.71118019140185
+}

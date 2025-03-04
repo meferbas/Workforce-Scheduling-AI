@@ -1,0 +1,9 @@
+{
+    "n_scenarios": 100,
+    "absence_prob": 0.05,
+    "performance_std": 0.05,
+    "average_fitness": 76.73157804011977,
+    "std_fitness": 0.8814328817695574,
+    "worst_fitness": 73.23338097911609,
+    "best_fitness": 78.4395941701012
+}

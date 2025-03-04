@@ -1,0 +1,127 @@
+{
+    "AYKUT BONCUK": {
+        "yetkinlik_seviyesi": 1,
+        "tecrube_yili": 10,
+        "verimlilik_puani": 0.95
+    },
+    "RAFET KARABAYIR": {
+        "yetkinlik_seviyesi": 2,
+        "tecrube_yili": 8,
+        "verimlilik_puani": 0.9
+    },
+    "RAMAZAN ŞAMASTI": {
+        "yetkinlik_seviyesi": 2,
+        "tecrube_yili": 7,
+        "verimlilik_puani": 0.88
+    },
+    "SÜHA DEMİR": {
+        "yetkinlik_seviyesi": 2,
+        "tecrube_yili": 7,
+        "verimlilik_puani": 0.87
+    },
+    "İsmail CAN": {
+        "yetkinlik_seviyesi": 2,
+        "tecrube_yili": 6,
+        "verimlilik_puani": 0.85
+    },
+    "Oktay ALICI": {
+        "yetkinlik_seviyesi": 2,
+        "tecrube_yili": 6,
+        "verimlilik_puani": 0.86
+    },
+    "OZAN ACAR": {
+        "yetkinlik_seviyesi": 2,
+        "tecrube_yili": 5,
+        "verimlilik_puani": 0.84
+    },
+    "HASAN AKYILDIZ": {
+        "yetkinlik_seviyesi": 2,
+        "tecrube_yili": 5,
+        "verimlilik_puani": 0.83
+    },
+    "SERKAN DEMİR": {
+        "yetkinlik_seviyesi": 2,
+        "tecrube_yili": 5,
+        "verimlilik_puani": 0.82
+    },
+    "CENGİZ CAN": {
+        "yetkinlik_seviyesi": 2,
+        "tecrube_yili": 4,
+        "verimlilik_puani": 0.8
+    },
+    "ERSİN KÖSEOĞLU": {
+        "yetkinlik_seviyesi": 3,
+        "tecrube_yili": 3,
+        "verimlilik_puani": 0.75
+    },
+    "SEYFETTİN DUYMUŞ": {
+        "yetkinlik_seviyesi": 3,
+        "tecrube_yili": 3,
+        "verimlilik_puani": 0.74
+    },
+    "FATİH YAŞAR": {
+        "yetkinlik_seviyesi": 3,
+        "tecrube_yili": 2,
+        "verimlilik_puani": 0.72
+    },
+    "YAHYA SARI": {
+        "yetkinlik_seviyesi": 3,
+        "tecrube_yili": 2,
+        "verimlilik_puani": 0.7
+    },
+    "SİNAN ÖZYOL": {
+        "yetkinlik_seviyesi": 3,
+        "tecrube_yili": 2,
+        "verimlilik_puani": 0.68
+    },
+    "YILMAZ UZUN": {
+        "yetkinlik_seviyesi": 3,
+        "tecrube_yili": 1,
+        "verimlilik_puani": 0.65
+    },
+    "Özgür YAPAREL": {
+        "yetkinlik_seviyesi": 3,
+        "tecrube_yili": 1,
+        "verimlilik_puani": 0.63
+    },
+    "Gökhan KOLAÇ": {
+        "yetkinlik_seviyesi": 3,
+        "tecrube_yili": 1,
+        "verimlilik_puani": 0.6
+    },
+    "EMRE ÇELEBİ": {
+        "yetkinlik_seviyesi": 3,
+        "tecrube_yili": 1,
+        "verimlilik_puani": 0.58
+    },
+    "YASİN AKKAYA": {
+        "yetkinlik_seviyesi": 3,
+        "tecrube_yili": 0.5,
+        "verimlilik_puani": 0.55
+    },
+    "HÜSEYİN GÜNDOĞDU": {
+        "yetkinlik_seviyesi": 3,
+        "tecrube_yili": 0.5,
+        "verimlilik_puani": 0.53
+    },
+    "AHMET ŞAHİN": {
+        "yetkinlik_seviyesi": 3,
+        "tecrube_yili": 0.5,
+        "verimlilik_puani": 0.5
+    },
+    "Efe Erbaş": {
+        "yetkinlik_seviyesi": 1,
+        "tecrube_yili": 8,
+        "verimlilik_puani": 0.75
+    },
+    "Eyüp Ekiz": {
+        "yetkinlik_seviyesi": 1,
+        "tecrube_yili": 10,
+        "verimlilik_puani": 0.3
+    },
+    "Emre Seçer": {
+        "yetkinlik_seviyesi": 1,
+        "tecrube_yili": 15,
+        "verimlilik_puani": 0.8
+    }
+}

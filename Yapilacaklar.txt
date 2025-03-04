@@ -1,0 +1,23 @@
+Tubitak 2209-B 23.02.2025 Toplantı Notları
+
+1) Batuhan'ın yolladığı veriler excel dosyasındaki tasarım kodlarının yapılabilmesi için personelin hangi yetkinliklere sahip olması gerektiği araştırılacak. (Batuhan)
+
+2) Taguchi yönteminin verimli çalışması için: Örnek olarak tasarım kodlarının her biri için geçmiş 50 projenin süre verileri hesaplanacak. (Batuhan)
+
+3) Taguchi yöntemiyle genetik algoritma sonuçlarının performansı değerlendirilecek. (Efe)
+
+4) Oluşturulacak raporun giriş ve literatür özeti bitmeli. (Beyza)
+
+5) Monte Carlo Sampling yönteminin projeye uyarlanması araştırılması (Bengisu)
+
+
+Uygulamayı çalıştırmak için:
+Python yüklü değilse internet üzerinden python indirilmeli.
+Python indirildikten sonra 
+pip install flask==2.0.1 flask-socketio==5.1.1 python-socketio==5.4.0 python-engineio==4.2.1 matplotlib==3.4.3 numpy==1.21.2 pandas==1.3.3
+bu kodu terminale yapıştırıp enterlayıp gerekli paketlerin indirilmesini beklemeliyiz.
+Gerekli paketler indirildikten sonra aşağıdaki kodu terminale yazmalıyız:
+py .\py_files\app.py
+
+C:\Users\Efe\Desktop\Bitirme> benim dizinim bu şekilde proje dizininde terminali çalıştırmak gerekiyor.
+

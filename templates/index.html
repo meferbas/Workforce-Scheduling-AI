@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Ana Sayfa{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">İş Gücü Çizelgeleme Sistemi</h1>
+    
+    <div class="row">
+        <!-- Tasarım Kodları Kartı -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="bi bi-code-square text-primary"></i>
+                        Tasarım Kodları
+                    </h5>
+                    <p class="card-text">Mevcut tasarım kodlarını görüntüleyin ve yeni kodlar ekleyin.</p>
+                    <a href="{{ url_for('tasarim_kodlari') }}" class="btn btn-primary">Görüntüle</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Çalışanlar Kartı -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="bi bi-people text-success"></i>
+                        Çalışanlar
+                    </h5>
+                    <p class="card-text">Çalışan bilgilerini ve yetkinliklerini yönetin.</p>
+                    <a href="{{ url_for('calisanlar') }}" class="btn btn-success">Görüntüle</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <!-- İş Çizelgesi Kartı -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="bi bi-calendar3 text-info"></i>
+                        İş Çizelgesi
+                    </h5>
+                    <p class="card-text">Güncel iş çizelgesini görüntüleyin ve planlama yapın.</p>
+                    <a href="{{ url_for('is_cizelgesi') }}" class="btn btn-info text-white">Görüntüle</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Optimizasyon Kartı -->
+
+    </div>
+</div>
+{% endblock %} 

@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+
+{% block title %}Çalışanlar{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Çalışanlar</h1>
+        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#yeniCalisanModal">
+            <i class="bi bi-person-plus"></i> Yeni Çalışan
+        </button>
+    </div>
+
+    <!-- Arama kutusu -->
+    <div class="row mb-4">
+        <div class="col-md-6 mx-auto">
+            <div class="input-group">
+                <input type="text" class="form-control" id="calisanArama" placeholder="Çalışan adı ara...">
+                <button class="btn btn-outline-secondary" type="button" id="temizleArama">
+                    <i class="bi bi-x-circle"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        {% for ad, bilgi in calisanlar.items()|sort(attribute='1.yetkinlik_seviyesi') %}
+        <div class="col-md-4 mb-4 calisan-kart">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0 calisan-adi">{{ ad }}</h5>
+                    <button class="btn btn-danger btn-sm" onclick="calisanSil('{{ ad }}')">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <p><strong>Tecrübe:</strong> {{ bilgi.tecrube_yili }} yıl</p>
+                        <p><strong>Verimlilik:</strong> {{ "%.0f"|format(bilgi.verimlilik_puani * 100) }}%</p>
+                        <p><strong>Yetkinlik Seviyesi:</strong> 
+                            {% if bilgi.yetkinlik_seviyesi == 1 %}
+                                <span class="badge bg-danger">1 - Ustabaşı</span>
+                            {% elif bilgi.yetkinlik_seviyesi == 2 %}
+                                <span class="badge bg-warning">2 - Kalifiye</span>
+                            {% elif bilgi.yetkinlik_seviyesi == 3 %}
+                                <span class="badge bg-info">3 - Çırak</span>
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Yeni Çalışan Modal -->
+<div class="modal fade" id="yeniCalisanModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Yeni Çalışan Ekle</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="yeniCalisanForm">
+                    <div class="mb-3">
+                        <label class="form-label">Ad Soyad</label>
+                        <input type="text" class="form-control" name="ad" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Yetkinlik Seviyesi</label>
+                        <select class="form-select" name="yetkinlik_seviyesi" required>
+                            <option value="">Seçiniz...</option>
+                            <option value="1">1 - Ustabaşı</option>
+                            <option value="2">2 - Kalifiye</option>
+                            <option value="3">3 - Çırak</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Tecrübe (yıl)</label>
+                        <input type="number" class="form-control" name="tecrube" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Verimlilik (0-1 arası)</label>
+                        <input type="number" class="form-control" name="verimlilik" min="0" max="1" step="0.1" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                <button type="button" class="btn btn-success" id="calisanKaydet">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/calisanlar.js"></script>
+<script>
+$(document).ready(function() {
+    $('#calisanKaydet').click(function() {
+        var formData = {};
+        $('#yeniCalisanForm').serializeArray().forEach(function(item) {
+            formData[item.name] = item.value;
+        });
+        
+        $.ajax({
+            url: '/api/calisan-ekle',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(formData),
+            success: function(response) {
+                if (response.success) {
+                    location.reload();
+                }
+            }
+        });
+    });
+});
+
+function calisanSil(calisanAdi) {
+    if (confirm(calisanAdi + ' isimli çalışanı silmek istediğinize emin misiniz?')) {
+        $.ajax({
+            url: '/api/calisan-sil',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ ad: calisanAdi }),
+            success: function(response) {
+                if (response.success) {
+                    location.reload();
+                } else {
+                    alert('Hata: ' + response.message);
+                }
+            }
+        });
+    }
+}
+</script>
+{% endblock %} 

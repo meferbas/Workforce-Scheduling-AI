@@ -1,0 +1,48 @@
+[
+    {
+        "id": "1",
+        "tasarim_kodu": "M-KAM-001",
+        "proje_adi": "Ford",
+        "teslimat_tarihi": "2025-03-09",
+        "durum": "beklemede",
+        "oncelik": "normal",
+        "kalan_sure": "1821",
+        "atanan_calisan": {
+            "ustabasi": [
+                "AYKUT BONCUK"
+            ],
+            "kalifiyeli": [
+                "RAFET KARABAYIR",
+                "RAMAZAN ŞAMASTI"
+            ],
+            "cirak": [
+                "ERSİN KÖSEOĞLU",
+                "SEYFETTİN DUYMUŞ",
+                "FATİH YAŞAR"
+            ]
+        }
+    },
+    {
+        "id": "2",
+        "tasarim_kodu": "M-KAM-001",
+        "proje_adi": "Optimak STU",
+        "teslimat_tarihi": "2025-03-09",
+        "durum": "beklemede",
+        "oncelik": "normal",
+        "kalan_sure": "1821",
+        "atanan_calisan": {
+            "ustabasi": [
+                "Emre Seçer"
+            ],
+            "kalifiyeli": [
+                "SÜHA DEMİR",
+                "Oktay ALICI"
+            ],
+            "cirak": [
+                "YAHYA SARI",
+                "SİNAN ÖZYOL",
+                "YILMAZ UZUN"
+            ]
+        }
+    }
+]

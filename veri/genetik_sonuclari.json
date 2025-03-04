@@ -1,0 +1,2050 @@
+{
+    "M-KAM-001": {
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "AYKUT BONCUK"
+            ],
+            "kalifiyeli": [
+                "RAFET KARABAYIR",
+                "RAMAZAN ŞAMASTI"
+            ],
+            "cirak": [
+                "ERSİN KÖSEOĞLU",
+                "SEYFETTİN DUYMUŞ",
+                "FATİH YAŞAR"
+            ]
+        },
+        "eksik_personel": {
+            "ustabasi": 0,
+            "kalifiyeli": 0,
+            "cirak": 0
+        },
+        "alternatif_calisanlar": [
+            {
+                "calisan": "Emre Seçer",
+                "uygunluk": 95.0,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Efe Erbaş",
+                "uygunluk": 88.75,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Eyüp Ekiz",
+                "uygunluk": 82.5,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "SÜHA DEMİR",
+                "uygunluk": 89.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "Oktay ALICI",
+                "uygunluk": 86.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "İsmail CAN",
+                "uygunluk": 86.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "OZAN ACAR",
+                "uygunluk": 83.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "HASAN AKYILDIZ",
+                "uygunluk": 83.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "SERKAN DEMİR",
+                "uygunluk": 83.0,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "CENGİZ CAN",
+                "uygunluk": 80.0,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "YAHYA SARI",
+                "uygunluk": 72.50000000000001,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "SİNAN ÖZYOL",
+                "uygunluk": 72.00000000000001,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YILMAZ UZUN",
+                "uygunluk": 68.75,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "Özgür YAPAREL",
+                "uygunluk": 68.25,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "Gökhan KOLAÇ",
+                "uygunluk": 67.5,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "EMRE ÇELEBİ",
+                "uygunluk": 67.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YASİN AKKAYA",
+                "uygunluk": 64.99999999999999,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "HÜSEYİN GÜNDOĞDU",
+                "uygunluk": 64.5,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "AHMET ŞAHİN",
+                "uygunluk": 63.74999999999999,
+                "seviye": "cirak"
+            }
+        ],
+        "personel_ihtiyaci": {
+            "ustabasi": 1,
+            "kalifiyeli": 2,
+            "cirak": 3
+        }
+    },
+    "M-KKK-002": {
+        "atanan_calisanlar": {
+            "ustabasi": [],
+            "kalifiyeli": [
+                "RAFET KARABAYIR"
+            ],
+            "cirak": [
+                "ERSİN KÖSEOĞLU",
+                "SEYFETTİN DUYMUŞ",
+                "FATİH YAŞAR",
+                "YAHYA SARI"
+            ]
+        },
+        "eksik_personel": {
+            "ustabasi": 0,
+            "kalifiyeli": 0,
+            "cirak": 0
+        },
+        "alternatif_calisanlar": [
+            {
+                "calisan": "AYKUT BONCUK",
+                "uygunluk": 73.75,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Emre Seçer",
+                "uygunluk": 70.0,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Efe Erbaş",
+                "uygunluk": 63.74999999999999,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Eyüp Ekiz",
+                "uygunluk": 57.49999999999999,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "RAMAZAN ŞAMASTI",
+                "uygunluk": 89.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "SÜHA DEMİR",
+                "uygunluk": 89.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "Oktay ALICI",
+                "uygunluk": 86.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "İsmail CAN",
+                "uygunluk": 86.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "OZAN ACAR",
+                "uygunluk": 83.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "HASAN AKYILDIZ",
+                "uygunluk": 83.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "SERKAN DEMİR",
+                "uygunluk": 83.0,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "CENGİZ CAN",
+                "uygunluk": 80.0,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "SİNAN ÖZYOL",
+                "uygunluk": 72.00000000000001,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YILMAZ UZUN",
+                "uygunluk": 68.75,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "Özgür YAPAREL",
+                "uygunluk": 68.25,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "Gökhan KOLAÇ",
+                "uygunluk": 67.5,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "EMRE ÇELEBİ",
+                "uygunluk": 67.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YASİN AKKAYA",
+                "uygunluk": 64.99999999999999,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "HÜSEYİN GÜNDOĞDU",
+                "uygunluk": 64.5,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "AHMET ŞAHİN",
+                "uygunluk": 63.74999999999999,
+                "seviye": "cirak"
+            }
+        ],
+        "personel_ihtiyaci": {
+            "ustabasi": 0,
+            "kalifiyeli": 1,
+            "cirak": 4
+        }
+    },
+    "M-OSK1.5-003": {
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "AYKUT BONCUK",
+                "Emre Seçer"
+            ],
+            "kalifiyeli": [
+                "RAFET KARABAYIR",
+                "RAMAZAN ŞAMASTI",
+                "SÜHA DEMİR"
+            ],
+            "cirak": [
+                "ERSİN KÖSEOĞLU"
+            ]
+        },
+        "eksik_personel": {
+            "ustabasi": 0,
+            "kalifiyeli": 0,
+            "cirak": 0
+        },
+        "alternatif_calisanlar": [
+            {
+                "calisan": "Efe Erbaş",
+                "uygunluk": 88.75,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Eyüp Ekiz",
+                "uygunluk": 82.5,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Oktay ALICI",
+                "uygunluk": 86.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "İsmail CAN",
+                "uygunluk": 86.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "OZAN ACAR",
+                "uygunluk": 83.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "HASAN AKYILDIZ",
+                "uygunluk": 83.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "SERKAN DEMİR",
+                "uygunluk": 83.0,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "CENGİZ CAN",
+                "uygunluk": 80.0,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "SEYFETTİN DUYMUŞ",
+                "uygunluk": 76.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "FATİH YAŞAR",
+                "uygunluk": 73.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YAHYA SARI",
+                "uygunluk": 72.50000000000001,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "SİNAN ÖZYOL",
+                "uygunluk": 72.00000000000001,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YILMAZ UZUN",
+                "uygunluk": 68.75,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "Özgür YAPAREL",
+                "uygunluk": 68.25,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "Gökhan KOLAÇ",
+                "uygunluk": 67.5,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "EMRE ÇELEBİ",
+                "uygunluk": 67.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YASİN AKKAYA",
+                "uygunluk": 64.99999999999999,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "HÜSEYİN GÜNDOĞDU",
+                "uygunluk": 64.5,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "AHMET ŞAHİN",
+                "uygunluk": 63.74999999999999,
+                "seviye": "cirak"
+            }
+        ],
+        "personel_ihtiyaci": {
+            "ustabasi": 2,
+            "kalifiyeli": 3,
+            "cirak": 1
+        }
+    },
+    "M-PA-005": {
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "AYKUT BONCUK"
+            ],
+            "kalifiyeli": [
+                "RAFET KARABAYIR",
+                "RAMAZAN ŞAMASTI"
+            ],
+            "cirak": [
+                "ERSİN KÖSEOĞLU",
+                "SEYFETTİN DUYMUŞ"
+            ]
+        },
+        "eksik_personel": {
+            "ustabasi": 0,
+            "kalifiyeli": 0,
+            "cirak": 0
+        },
+        "alternatif_calisanlar": [
+            {
+                "calisan": "Emre Seçer",
+                "uygunluk": 95.0,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Efe Erbaş",
+                "uygunluk": 88.75,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Eyüp Ekiz",
+                "uygunluk": 82.5,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "SÜHA DEMİR",
+                "uygunluk": 89.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "Oktay ALICI",
+                "uygunluk": 86.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "İsmail CAN",
+                "uygunluk": 86.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "OZAN ACAR",
+                "uygunluk": 83.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "HASAN AKYILDIZ",
+                "uygunluk": 83.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "SERKAN DEMİR",
+                "uygunluk": 83.0,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "CENGİZ CAN",
+                "uygunluk": 80.0,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "FATİH YAŞAR",
+                "uygunluk": 73.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YAHYA SARI",
+                "uygunluk": 72.50000000000001,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "SİNAN ÖZYOL",
+                "uygunluk": 72.00000000000001,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YILMAZ UZUN",
+                "uygunluk": 68.75,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "Özgür YAPAREL",
+                "uygunluk": 68.25,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "Gökhan KOLAÇ",
+                "uygunluk": 67.5,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "EMRE ÇELEBİ",
+                "uygunluk": 67.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YASİN AKKAYA",
+                "uygunluk": 64.99999999999999,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "HÜSEYİN GÜNDOĞDU",
+                "uygunluk": 64.5,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "AHMET ŞAHİN",
+                "uygunluk": 63.74999999999999,
+                "seviye": "cirak"
+            }
+        ],
+        "personel_ihtiyaci": {
+            "ustabasi": 1,
+            "kalifiyeli": 2,
+            "cirak": 2
+        }
+    },
+    "M-RPV3.5-006": {
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "AYKUT BONCUK",
+                "Emre Seçer"
+            ],
+            "kalifiyeli": [
+                "RAFET KARABAYIR",
+                "RAMAZAN ŞAMASTI"
+            ],
+            "cirak": [
+                "ERSİN KÖSEOĞLU"
+            ]
+        },
+        "eksik_personel": {
+            "ustabasi": 0,
+            "kalifiyeli": 0,
+            "cirak": 0
+        },
+        "alternatif_calisanlar": [
+            {
+                "calisan": "Efe Erbaş",
+                "uygunluk": 88.75,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Eyüp Ekiz",
+                "uygunluk": 82.5,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "SÜHA DEMİR",
+                "uygunluk": 89.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "Oktay ALICI",
+                "uygunluk": 86.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "İsmail CAN",
+                "uygunluk": 86.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "OZAN ACAR",
+                "uygunluk": 83.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "HASAN AKYILDIZ",
+                "uygunluk": 83.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "SERKAN DEMİR",
+                "uygunluk": 83.0,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "CENGİZ CAN",
+                "uygunluk": 80.0,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "SEYFETTİN DUYMUŞ",
+                "uygunluk": 76.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "FATİH YAŞAR",
+                "uygunluk": 73.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YAHYA SARI",
+                "uygunluk": 72.50000000000001,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "SİNAN ÖZYOL",
+                "uygunluk": 72.00000000000001,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YILMAZ UZUN",
+                "uygunluk": 68.75,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "Özgür YAPAREL",
+                "uygunluk": 68.25,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "Gökhan KOLAÇ",
+                "uygunluk": 67.5,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "EMRE ÇELEBİ",
+                "uygunluk": 67.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YASİN AKKAYA",
+                "uygunluk": 64.99999999999999,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "HÜSEYİN GÜNDOĞDU",
+                "uygunluk": 64.5,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "AHMET ŞAHİN",
+                "uygunluk": 63.74999999999999,
+                "seviye": "cirak"
+            }
+        ],
+        "personel_ihtiyaci": {
+            "ustabasi": 2,
+            "kalifiyeli": 2,
+            "cirak": 1
+        }
+    },
+    "M-MOD4-007": {
+        "atanan_calisanlar": {
+            "ustabasi": [],
+            "kalifiyeli": [
+                "RAFET KARABAYIR"
+            ],
+            "cirak": [
+                "ERSİN KÖSEOĞLU",
+                "SEYFETTİN DUYMUŞ",
+                "FATİH YAŞAR"
+            ]
+        },
+        "eksik_personel": {
+            "ustabasi": 0,
+            "kalifiyeli": 0,
+            "cirak": 0
+        },
+        "alternatif_calisanlar": [
+            {
+                "calisan": "AYKUT BONCUK",
+                "uygunluk": 73.75,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Emre Seçer",
+                "uygunluk": 70.0,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Efe Erbaş",
+                "uygunluk": 63.74999999999999,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Eyüp Ekiz",
+                "uygunluk": 57.49999999999999,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "RAMAZAN ŞAMASTI",
+                "uygunluk": 89.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "SÜHA DEMİR",
+                "uygunluk": 89.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "Oktay ALICI",
+                "uygunluk": 86.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "İsmail CAN",
+                "uygunluk": 86.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "OZAN ACAR",
+                "uygunluk": 83.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "HASAN AKYILDIZ",
+                "uygunluk": 83.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "SERKAN DEMİR",
+                "uygunluk": 83.0,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "CENGİZ CAN",
+                "uygunluk": 80.0,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "YAHYA SARI",
+                "uygunluk": 72.50000000000001,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "SİNAN ÖZYOL",
+                "uygunluk": 72.00000000000001,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YILMAZ UZUN",
+                "uygunluk": 68.75,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "Özgür YAPAREL",
+                "uygunluk": 68.25,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "Gökhan KOLAÇ",
+                "uygunluk": 67.5,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "EMRE ÇELEBİ",
+                "uygunluk": 67.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YASİN AKKAYA",
+                "uygunluk": 64.99999999999999,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "HÜSEYİN GÜNDOĞDU",
+                "uygunluk": 64.5,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "AHMET ŞAHİN",
+                "uygunluk": 63.74999999999999,
+                "seviye": "cirak"
+            }
+        ],
+        "personel_ihtiyaci": {
+            "ustabasi": 0,
+            "kalifiyeli": 1,
+            "cirak": 3
+        }
+    },
+    "M-MOD3-008": {
+        "atanan_calisanlar": {
+            "ustabasi": [],
+            "kalifiyeli": [
+                "RAFET KARABAYIR",
+                "RAMAZAN ŞAMASTI"
+            ],
+            "cirak": [
+                "ERSİN KÖSEOĞLU",
+                "SEYFETTİN DUYMUŞ"
+            ]
+        },
+        "eksik_personel": {
+            "ustabasi": 0,
+            "kalifiyeli": 0,
+            "cirak": 0
+        },
+        "alternatif_calisanlar": [
+            {
+                "calisan": "AYKUT BONCUK",
+                "uygunluk": 73.75,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Emre Seçer",
+                "uygunluk": 70.0,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Efe Erbaş",
+                "uygunluk": 63.74999999999999,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Eyüp Ekiz",
+                "uygunluk": 57.49999999999999,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "SÜHA DEMİR",
+                "uygunluk": 89.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "Oktay ALICI",
+                "uygunluk": 86.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "İsmail CAN",
+                "uygunluk": 86.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "OZAN ACAR",
+                "uygunluk": 83.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "HASAN AKYILDIZ",
+                "uygunluk": 83.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "SERKAN DEMİR",
+                "uygunluk": 83.0,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "CENGİZ CAN",
+                "uygunluk": 80.0,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "FATİH YAŞAR",
+                "uygunluk": 73.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YAHYA SARI",
+                "uygunluk": 72.50000000000001,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "SİNAN ÖZYOL",
+                "uygunluk": 72.00000000000001,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YILMAZ UZUN",
+                "uygunluk": 68.75,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "Özgür YAPAREL",
+                "uygunluk": 68.25,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "Gökhan KOLAÇ",
+                "uygunluk": 67.5,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "EMRE ÇELEBİ",
+                "uygunluk": 67.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YASİN AKKAYA",
+                "uygunluk": 64.99999999999999,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "HÜSEYİN GÜNDOĞDU",
+                "uygunluk": 64.5,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "AHMET ŞAHİN",
+                "uygunluk": 63.74999999999999,
+                "seviye": "cirak"
+            }
+        ],
+        "personel_ihtiyaci": {
+            "ustabasi": 0,
+            "kalifiyeli": 2,
+            "cirak": 2
+        }
+    },
+    "M-RPV2.5-009": {
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "AYKUT BONCUK"
+            ],
+            "kalifiyeli": [
+                "RAFET KARABAYIR"
+            ],
+            "cirak": [
+                "ERSİN KÖSEOĞLU",
+                "SEYFETTİN DUYMUŞ"
+            ]
+        },
+        "eksik_personel": {
+            "ustabasi": 0,
+            "kalifiyeli": 0,
+            "cirak": 0
+        },
+        "alternatif_calisanlar": [
+            {
+                "calisan": "Emre Seçer",
+                "uygunluk": 95.0,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Efe Erbaş",
+                "uygunluk": 88.75,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Eyüp Ekiz",
+                "uygunluk": 82.5,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "RAMAZAN ŞAMASTI",
+                "uygunluk": 89.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "SÜHA DEMİR",
+                "uygunluk": 89.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "Oktay ALICI",
+                "uygunluk": 86.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "İsmail CAN",
+                "uygunluk": 86.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "OZAN ACAR",
+                "uygunluk": 83.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "HASAN AKYILDIZ",
+                "uygunluk": 83.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "SERKAN DEMİR",
+                "uygunluk": 83.0,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "CENGİZ CAN",
+                "uygunluk": 80.0,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "FATİH YAŞAR",
+                "uygunluk": 73.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YAHYA SARI",
+                "uygunluk": 72.50000000000001,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "SİNAN ÖZYOL",
+                "uygunluk": 72.00000000000001,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YILMAZ UZUN",
+                "uygunluk": 68.75,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "Özgür YAPAREL",
+                "uygunluk": 68.25,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "Gökhan KOLAÇ",
+                "uygunluk": 67.5,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "EMRE ÇELEBİ",
+                "uygunluk": 67.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YASİN AKKAYA",
+                "uygunluk": 64.99999999999999,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "HÜSEYİN GÜNDOĞDU",
+                "uygunluk": 64.5,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "AHMET ŞAHİN",
+                "uygunluk": 63.74999999999999,
+                "seviye": "cirak"
+            }
+        ],
+        "personel_ihtiyaci": {
+            "ustabasi": 1,
+            "kalifiyeli": 1,
+            "cirak": 2
+        }
+    },
+    "M-TK1-010": {
+        "atanan_calisanlar": {
+            "ustabasi": [],
+            "kalifiyeli": [
+                "RAFET KARABAYIR",
+                "RAMAZAN ŞAMASTI",
+                "SÜHA DEMİR"
+            ],
+            "cirak": [
+                "ERSİN KÖSEOĞLU"
+            ]
+        },
+        "eksik_personel": {
+            "ustabasi": 0,
+            "kalifiyeli": 0,
+            "cirak": 0
+        },
+        "alternatif_calisanlar": [
+            {
+                "calisan": "AYKUT BONCUK",
+                "uygunluk": 73.75,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Emre Seçer",
+                "uygunluk": 70.0,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Efe Erbaş",
+                "uygunluk": 63.74999999999999,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Eyüp Ekiz",
+                "uygunluk": 57.49999999999999,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Oktay ALICI",
+                "uygunluk": 86.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "İsmail CAN",
+                "uygunluk": 86.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "OZAN ACAR",
+                "uygunluk": 83.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "HASAN AKYILDIZ",
+                "uygunluk": 83.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "SERKAN DEMİR",
+                "uygunluk": 83.0,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "CENGİZ CAN",
+                "uygunluk": 80.0,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "SEYFETTİN DUYMUŞ",
+                "uygunluk": 76.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "FATİH YAŞAR",
+                "uygunluk": 73.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YAHYA SARI",
+                "uygunluk": 72.50000000000001,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "SİNAN ÖZYOL",
+                "uygunluk": 72.00000000000001,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YILMAZ UZUN",
+                "uygunluk": 68.75,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "Özgür YAPAREL",
+                "uygunluk": 68.25,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "Gökhan KOLAÇ",
+                "uygunluk": 67.5,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "EMRE ÇELEBİ",
+                "uygunluk": 67.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YASİN AKKAYA",
+                "uygunluk": 64.99999999999999,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "HÜSEYİN GÜNDOĞDU",
+                "uygunluk": 64.5,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "AHMET ŞAHİN",
+                "uygunluk": 63.74999999999999,
+                "seviye": "cirak"
+            }
+        ],
+        "personel_ihtiyaci": {
+            "ustabasi": 0,
+            "kalifiyeli": 3,
+            "cirak": 1
+        }
+    },
+    "M-AVK-011": {
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "AYKUT BONCUK"
+            ],
+            "kalifiyeli": [
+                "RAFET KARABAYIR"
+            ],
+            "cirak": [
+                "ERSİN KÖSEOĞLU"
+            ]
+        },
+        "eksik_personel": {
+            "ustabasi": 0,
+            "kalifiyeli": 0,
+            "cirak": 0
+        },
+        "alternatif_calisanlar": [
+            {
+                "calisan": "Emre Seçer",
+                "uygunluk": 95.0,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Efe Erbaş",
+                "uygunluk": 88.75,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Eyüp Ekiz",
+                "uygunluk": 82.5,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "RAMAZAN ŞAMASTI",
+                "uygunluk": 89.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "SÜHA DEMİR",
+                "uygunluk": 89.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "Oktay ALICI",
+                "uygunluk": 86.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "İsmail CAN",
+                "uygunluk": 86.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "OZAN ACAR",
+                "uygunluk": 83.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "HASAN AKYILDIZ",
+                "uygunluk": 83.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "SERKAN DEMİR",
+                "uygunluk": 83.0,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "CENGİZ CAN",
+                "uygunluk": 80.0,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "SEYFETTİN DUYMUŞ",
+                "uygunluk": 76.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "FATİH YAŞAR",
+                "uygunluk": 73.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YAHYA SARI",
+                "uygunluk": 72.50000000000001,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "SİNAN ÖZYOL",
+                "uygunluk": 72.00000000000001,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YILMAZ UZUN",
+                "uygunluk": 68.75,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "Özgür YAPAREL",
+                "uygunluk": 68.25,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "Gökhan KOLAÇ",
+                "uygunluk": 67.5,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "EMRE ÇELEBİ",
+                "uygunluk": 67.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YASİN AKKAYA",
+                "uygunluk": 64.99999999999999,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "HÜSEYİN GÜNDOĞDU",
+                "uygunluk": 64.5,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "AHMET ŞAHİN",
+                "uygunluk": 63.74999999999999,
+                "seviye": "cirak"
+            }
+        ],
+        "personel_ihtiyaci": {
+            "ustabasi": 1,
+            "kalifiyeli": 1,
+            "cirak": 1
+        }
+    },
+    "M-CKM-012": {
+        "atanan_calisanlar": {
+            "ustabasi": [],
+            "kalifiyeli": [],
+            "cirak": [
+                "ERSİN KÖSEOĞLU",
+                "SEYFETTİN DUYMUŞ"
+            ]
+        },
+        "eksik_personel": {
+            "ustabasi": 0,
+            "kalifiyeli": 0,
+            "cirak": 0
+        },
+        "alternatif_calisanlar": [
+            {
+                "calisan": "AYKUT BONCUK",
+                "uygunluk": 73.75,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Emre Seçer",
+                "uygunluk": 70.0,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Efe Erbaş",
+                "uygunluk": 63.74999999999999,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Eyüp Ekiz",
+                "uygunluk": 57.49999999999999,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "RAFET KARABAYIR",
+                "uygunluk": 67.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "RAMAZAN ŞAMASTI",
+                "uygunluk": 64.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "SÜHA DEMİR",
+                "uygunluk": 64.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "Oktay ALICI",
+                "uygunluk": 61.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "İsmail CAN",
+                "uygunluk": 61.25000000000001,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "OZAN ACAR",
+                "uygunluk": 58.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "HASAN AKYILDIZ",
+                "uygunluk": 58.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "SERKAN DEMİR",
+                "uygunluk": 57.99999999999999,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "CENGİZ CAN",
+                "uygunluk": 55.00000000000001,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "FATİH YAŞAR",
+                "uygunluk": 73.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YAHYA SARI",
+                "uygunluk": 72.50000000000001,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "SİNAN ÖZYOL",
+                "uygunluk": 72.00000000000001,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YILMAZ UZUN",
+                "uygunluk": 68.75,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "Özgür YAPAREL",
+                "uygunluk": 68.25,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "Gökhan KOLAÇ",
+                "uygunluk": 67.5,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "EMRE ÇELEBİ",
+                "uygunluk": 67.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YASİN AKKAYA",
+                "uygunluk": 64.99999999999999,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "HÜSEYİN GÜNDOĞDU",
+                "uygunluk": 64.5,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "AHMET ŞAHİN",
+                "uygunluk": 63.74999999999999,
+                "seviye": "cirak"
+            }
+        ],
+        "personel_ihtiyaci": {
+            "ustabasi": 0,
+            "kalifiyeli": 0,
+            "cirak": 2
+        }
+    },
+    "M-MOD2-014": {
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "AYKUT BONCUK"
+            ],
+            "kalifiyeli": [
+                "RAFET KARABAYIR",
+                "RAMAZAN ŞAMASTI"
+            ],
+            "cirak": [
+                "ERSİN KÖSEOĞLU",
+                "SEYFETTİN DUYMUŞ",
+                "FATİH YAŞAR"
+            ]
+        },
+        "eksik_personel": {
+            "ustabasi": 0,
+            "kalifiyeli": 0,
+            "cirak": 0
+        },
+        "alternatif_calisanlar": [
+            {
+                "calisan": "Emre Seçer",
+                "uygunluk": 95.0,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Efe Erbaş",
+                "uygunluk": 88.75,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Eyüp Ekiz",
+                "uygunluk": 82.5,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "SÜHA DEMİR",
+                "uygunluk": 89.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "Oktay ALICI",
+                "uygunluk": 86.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "İsmail CAN",
+                "uygunluk": 86.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "OZAN ACAR",
+                "uygunluk": 83.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "HASAN AKYILDIZ",
+                "uygunluk": 83.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "SERKAN DEMİR",
+                "uygunluk": 83.0,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "CENGİZ CAN",
+                "uygunluk": 80.0,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "YAHYA SARI",
+                "uygunluk": 72.50000000000001,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "SİNAN ÖZYOL",
+                "uygunluk": 72.00000000000001,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YILMAZ UZUN",
+                "uygunluk": 68.75,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "Özgür YAPAREL",
+                "uygunluk": 68.25,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "Gökhan KOLAÇ",
+                "uygunluk": 67.5,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "EMRE ÇELEBİ",
+                "uygunluk": 67.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YASİN AKKAYA",
+                "uygunluk": 64.99999999999999,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "HÜSEYİN GÜNDOĞDU",
+                "uygunluk": 64.5,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "AHMET ŞAHİN",
+                "uygunluk": 63.74999999999999,
+                "seviye": "cirak"
+            }
+        ],
+        "personel_ihtiyaci": {
+            "ustabasi": 1,
+            "kalifiyeli": 2,
+            "cirak": 3
+        }
+    },
+    "M-DUK-015": {
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "AYKUT BONCUK",
+                "Emre Seçer"
+            ],
+            "kalifiyeli": [
+                "RAFET KARABAYIR"
+            ],
+            "cirak": []
+        },
+        "eksik_personel": {
+            "ustabasi": 0,
+            "kalifiyeli": 0,
+            "cirak": 0
+        },
+        "alternatif_calisanlar": [
+            {
+                "calisan": "Efe Erbaş",
+                "uygunluk": 88.75,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Eyüp Ekiz",
+                "uygunluk": 82.5,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "RAMAZAN ŞAMASTI",
+                "uygunluk": 89.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "SÜHA DEMİR",
+                "uygunluk": 89.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "Oktay ALICI",
+                "uygunluk": 86.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "İsmail CAN",
+                "uygunluk": 86.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "OZAN ACAR",
+                "uygunluk": 83.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "HASAN AKYILDIZ",
+                "uygunluk": 83.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "SERKAN DEMİR",
+                "uygunluk": 83.0,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "CENGİZ CAN",
+                "uygunluk": 80.0,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "ERSİN KÖSEOĞLU",
+                "uygunluk": 51.24999999999999,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "SEYFETTİN DUYMUŞ",
+                "uygunluk": 51.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "FATİH YAŞAR",
+                "uygunluk": 48.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YAHYA SARI",
+                "uygunluk": 47.5,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "SİNAN ÖZYOL",
+                "uygunluk": 47.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YILMAZ UZUN",
+                "uygunluk": 43.75,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "Özgür YAPAREL",
+                "uygunluk": 43.25,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "Gökhan KOLAÇ",
+                "uygunluk": 42.50000000000001,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "EMRE ÇELEBİ",
+                "uygunluk": 42.00000000000001,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YASİN AKKAYA",
+                "uygunluk": 40.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "HÜSEYİN GÜNDOĞDU",
+                "uygunluk": 39.5,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "AHMET ŞAHİN",
+                "uygunluk": 38.75,
+                "seviye": "cirak"
+            }
+        ],
+        "personel_ihtiyaci": {
+            "ustabasi": 2,
+            "kalifiyeli": 1,
+            "cirak": 0
+        }
+    },
+    "M-KK-016": {
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "AYKUT BONCUK",
+                "Emre Seçer"
+            ],
+            "kalifiyeli": [
+                "RAFET KARABAYIR",
+                "RAMAZAN ŞAMASTI"
+            ],
+            "cirak": []
+        },
+        "eksik_personel": {
+            "ustabasi": 0,
+            "kalifiyeli": 0,
+            "cirak": 0
+        },
+        "alternatif_calisanlar": [
+            {
+                "calisan": "Efe Erbaş",
+                "uygunluk": 88.75,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Eyüp Ekiz",
+                "uygunluk": 82.5,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "SÜHA DEMİR",
+                "uygunluk": 89.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "Oktay ALICI",
+                "uygunluk": 86.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "İsmail CAN",
+                "uygunluk": 86.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "OZAN ACAR",
+                "uygunluk": 83.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "HASAN AKYILDIZ",
+                "uygunluk": 83.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "SERKAN DEMİR",
+                "uygunluk": 83.0,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "CENGİZ CAN",
+                "uygunluk": 80.0,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "ERSİN KÖSEOĞLU",
+                "uygunluk": 51.24999999999999,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "SEYFETTİN DUYMUŞ",
+                "uygunluk": 51.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "FATİH YAŞAR",
+                "uygunluk": 48.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YAHYA SARI",
+                "uygunluk": 47.5,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "SİNAN ÖZYOL",
+                "uygunluk": 47.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YILMAZ UZUN",
+                "uygunluk": 43.75,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "Özgür YAPAREL",
+                "uygunluk": 43.25,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "Gökhan KOLAÇ",
+                "uygunluk": 42.50000000000001,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "EMRE ÇELEBİ",
+                "uygunluk": 42.00000000000001,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YASİN AKKAYA",
+                "uygunluk": 40.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "HÜSEYİN GÜNDOĞDU",
+                "uygunluk": 39.5,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "AHMET ŞAHİN",
+                "uygunluk": 38.75,
+                "seviye": "cirak"
+            }
+        ],
+        "personel_ihtiyaci": {
+            "ustabasi": 2,
+            "kalifiyeli": 2,
+            "cirak": 0
+        }
+    },
+    "M-D90K-017": {
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "AYKUT BONCUK"
+            ],
+            "kalifiyeli": [
+                "RAFET KARABAYIR"
+            ],
+            "cirak": [
+                "ERSİN KÖSEOĞLU",
+                "SEYFETTİN DUYMUŞ"
+            ]
+        },
+        "eksik_personel": {
+            "ustabasi": 0,
+            "kalifiyeli": 0,
+            "cirak": 0
+        },
+        "alternatif_calisanlar": [
+            {
+                "calisan": "Emre Seçer",
+                "uygunluk": 95.0,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Efe Erbaş",
+                "uygunluk": 88.75,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Eyüp Ekiz",
+                "uygunluk": 82.5,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "RAMAZAN ŞAMASTI",
+                "uygunluk": 89.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "SÜHA DEMİR",
+                "uygunluk": 89.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "Oktay ALICI",
+                "uygunluk": 86.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "İsmail CAN",
+                "uygunluk": 86.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "OZAN ACAR",
+                "uygunluk": 83.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "HASAN AKYILDIZ",
+                "uygunluk": 83.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "SERKAN DEMİR",
+                "uygunluk": 83.0,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "CENGİZ CAN",
+                "uygunluk": 80.0,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "FATİH YAŞAR",
+                "uygunluk": 73.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YAHYA SARI",
+                "uygunluk": 72.50000000000001,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "SİNAN ÖZYOL",
+                "uygunluk": 72.00000000000001,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YILMAZ UZUN",
+                "uygunluk": 68.75,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "Özgür YAPAREL",
+                "uygunluk": 68.25,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "Gökhan KOLAÇ",
+                "uygunluk": 67.5,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "EMRE ÇELEBİ",
+                "uygunluk": 67.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YASİN AKKAYA",
+                "uygunluk": 64.99999999999999,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "HÜSEYİN GÜNDOĞDU",
+                "uygunluk": 64.5,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "AHMET ŞAHİN",
+                "uygunluk": 63.74999999999999,
+                "seviye": "cirak"
+            }
+        ],
+        "personel_ihtiyaci": {
+            "ustabasi": 1,
+            "kalifiyeli": 1,
+            "cirak": 2
+        }
+    },
+    "M-YK-004": {
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "AYKUT BONCUK",
+                "Emre Seçer"
+            ],
+            "kalifiyeli": [
+                "RAFET KARABAYIR",
+                "RAMAZAN ŞAMASTI",
+                "SÜHA DEMİR"
+            ],
+            "cirak": [
+                "ERSİN KÖSEOĞLU",
+                "SEYFETTİN DUYMUŞ",
+                "FATİH YAŞAR",
+                "YAHYA SARI"
+            ]
+        },
+        "eksik_personel": {
+            "ustabasi": 0,
+            "kalifiyeli": 0,
+            "cirak": 0
+        },
+        "alternatif_calisanlar": [
+            {
+                "calisan": "Efe Erbaş",
+                "uygunluk": 88.75,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Eyüp Ekiz",
+                "uygunluk": 82.5,
+                "seviye": "ustabasi"
+            },
+            {
+                "calisan": "Oktay ALICI",
+                "uygunluk": 86.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "İsmail CAN",
+                "uygunluk": 86.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "OZAN ACAR",
+                "uygunluk": 83.5,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "HASAN AKYILDIZ",
+                "uygunluk": 83.25,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "SERKAN DEMİR",
+                "uygunluk": 83.0,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "CENGİZ CAN",
+                "uygunluk": 80.0,
+                "seviye": "kalifiyeli"
+            },
+            {
+                "calisan": "SİNAN ÖZYOL",
+                "uygunluk": 72.00000000000001,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YILMAZ UZUN",
+                "uygunluk": 68.75,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "Özgür YAPAREL",
+                "uygunluk": 68.25,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "Gökhan KOLAÇ",
+                "uygunluk": 67.5,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "EMRE ÇELEBİ",
+                "uygunluk": 67.0,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "YASİN AKKAYA",
+                "uygunluk": 64.99999999999999,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "HÜSEYİN GÜNDOĞDU",
+                "uygunluk": 64.5,
+                "seviye": "cirak"
+            },
+            {
+                "calisan": "AHMET ŞAHİN",
+                "uygunluk": 63.74999999999999,
+                "seviye": "cirak"
+            }
+        ],
+        "personel_ihtiyaci": {
+            "ustabasi": 2,
+            "kalifiyeli": 3,
+            "cirak": 4
+        }
+    }
+}
