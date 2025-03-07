@@ -64,6 +64,19 @@
         // Socket.IO bağlantısı
         var socket = io();
 
+        // Bildirim dinleyicisi
+        socket.on('bildirim', function(data) {
+            const tip = data.tip === 'basari' ? 'success' :
+                       data.tip === 'hata' ? 'error' :
+                       data.tip === 'uyari' ? 'warning' : 'info';
+            
+            if (typeof bildirimGoster === 'function') {
+                bildirimGoster(tip, data.mesaj);
+            } else if (typeof showAlert === 'function') {
+                showAlert(tip, data.mesaj);
+            }
+        });
+
         // Tasarım kodu güncellemesi
         socket.on('tasarim_kodu_guncelleme', function(data) {
             if (window.location.pathname === '/tasarim-kodlari') {

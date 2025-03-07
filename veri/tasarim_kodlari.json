@@ -15,7 +15,7 @@
     },
     "M-KKK-002": {
         "urun_adi": "Kare Kayar konveyor",
-        "tahmini_montaj_suresi": 176.86519291358124,
+        "tahmini_montaj_suresi": 203.39497185061842,
         "minimum_yetkinlik_seviyesi": 3,
         "ortalama_uretim_adedi": 30,
         "zorluk_derecesi": 1,
@@ -43,7 +43,7 @@
     },
     "M-PA-005": {
         "urun_adi": "Poset Acma",
-        "tahmini_montaj_suresi": 35.47073493614904,
+        "tahmini_montaj_suresi": 38.13104005636022,
         "minimum_yetkinlik_seviyesi": 2,
         "ortalama_uretim_adedi": 35,
         "zorluk_derecesi": 2,
@@ -57,7 +57,7 @@
     },
     "M-RPV3.5-006": {
         "urun_adi": "3,5mt rampali pvc",
-        "tahmini_montaj_suresi": 129.0264357029113,
+        "tahmini_montaj_suresi": 138.0,
         "minimum_yetkinlik_seviyesi": 1,
         "ortalama_uretim_adedi": 20,
         "zorluk_derecesi": 3,
@@ -71,7 +71,7 @@
     },
     "M-MOD4-007": {
         "urun_adi": "4 mt moduler konveyor",
-        "tahmini_montaj_suresi": 171.96709887085956,
+        "tahmini_montaj_suresi": 184.0,
         "minimum_yetkinlik_seviyesi": 3,
         "ortalama_uretim_adedi": 50,
         "zorluk_derecesi": 1,
@@ -85,7 +85,7 @@
     },
     "M-MOD3-008": {
         "urun_adi": "3 mt moduler konveyor",
-        "tahmini_montaj_suresi": 165.26782513095958,
+        "tahmini_montaj_suresi": 177.66291201578153,
         "minimum_yetkinlik_seviyesi": 2,
         "ortalama_uretim_adedi": 100,
         "zorluk_derecesi": 2,
@@ -197,7 +197,7 @@
     },
     "M-D90K-017": {
         "urun_adi": "Donuslu 90 derece Konveyor",
-        "tahmini_montaj_suresi": 390.9424632115363,
+        "tahmini_montaj_suresi": 405.0,
         "minimum_yetkinlik_seviyesi": 2,
         "ortalama_uretim_adedi": 20,
         "zorluk_derecesi": 2,

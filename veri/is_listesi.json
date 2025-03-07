@@ -2,46 +2,46 @@
     {
         "id": "1",
         "tasarim_kodu": "M-KAM-001",
-        "proje_adi": "Ford",
-        "teslimat_tarihi": "2025-03-09",
+        "proje_adi": "Coca Cola",
+        "teslimat_tarihi": "2025-04-05",
         "durum": "beklemede",
         "oncelik": "normal",
-        "kalan_sure": "1821",
+        "kalan_sure": 1821.49529955857,
         "atanan_calisan": {
             "ustabasi": [
-                "AYKUT BONCUK"
+                "Emre Seçer"
             ],
             "kalifiyeli": [
-                "RAFET KARABAYIR",
-                "RAMAZAN ŞAMASTI"
+                "HASAN AKYILDIZ",
+                "RAFET KARABAYIR"
             ],
             "cirak": [
-                "ERSİN KÖSEOĞLU",
                 "SEYFETTİN DUYMUŞ",
-                "FATİH YAŞAR"
+                "HÜSEYİN GÜNDOĞDU",
+                "SİNAN ÖZYOL"
             ]
         }
     },
     {
         "id": "2",
         "tasarim_kodu": "M-KAM-001",
-        "proje_adi": "Optimak STU",
-        "teslimat_tarihi": "2025-03-09",
+        "proje_adi": "ABC",
+        "teslimat_tarihi": "2025-04-06",
         "durum": "beklemede",
         "oncelik": "normal",
-        "kalan_sure": "1821",
+        "kalan_sure": 1821.49529955857,
         "atanan_calisan": {
             "ustabasi": [
-                "Emre Seçer"
+                "AYKUT BONCUK"
             ],
             "kalifiyeli": [
                 "SÜHA DEMİR",
-                "Oktay ALICI"
+                "OZAN ACAR"
             ],
             "cirak": [
-                "YAHYA SARI",
-                "SİNAN ÖZYOL",
-                "YILMAZ UZUN"
+                "YILMAZ UZUN",
+                "AHMET ŞAHİN",
+                "Özgür YAPAREL"
             ]
         }
     }

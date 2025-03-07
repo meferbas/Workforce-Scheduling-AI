@@ -1,0 +1,176 @@
+PERFORMANS SİMÜLASYON RAPORU
+==================================================
+
+Simülasyon Zamanı: 2025-03-07 16:42:47
+
+ÇALIŞAN PERFORMANS TAHMİNLERİ:
+------------------------------
+
+Çalışan: HÜSEYİN GÜNDOĞDU
+Ortalama Performans: 0.52
+Risk Skoru: 0.47
+Gecikme Olasılığı: 0.21
+Performans Kararlılığı: 0.86
+Performans Aralığı: 0.33 - 0.71
+
+Çalışan: OZAN ACAR
+Ortalama Performans: 0.52
+Risk Skoru: 0.47
+Gecikme Olasılığı: 0.22
+Performans Kararlılığı: 0.86
+Performans Aralığı: 0.33 - 0.72
+
+Çalışan: RAFET KARABAYIR
+Ortalama Performans: 0.51
+Risk Skoru: 0.48
+Gecikme Olasılığı: 0.23
+Performans Kararlılığı: 0.86
+Performans Aralığı: 0.32 - 0.70
+
+Çalışan: SÜHA DEMİR
+Ortalama Performans: 0.51
+Risk Skoru: 0.49
+Gecikme Olasılığı: 0.23
+Performans Kararlılığı: 0.86
+Performans Aralığı: 0.32 - 0.70
+
+Çalışan: HASAN AKYILDIZ
+Ortalama Performans: 0.51
+Risk Skoru: 0.49
+Gecikme Olasılığı: 0.23
+Performans Kararlılığı: 0.86
+Performans Aralığı: 0.32 - 0.71
+
+Çalışan: AYKUT BONCUK
+Ortalama Performans: 0.51
+Risk Skoru: 0.49
+Gecikme Olasılığı: 0.24
+Performans Kararlılığı: 0.86
+Performans Aralığı: 0.31 - 0.70
+
+Çalışan: Efe Erbaş
+Ortalama Performans: 0.51
+Risk Skoru: 0.49
+Gecikme Olasılığı: 0.24
+Performans Kararlılığı: 0.86
+Performans Aralığı: 0.31 - 0.70
+
+Çalışan: Emre Seçer
+Ortalama Performans: 0.50
+Risk Skoru: 0.49
+Gecikme Olasılığı: 0.23
+Performans Kararlılığı: 0.86
+Performans Aralığı: 0.31 - 0.70
+
+Çalışan: YILMAZ UZUN
+Ortalama Performans: 0.50
+Risk Skoru: 0.49
+Gecikme Olasılığı: 0.24
+Performans Kararlılığı: 0.86
+Performans Aralığı: 0.31 - 0.70
+
+Çalışan: CENGİZ CAN
+Ortalama Performans: 0.50
+Risk Skoru: 0.49
+Gecikme Olasılığı: 0.24
+Performans Kararlılığı: 0.86
+Performans Aralığı: 0.31 - 0.70
+
+Çalışan: SİNAN ÖZYOL
+Ortalama Performans: 0.51
+Risk Skoru: 0.49
+Gecikme Olasılığı: 0.24
+Performans Kararlılığı: 0.85
+Performans Aralığı: 0.31 - 0.70
+
+Çalışan: Özgür YAPAREL
+Ortalama Performans: 0.50
+Risk Skoru: 0.50
+Gecikme Olasılığı: 0.24
+Performans Kararlılığı: 0.86
+Performans Aralığı: 0.31 - 0.70
+
+Çalışan: FATİH YAŞAR
+Ortalama Performans: 0.50
+Risk Skoru: 0.49
+Gecikme Olasılığı: 0.24
+Performans Kararlılığı: 0.85
+Performans Aralığı: 0.31 - 0.70
+
+Çalışan: ERSİN KÖSEOĞLU
+Ortalama Performans: 0.50
+Risk Skoru: 0.49
+Gecikme Olasılığı: 0.24
+Performans Kararlılığı: 0.86
+Performans Aralığı: 0.31 - 0.70
+
+Çalışan: SEYFETTİN DUYMUŞ
+Ortalama Performans: 0.50
+Risk Skoru: 0.50
+Gecikme Olasılığı: 0.24
+Performans Kararlılığı: 0.86
+Performans Aralığı: 0.31 - 0.70
+
+Çalışan: AHMET ŞAHİN
+Ortalama Performans: 0.50
+Risk Skoru: 0.49
+Gecikme Olasılığı: 0.25
+Performans Kararlılığı: 0.85
+Performans Aralığı: 0.30 - 0.70
+
+Çalışan: RAMAZAN ŞAMASTI
+Ortalama Performans: 0.50
+Risk Skoru: 0.50
+Gecikme Olasılığı: 0.24
+Performans Kararlılığı: 0.86
+Performans Aralığı: 0.31 - 0.70
+
+Çalışan: Gökhan KOLAÇ
+Ortalama Performans: 0.50
+Risk Skoru: 0.50
+Gecikme Olasılığı: 0.25
+Performans Kararlılığı: 0.86
+Performans Aralığı: 0.30 - 0.70
+
+Çalışan: Oktay ALICI
+Ortalama Performans: 0.50
+Risk Skoru: 0.51
+Gecikme Olasılığı: 0.25
+Performans Kararlılığı: 0.85
+Performans Aralığı: 0.30 - 0.70
+
+Çalışan: SERKAN DEMİR
+Ortalama Performans: 0.50
+Risk Skoru: 0.51
+Gecikme Olasılığı: 0.25
+Performans Kararlılığı: 0.85
+Performans Aralığı: 0.30 - 0.69
+
+Çalışan: EMRE ÇELEBİ
+Ortalama Performans: 0.49
+Risk Skoru: 0.51
+Gecikme Olasılığı: 0.25
+Performans Kararlılığı: 0.86
+Performans Aralığı: 0.30 - 0.68
+
+Çalışan: YASİN AKKAYA
+Ortalama Performans: 0.49
+Risk Skoru: 0.51
+Gecikme Olasılığı: 0.25
+Performans Kararlılığı: 0.86
+Performans Aralığı: 0.30 - 0.69
+
+Çalışan: İsmail CAN
+Ortalama Performans: 0.49
+Risk Skoru: 0.52
+Gecikme Olasılığı: 0.25
+Performans Kararlılığı: 0.86
+Performans Aralığı: 0.30 - 0.69
+
+Çalışan: YAHYA SARI
+Ortalama Performans: 0.48
+Risk Skoru: 0.53
+Gecikme Olasılığı: 0.26
+Performans Kararlılığı: 0.86
+Performans Aralığı: 0.29 - 0.68
+

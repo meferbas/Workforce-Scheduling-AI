@@ -9,10 +9,16 @@ from flask_socketio import SocketIO, emit
 import sys
 import traceback
 import numpy as np
-from monte_carlo import run_monte_carlo_simulation
 from taguchi import taguchi_optimization, create_parameter_levels
 import shutil
 from threading import Thread
+import time
+import threading
+from monte_carlo_simulasyon import simulasyon_calistir
+
+# Global değişkenler
+monte_carlo_running = False
+monte_carlo_result = None
 
 # JSON dosyasını yüklemek için yardımcı fonksiyon
 def load_json_file(file_path):
@@ -175,25 +181,60 @@ def optimizasyon():
 def run_optimization():
     try:
         print("Optimizasyon başlatılıyor...")
+        bildirim_gonder("Optimizasyon başlatıldı", "bilgi")
         
         # Taguchi optimizasyonu
         print("Taguchi optimizasyonu başlatılıyor...")
-        taguchi.main()
-        print("Taguchi optimizasyonu tamamlandı.")
+        bildirim_gonder("Taguchi optimizasyonu başlatıldı", "bilgi")
+        optimizasyon_ilerlemesi("taguchi", 0, "Başlatılıyor...")
+        
+        try:
+            taguchi.main()
+            optimizasyon_ilerlemesi("taguchi", 100, "Tamamlandı")
+            bildirim_gonder("Taguchi optimizasyonu tamamlandı", "basari")
+            print("Taguchi optimizasyonu tamamlandı.")
+        except Exception as e:
+            error_msg = str(e)
+            print(f"Taguchi optimizasyonu hatası: {error_msg}")
+            bildirim_gonder(f"Taguchi optimizasyonu hatası: {error_msg}", "hata")
+            optimizasyon_ilerlemesi("taguchi", 100, f"Hata: {error_msg}")
+            
+            # Hata sonuç dosyasına kaydedilmediyse kaydet
+            if not os.path.exists('veri/taguchi_sonuclari.json') or os.path.getsize('veri/taguchi_sonuclari.json') == 0:
+                with open('veri/taguchi_sonuclari.json', 'w', encoding='utf-8') as f:
+                    json.dump({"error": error_msg}, f, ensure_ascii=False, indent=4)
+            
+            # Genetik algoritma optimizasyonuna devam et
         
         # Genetik algoritma optimizasyonu
         print("Genetik algoritma optimizasyonu başlatılıyor...")
+        bildirim_gonder("Genetik algoritma optimizasyonu başlatıldı", "bilgi")
+        optimizasyon_ilerlemesi("genetik", 0, "Başlatılıyor...")
+        
         tasarim_kod_bilgileri, calisan_yetkinlikleri = geneticalgorithm.load_dataset()
         if not tasarim_kod_bilgileri or not calisan_yetkinlikleri:
             raise Exception("Veri setleri yüklenemedi!")
             
         print("Veri setleri yüklendi, genetik algoritma çalıştırılıyor...")
-        best_assignment, fitness_history, task_worker_rankings = geneticalgorithm.genetic_algorithm(tasarim_kod_bilgileri, calisan_yetkinlikleri)
+        optimizasyon_ilerlemesi("genetik", 10, "Veri setleri yüklendi")
+        
+        # İlerleme bildirimi için callback fonksiyonu
+        def ilerleme_callback(nesil, toplam_nesil, en_iyi_uygunluk):
+            ilerleme_yuzdesi = min(10 + int((nesil / toplam_nesil) * 90), 100)
+            optimizasyon_ilerlemesi("genetik", ilerleme_yuzdesi, f"Nesil: {nesil}/{toplam_nesil}, En iyi uygunluk: {en_iyi_uygunluk:.2f}")
+        
+        best_assignment, fitness_history, task_worker_rankings = geneticalgorithm.genetic_algorithm(
+            tasarim_kod_bilgileri, 
+            calisan_yetkinlikleri,
+            ilerleme_callback=ilerleme_callback
+        )
         
         if not best_assignment:
             raise Exception("Genetik algoritma sonuç üretemedi!")
         
         print("Genetik algoritma tamamlandı, sonuçlar kaydediliyor...")
+        optimizasyon_ilerlemesi("genetik", 95, "Sonuçlar kaydediliyor...")
+        
         # Sonuçları JSON olarak kaydet
         results = {}
         for task, workers in best_assignment.items():
@@ -304,74 +345,61 @@ def optimizasyon_durumu():
     try:
         # Taguchi sonuçlarını kontrol et
         taguchi_sonuclari = {}
+        taguchi_durum = "beklemede"
+        taguchi_mesaj = "Henüz başlatılmadı"
+        
         if os.path.exists('veri/taguchi_sonuclari.json'):
             with open('veri/taguchi_sonuclari.json', 'r', encoding='utf-8') as f:
                 taguchi_sonuclari = json.load(f)
+                
+            if "error" in taguchi_sonuclari:
+                taguchi_durum = "hata"
+                taguchi_mesaj = taguchi_sonuclari["error"]
+                if "message" in taguchi_sonuclari:
+                    taguchi_mesaj += " - " + taguchi_sonuclari["message"]
+            elif taguchi_sonuclari:
+                taguchi_durum = "tamamlandi"
+                taguchi_mesaj = f"{len(taguchi_sonuclari)} tasarım kodu için optimum süreler hesaplandı"
         
         # Genetik algoritma sonuçlarını kontrol et
         genetik_sonuclari = {}
+        genetik_durum = "beklemede"
+        genetik_mesaj = "Henüz başlatılmadı"
+        
         if os.path.exists('veri/genetik_sonuclari.json'):
             with open('veri/genetik_sonuclari.json', 'r', encoding='utf-8') as f:
                 genetik_sonuclari = json.load(f)
                 
-                # Her tasarım kodu için alternatif çalışanları ekle
-                for tasarim_kodu in genetik_sonuclari:
-                    try:
-                        # Tasarım kodunun personel ihtiyacını al
-                        personel_ihtiyaci = tasarim_kod_bilgileri[tasarim_kodu].get('personel_ihtiyaci', {
-                            "ustabasi": 0,
-                            "kalifiyeli": 0,
-                            "cirak": 0
-                        })
-                        
-                        # Alternatif çalışanları bul
-                        alternatif_calisanlar = []
-                        for calisan, bilgi in calisan_yetkinlikleri.items():
-                            seviye = bilgi.get('yetkinlik_seviyesi', 3)
-                            seviye_str = 'cirak'
-                            if seviye == 1:
-                                seviye_str = 'ustabasi'
-                            elif seviye == 2:
-                                seviye_str = 'kalifiyeli'
-                            
-                            # Çalışanın uygunluk skorunu hesapla
-                            from geneticalgorithm import calculate_worker_fitness_for_task
-                            uygunluk = calculate_worker_fitness_for_task(calisan, tasarim_kodu, tasarim_kod_bilgileri, calisan_yetkinlikleri)
-                            
-                            # Eğer çalışan atanmış çalışanlar arasında değilse, alternatif olarak ekle
-                            atanan_calisanlar = genetik_sonuclari[tasarim_kodu].get('atanan_calisanlar', {})
-                            tum_atananlar = []
-                            for seviye_calisanlar in atanan_calisanlar.values():
-                                if isinstance(seviye_calisanlar, list):
-                                    tum_atananlar.extend(seviye_calisanlar)
-                            
-                            if calisan not in tum_atananlar:
-                                alternatif_calisanlar.append({
-                                    "calisan": calisan,
-                                    "seviye": seviye_str,
-                                    "uygunluk": uygunluk
-                                })
-                        
-                        # Alternatif çalışanları uygunluk puanına göre sırala
-                        alternatif_calisanlar.sort(key=lambda x: x['uygunluk'], reverse=True)
-                        
-                        # En uygun alternatif çalışanları seç (her seviye için en fazla 5)
-                        genetik_sonuclari[tasarim_kodu]['alternatif_calisanlar'] = alternatif_calisanlar[:15]
-                        
-                    except Exception as e:
-                        print(f"Alternatif çalışanlar hesaplanırken hata: {str(e)}")
-                        continue
-        
+            if genetik_sonuclari:
+                genetik_durum = "tamamlandi"
+                genetik_mesaj = "Genetik algoritma optimizasyonu tamamlandı"
+                
+        # Optimizasyon durumunu belirle
+        optimizasyon_durum = "devam_ediyor"
+        if taguchi_durum in ["tamamlandi", "hata"] and genetik_durum in ["tamamlandi", "hata"]:
+            optimizasyon_durum = "tamamlandi"
+            
+        # Taguchi sonuçlarında hata varsa bile genetik algoritma çalışabilir
+        if taguchi_durum == "hata" and genetik_durum == "beklemede":
+            optimizasyon_durum = "devam_ediyor"
+            
+        # Sonuçları döndür
         return jsonify({
-            "taguchi_hazir": bool(taguchi_sonuclari),
-            "genetik_hazir": bool(genetik_sonuclari),
-            "taguchi_sonuclari": taguchi_sonuclari,
-            "genetik_sonuclari": genetik_sonuclari
+            "durum": optimizasyon_durum,
+            "taguchi": {
+                "durum": taguchi_durum,
+                "mesaj": taguchi_mesaj,
+                "sonuclar": taguchi_sonuclari if "error" not in taguchi_sonuclari else {}
+            },
+            "genetik": {
+                "durum": genetik_durum,
+                "mesaj": genetik_mesaj,
+                "sonuclar": genetik_sonuclari
+            }
         })
     except Exception as e:
-        return jsonify({
-            "error": f"Optimizasyon durumu kontrol edilirken hata oluştu: {str(e)}"
-        }), 500
+        print(f"Optimizasyon durumu hatası: {str(e)}")
+        return jsonify({"error": str(e)}), 500
 
 @app.route('/api/tasarim-kodu-ekle', methods=['POST'])
 def tasarim_kodu_ekle():
@@ -489,7 +517,16 @@ def musait_calisanlari_bul(is_listesi):
     mesgul_calisanlar = set()
     for is_item in is_listesi:
         if is_item['durum'] != 'tamamlandi':
-            mesgul_calisanlar.add(is_item['atanan_calisan'])
+            # Yeni format (seviye bazlı atama) için kontrol
+            if isinstance(is_item.get('atanan_calisan'), dict):
+                for seviye, calisanlar in is_item['atanan_calisan'].items():
+                    if isinstance(calisanlar, list):
+                        for calisan in calisanlar:
+                            if not calisan.startswith('Fason'):  # Fason işçileri hariç tut
+                                mesgul_calisanlar.add(calisan)
+            # Eski format (tek çalışan) için kontrol
+            elif is_item.get('atanan_calisan') and not str(is_item.get('atanan_calisan')).startswith('Fason'):
+                mesgul_calisanlar.add(is_item['atanan_calisan'])
     
     tum_calisanlar = set(calisan_yetkinlikleri.keys())
     return list(tum_calisanlar - mesgul_calisanlar)
@@ -648,112 +685,156 @@ def is_devret_ve_kaydet():
         print(f"İş devretme ve kaydetme hatası: {str(e)}")
         return jsonify({"success": False, "message": str(e)}), 500
 
-@app.route('/api/is-atama', methods=['POST'])
-def is_atama():
+@app.route('/api/is-kaydet', methods=['POST'])
+def is_kaydet():
     try:
         data = request.get_json()
-        
-        # Tasarım kodu bilgilerini al
         tasarim_kodu = data.get('kod')
-        if not tasarim_kodu:
-            return jsonify({'success': False, 'message': 'Tasarım kodu gerekli'})
-            
-        # Genetik algoritma sonuçlarını kontrol et
-        genetik_sonuclari = load_json_file('veri/genetik_sonuclari.json')
-        if not genetik_sonuclari or tasarim_kodu not in genetik_sonuclari:
-            return jsonify({'success': False, 'message': 'Genetik algoritma sonuçları bulunamadı'})
-            
-        # Mevcut işleri kontrol et
-        is_listesi = load_json_file('veri/is_listesi.json') or []
         
-        # Yeni iş için benzersiz ID oluştur
+        if not tasarim_kodu:
+            return jsonify({'success': False, 'mesaj': 'Tasarım kodu gerekli!'}), 400
+        
+        # İş listesini yükle
+        is_listesi = load_json_file('veri/is_listesi.json')
+        if not is_listesi:
+            is_listesi = []
+        
+        # Yeni iş ID'si oluştur
         yeni_id = str(len(is_listesi) + 1)
-        while any(is_['id'] == yeni_id for is_ in is_listesi):
+        while any(is_item['id'] == yeni_id for is_item in is_listesi):
             yeni_id = str(int(yeni_id) + 1)
+        
+        # Taguchi optimizasyon sonuçlarını yükle
+        taguchi_sonuclari = load_json_file('veri/taguchi_sonuclari.json')
+        genetik_sonuclari = load_json_file('veri/genetik_sonuclari.json')
+        monte_carlo_sonuclari = load_json_file('veri/monte_carlo_sonuclari.json')
+        
+        # Optimize edilmiş süreyi al
+        if taguchi_sonuclari and tasarim_kodu in taguchi_sonuclari.get('best_parameters', {}):
+            tahmini_sure = taguchi_sonuclari['best_parameters'][tasarim_kodu]['sure']
+        else:
+            tahmini_sure = tasarim_kod_bilgileri[tasarim_kodu].get('tahmini_montaj_suresi', 0)
         
         # Meşgul çalışanları bul
         mesgul_calisanlar = set()
-        for is_ in is_listesi:
-            if is_['durum'] != 'tamamlandi':
-                for seviye, calisanlar in is_['atanan_calisan'].items():
-                    if isinstance(calisanlar, list):
-                        mesgul_calisanlar.update(calisanlar)
-                    else:
-                        mesgul_calisanlar.add(calisanlar)
-
-        # Her seviye için müsait çalışanları bul ve ata
-        final_atama = {
+        for is_item in is_listesi:
+            if is_item['durum'] != 'tamamlandi':
+                if isinstance(is_item.get('atanan_calisan'), dict):
+                    for seviye, calisanlar in is_item['atanan_calisan'].items():
+                        if isinstance(calisanlar, list):
+                            mesgul_calisanlar.update(c for c in calisanlar if not c.startswith('Fason'))
+                elif is_item.get('atanan_calisan') in calisan_yetkinlikleri:
+                    mesgul_calisanlar.add(is_item['atanan_calisan'])
+        
+        # Personel ihtiyacını al
+        personel_ihtiyaci = tasarim_kod_bilgileri[tasarim_kodu].get('personel_ihtiyaci', {
+            'ustabasi': 0,
+            'kalifiyeli': 0,
+            'cirak': 0
+        })
+        
+        # Tüm çalışanları seviyelerine göre grupla
+        tum_calisanlar = {
             'ustabasi': [],
             'kalifiyeli': [],
             'cirak': []
         }
-
-        # Personel ihtiyacını al
-        personel_ihtiyaci = tasarim_kod_bilgileri[tasarim_kodu].get('personel_ihtiyaci', {})
         
-        # Genetik algoritma sonuçlarından birincil ve alternatif çalışanları al
-        birincil_atamalar = genetik_sonuclari[tasarim_kodu].get('atanan_calisanlar', {})
-        alternatif_calisanlar = genetik_sonuclari[tasarim_kodu].get('alternatif_calisanlar', [])
+        for calisan, bilgi in calisan_yetkinlikleri.items():
+            seviye = bilgi.get('yetkinlik_seviyesi')
+            if seviye == 1:
+                tum_calisanlar['ustabasi'].append(calisan)
+            elif seviye == 2:
+                tum_calisanlar['kalifiyeli'].append(calisan)
+            elif seviye == 3:
+                tum_calisanlar['cirak'].append(calisan)
         
-        # Her seviye için çalışan ataması yap
+        # En uygun çalışanları seç
+        atanan_calisanlar = {
+            'ustabasi': [],
+            'kalifiyeli': [],
+            'cirak': []
+        }
+        
         for seviye in ['ustabasi', 'kalifiyeli', 'cirak']:
             ihtiyac = personel_ihtiyaci.get(seviye, 0)
-            if ihtiyac == 0:
-                continue
-            
-            # Önce birincil atamaları kontrol et
-            birincil_calisanlar = birincil_atamalar.get(seviye, [])
-            for calisan in birincil_calisanlar:
-                if calisan not in mesgul_calisanlar and len(final_atama[seviye]) < ihtiyac:
-                    final_atama[seviye].append(calisan)
-            
-            # Eğer hala ihtiyaç varsa, alternatif çalışanları kontrol et
-            kalan_ihtiyac = ihtiyac - len(final_atama[seviye])
-            if kalan_ihtiyac > 0:
-                # Bu seviye için uygun alternatif çalışanları filtrele
-                uygun_calisanlar = [
-                    calisan for calisan in alternatif_calisanlar 
-                    if calisan['seviye'] == seviye and 
-                    calisan['calisan'] not in mesgul_calisanlar and
-                    calisan['calisan'] not in final_atama[seviye]
-                ]
+            if ihtiyac > 0:
+                musait_calisanlar = [c for c in tum_calisanlar[seviye] if c not in mesgul_calisanlar]
                 
-                # Uygunluk puanına göre sırala
-                uygun_calisanlar.sort(key=lambda x: x['uygunluk'], reverse=True)
+                # Genetik algoritma sonuçlarını kullan
+                if genetik_sonuclari and tasarim_kodu in genetik_sonuclari:
+                    onerilen_calisanlar = genetik_sonuclari[tasarim_kodu].get('atanan_calisanlar', {}).get(seviye, [])
+                    # Önerilen çalışanlardan müsait olanları öncelikle seç
+                    for calisan in onerilen_calisanlar:
+                        if calisan in musait_calisanlar and len(atanan_calisanlar[seviye]) < ihtiyac:
+                            atanan_calisanlar[seviye].append(calisan)
+                            musait_calisanlar.remove(calisan)
                 
-                # Kalan ihtiyaç kadar çalışan seç
-                for i in range(min(kalan_ihtiyac, len(uygun_calisanlar))):
-                    final_atama[seviye].append(uygun_calisanlar[i]['calisan'])
-            
-            # Hala eksik varsa fason işçi ekle
-            eksik = ihtiyac - len(final_atama[seviye])
-            if eksik > 0:
-                for _ in range(eksik):
-                    final_atama[seviye].append(f'Fason İşçi ({seviye.capitalize()})')
+                # Hala ihtiyaç varsa, kalan müsait çalışanlardan Monte Carlo sonuçlarına göre en iyilerini seç
+                eksik = ihtiyac - len(atanan_calisanlar[seviye])
+                if eksik > 0 and musait_calisanlar:
+                    if monte_carlo_sonuclari and 'calisanlar' in monte_carlo_sonuclari:
+                        musait_calisanlar.sort(key=lambda x: (
+                            monte_carlo_sonuclari['calisanlar'].get(x, {}).get('ortalama_performans', 0) * 0.4 +
+                            (1 - monte_carlo_sonuclari['calisanlar'].get(x, {}).get('risk_skoru', 1)) * 0.3 +
+                            monte_carlo_sonuclari['calisanlar'].get(x, {}).get('performans_kararliligi', 0) * 0.3
+                        ), reverse=True)
+                    
+                    atanan_calisanlar[seviye].extend(musait_calisanlar[:eksik])
+                    eksik = ihtiyac - len(atanan_calisanlar[seviye])
+                
+                # Hala eksik varsa fason işçi ekle
+                if eksik > 0:
+                    for i in range(eksik):
+                        atanan_calisanlar[seviye].append(f'Fason İşçi ({seviye.capitalize()})')
         
-        # Yeni iş kaydını oluştur
+        # Yeni iş kaydı oluştur
         yeni_is = {
             'id': yeni_id,
             'tasarim_kodu': tasarim_kodu,
-            'proje_adi': data['proje_adi'],
-            'teslimat_tarihi': data['teslimat_tarihi'],
-            'durum': data['durum'],
-            'oncelik': data['oncelik'],
-            'kalan_sure': data['kalan_sure'],
-            'atanan_calisan': final_atama
+            'proje_adi': data.get('proje_adi', ''),
+            'teslimat_tarihi': data.get('teslimat_tarihi', ''),
+            'durum': data.get('durum', 'beklemede'),
+            'oncelik': data.get('oncelik', 'normal'),
+            'kalan_sure': tahmini_sure,
+            'atanan_calisan': atanan_calisanlar
         }
         
+        # İş listesine ekle
         is_listesi.append(yeni_is)
-        save_json_file('veri/is_listesi.json', is_listesi)
+        
+        # İş listesini kaydet
+        if not save_json_file('veri/is_listesi.json', is_listesi):
+            raise Exception("İş listesi kaydedilemedi")
+        
+        # Atama detaylarını kaydet
+        atama_detayi = {
+            'tarih': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+            'tasarim_kodu': tasarim_kodu,
+            'proje_adi': data.get('proje_adi', ''),
+            'atanan_calisanlar': atanan_calisanlar,
+            'optimize_sure': tahmini_sure
+        }
+        
+        atama_detaylari = load_json_file('veri/atama_detaylari.json') or []
+        atama_detaylari.append(atama_detayi)
+        save_json_file('veri/atama_detaylari.json', atama_detaylari)
+        
+        # Bildirim gönder ve socket.io ile güncelleme yap
+        bildirim_gonder('İş başarıyla kaydedildi', 'basari')
+        socketio.emit('is_cizelgesi_guncelle')
         
         return jsonify({
             'success': True,
-            'message': 'İş başarıyla kaydedildi',
-            'atanan_calisanlar': final_atama
+            'mesaj': 'İş başarıyla kaydedildi'
         })
         
     except Exception as e:
-        return jsonify({'success': False, 'message': str(e)}), 500
+        print(f"İş kaydetme hatası: {str(e)}")
+        return jsonify({
+            'success': False,
+            'mesaj': f'İş kaydedilirken hata oluştu: {str(e)}'
+        }), 500
 
 @app.route('/api/is-guncelle', methods=['POST'])
 def is_guncelle():
@@ -774,9 +855,16 @@ def is_guncelle():
         is_guncellendi = False
         for is_item in is_listesi:
             if is_item['tasarim_kodu'] == tasarim_kodu:
+                eski_durum = is_item['durum']
                 is_item['durum'] = durum
                 is_item['oncelik'] = oncelik  # Öncelik güncelleme
                 is_guncellendi = True
+                
+                # Durum değişikliği bildirimi gönder
+                if eski_durum != durum:
+                    is_durumu_guncellendi(is_item['id'], eski_durum, durum)
+                    bildirim_gonder(f"İş durumu güncellendi: {is_item.get('proje_adi', tasarim_kodu)} - {durum}", "bilgi")
+                
                 break
 
         if not is_guncellendi:
@@ -785,57 +873,44 @@ def is_guncelle():
         # Güncellenmiş listeyi kaydet
         with open('veri/is_listesi.json', 'w', encoding='utf-8') as f:
             json.dump(is_listesi, f, ensure_ascii=False, indent=4)
+            
+        # İş çizelgesi güncellemesi gönder
+        socketio.emit('is_cizelgesi_guncellendi', is_listesi)
 
         return jsonify({'success': True})
 
     except Exception as e:
         return jsonify({'success': False, 'message': str(e)}), 500
 
-monte_carlo_result = None
-monte_carlo_running = False
-
-@app.route('/api/monte-carlo-baslat', methods=['POST'])
-def monte_carlo_baslat():
-    global monte_carlo_result, monte_carlo_running
-    data = request.json
-    if monte_carlo_running:
-        return jsonify({"success": False, "message": "Monte Carlo zaten çalışıyor."})
-    monte_carlo_running = True
-    monte_carlo_result = None
-
-    def run_mc():
-        from monte_carlo import run_monte_carlo_simulation, load_dataset
-        tasarim_kodlari, calisanlar = load_dataset()
-        if not tasarim_kodlari or not calisanlar:
-            # hata
-            pass
-        else:
-            sonuc = run_monte_carlo_simulation(
-                tasarim_kodlari, calisanlar,
-                n_scenarios=data.get('n_scenarios',100),
-                absence_prob=data.get('absence_prob',0.05),
-                performance_std=data.get('performance_std',0.05)
-            )
-            global monte_carlo_result, monte_carlo_running
-            monte_carlo_result = sonuc
-            monte_carlo_running = False
-
-    th = Thread(target=run_mc)
-    th.start()
-
-    return jsonify({"success": True, "message": "Monte Carlo başlatıldı"})
-
-@app.route('/api/monte-carlo-durumu', methods=['GET'])
-def monte_carlo_durumu():
-    global monte_carlo_result, monte_carlo_running
-    if monte_carlo_running:
-        return jsonify({"hazir": False})
-    else:
-        if monte_carlo_result:
-            return jsonify({"hazir": True, "sonuc": monte_carlo_result})
-        else:
-            return jsonify({"hazir": False})
+@app.route('/api/performans-simulasyonu', methods=['POST'])
+def performans_simulasyonu():
+    try:
+        # Simülasyonu çalıştır
+        sonuc = simulasyon_calistir()
         
+        # Monte Carlo sonuçlarını oku
+        try:
+            with open(os.path.join(ROOT_DIR, 'veri', 'monte_carlo_sonuclari.json'), 'r', encoding='utf-8') as f:
+                mc_sonuclari = json.load(f)
+                if not mc_sonuclari:
+                    raise Exception("Monte Carlo sonuçları boş")
+        except Exception as e:
+            return jsonify({
+                'success': False,
+                'mesaj': f'Monte Carlo sonuçları oluşturulamadı: {str(e)}'
+            }), 500
+        
+        return jsonify({
+            'success': True,
+            'monte_carlo_sonuclari': mc_sonuclari,
+            'mesaj': sonuc
+        })
+        
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'mesaj': f'Simülasyon hatası: {str(e)}'
+        }), 500
 
 @app.route('/api/update-kalan-sure', methods=['POST'])
 def update_kalan_sure():
@@ -855,8 +930,6 @@ def update_kalan_sure():
         for is_item in is_listesi:
             if is_item['tasarim_kodu'] == tasarim_kodu:
                 is_item['kalan_sure'] = new_sure
-                # Opsiyon: eğer new_sure <=0 => durumu "tamamlandi"
-                # is_item['durum'] = 'tamamlandi'
                 break
 
         # kaydet
@@ -961,37 +1034,217 @@ def genetik_sonuclari():
     except Exception as e:
         return jsonify({}), 500
 
-@app.route('/api/monte-carlo-simulasyonu', methods=['POST'])
-def monte_carlo_simulasyonu():
+# Gerçek zamanlı izleme için SocketIO olayları
+@socketio.on('connect')
+def handle_connect():
+    print('Yeni istemci bağlandı')
+    emit('connection_response', {'status': 'Bağlantı başarılı'})
+
+@socketio.on('disconnect')
+def handle_disconnect():
+    print('İstemci bağlantısı kesildi')
+
+# İş durumu değişikliklerini gerçek zamanlı izleme
+def bildirim_gonder(mesaj, tip="bilgi", veri=None):
+    """Tüm bağlı istemcilere bildirim gönderir"""
+    socketio.emit('bildirim', {
+        'mesaj': mesaj,
+        'tip': tip,  # bilgi, uyari, hata, basari
+        'zaman': datetime.now().strftime('%H:%M:%S'),
+        'veri': veri
+    })
+
+# İş durumu değişikliklerini izleme
+def is_durumu_guncellendi(is_id, eski_durum, yeni_durum):
+    """İş durumu değiştiğinde çağrılır ve tüm istemcilere bildirim gönderir"""
+    socketio.emit('is_durumu_guncellendi', {
+        'is_id': is_id,
+        'eski_durum': eski_durum,
+        'yeni_durum': yeni_durum,
+        'zaman': datetime.now().strftime('%H:%M:%S')
+    })
+
+# Optimizasyon ilerleme durumunu izleme
+def optimizasyon_ilerlemesi(tip, ilerleme, detay=None):
+    """Optimizasyon sürecindeki ilerlemeyi bildirir"""
+    socketio.emit('optimizasyon_ilerlemesi', {
+        'tip': tip,  # genetik, taguchi, monte_carlo
+        'ilerleme': ilerleme,  # 0-100 arası yüzde
+        'detay': detay,
+        'zaman': datetime.now().strftime('%H:%M:%S')
+    })
+
+# İş çizelgesi güncellemelerini izleme
+@socketio.on('is_cizelgesi_guncelle')
+def is_cizelgesi_guncelle():
+    """İş çizelgesini gerçek zamanlı olarak günceller"""
     try:
-        # Tasarım kodları ve çalışan bilgilerini yükle
-        tasarim_kodlari = load_json_file('veri/tasarim_kodlari.json')
-        calisan_yetkinlikleri = load_json_file('veri/calisan_yetkinlikleri.json')
-        is_listesi = load_json_file('veri/is_listesi.json')
-        
-        # Aktif işleri filtrele
-        aktif_isler = [is_item for is_item in is_listesi if is_item['durum'] != 'tamamlandi']
-        
-        if not aktif_isler:
-            return jsonify({
-                'error': 'Aktif iş bulunamadı. Monte Carlo simülasyonu için en az bir aktif iş gereklidir.'
-            }), 400
-        
-        # Monte Carlo simülasyonunu çalıştır
-        from py_files.monte_carlo import run_monte_carlo_simulation
-        
-        sonuclar = run_monte_carlo_simulation(
-            tasarim_kodlari=tasarim_kodlari,
-            calisan_yetkinlikleri=calisan_yetkinlikleri,
-            aktif_isler=aktif_isler,
-            n_scenarios=50
-        )
-        
-        # Sonuçları JSON formatında döndür
-        return jsonify(sonuclar)
+        if os.path.exists('veri/is_listesi.json'):
+            with open('veri/is_listesi.json', 'r', encoding='utf-8') as f:
+                is_listesi = json.load(f)
+            emit('is_cizelgesi_guncellendi', is_listesi)
+        else:
+            emit('is_cizelgesi_guncellendi', [])
     except Exception as e:
-        print(f"Monte Carlo simülasyonu hatası: {str(e)}")
-        return jsonify({'error': str(e)}), 500
+        emit('hata', {'mesaj': f'İş çizelgesi güncellenirken hata: {str(e)}'})
+
+# Çalışan durumlarını izleme
+@socketio.on('calisan_durumlarini_guncelle')
+def calisan_durumlarini_guncelle():
+    """Çalışanların mevcut durumlarını gerçek zamanlı olarak günceller"""
+    try:
+        # İş listesini oku
+        is_listesi = load_json_file('veri/is_listesi.json') or []
+        
+        # Çalışan durumlarını hesapla
+        calisan_durumlari = {}
+        for calisan in calisan_yetkinlikleri:
+            calisan_durumlari[calisan] = {
+                'durum': 'müsait',
+                'mevcut_is': None
+            }
+        
+        # Aktif işleri kontrol et
+        for is_item in is_listesi:
+            if is_item['durum'] != 'tamamlandi':
+                # Yeni format (seviye bazlı atama) için kontrol
+                if isinstance(is_item.get('atanan_calisan'), dict):
+                    for seviye, calisanlar in is_item['atanan_calisan'].items():
+                        if isinstance(calisanlar, list):
+                            for calisan in calisanlar:
+                                if calisan in calisan_durumlari and not calisan.startswith('Fason'):
+                                    calisan_durumlari[calisan] = {
+                                        'durum': 'çalışıyor',
+                                        'mevcut_is': is_item['id'],
+                                        'tasarim_kodu': is_item['tasarim_kodu'],
+                                        'kalan_sure': is_item.get('kalan_sure', 'Belirsiz')
+                                    }
+                # Eski format (tek çalışan) için kontrol
+                elif is_item.get('atanan_calisan') in calisan_durumlari:
+                    calisan = is_item['atanan_calisan']
+                    calisan_durumlari[calisan] = {
+                        'durum': 'çalışıyor',
+                        'mevcut_is': is_item['id'],
+                        'tasarim_kodu': is_item['tasarim_kodu'],
+                        'kalan_sure': is_item.get('kalan_sure', 'Belirsiz')
+                    }
+        
+        emit('calisan_durumlari_guncellendi', calisan_durumlari)
+    except Exception as e:
+        emit('hata', {'mesaj': f'Çalışan durumları güncellenirken hata: {str(e)}'})
+
+@app.route('/api/dashboard-verileri')
+def dashboard_verileri():
+    """Dashboard için gerekli tüm verileri tek bir API çağrısında döndürür"""
+    try:
+        # İş listesini oku
+        is_listesi = load_json_file('veri/is_listesi.json') or []
+        
+        # İş durumlarına göre sayıları hesapla
+        is_durumlari = {
+            'beklemede': 0,
+            'devam_ediyor': 0,
+            'tamamlandi': 0,
+            'gecikti': 0,
+            'toplam': len(is_listesi)
+        }
+        
+        for is_item in is_listesi:
+            durum = is_item.get('durum', 'beklemede')
+            if durum in is_durumlari:
+                is_durumlari[durum] += 1
+        
+        # Çalışan durumlarını hesapla
+        calisan_durumlari = {
+            'musait': 0,
+            'calisiyor': 0,
+            'toplam': len(calisan_yetkinlikleri)
+        }
+        
+        mesgul_calisanlar = set()
+        for is_item in is_listesi:
+            if is_item['durum'] != 'tamamlandi':
+                # Yeni format (seviye bazlı atama) için kontrol
+                if isinstance(is_item.get('atanan_calisan'), dict):
+                    for seviye, calisanlar in is_item['atanan_calisan'].items():
+                        if isinstance(calisanlar, list):
+                            for calisan in calisanlar:
+                                if calisan in calisan_yetkinlikleri and not calisan.startswith('Fason'):
+                                    mesgul_calisanlar.add(calisan)
+                # Eski format (tek çalışan) için kontrol
+                elif is_item.get('atanan_calisan') in calisan_yetkinlikleri:
+                    mesgul_calisanlar.add(is_item['atanan_calisan'])
+        
+        calisan_durumlari['calisiyor'] = len(mesgul_calisanlar)
+        calisan_durumlari['musait'] = calisan_durumlari['toplam'] - calisan_durumlari['calisiyor']
+        
+        # Öncelik dağılımını hesapla
+        oncelik_dagilimi = {
+            'kritik': 0,
+            'yuksek': 0,
+            'normal': 0,
+            'dusuk': 0
+        }
+        
+        for is_item in is_listesi:
+            if is_item['durum'] != 'tamamlandi':
+                oncelik = is_item.get('oncelik', 'normal')
+                if oncelik in oncelik_dagilimi:
+                    oncelik_dagilimi[oncelik] += 1
+        
+        return jsonify({
+            'success': True,
+            'is_durumlari': is_durumlari,
+            'calisan_durumlari': calisan_durumlari,
+            'oncelik_dagilimi': oncelik_dagilimi,
+            'son_guncelleme': datetime.now().strftime('%H:%M:%S')
+        })
+        
+    except Exception as e:
+        print(f"Dashboard verileri hatası: {str(e)}")
+        return jsonify({'success': False, 'message': str(e)}), 500
+
+# Periyodik olarak dashboard verilerini güncelleme
+def periyodik_guncelleme():
+    """30 saniyede bir dashboard verilerini günceller ve tüm istemcilere gönderir"""
+    while True:
+        try:
+            # İş listesini oku
+            is_listesi = load_json_file('veri/is_listesi.json') or []
+            
+            # İş durumlarına göre sayıları hesapla
+            is_durumlari = {
+                'beklemede': 0,
+                'devam_ediyor': 0,
+                'tamamlandi': 0,
+                'gecikti': 0,
+                'toplam': len(is_listesi)
+            }
+            
+            for is_item in is_listesi:
+                durum = is_item.get('durum', 'beklemede')
+                if durum in is_durumlari:
+                    is_durumlari[durum] += 1
+            
+            # Verileri gönder
+            socketio.emit('dashboard_guncelleme', {
+                'is_durumlari': is_durumlari,
+                'zaman': datetime.now().strftime('%H:%M:%S')
+            })
+            
+            # İş çizelgesini güncelle
+            socketio.emit('is_cizelgesi_guncellendi', is_listesi)
+            
+        except Exception as e:
+            print(f"Periyodik güncelleme hatası: {str(e)}")
+        
+        # 30 saniye bekle
+        time.sleep(30)
 
 if __name__ == '__main__':
+    # Periyodik güncelleme işlemini başlat
+    thread = Thread(target=periyodik_guncelleme)
+    thread.daemon = True
+    thread.start()
+    
     socketio.run(app, debug=True) 

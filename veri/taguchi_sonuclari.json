@@ -8,9 +8,9 @@
             "departman": "Montaj"
         },
         "M-KKK-002": {
-            "sure": 176.86519291358124,
+            "sure": 203.39497185061842,
             "optimum_seviye": 1,
-            "iyilestirme_orani": 46.00635201579895,
+            "iyilestirme_orani": 37.9073048181688,
             "method": "Taguchi (Geçmiş Veriler)",
             "departman": "Montaj"
         },
@@ -22,30 +22,30 @@
             "departman": "Montaj"
         },
         "M-PA-005": {
-            "sure": 35.47073493614904,
+            "sure": 38.13104005636022,
             "optimum_seviye": 1,
-            "iyilestirme_orani": 53.743879674658935,
+            "iyilestirme_orani": 50.27467065025836,
             "method": "Taguchi (Geçmiş Veriler)",
             "departman": "Montaj"
         },
         "M-RPV3.5-006": {
-            "sure": 129.0264357029113,
+            "sure": 138.0,
             "optimum_seviye": 1,
-            "iyilestirme_orani": 51.01192088733355,
+            "iyilestirme_orani": 47.60488514838955,
             "method": "Taguchi (Geçmiş Veriler)",
             "departman": "Montaj"
         },
         "M-MOD4-007": {
-            "sure": 171.96709887085956,
+            "sure": 184.0,
             "optimum_seviye": 1,
-            "iyilestirme_orani": 46.50823820700102,
+            "iyilestirme_orani": 42.76530665145938,
             "method": "Taguchi (Geçmiş Veriler)",
             "departman": "Montaj"
         },
         "M-MOD3-008": {
-            "sure": 165.26782513095958,
+            "sure": 177.66291201578153,
             "optimum_seviye": 1,
-            "iyilestirme_orani": 47.4923510306721,
+            "iyilestirme_orani": 43.55427735797251,
             "method": "Taguchi (Geçmiş Veriler)",
             "departman": "Montaj"
         },
@@ -99,9 +99,9 @@
             "departman": "Montaj"
         },
         "M-D90K-017": {
-            "sure": 390.9424632115363,
+            "sure": 405.0,
             "optimum_seviye": 1,
-            "iyilestirme_orani": 35.154541252613335,
+            "iyilestirme_orani": 32.343281046491875,
             "method": "Taguchi (Geçmiş Veriler)",
             "departman": "Montaj"
         },
@@ -113,5 +113,7 @@
             "departman": "Montaj"
         }
     },
-    "average_improvement": 46.71118019140185
+    "average_improvement": 45.119457854193264,
+    "parameter_effects": {},
+    "timestamp": "2025-03-06 16:35:45"
 }

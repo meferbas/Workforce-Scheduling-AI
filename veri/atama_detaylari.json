@@ -1,3 +1,42 @@
 [
-  
+    {
+        "tarih": "2025-03-07 16:42:46",
+        "tasarim_kodu": "M-KAM-001",
+        "proje_adi": "ABC",
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "AYKUT BONCUK"
+            ],
+            "kalifiyeli": [
+                "SÜHA DEMİR",
+                "OZAN ACAR"
+            ],
+            "cirak": [
+                "YILMAZ UZUN",
+                "AHMET ŞAHİN",
+                "Özgür YAPAREL"
+            ]
+        },
+        "optimize_sure": 1821.49529955857
+    },
+    {
+        "tarih": "2025-03-07 16:42:46",
+        "tasarim_kodu": "M-KAM-001",
+        "proje_adi": "ABC",
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "AYKUT BONCUK"
+            ],
+            "kalifiyeli": [
+                "SÜHA DEMİR",
+                "OZAN ACAR"
+            ],
+            "cirak": [
+                "YILMAZ UZUN",
+                "AHMET ŞAHİN",
+                "Özgür YAPAREL"
+            ]
+        },
+        "optimize_sure": 1821.49529955857
+    }
 ]

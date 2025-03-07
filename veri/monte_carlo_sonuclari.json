@@ -1,9 +1,2285 @@
 {
-    "n_scenarios": 100,
-    "absence_prob": 0.05,
-    "performance_std": 0.05,
-    "average_fitness": 76.73157804011977,
-    "std_fitness": 0.8814328817695574,
-    "worst_fitness": 73.23338097911609,
-    "best_fitness": 78.4395941701012
+    "calisanlar": {
+        "AYKUT BONCUK": {
+            "ortalama_performans": 0.5087366433387949,
+            "risk_skoru": 0.486375,
+            "gecikme_olasiligi": 0.2355625,
+            "performans_kararliligi": 0.8562719974335011,
+            "tasarim_bazli_sonuclar": {
+                "M-KAM-001": {
+                    "ortalama": 0.5510686489274269,
+                    "risk_skoru": 0.432,
+                    "gecikme_olasiligi": 0.19
+                },
+                "M-KKK-002": {
+                    "ortalama": 0.4925269267188121,
+                    "risk_skoru": 0.497,
+                    "gecikme_olasiligi": 0.254
+                },
+                "M-OSK1.5-003": {
+                    "ortalama": 0.5724047972117876,
+                    "risk_skoru": 0.394,
+                    "gecikme_olasiligi": 0.185
+                },
+                "M-PA-005": {
+                    "ortalama": 0.5152141420939912,
+                    "risk_skoru": 0.461,
+                    "gecikme_olasiligi": 0.223
+                },
+                "M-RPV3.5-006": {
+                    "ortalama": 0.5472225885181454,
+                    "risk_skoru": 0.433,
+                    "gecikme_olasiligi": 0.181
+                },
+                "M-MOD4-007": {
+                    "ortalama": 0.47515292956264293,
+                    "risk_skoru": 0.548,
+                    "gecikme_olasiligi": 0.255
+                },
+                "M-MOD3-008": {
+                    "ortalama": 0.49466068424719606,
+                    "risk_skoru": 0.491,
+                    "gecikme_olasiligi": 0.245
+                },
+                "M-RPV2.5-009": {
+                    "ortalama": 0.5149368337165646,
+                    "risk_skoru": 0.482,
+                    "gecikme_olasiligi": 0.226
+                },
+                "M-TK1-010": {
+                    "ortalama": 0.516142792688677,
+                    "risk_skoru": 0.469,
+                    "gecikme_olasiligi": 0.228
+                },
+                "M-AVK-011": {
+                    "ortalama": 0.5144455349341288,
+                    "risk_skoru": 0.486,
+                    "gecikme_olasiligi": 0.245
+                },
+                "M-CKM-012": {
+                    "ortalama": 0.44519769840520307,
+                    "risk_skoru": 0.577,
+                    "gecikme_olasiligi": 0.306
+                },
+                "M-MOD2-014": {
+                    "ortalama": 0.48299408813174455,
+                    "risk_skoru": 0.532,
+                    "gecikme_olasiligi": 0.264
+                },
+                "M-DUK-015": {
+                    "ortalama": 0.5081836997583321,
+                    "risk_skoru": 0.477,
+                    "gecikme_olasiligi": 0.241
+                },
+                "M-KK-016": {
+                    "ortalama": 0.49015566414184897,
+                    "risk_skoru": 0.517,
+                    "gecikme_olasiligi": 0.268
+                },
+                "M-D90K-017": {
+                    "ortalama": 0.5130564032231216,
+                    "risk_skoru": 0.488,
+                    "gecikme_olasiligi": 0.229
+                },
+                "M-YK-004": {
+                    "ortalama": 0.5064228611410954,
+                    "risk_skoru": 0.498,
+                    "gecikme_olasiligi": 0.229
+                }
+            },
+            "performans_dagilimi": {
+                "min": 0.0,
+                "max": 1.0,
+                "std": 0.26807461887177875,
+                "q25": 0.313123916052006,
+                "q75": 0.703852015944825
+            }
+        },
+        "RAFET KARABAYIR": {
+            "ortalama_performans": 0.5090701223888143,
+            "risk_skoru": 0.4839375,
+            "gecikme_olasiligi": 0.2306875,
+            "performans_kararliligi": 0.8601600986765475,
+            "tasarim_bazli_sonuclar": {
+                "M-KAM-001": {
+                    "ortalama": 0.5244749316877292,
+                    "risk_skoru": 0.466,
+                    "gecikme_olasiligi": 0.223
+                },
+                "M-KKK-002": {
+                    "ortalama": 0.4829868761292198,
+                    "risk_skoru": 0.512,
+                    "gecikme_olasiligi": 0.258
+                },
+                "M-OSK1.5-003": {
+                    "ortalama": 0.49936482919304254,
+                    "risk_skoru": 0.495,
+                    "gecikme_olasiligi": 0.234
+                },
+                "M-PA-005": {
+                    "ortalama": 0.4959195145832634,
+                    "risk_skoru": 0.499,
+                    "gecikme_olasiligi": 0.267
+                },
+                "M-RPV3.5-006": {
+                    "ortalama": 0.48340786931503404,
+                    "risk_skoru": 0.53,
+                    "gecikme_olasiligi": 0.263
+                },
+                "M-MOD4-007": {
+                    "ortalama": 0.4766685578930162,
+                    "risk_skoru": 0.538,
+                    "gecikme_olasiligi": 0.258
+                },
+                "M-MOD3-008": {
+                    "ortalama": 0.5366705987792952,
+                    "risk_skoru": 0.43,
+                    "gecikme_olasiligi": 0.19
+                },
+                "M-RPV2.5-009": {
+                    "ortalama": 0.48846321930474246,
+                    "risk_skoru": 0.518,
+                    "gecikme_olasiligi": 0.253
+                },
+                "M-TK1-010": {
+                    "ortalama": 0.5022706258350876,
+                    "risk_skoru": 0.482,
+                    "gecikme_olasiligi": 0.247
+                },
+                "M-AVK-011": {
+                    "ortalama": 0.5315926329247954,
+                    "risk_skoru": 0.454,
+                    "gecikme_olasiligi": 0.206
+                },
+                "M-CKM-012": {
+                    "ortalama": 0.5176043850416493,
+                    "risk_skoru": 0.467,
+                    "gecikme_olasiligi": 0.225
+                },
+                "M-MOD2-014": {
+                    "ortalama": 0.5109664634458437,
+                    "risk_skoru": 0.489,
+                    "gecikme_olasiligi": 0.201
+                },
+                "M-DUK-015": {
+                    "ortalama": 0.49397960758184883,
+                    "risk_skoru": 0.519,
+                    "gecikme_olasiligi": 0.256
+                },
+                "M-KK-016": {
+                    "ortalama": 0.5834304561555238,
+                    "risk_skoru": 0.377,
+                    "gecikme_olasiligi": 0.156
+                },
+                "M-D90K-017": {
+                    "ortalama": 0.5085473393809447,
+                    "risk_skoru": 0.49,
+                    "gecikme_olasiligi": 0.223
+                },
+                "M-YK-004": {
+                    "ortalama": 0.5087740509699925,
+                    "risk_skoru": 0.477,
+                    "gecikme_olasiligi": 0.231
+                }
+            },
+            "performans_dagilimi": {
+                "min": 0.0,
+                "max": 1.0,
+                "std": 0.26442380880269883,
+                "q25": 0.3183870108598179,
+                "q75": 0.7007155637961404
+            }
+        },
+        "RAMAZAN ŞAMASTI": {
+            "ortalama_performans": 0.5013950537922156,
+            "risk_skoru": 0.501375,
+            "gecikme_olasiligi": 0.242375,
+            "performans_kararliligi": 0.8553552772118769,
+            "tasarim_bazli_sonuclar": {
+                "M-KAM-001": {
+                    "ortalama": 0.5121614427634646,
+                    "risk_skoru": 0.485,
+                    "gecikme_olasiligi": 0.24
+                },
+                "M-KKK-002": {
+                    "ortalama": 0.48930636798694466,
+                    "risk_skoru": 0.515,
+                    "gecikme_olasiligi": 0.255
+                },
+                "M-OSK1.5-003": {
+                    "ortalama": 0.5122547243704809,
+                    "risk_skoru": 0.475,
+                    "gecikme_olasiligi": 0.254
+                },
+                "M-PA-005": {
+                    "ortalama": 0.4983332789379301,
+                    "risk_skoru": 0.486,
+                    "gecikme_olasiligi": 0.229
+                },
+                "M-RPV3.5-006": {
+                    "ortalama": 0.43356801830238373,
+                    "risk_skoru": 0.607,
+                    "gecikme_olasiligi": 0.312
+                },
+                "M-MOD4-007": {
+                    "ortalama": 0.4870506794997417,
+                    "risk_skoru": 0.509,
+                    "gecikme_olasiligi": 0.244
+                },
+                "M-MOD3-008": {
+                    "ortalama": 0.5022336386226527,
+                    "risk_skoru": 0.515,
+                    "gecikme_olasiligi": 0.232
+                },
+                "M-RPV2.5-009": {
+                    "ortalama": 0.5491209029784541,
+                    "risk_skoru": 0.432,
+                    "gecikme_olasiligi": 0.208
+                },
+                "M-TK1-010": {
+                    "ortalama": 0.5143004582442489,
+                    "risk_skoru": 0.484,
+                    "gecikme_olasiligi": 0.226
+                },
+                "M-AVK-011": {
+                    "ortalama": 0.5075305280188113,
+                    "risk_skoru": 0.506,
+                    "gecikme_olasiligi": 0.222
+                },
+                "M-CKM-012": {
+                    "ortalama": 0.5047663738700113,
+                    "risk_skoru": 0.494,
+                    "gecikme_olasiligi": 0.226
+                },
+                "M-MOD2-014": {
+                    "ortalama": 0.47805911860421274,
+                    "risk_skoru": 0.544,
+                    "gecikme_olasiligi": 0.261
+                },
+                "M-DUK-015": {
+                    "ortalama": 0.5238373200201989,
+                    "risk_skoru": 0.471,
+                    "gecikme_olasiligi": 0.215
+                },
+                "M-KK-016": {
+                    "ortalama": 0.5078421588234904,
+                    "risk_skoru": 0.493,
+                    "gecikme_olasiligi": 0.249
+                },
+                "M-D90K-017": {
+                    "ortalama": 0.4664308099940981,
+                    "risk_skoru": 0.565,
+                    "gecikme_olasiligi": 0.285
+                },
+                "M-YK-004": {
+                    "ortalama": 0.5355250396383253,
+                    "risk_skoru": 0.441,
+                    "gecikme_olasiligi": 0.22
+                }
+            },
+            "performans_dagilimi": {
+                "min": 0.0,
+                "max": 1.0,
+                "std": 0.2689281714399991,
+                "q25": 0.30706136533068795,
+                "q75": 0.697231792001767
+            }
+        },
+        "SÜHA DEMİR": {
+            "ortalama_performans": 0.5096483990702051,
+            "risk_skoru": 0.4870625,
+            "gecikme_olasiligi": 0.2261875,
+            "performans_kararliligi": 0.8604905944574772,
+            "tasarim_bazli_sonuclar": {
+                "M-KAM-001": {
+                    "ortalama": 0.49744299910196516,
+                    "risk_skoru": 0.514,
+                    "gecikme_olasiligi": 0.233
+                },
+                "M-KKK-002": {
+                    "ortalama": 0.4516054649330596,
+                    "risk_skoru": 0.582,
+                    "gecikme_olasiligi": 0.298
+                },
+                "M-OSK1.5-003": {
+                    "ortalama": 0.4774114133273521,
+                    "risk_skoru": 0.541,
+                    "gecikme_olasiligi": 0.271
+                },
+                "M-PA-005": {
+                    "ortalama": 0.5553576406299756,
+                    "risk_skoru": 0.419,
+                    "gecikme_olasiligi": 0.171
+                },
+                "M-RPV3.5-006": {
+                    "ortalama": 0.5347531540684568,
+                    "risk_skoru": 0.445,
+                    "gecikme_olasiligi": 0.189
+                },
+                "M-MOD4-007": {
+                    "ortalama": 0.5235186679374358,
+                    "risk_skoru": 0.462,
+                    "gecikme_olasiligi": 0.238
+                },
+                "M-MOD3-008": {
+                    "ortalama": 0.5656182302453303,
+                    "risk_skoru": 0.397,
+                    "gecikme_olasiligi": 0.162
+                },
+                "M-RPV2.5-009": {
+                    "ortalama": 0.47592281031626454,
+                    "risk_skoru": 0.527,
+                    "gecikme_olasiligi": 0.236
+                },
+                "M-TK1-010": {
+                    "ortalama": 0.505692477342633,
+                    "risk_skoru": 0.487,
+                    "gecikme_olasiligi": 0.216
+                },
+                "M-AVK-011": {
+                    "ortalama": 0.43748157031824814,
+                    "risk_skoru": 0.591,
+                    "gecikme_olasiligi": 0.324
+                },
+                "M-CKM-012": {
+                    "ortalama": 0.49834205317726116,
+                    "risk_skoru": 0.508,
+                    "gecikme_olasiligi": 0.247
+                },
+                "M-MOD2-014": {
+                    "ortalama": 0.4953990822932624,
+                    "risk_skoru": 0.51,
+                    "gecikme_olasiligi": 0.237
+                },
+                "M-DUK-015": {
+                    "ortalama": 0.5166908444599734,
+                    "risk_skoru": 0.483,
+                    "gecikme_olasiligi": 0.242
+                },
+                "M-KK-016": {
+                    "ortalama": 0.5614360487693362,
+                    "risk_skoru": 0.413,
+                    "gecikme_olasiligi": 0.15
+                },
+                "M-D90K-017": {
+                    "ortalama": 0.5273070824798812,
+                    "risk_skoru": 0.454,
+                    "gecikme_olasiligi": 0.213
+                },
+                "M-YK-004": {
+                    "ortalama": 0.5303948457228469,
+                    "risk_skoru": 0.46,
+                    "gecikme_olasiligi": 0.192
+                }
+            },
+            "performans_dagilimi": {
+                "min": 0.0,
+                "max": 1.0,
+                "std": 0.2641111560901232,
+                "q25": 0.32021760074807953,
+                "q75": 0.7029762542723889
+            }
+        },
+        "İsmail CAN": {
+            "ortalama_performans": 0.49205696321596043,
+            "risk_skoru": 0.517875,
+            "gecikme_olasiligi": 0.2535,
+            "performans_kararliligi": 0.8571145961322095,
+            "tasarim_bazli_sonuclar": {
+                "M-KAM-001": {
+                    "ortalama": 0.5018340825590999,
+                    "risk_skoru": 0.497,
+                    "gecikme_olasiligi": 0.237
+                },
+                "M-KKK-002": {
+                    "ortalama": 0.5069481956414073,
+                    "risk_skoru": 0.503,
+                    "gecikme_olasiligi": 0.248
+                },
+                "M-OSK1.5-003": {
+                    "ortalama": 0.49900553315814583,
+                    "risk_skoru": 0.501,
+                    "gecikme_olasiligi": 0.242
+                },
+                "M-PA-005": {
+                    "ortalama": 0.4212450043745177,
+                    "risk_skoru": 0.636,
+                    "gecikme_olasiligi": 0.332
+                },
+                "M-RPV3.5-006": {
+                    "ortalama": 0.5172267786441773,
+                    "risk_skoru": 0.485,
+                    "gecikme_olasiligi": 0.208
+                },
+                "M-MOD4-007": {
+                    "ortalama": 0.5109990576835965,
+                    "risk_skoru": 0.489,
+                    "gecikme_olasiligi": 0.236
+                },
+                "M-MOD3-008": {
+                    "ortalama": 0.45679134932888044,
+                    "risk_skoru": 0.585,
+                    "gecikme_olasiligi": 0.299
+                },
+                "M-RPV2.5-009": {
+                    "ortalama": 0.4682069597014909,
+                    "risk_skoru": 0.551,
+                    "gecikme_olasiligi": 0.283
+                },
+                "M-TK1-010": {
+                    "ortalama": 0.4484866467033527,
+                    "risk_skoru": 0.581,
+                    "gecikme_olasiligi": 0.304
+                },
+                "M-AVK-011": {
+                    "ortalama": 0.48258531442443703,
+                    "risk_skoru": 0.526,
+                    "gecikme_olasiligi": 0.248
+                },
+                "M-CKM-012": {
+                    "ortalama": 0.49016588715209697,
+                    "risk_skoru": 0.505,
+                    "gecikme_olasiligi": 0.259
+                },
+                "M-MOD2-014": {
+                    "ortalama": 0.49475992103367455,
+                    "risk_skoru": 0.509,
+                    "gecikme_olasiligi": 0.272
+                },
+                "M-DUK-015": {
+                    "ortalama": 0.520682468675637,
+                    "risk_skoru": 0.472,
+                    "gecikme_olasiligi": 0.195
+                },
+                "M-KK-016": {
+                    "ortalama": 0.5207688475876759,
+                    "risk_skoru": 0.466,
+                    "gecikme_olasiligi": 0.224
+                },
+                "M-D90K-017": {
+                    "ortalama": 0.5360974142912085,
+                    "risk_skoru": 0.468,
+                    "gecikme_olasiligi": 0.228
+                },
+                "M-YK-004": {
+                    "ortalama": 0.4971079504959691,
+                    "risk_skoru": 0.512,
+                    "gecikme_olasiligi": 0.241
+                }
+            },
+            "performans_dagilimi": {
+                "min": 0.0,
+                "max": 1.0,
+                "std": 0.2672876763599385,
+                "q25": 0.2975674554659836,
+                "q75": 0.686099593833164
+            }
+        },
+        "Oktay ALICI": {
+            "ortalama_performans": 0.4991090896383513,
+            "risk_skoru": 0.5055625,
+            "gecikme_olasiligi": 0.247625,
+            "performans_kararliligi": 0.8536482148175027,
+            "tasarim_bazli_sonuclar": {
+                "M-KAM-001": {
+                    "ortalama": 0.5003042526248045,
+                    "risk_skoru": 0.498,
+                    "gecikme_olasiligi": 0.263
+                },
+                "M-KKK-002": {
+                    "ortalama": 0.5128922487277063,
+                    "risk_skoru": 0.49,
+                    "gecikme_olasiligi": 0.258
+                },
+                "M-OSK1.5-003": {
+                    "ortalama": 0.5094003805306321,
+                    "risk_skoru": 0.477,
+                    "gecikme_olasiligi": 0.214
+                },
+                "M-PA-005": {
+                    "ortalama": 0.49508137585595724,
+                    "risk_skoru": 0.51,
+                    "gecikme_olasiligi": 0.252
+                },
+                "M-RPV3.5-006": {
+                    "ortalama": 0.5081184394851996,
+                    "risk_skoru": 0.482,
+                    "gecikme_olasiligi": 0.227
+                },
+                "M-MOD4-007": {
+                    "ortalama": 0.4689247136896827,
+                    "risk_skoru": 0.54,
+                    "gecikme_olasiligi": 0.298
+                },
+                "M-MOD3-008": {
+                    "ortalama": 0.5420064926821365,
+                    "risk_skoru": 0.452,
+                    "gecikme_olasiligi": 0.209
+                },
+                "M-RPV2.5-009": {
+                    "ortalama": 0.4983793588836626,
+                    "risk_skoru": 0.502,
+                    "gecikme_olasiligi": 0.237
+                },
+                "M-TK1-010": {
+                    "ortalama": 0.5181177239403153,
+                    "risk_skoru": 0.487,
+                    "gecikme_olasiligi": 0.217
+                },
+                "M-AVK-011": {
+                    "ortalama": 0.5205664269584144,
+                    "risk_skoru": 0.472,
+                    "gecikme_olasiligi": 0.206
+                },
+                "M-CKM-012": {
+                    "ortalama": 0.4878497154858776,
+                    "risk_skoru": 0.535,
+                    "gecikme_olasiligi": 0.249
+                },
+                "M-MOD2-014": {
+                    "ortalama": 0.4657004246265604,
+                    "risk_skoru": 0.551,
+                    "gecikme_olasiligi": 0.291
+                },
+                "M-DUK-015": {
+                    "ortalama": 0.44578045469355304,
+                    "risk_skoru": 0.589,
+                    "gecikme_olasiligi": 0.296
+                },
+                "M-KK-016": {
+                    "ortalama": 0.5169008927113823,
+                    "risk_skoru": 0.475,
+                    "gecikme_olasiligi": 0.232
+                },
+                "M-D90K-017": {
+                    "ortalama": 0.5060844621027579,
+                    "risk_skoru": 0.513,
+                    "gecikme_olasiligi": 0.227
+                },
+                "M-YK-004": {
+                    "ortalama": 0.4896380712149792,
+                    "risk_skoru": 0.516,
+                    "gecikme_olasiligi": 0.286
+                }
+            },
+            "performans_dagilimi": {
+                "min": 0.0,
+                "max": 1.0,
+                "std": 0.2705104297273002,
+                "q25": 0.3019397148586159,
+                "q75": 0.6985805948305447
+            }
+        },
+        "OZAN ACAR": {
+            "ortalama_performans": 0.5180158020804204,
+            "risk_skoru": 0.471875,
+            "gecikme_olasiligi": 0.2230625,
+            "performans_kararliligi": 0.8570558941240488,
+            "tasarim_bazli_sonuclar": {
+                "M-KAM-001": {
+                    "ortalama": 0.5358653240431986,
+                    "risk_skoru": 0.449,
+                    "gecikme_olasiligi": 0.203
+                },
+                "M-KKK-002": {
+                    "ortalama": 0.5127646420051157,
+                    "risk_skoru": 0.476,
+                    "gecikme_olasiligi": 0.217
+                },
+                "M-OSK1.5-003": {
+                    "ortalama": 0.546053232346939,
+                    "risk_skoru": 0.417,
+                    "gecikme_olasiligi": 0.191
+                },
+                "M-PA-005": {
+                    "ortalama": 0.5117974997638994,
+                    "risk_skoru": 0.498,
+                    "gecikme_olasiligi": 0.209
+                },
+                "M-RPV3.5-006": {
+                    "ortalama": 0.5385188592732909,
+                    "risk_skoru": 0.451,
+                    "gecikme_olasiligi": 0.208
+                },
+                "M-MOD4-007": {
+                    "ortalama": 0.4900302422260712,
+                    "risk_skoru": 0.507,
+                    "gecikme_olasiligi": 0.259
+                },
+                "M-MOD3-008": {
+                    "ortalama": 0.4828389797881764,
+                    "risk_skoru": 0.526,
+                    "gecikme_olasiligi": 0.257
+                },
+                "M-RPV2.5-009": {
+                    "ortalama": 0.4909015607587927,
+                    "risk_skoru": 0.513,
+                    "gecikme_olasiligi": 0.261
+                },
+                "M-TK1-010": {
+                    "ortalama": 0.5593983810836289,
+                    "risk_skoru": 0.418,
+                    "gecikme_olasiligi": 0.166
+                },
+                "M-AVK-011": {
+                    "ortalama": 0.49415963394140255,
+                    "risk_skoru": 0.531,
+                    "gecikme_olasiligi": 0.258
+                },
+                "M-CKM-012": {
+                    "ortalama": 0.49535538459990247,
+                    "risk_skoru": 0.495,
+                    "gecikme_olasiligi": 0.252
+                },
+                "M-MOD2-014": {
+                    "ortalama": 0.5348021139015191,
+                    "risk_skoru": 0.434,
+                    "gecikme_olasiligi": 0.192
+                },
+                "M-DUK-015": {
+                    "ortalama": 0.5108910884776349,
+                    "risk_skoru": 0.472,
+                    "gecikme_olasiligi": 0.242
+                },
+                "M-KK-016": {
+                    "ortalama": 0.5150591709202121,
+                    "risk_skoru": 0.472,
+                    "gecikme_olasiligi": 0.225
+                },
+                "M-D90K-017": {
+                    "ortalama": 0.49498333359443664,
+                    "risk_skoru": 0.505,
+                    "gecikme_olasiligi": 0.253
+                },
+                "M-YK-004": {
+                    "ortalama": 0.5748333865625045,
+                    "risk_skoru": 0.386,
+                    "gecikme_olasiligi": 0.176
+                }
+            },
+            "performans_dagilimi": {
+                "min": 0.0,
+                "max": 1.0,
+                "std": 0.2673425759918827,
+                "q25": 0.32587555267795765,
+                "q75": 0.7151990978951721
+            }
+        },
+        "HASAN AKYILDIZ": {
+            "ortalama_performans": 0.5105503851067512,
+            "risk_skoru": 0.4870625,
+            "gecikme_olasiligi": 0.2315625,
+            "performans_kararliligi": 0.8571602131064042,
+            "tasarim_bazli_sonuclar": {
+                "M-KAM-001": {
+                    "ortalama": 0.5058223694431162,
+                    "risk_skoru": 0.489,
+                    "gecikme_olasiligi": 0.24
+                },
+                "M-KKK-002": {
+                    "ortalama": 0.5129599815584062,
+                    "risk_skoru": 0.484,
+                    "gecikme_olasiligi": 0.241
+                },
+                "M-OSK1.5-003": {
+                    "ortalama": 0.554776912918876,
+                    "risk_skoru": 0.401,
+                    "gecikme_olasiligi": 0.187
+                },
+                "M-PA-005": {
+                    "ortalama": 0.49968743040736363,
+                    "risk_skoru": 0.507,
+                    "gecikme_olasiligi": 0.241
+                },
+                "M-RPV3.5-006": {
+                    "ortalama": 0.532757055636023,
+                    "risk_skoru": 0.45,
+                    "gecikme_olasiligi": 0.21
+                },
+                "M-MOD4-007": {
+                    "ortalama": 0.5501483447582481,
+                    "risk_skoru": 0.41,
+                    "gecikme_olasiligi": 0.146
+                },
+                "M-MOD3-008": {
+                    "ortalama": 0.47596726701397185,
+                    "risk_skoru": 0.539,
+                    "gecikme_olasiligi": 0.276
+                },
+                "M-RPV2.5-009": {
+                    "ortalama": 0.5139544302260213,
+                    "risk_skoru": 0.479,
+                    "gecikme_olasiligi": 0.233
+                },
+                "M-TK1-010": {
+                    "ortalama": 0.5495240974906009,
+                    "risk_skoru": 0.436,
+                    "gecikme_olasiligi": 0.191
+                },
+                "M-AVK-011": {
+                    "ortalama": 0.535210749145763,
+                    "risk_skoru": 0.451,
+                    "gecikme_olasiligi": 0.197
+                },
+                "M-CKM-012": {
+                    "ortalama": 0.5201462180279253,
+                    "risk_skoru": 0.479,
+                    "gecikme_olasiligi": 0.228
+                },
+                "M-MOD2-014": {
+                    "ortalama": 0.4986768020502906,
+                    "risk_skoru": 0.507,
+                    "gecikme_olasiligi": 0.252
+                },
+                "M-DUK-015": {
+                    "ortalama": 0.4667633411800152,
+                    "risk_skoru": 0.558,
+                    "gecikme_olasiligi": 0.27
+                },
+                "M-KK-016": {
+                    "ortalama": 0.4665131867967436,
+                    "risk_skoru": 0.55,
+                    "gecikme_olasiligi": 0.294
+                },
+                "M-D90K-017": {
+                    "ortalama": 0.5250430687664891,
+                    "risk_skoru": 0.477,
+                    "gecikme_olasiligi": 0.208
+                },
+                "M-YK-004": {
+                    "ortalama": 0.46085490628816683,
+                    "risk_skoru": 0.576,
+                    "gecikme_olasiligi": 0.291
+                }
+            },
+            "performans_dagilimi": {
+                "min": 0.0,
+                "max": 1.0,
+                "std": 0.26724500640198673,
+                "q25": 0.3160353110229098,
+                "q75": 0.7077894972672751
+            }
+        },
+        "SERKAN DEMİR": {
+            "ortalama_performans": 0.49704257385726053,
+            "risk_skoru": 0.507,
+            "gecikme_olasiligi": 0.2520625,
+            "performans_kararliligi": 0.8522659873460419,
+            "tasarim_bazli_sonuclar": {
+                "M-KAM-001": {
+                    "ortalama": 0.48677629794965677,
+                    "risk_skoru": 0.52,
+                    "gecikme_olasiligi": 0.263
+                },
+                "M-KKK-002": {
+                    "ortalama": 0.4715188350289207,
+                    "risk_skoru": 0.545,
+                    "gecikme_olasiligi": 0.268
+                },
+                "M-OSK1.5-003": {
+                    "ortalama": 0.5298225072001734,
+                    "risk_skoru": 0.46,
+                    "gecikme_olasiligi": 0.197
+                },
+                "M-PA-005": {
+                    "ortalama": 0.5073827411639295,
+                    "risk_skoru": 0.477,
+                    "gecikme_olasiligi": 0.227
+                },
+                "M-RPV3.5-006": {
+                    "ortalama": 0.4670410804951783,
+                    "risk_skoru": 0.557,
+                    "gecikme_olasiligi": 0.281
+                },
+                "M-MOD4-007": {
+                    "ortalama": 0.48596636223416007,
+                    "risk_skoru": 0.531,
+                    "gecikme_olasiligi": 0.266
+                },
+                "M-MOD3-008": {
+                    "ortalama": 0.45259762713632506,
+                    "risk_skoru": 0.58,
+                    "gecikme_olasiligi": 0.301
+                },
+                "M-RPV2.5-009": {
+                    "ortalama": 0.5222758892181105,
+                    "risk_skoru": 0.476,
+                    "gecikme_olasiligi": 0.202
+                },
+                "M-TK1-010": {
+                    "ortalama": 0.5023572886681725,
+                    "risk_skoru": 0.494,
+                    "gecikme_olasiligi": 0.273
+                },
+                "M-AVK-011": {
+                    "ortalama": 0.5080704728629868,
+                    "risk_skoru": 0.499,
+                    "gecikme_olasiligi": 0.247
+                },
+                "M-CKM-012": {
+                    "ortalama": 0.5460266167156632,
+                    "risk_skoru": 0.422,
+                    "gecikme_olasiligi": 0.204
+                },
+                "M-MOD2-014": {
+                    "ortalama": 0.4474348382564541,
+                    "risk_skoru": 0.586,
+                    "gecikme_olasiligi": 0.3
+                },
+                "M-DUK-015": {
+                    "ortalama": 0.4770401493379529,
+                    "risk_skoru": 0.533,
+                    "gecikme_olasiligi": 0.283
+                },
+                "M-KK-016": {
+                    "ortalama": 0.5173028946300097,
+                    "risk_skoru": 0.472,
+                    "gecikme_olasiligi": 0.243
+                },
+                "M-D90K-017": {
+                    "ortalama": 0.5025111600295386,
+                    "risk_skoru": 0.496,
+                    "gecikme_olasiligi": 0.246
+                },
+                "M-YK-004": {
+                    "ortalama": 0.5285564207889368,
+                    "risk_skoru": 0.464,
+                    "gecikme_olasiligi": 0.232
+                }
+            },
+            "performans_dagilimi": {
+                "min": 0.0,
+                "max": 1.0,
+                "std": 0.27178485301241323,
+                "q25": 0.2971991449191093,
+                "q75": 0.6949728814251478
+            }
+        },
+        "CENGİZ CAN": {
+            "ortalama_performans": 0.5049289512595413,
+            "risk_skoru": 0.491375,
+            "gecikme_olasiligi": 0.2411875,
+            "performans_kararliligi": 0.8551120037216043,
+            "tasarim_bazli_sonuclar": {
+                "M-KAM-001": {
+                    "ortalama": 0.48840084916639503,
+                    "risk_skoru": 0.517,
+                    "gecikme_olasiligi": 0.254
+                },
+                "M-KKK-002": {
+                    "ortalama": 0.5232458502358804,
+                    "risk_skoru": 0.45,
+                    "gecikme_olasiligi": 0.216
+                },
+                "M-OSK1.5-003": {
+                    "ortalama": 0.5119149381450043,
+                    "risk_skoru": 0.48,
+                    "gecikme_olasiligi": 0.229
+                },
+                "M-PA-005": {
+                    "ortalama": 0.5227839700610618,
+                    "risk_skoru": 0.465,
+                    "gecikme_olasiligi": 0.211
+                },
+                "M-RPV3.5-006": {
+                    "ortalama": 0.51443838065395,
+                    "risk_skoru": 0.485,
+                    "gecikme_olasiligi": 0.235
+                },
+                "M-MOD4-007": {
+                    "ortalama": 0.47561537026187317,
+                    "risk_skoru": 0.527,
+                    "gecikme_olasiligi": 0.268
+                },
+                "M-MOD3-008": {
+                    "ortalama": 0.5102131820638365,
+                    "risk_skoru": 0.47,
+                    "gecikme_olasiligi": 0.227
+                },
+                "M-RPV2.5-009": {
+                    "ortalama": 0.4863526110015126,
+                    "risk_skoru": 0.538,
+                    "gecikme_olasiligi": 0.272
+                },
+                "M-TK1-010": {
+                    "ortalama": 0.5286451103276958,
+                    "risk_skoru": 0.448,
+                    "gecikme_olasiligi": 0.216
+                },
+                "M-AVK-011": {
+                    "ortalama": 0.5258905554850402,
+                    "risk_skoru": 0.465,
+                    "gecikme_olasiligi": 0.242
+                },
+                "M-CKM-012": {
+                    "ortalama": 0.5253114046013001,
+                    "risk_skoru": 0.472,
+                    "gecikme_olasiligi": 0.225
+                },
+                "M-MOD2-014": {
+                    "ortalama": 0.4667636601892835,
+                    "risk_skoru": 0.554,
+                    "gecikme_olasiligi": 0.309
+                },
+                "M-DUK-015": {
+                    "ortalama": 0.5281294907852958,
+                    "risk_skoru": 0.455,
+                    "gecikme_olasiligi": 0.221
+                },
+                "M-KK-016": {
+                    "ortalama": 0.46687826458348414,
+                    "risk_skoru": 0.534,
+                    "gecikme_olasiligi": 0.274
+                },
+                "M-D90K-017": {
+                    "ortalama": 0.49910624687004146,
+                    "risk_skoru": 0.509,
+                    "gecikme_olasiligi": 0.237
+                },
+                "M-YK-004": {
+                    "ortalama": 0.505173335721006,
+                    "risk_skoru": 0.493,
+                    "gecikme_olasiligi": 0.223
+                }
+            },
+            "performans_dagilimi": {
+                "min": 0.0,
+                "max": 1.0,
+                "std": 0.2691542274221191,
+                "q25": 0.30814686133193364,
+                "q75": 0.6999777701160219
+            }
+        },
+        "ERSİN KÖSEOĞLU": {
+            "ortalama_performans": 0.5024164779538812,
+            "risk_skoru": 0.494125,
+            "gecikme_olasiligi": 0.2423125,
+            "performans_kararliligi": 0.8561735940828069,
+            "tasarim_bazli_sonuclar": {
+                "M-KAM-001": {
+                    "ortalama": 0.48912019785766864,
+                    "risk_skoru": 0.504,
+                    "gecikme_olasiligi": 0.249
+                },
+                "M-KKK-002": {
+                    "ortalama": 0.5315134690678753,
+                    "risk_skoru": 0.445,
+                    "gecikme_olasiligi": 0.218
+                },
+                "M-OSK1.5-003": {
+                    "ortalama": 0.5157782780102651,
+                    "risk_skoru": 0.483,
+                    "gecikme_olasiligi": 0.215
+                },
+                "M-PA-005": {
+                    "ortalama": 0.48139827740084573,
+                    "risk_skoru": 0.534,
+                    "gecikme_olasiligi": 0.275
+                },
+                "M-RPV3.5-006": {
+                    "ortalama": 0.5071419022132048,
+                    "risk_skoru": 0.479,
+                    "gecikme_olasiligi": 0.227
+                },
+                "M-MOD4-007": {
+                    "ortalama": 0.47629627906041977,
+                    "risk_skoru": 0.532,
+                    "gecikme_olasiligi": 0.27
+                },
+                "M-MOD3-008": {
+                    "ortalama": 0.501223729436761,
+                    "risk_skoru": 0.497,
+                    "gecikme_olasiligi": 0.244
+                },
+                "M-RPV2.5-009": {
+                    "ortalama": 0.5468791628217952,
+                    "risk_skoru": 0.438,
+                    "gecikme_olasiligi": 0.202
+                },
+                "M-TK1-010": {
+                    "ortalama": 0.48317249026779613,
+                    "risk_skoru": 0.532,
+                    "gecikme_olasiligi": 0.264
+                },
+                "M-AVK-011": {
+                    "ortalama": 0.4861418856100593,
+                    "risk_skoru": 0.524,
+                    "gecikme_olasiligi": 0.272
+                },
+                "M-CKM-012": {
+                    "ortalama": 0.5214639822724471,
+                    "risk_skoru": 0.466,
+                    "gecikme_olasiligi": 0.205
+                },
+                "M-MOD2-014": {
+                    "ortalama": 0.463762937865955,
+                    "risk_skoru": 0.556,
+                    "gecikme_olasiligi": 0.296
+                },
+                "M-DUK-015": {
+                    "ortalama": 0.5118553897745971,
+                    "risk_skoru": 0.485,
+                    "gecikme_olasiligi": 0.226
+                },
+                "M-KK-016": {
+                    "ortalama": 0.47031442444315047,
+                    "risk_skoru": 0.549,
+                    "gecikme_olasiligi": 0.3
+                },
+                "M-D90K-017": {
+                    "ortalama": 0.5309637586117751,
+                    "risk_skoru": 0.432,
+                    "gecikme_olasiligi": 0.199
+                },
+                "M-YK-004": {
+                    "ortalama": 0.521637482547484,
+                    "risk_skoru": 0.45,
+                    "gecikme_olasiligi": 0.215
+                }
+            },
+            "performans_dagilimi": {
+                "min": 0.0,
+                "max": 1.0,
+                "std": 0.2681663717892245,
+                "q25": 0.30771850162191083,
+                "q75": 0.6974559308640118
+            }
+        },
+        "SEYFETTİN DUYMUŞ": {
+            "ortalama_performans": 0.5029648745200092,
+            "risk_skoru": 0.4954375,
+            "gecikme_olasiligi": 0.2425,
+            "performans_kararliligi": 0.8555286373637342,
+            "tasarim_bazli_sonuclar": {
+                "M-KAM-001": {
+                    "ortalama": 0.4922021306384853,
+                    "risk_skoru": 0.517,
+                    "gecikme_olasiligi": 0.25
+                },
+                "M-KKK-002": {
+                    "ortalama": 0.523140367697875,
+                    "risk_skoru": 0.468,
+                    "gecikme_olasiligi": 0.218
+                },
+                "M-OSK1.5-003": {
+                    "ortalama": 0.46923838459974776,
+                    "risk_skoru": 0.537,
+                    "gecikme_olasiligi": 0.283
+                },
+                "M-PA-005": {
+                    "ortalama": 0.5351903670792819,
+                    "risk_skoru": 0.445,
+                    "gecikme_olasiligi": 0.219
+                },
+                "M-RPV3.5-006": {
+                    "ortalama": 0.5142435592063971,
+                    "risk_skoru": 0.5,
+                    "gecikme_olasiligi": 0.215
+                },
+                "M-MOD4-007": {
+                    "ortalama": 0.5066126078226282,
+                    "risk_skoru": 0.473,
+                    "gecikme_olasiligi": 0.236
+                },
+                "M-MOD3-008": {
+                    "ortalama": 0.5296241617259346,
+                    "risk_skoru": 0.473,
+                    "gecikme_olasiligi": 0.234
+                },
+                "M-RPV2.5-009": {
+                    "ortalama": 0.5123302437906118,
+                    "risk_skoru": 0.493,
+                    "gecikme_olasiligi": 0.232
+                },
+                "M-TK1-010": {
+                    "ortalama": 0.49981045648006284,
+                    "risk_skoru": 0.497,
+                    "gecikme_olasiligi": 0.237
+                },
+                "M-AVK-011": {
+                    "ortalama": 0.5173718896903945,
+                    "risk_skoru": 0.463,
+                    "gecikme_olasiligi": 0.239
+                },
+                "M-CKM-012": {
+                    "ortalama": 0.43201178621625436,
+                    "risk_skoru": 0.601,
+                    "gecikme_olasiligi": 0.336
+                },
+                "M-MOD2-014": {
+                    "ortalama": 0.4917326660917755,
+                    "risk_skoru": 0.504,
+                    "gecikme_olasiligi": 0.275
+                },
+                "M-DUK-015": {
+                    "ortalama": 0.5299609251650433,
+                    "risk_skoru": 0.447,
+                    "gecikme_olasiligi": 0.171
+                },
+                "M-KK-016": {
+                    "ortalama": 0.49497539785461087,
+                    "risk_skoru": 0.519,
+                    "gecikme_olasiligi": 0.245
+                },
+                "M-D90K-017": {
+                    "ortalama": 0.4888116557226084,
+                    "risk_skoru": 0.503,
+                    "gecikme_olasiligi": 0.252
+                },
+                "M-YK-004": {
+                    "ortalama": 0.5101813925384355,
+                    "risk_skoru": 0.487,
+                    "gecikme_olasiligi": 0.238
+                }
+            },
+            "performans_dagilimi": {
+                "min": 0.0,
+                "max": 1.0,
+                "std": 0.2687669647075937,
+                "q25": 0.3080111929915346,
+                "q75": 0.6986290772857251
+            }
+        },
+        "FATİH YAŞAR": {
+            "ortalama_performans": 0.5037968989295013,
+            "risk_skoru": 0.4936875,
+            "gecikme_olasiligi": 0.239375,
+            "performans_kararliligi": 0.8549330778915893,
+            "tasarim_bazli_sonuclar": {
+                "M-KAM-001": {
+                    "ortalama": 0.5253547954350948,
+                    "risk_skoru": 0.469,
+                    "gecikme_olasiligi": 0.215
+                },
+                "M-KKK-002": {
+                    "ortalama": 0.4842174952826886,
+                    "risk_skoru": 0.526,
+                    "gecikme_olasiligi": 0.254
+                },
+                "M-OSK1.5-003": {
+                    "ortalama": 0.544230254039532,
+                    "risk_skoru": 0.436,
+                    "gecikme_olasiligi": 0.181
+                },
+                "M-PA-005": {
+                    "ortalama": 0.5068225809158472,
+                    "risk_skoru": 0.483,
+                    "gecikme_olasiligi": 0.239
+                },
+                "M-RPV3.5-006": {
+                    "ortalama": 0.5051801199376659,
+                    "risk_skoru": 0.496,
+                    "gecikme_olasiligi": 0.248
+                },
+                "M-MOD4-007": {
+                    "ortalama": 0.4757823924148505,
+                    "risk_skoru": 0.545,
+                    "gecikme_olasiligi": 0.257
+                },
+                "M-MOD3-008": {
+                    "ortalama": 0.488535344106062,
+                    "risk_skoru": 0.511,
+                    "gecikme_olasiligi": 0.261
+                },
+                "M-RPV2.5-009": {
+                    "ortalama": 0.5216559703870112,
+                    "risk_skoru": 0.459,
+                    "gecikme_olasiligi": 0.217
+                },
+                "M-TK1-010": {
+                    "ortalama": 0.49638103555762736,
+                    "risk_skoru": 0.507,
+                    "gecikme_olasiligi": 0.24
+                },
+                "M-AVK-011": {
+                    "ortalama": 0.5054090305275191,
+                    "risk_skoru": 0.485,
+                    "gecikme_olasiligi": 0.238
+                },
+                "M-CKM-012": {
+                    "ortalama": 0.4790814774237437,
+                    "risk_skoru": 0.516,
+                    "gecikme_olasiligi": 0.263
+                },
+                "M-MOD2-014": {
+                    "ortalama": 0.49992894867513793,
+                    "risk_skoru": 0.49,
+                    "gecikme_olasiligi": 0.25
+                },
+                "M-DUK-015": {
+                    "ortalama": 0.5149732640858206,
+                    "risk_skoru": 0.473,
+                    "gecikme_olasiligi": 0.237
+                },
+                "M-KK-016": {
+                    "ortalama": 0.5368418533882425,
+                    "risk_skoru": 0.448,
+                    "gecikme_olasiligi": 0.216
+                },
+                "M-D90K-017": {
+                    "ortalama": 0.490409718417831,
+                    "risk_skoru": 0.512,
+                    "gecikme_olasiligi": 0.245
+                },
+                "M-YK-004": {
+                    "ortalama": 0.48594610227734664,
+                    "risk_skoru": 0.543,
+                    "gecikme_olasiligi": 0.269
+                }
+            },
+            "performans_dagilimi": {
+                "min": 0.0,
+                "max": 1.0,
+                "std": 0.2693203688067527,
+                "q25": 0.30938153422343345,
+                "q75": 0.6992648603380338
+            }
+        },
+        "YAHYA SARI": {
+            "ortalama_performans": 0.4824282676404036,
+            "risk_skoru": 0.5265625,
+            "gecikme_olasiligi": 0.264625,
+            "performans_kararliligi": 0.8571788204147051,
+            "tasarim_bazli_sonuclar": {
+                "M-KAM-001": {
+                    "ortalama": 0.43395295455149996,
+                    "risk_skoru": 0.601,
+                    "gecikme_olasiligi": 0.316
+                },
+                "M-KKK-002": {
+                    "ortalama": 0.5043067288350577,
+                    "risk_skoru": 0.495,
+                    "gecikme_olasiligi": 0.246
+                },
+                "M-OSK1.5-003": {
+                    "ortalama": 0.4649017832147575,
+                    "risk_skoru": 0.553,
+                    "gecikme_olasiligi": 0.271
+                },
+                "M-PA-005": {
+                    "ortalama": 0.4740719367524338,
+                    "risk_skoru": 0.552,
+                    "gecikme_olasiligi": 0.273
+                },
+                "M-RPV3.5-006": {
+                    "ortalama": 0.49917375364924976,
+                    "risk_skoru": 0.5,
+                    "gecikme_olasiligi": 0.254
+                },
+                "M-MOD4-007": {
+                    "ortalama": 0.47638707166762095,
+                    "risk_skoru": 0.531,
+                    "gecikme_olasiligi": 0.271
+                },
+                "M-MOD3-008": {
+                    "ortalama": 0.47290015839085636,
+                    "risk_skoru": 0.559,
+                    "gecikme_olasiligi": 0.281
+                },
+                "M-RPV2.5-009": {
+                    "ortalama": 0.49363415923294657,
+                    "risk_skoru": 0.509,
+                    "gecikme_olasiligi": 0.239
+                },
+                "M-TK1-010": {
+                    "ortalama": 0.5002354867083942,
+                    "risk_skoru": 0.503,
+                    "gecikme_olasiligi": 0.243
+                },
+                "M-AVK-011": {
+                    "ortalama": 0.4697892079956106,
+                    "risk_skoru": 0.541,
+                    "gecikme_olasiligi": 0.288
+                },
+                "M-CKM-012": {
+                    "ortalama": 0.4633714208351918,
+                    "risk_skoru": 0.537,
+                    "gecikme_olasiligi": 0.284
+                },
+                "M-MOD2-014": {
+                    "ortalama": 0.4712731509260921,
+                    "risk_skoru": 0.541,
+                    "gecikme_olasiligi": 0.29
+                },
+                "M-DUK-015": {
+                    "ortalama": 0.5081339712333773,
+                    "risk_skoru": 0.479,
+                    "gecikme_olasiligi": 0.239
+                },
+                "M-KK-016": {
+                    "ortalama": 0.46322275559634946,
+                    "risk_skoru": 0.559,
+                    "gecikme_olasiligi": 0.294
+                },
+                "M-D90K-017": {
+                    "ortalama": 0.5052575635480585,
+                    "risk_skoru": 0.486,
+                    "gecikme_olasiligi": 0.25
+                },
+                "M-YK-004": {
+                    "ortalama": 0.5182401791089613,
+                    "risk_skoru": 0.479,
+                    "gecikme_olasiligi": 0.195
+                }
+            },
+            "performans_dagilimi": {
+                "min": 0.0,
+                "max": 1.0,
+                "std": 0.26722759923452416,
+                "q25": 0.2866298279064651,
+                "q75": 0.6765363674384529
+            }
+        },
+        "SİNAN ÖZYOL": {
+            "ortalama_performans": 0.5058984708427979,
+            "risk_skoru": 0.4924375,
+            "gecikme_olasiligi": 0.2419375,
+            "performans_kararliligi": 0.8548684000248938,
+            "tasarim_bazli_sonuclar": {
+                "M-KAM-001": {
+                    "ortalama": 0.5248226089391047,
+                    "risk_skoru": 0.466,
+                    "gecikme_olasiligi": 0.212
+                },
+                "M-KKK-002": {
+                    "ortalama": 0.5274501239916769,
+                    "risk_skoru": 0.445,
+                    "gecikme_olasiligi": 0.239
+                },
+                "M-OSK1.5-003": {
+                    "ortalama": 0.4554782160780023,
+                    "risk_skoru": 0.56,
+                    "gecikme_olasiligi": 0.299
+                },
+                "M-PA-005": {
+                    "ortalama": 0.5187343273888757,
+                    "risk_skoru": 0.465,
+                    "gecikme_olasiligi": 0.224
+                },
+                "M-RPV3.5-006": {
+                    "ortalama": 0.5168170439929465,
+                    "risk_skoru": 0.46,
+                    "gecikme_olasiligi": 0.222
+                },
+                "M-MOD4-007": {
+                    "ortalama": 0.4730689993647135,
+                    "risk_skoru": 0.529,
+                    "gecikme_olasiligi": 0.304
+                },
+                "M-MOD3-008": {
+                    "ortalama": 0.4964166855750145,
+                    "risk_skoru": 0.514,
+                    "gecikme_olasiligi": 0.249
+                },
+                "M-RPV2.5-009": {
+                    "ortalama": 0.5089846780300448,
+                    "risk_skoru": 0.492,
+                    "gecikme_olasiligi": 0.255
+                },
+                "M-TK1-010": {
+                    "ortalama": 0.5050173023060388,
+                    "risk_skoru": 0.499,
+                    "gecikme_olasiligi": 0.247
+                },
+                "M-AVK-011": {
+                    "ortalama": 0.4738438230092376,
+                    "risk_skoru": 0.551,
+                    "gecikme_olasiligi": 0.275
+                },
+                "M-CKM-012": {
+                    "ortalama": 0.5162572893307654,
+                    "risk_skoru": 0.479,
+                    "gecikme_olasiligi": 0.217
+                },
+                "M-MOD2-014": {
+                    "ortalama": 0.46170281609659436,
+                    "risk_skoru": 0.565,
+                    "gecikme_olasiligi": 0.271
+                },
+                "M-DUK-015": {
+                    "ortalama": 0.576928202745423,
+                    "risk_skoru": 0.4,
+                    "gecikme_olasiligi": 0.181
+                },
+                "M-KK-016": {
+                    "ortalama": 0.5252064515110689,
+                    "risk_skoru": 0.463,
+                    "gecikme_olasiligi": 0.209
+                },
+                "M-D90K-017": {
+                    "ortalama": 0.49042130285156965,
+                    "risk_skoru": 0.529,
+                    "gecikme_olasiligi": 0.24
+                },
+                "M-YK-004": {
+                    "ortalama": 0.5232256622736899,
+                    "risk_skoru": 0.462,
+                    "gecikme_olasiligi": 0.227
+                }
+            },
+            "performans_dagilimi": {
+                "min": 0.0,
+                "max": 1.0,
+                "std": 0.26938040015478687,
+                "q25": 0.30774686451389743,
+                "q75": 0.7043051861989342
+            }
+        },
+        "YILMAZ UZUN": {
+            "ortalama_performans": 0.5040898498507906,
+            "risk_skoru": 0.493625,
+            "gecikme_olasiligi": 0.2373125,
+            "performans_kararliligi": 0.8588569776401737,
+            "tasarim_bazli_sonuclar": {
+                "M-KAM-001": {
+                    "ortalama": 0.5146270191009497,
+                    "risk_skoru": 0.471,
+                    "gecikme_olasiligi": 0.21
+                },
+                "M-KKK-002": {
+                    "ortalama": 0.48405120293018367,
+                    "risk_skoru": 0.521,
+                    "gecikme_olasiligi": 0.269
+                },
+                "M-OSK1.5-003": {
+                    "ortalama": 0.4867978638718443,
+                    "risk_skoru": 0.522,
+                    "gecikme_olasiligi": 0.246
+                },
+                "M-PA-005": {
+                    "ortalama": 0.5285325392273295,
+                    "risk_skoru": 0.46,
+                    "gecikme_olasiligi": 0.22
+                },
+                "M-RPV3.5-006": {
+                    "ortalama": 0.5465499697675564,
+                    "risk_skoru": 0.431,
+                    "gecikme_olasiligi": 0.171
+                },
+                "M-MOD4-007": {
+                    "ortalama": 0.4963167019370886,
+                    "risk_skoru": 0.516,
+                    "gecikme_olasiligi": 0.227
+                },
+                "M-MOD3-008": {
+                    "ortalama": 0.5329813622419617,
+                    "risk_skoru": 0.452,
+                    "gecikme_olasiligi": 0.21
+                },
+                "M-RPV2.5-009": {
+                    "ortalama": 0.4908192293420574,
+                    "risk_skoru": 0.512,
+                    "gecikme_olasiligi": 0.265
+                },
+                "M-TK1-010": {
+                    "ortalama": 0.5234001814722284,
+                    "risk_skoru": 0.476,
+                    "gecikme_olasiligi": 0.213
+                },
+                "M-AVK-011": {
+                    "ortalama": 0.5304568459129929,
+                    "risk_skoru": 0.457,
+                    "gecikme_olasiligi": 0.211
+                },
+                "M-CKM-012": {
+                    "ortalama": 0.4797769384721644,
+                    "risk_skoru": 0.517,
+                    "gecikme_olasiligi": 0.278
+                },
+                "M-MOD2-014": {
+                    "ortalama": 0.5037143461510497,
+                    "risk_skoru": 0.498,
+                    "gecikme_olasiligi": 0.226
+                },
+                "M-DUK-015": {
+                    "ortalama": 0.4517645939467611,
+                    "risk_skoru": 0.576,
+                    "gecikme_olasiligi": 0.309
+                },
+                "M-KK-016": {
+                    "ortalama": 0.475251775994745,
+                    "risk_skoru": 0.55,
+                    "gecikme_olasiligi": 0.278
+                },
+                "M-D90K-017": {
+                    "ortalama": 0.5180517862666396,
+                    "risk_skoru": 0.454,
+                    "gecikme_olasiligi": 0.226
+                },
+                "M-YK-004": {
+                    "ortalama": 0.5023452409770969,
+                    "risk_skoru": 0.485,
+                    "gecikme_olasiligi": 0.238
+                }
+            },
+            "performans_dagilimi": {
+                "min": 0.0,
+                "max": 1.0,
+                "std": 0.2656529901580503,
+                "q25": 0.31264319019719444,
+                "q75": 0.7011648191721356
+            }
+        },
+        "Özgür YAPAREL": {
+            "ortalama_performans": 0.5034118080936308,
+            "risk_skoru": 0.496,
+            "gecikme_olasiligi": 0.2389375,
+            "performans_kararliligi": 0.8589517081171131,
+            "tasarim_bazli_sonuclar": {
+                "M-KAM-001": {
+                    "ortalama": 0.46366342899599283,
+                    "risk_skoru": 0.561,
+                    "gecikme_olasiligi": 0.312
+                },
+                "M-KKK-002": {
+                    "ortalama": 0.5412821603830282,
+                    "risk_skoru": 0.441,
+                    "gecikme_olasiligi": 0.214
+                },
+                "M-OSK1.5-003": {
+                    "ortalama": 0.4949256946735338,
+                    "risk_skoru": 0.515,
+                    "gecikme_olasiligi": 0.259
+                },
+                "M-PA-005": {
+                    "ortalama": 0.5140484194492825,
+                    "risk_skoru": 0.479,
+                    "gecikme_olasiligi": 0.204
+                },
+                "M-RPV3.5-006": {
+                    "ortalama": 0.4956249183273891,
+                    "risk_skoru": 0.509,
+                    "gecikme_olasiligi": 0.247
+                },
+                "M-MOD4-007": {
+                    "ortalama": 0.5221965655450933,
+                    "risk_skoru": 0.451,
+                    "gecikme_olasiligi": 0.202
+                },
+                "M-MOD3-008": {
+                    "ortalama": 0.527979394108296,
+                    "risk_skoru": 0.464,
+                    "gecikme_olasiligi": 0.201
+                },
+                "M-RPV2.5-009": {
+                    "ortalama": 0.5168291551510965,
+                    "risk_skoru": 0.478,
+                    "gecikme_olasiligi": 0.218
+                },
+                "M-TK1-010": {
+                    "ortalama": 0.46903973470139226,
+                    "risk_skoru": 0.543,
+                    "gecikme_olasiligi": 0.278
+                },
+                "M-AVK-011": {
+                    "ortalama": 0.5238827447687732,
+                    "risk_skoru": 0.472,
+                    "gecikme_olasiligi": 0.236
+                },
+                "M-CKM-012": {
+                    "ortalama": 0.4989107898379092,
+                    "risk_skoru": 0.503,
+                    "gecikme_olasiligi": 0.231
+                },
+                "M-MOD2-014": {
+                    "ortalama": 0.5190261985581343,
+                    "risk_skoru": 0.459,
+                    "gecikme_olasiligi": 0.211
+                },
+                "M-DUK-015": {
+                    "ortalama": 0.49562258325071634,
+                    "risk_skoru": 0.514,
+                    "gecikme_olasiligi": 0.233
+                },
+                "M-KK-016": {
+                    "ortalama": 0.5464860288974157,
+                    "risk_skoru": 0.421,
+                    "gecikme_olasiligi": 0.18
+                },
+                "M-D90K-017": {
+                    "ortalama": 0.459596202194903,
+                    "risk_skoru": 0.572,
+                    "gecikme_olasiligi": 0.317
+                },
+                "M-YK-004": {
+                    "ortalama": 0.46547491065513735,
+                    "risk_skoru": 0.554,
+                    "gecikme_olasiligi": 0.28
+                }
+            },
+            "performans_dagilimi": {
+                "min": 0.0,
+                "max": 1.0,
+                "std": 0.26556382649269733,
+                "q25": 0.3098477122871999,
+                "q75": 0.6997201986611684
+            }
+        },
+        "Gökhan KOLAÇ": {
+            "ortalama_performans": 0.5000367003153733,
+            "risk_skoru": 0.501625,
+            "gecikme_olasiligi": 0.246875,
+            "performans_kararliligi": 0.8559993631694369,
+            "tasarim_bazli_sonuclar": {
+                "M-KAM-001": {
+                    "ortalama": 0.49663571707250337,
+                    "risk_skoru": 0.495,
+                    "gecikme_olasiligi": 0.262
+                },
+                "M-KKK-002": {
+                    "ortalama": 0.501944985087297,
+                    "risk_skoru": 0.507,
+                    "gecikme_olasiligi": 0.237
+                },
+                "M-OSK1.5-003": {
+                    "ortalama": 0.4794805510014925,
+                    "risk_skoru": 0.524,
+                    "gecikme_olasiligi": 0.266
+                },
+                "M-PA-005": {
+                    "ortalama": 0.5453416915146734,
+                    "risk_skoru": 0.434,
+                    "gecikme_olasiligi": 0.192
+                },
+                "M-RPV3.5-006": {
+                    "ortalama": 0.5117289238812411,
+                    "risk_skoru": 0.48,
+                    "gecikme_olasiligi": 0.231
+                },
+                "M-MOD4-007": {
+                    "ortalama": 0.49890637735412163,
+                    "risk_skoru": 0.49,
+                    "gecikme_olasiligi": 0.254
+                },
+                "M-MOD3-008": {
+                    "ortalama": 0.44644513719151263,
+                    "risk_skoru": 0.586,
+                    "gecikme_olasiligi": 0.29
+                },
+                "M-RPV2.5-009": {
+                    "ortalama": 0.5425160631232945,
+                    "risk_skoru": 0.458,
+                    "gecikme_olasiligi": 0.199
+                },
+                "M-TK1-010": {
+                    "ortalama": 0.4946499469789362,
+                    "risk_skoru": 0.511,
+                    "gecikme_olasiligi": 0.232
+                },
+                "M-AVK-011": {
+                    "ortalama": 0.5156400401792064,
+                    "risk_skoru": 0.48,
+                    "gecikme_olasiligi": 0.247
+                },
+                "M-CKM-012": {
+                    "ortalama": 0.5229498393649041,
+                    "risk_skoru": 0.461,
+                    "gecikme_olasiligi": 0.237
+                },
+                "M-MOD2-014": {
+                    "ortalama": 0.5334280567947637,
+                    "risk_skoru": 0.454,
+                    "gecikme_olasiligi": 0.194
+                },
+                "M-DUK-015": {
+                    "ortalama": 0.4954841174225817,
+                    "risk_skoru": 0.519,
+                    "gecikme_olasiligi": 0.264
+                },
+                "M-KK-016": {
+                    "ortalama": 0.4752643290554479,
+                    "risk_skoru": 0.531,
+                    "gecikme_olasiligi": 0.267
+                },
+                "M-D90K-017": {
+                    "ortalama": 0.4773943177574348,
+                    "risk_skoru": 0.544,
+                    "gecikme_olasiligi": 0.281
+                },
+                "M-YK-004": {
+                    "ortalama": 0.46277711126656196,
+                    "risk_skoru": 0.552,
+                    "gecikme_olasiligi": 0.297
+                }
+            },
+            "performans_dagilimi": {
+                "min": 0.0,
+                "max": 1.0,
+                "std": 0.2683287506311643,
+                "q25": 0.30291355181949686,
+                "q75": 0.6954937708126883
+            }
+        },
+        "EMRE ÇELEBİ": {
+            "ortalama_performans": 0.4933093236319288,
+            "risk_skoru": 0.5098125,
+            "gecikme_olasiligi": 0.253375,
+            "performans_kararliligi": 0.8588642627837552,
+            "tasarim_bazli_sonuclar": {
+                "M-KAM-001": {
+                    "ortalama": 0.5007376564610047,
+                    "risk_skoru": 0.494,
+                    "gecikme_olasiligi": 0.242
+                },
+                "M-KKK-002": {
+                    "ortalama": 0.4902886261505205,
+                    "risk_skoru": 0.502,
+                    "gecikme_olasiligi": 0.278
+                },
+                "M-OSK1.5-003": {
+                    "ortalama": 0.46634192791992074,
+                    "risk_skoru": 0.536,
+                    "gecikme_olasiligi": 0.302
+                },
+                "M-PA-005": {
+                    "ortalama": 0.4454658633514748,
+                    "risk_skoru": 0.588,
+                    "gecikme_olasiligi": 0.308
+                },
+                "M-RPV3.5-006": {
+                    "ortalama": 0.49694975787379875,
+                    "risk_skoru": 0.49,
+                    "gecikme_olasiligi": 0.229
+                },
+                "M-MOD4-007": {
+                    "ortalama": 0.5077285315553574,
+                    "risk_skoru": 0.489,
+                    "gecikme_olasiligi": 0.238
+                },
+                "M-MOD3-008": {
+                    "ortalama": 0.4817412901875217,
+                    "risk_skoru": 0.542,
+                    "gecikme_olasiligi": 0.268
+                },
+                "M-RPV2.5-009": {
+                    "ortalama": 0.5290932478346274,
+                    "risk_skoru": 0.45,
+                    "gecikme_olasiligi": 0.199
+                },
+                "M-TK1-010": {
+                    "ortalama": 0.5375880270601014,
+                    "risk_skoru": 0.447,
+                    "gecikme_olasiligi": 0.195
+                },
+                "M-AVK-011": {
+                    "ortalama": 0.49569582939937,
+                    "risk_skoru": 0.521,
+                    "gecikme_olasiligi": 0.255
+                },
+                "M-CKM-012": {
+                    "ortalama": 0.5130849731187109,
+                    "risk_skoru": 0.482,
+                    "gecikme_olasiligi": 0.232
+                },
+                "M-MOD2-014": {
+                    "ortalama": 0.5225728556923227,
+                    "risk_skoru": 0.477,
+                    "gecikme_olasiligi": 0.208
+                },
+                "M-DUK-015": {
+                    "ortalama": 0.43707554740203364,
+                    "risk_skoru": 0.609,
+                    "gecikme_olasiligi": 0.312
+                },
+                "M-KK-016": {
+                    "ortalama": 0.48746095751969276,
+                    "risk_skoru": 0.514,
+                    "gecikme_olasiligi": 0.254
+                },
+                "M-D90K-017": {
+                    "ortalama": 0.4979921350566002,
+                    "risk_skoru": 0.494,
+                    "gecikme_olasiligi": 0.263
+                },
+                "M-YK-004": {
+                    "ortalama": 0.4831319515278027,
+                    "risk_skoru": 0.522,
+                    "gecikme_olasiligi": 0.271
+                }
+            },
+            "performans_dagilimi": {
+                "min": 0.0,
+                "max": 1.0,
+                "std": 0.26564613418629385,
+                "q25": 0.29732489757683983,
+                "q75": 0.6831711001838736
+            }
+        },
+        "YASİN AKKAYA": {
+            "ortalama_performans": 0.4925436840964715,
+            "risk_skoru": 0.512375,
+            "gecikme_olasiligi": 0.253125,
+            "performans_kararliligi": 0.8569525867354957,
+            "tasarim_bazli_sonuclar": {
+                "M-KAM-001": {
+                    "ortalama": 0.49282894017850926,
+                    "risk_skoru": 0.513,
+                    "gecikme_olasiligi": 0.23
+                },
+                "M-KKK-002": {
+                    "ortalama": 0.5194792111631723,
+                    "risk_skoru": 0.479,
+                    "gecikme_olasiligi": 0.214
+                },
+                "M-OSK1.5-003": {
+                    "ortalama": 0.5029028616472226,
+                    "risk_skoru": 0.489,
+                    "gecikme_olasiligi": 0.261
+                },
+                "M-PA-005": {
+                    "ortalama": 0.549564520032224,
+                    "risk_skoru": 0.433,
+                    "gecikme_olasiligi": 0.181
+                },
+                "M-RPV3.5-006": {
+                    "ortalama": 0.4548077971402172,
+                    "risk_skoru": 0.561,
+                    "gecikme_olasiligi": 0.315
+                },
+                "M-MOD4-007": {
+                    "ortalama": 0.4760085350408411,
+                    "risk_skoru": 0.535,
+                    "gecikme_olasiligi": 0.286
+                },
+                "M-MOD3-008": {
+                    "ortalama": 0.5016953473363082,
+                    "risk_skoru": 0.49,
+                    "gecikme_olasiligi": 0.262
+                },
+                "M-RPV2.5-009": {
+                    "ortalama": 0.4753244508040175,
+                    "risk_skoru": 0.542,
+                    "gecikme_olasiligi": 0.268
+                },
+                "M-TK1-010": {
+                    "ortalama": 0.5086217031172935,
+                    "risk_skoru": 0.482,
+                    "gecikme_olasiligi": 0.231
+                },
+                "M-AVK-011": {
+                    "ortalama": 0.4577619291608795,
+                    "risk_skoru": 0.566,
+                    "gecikme_olasiligi": 0.269
+                },
+                "M-CKM-012": {
+                    "ortalama": 0.48879154575960343,
+                    "risk_skoru": 0.516,
+                    "gecikme_olasiligi": 0.269
+                },
+                "M-MOD2-014": {
+                    "ortalama": 0.4852617683823614,
+                    "risk_skoru": 0.538,
+                    "gecikme_olasiligi": 0.256
+                },
+                "M-DUK-015": {
+                    "ortalama": 0.46572631236840756,
+                    "risk_skoru": 0.552,
+                    "gecikme_olasiligi": 0.278
+                },
+                "M-KK-016": {
+                    "ortalama": 0.5101139530231383,
+                    "risk_skoru": 0.496,
+                    "gecikme_olasiligi": 0.224
+                },
+                "M-D90K-017": {
+                    "ortalama": 0.5001122389880696,
+                    "risk_skoru": 0.494,
+                    "gecikme_olasiligi": 0.252
+                },
+                "M-YK-004": {
+                    "ortalama": 0.4916978314012771,
+                    "risk_skoru": 0.512,
+                    "gecikme_olasiligi": 0.254
+                }
+            },
+            "performans_dagilimi": {
+                "min": 0.0,
+                "max": 1.0,
+                "std": 0.2674391643575267,
+                "q25": 0.2972247040915762,
+                "q75": 0.6888234474249372
+            }
+        },
+        "HÜSEYİN GÜNDOĞDU": {
+            "ortalama_performans": 0.5208514325535275,
+            "risk_skoru": 0.4685625,
+            "gecikme_olasiligi": 0.212875,
+            "performans_kararliligi": 0.8619840775825731,
+            "tasarim_bazli_sonuclar": {
+                "M-KAM-001": {
+                    "ortalama": 0.5516910911560455,
+                    "risk_skoru": 0.41,
+                    "gecikme_olasiligi": 0.18
+                },
+                "M-KKK-002": {
+                    "ortalama": 0.5262034713937337,
+                    "risk_skoru": 0.467,
+                    "gecikme_olasiligi": 0.214
+                },
+                "M-OSK1.5-003": {
+                    "ortalama": 0.5154844810273671,
+                    "risk_skoru": 0.478,
+                    "gecikme_olasiligi": 0.221
+                },
+                "M-PA-005": {
+                    "ortalama": 0.5405187776018398,
+                    "risk_skoru": 0.455,
+                    "gecikme_olasiligi": 0.206
+                },
+                "M-RPV3.5-006": {
+                    "ortalama": 0.5221418813211746,
+                    "risk_skoru": 0.457,
+                    "gecikme_olasiligi": 0.206
+                },
+                "M-MOD4-007": {
+                    "ortalama": 0.5623069906251128,
+                    "risk_skoru": 0.421,
+                    "gecikme_olasiligi": 0.145
+                },
+                "M-MOD3-008": {
+                    "ortalama": 0.5726095503727493,
+                    "risk_skoru": 0.383,
+                    "gecikme_olasiligi": 0.161
+                },
+                "M-RPV2.5-009": {
+                    "ortalama": 0.4637276228010559,
+                    "risk_skoru": 0.554,
+                    "gecikme_olasiligi": 0.297
+                },
+                "M-TK1-010": {
+                    "ortalama": 0.5053836364230753,
+                    "risk_skoru": 0.498,
+                    "gecikme_olasiligi": 0.238
+                },
+                "M-AVK-011": {
+                    "ortalama": 0.5109002561097135,
+                    "risk_skoru": 0.471,
+                    "gecikme_olasiligi": 0.252
+                },
+                "M-CKM-012": {
+                    "ortalama": 0.5023548836022079,
+                    "risk_skoru": 0.494,
+                    "gecikme_olasiligi": 0.217
+                },
+                "M-MOD2-014": {
+                    "ortalama": 0.5317371949253696,
+                    "risk_skoru": 0.458,
+                    "gecikme_olasiligi": 0.164
+                },
+                "M-DUK-015": {
+                    "ortalama": 0.49054424262375007,
+                    "risk_skoru": 0.516,
+                    "gecikme_olasiligi": 0.241
+                },
+                "M-KK-016": {
+                    "ortalama": 0.48802339653949073,
+                    "risk_skoru": 0.516,
+                    "gecikme_olasiligi": 0.227
+                },
+                "M-D90K-017": {
+                    "ortalama": 0.526927807314657,
+                    "risk_skoru": 0.458,
+                    "gecikme_olasiligi": 0.218
+                },
+                "M-YK-004": {
+                    "ortalama": 0.5230676370190981,
+                    "risk_skoru": 0.461,
+                    "gecikme_olasiligi": 0.219
+                }
+            },
+            "performans_dagilimi": {
+                "min": 0.0,
+                "max": 1.0,
+                "std": 0.26269366419598594,
+                "q25": 0.33316004404168026,
+                "q75": 0.7116886185554598
+            }
+        },
+        "AHMET ŞAHİN": {
+            "ortalama_performans": 0.5031735349035992,
+            "risk_skoru": 0.4919375,
+            "gecikme_olasiligi": 0.2453125,
+            "performans_kararliligi": 0.8510249549520646,
+            "tasarim_bazli_sonuclar": {
+                "M-KAM-001": {
+                    "ortalama": 0.5256924235450714,
+                    "risk_skoru": 0.453,
+                    "gecikme_olasiligi": 0.233
+                },
+                "M-KKK-002": {
+                    "ortalama": 0.47529007704685206,
+                    "risk_skoru": 0.555,
+                    "gecikme_olasiligi": 0.284
+                },
+                "M-OSK1.5-003": {
+                    "ortalama": 0.5149065444658185,
+                    "risk_skoru": 0.466,
+                    "gecikme_olasiligi": 0.231
+                },
+                "M-PA-005": {
+                    "ortalama": 0.5244544776155959,
+                    "risk_skoru": 0.449,
+                    "gecikme_olasiligi": 0.216
+                },
+                "M-RPV3.5-006": {
+                    "ortalama": 0.4987390149986952,
+                    "risk_skoru": 0.498,
+                    "gecikme_olasiligi": 0.245
+                },
+                "M-MOD4-007": {
+                    "ortalama": 0.4897461316150416,
+                    "risk_skoru": 0.511,
+                    "gecikme_olasiligi": 0.26
+                },
+                "M-MOD3-008": {
+                    "ortalama": 0.5149421366233562,
+                    "risk_skoru": 0.464,
+                    "gecikme_olasiligi": 0.243
+                },
+                "M-RPV2.5-009": {
+                    "ortalama": 0.4601860388733318,
+                    "risk_skoru": 0.56,
+                    "gecikme_olasiligi": 0.28
+                },
+                "M-TK1-010": {
+                    "ortalama": 0.4883626605763844,
+                    "risk_skoru": 0.529,
+                    "gecikme_olasiligi": 0.276
+                },
+                "M-AVK-011": {
+                    "ortalama": 0.47436175405900505,
+                    "risk_skoru": 0.542,
+                    "gecikme_olasiligi": 0.285
+                },
+                "M-CKM-012": {
+                    "ortalama": 0.5008340017067501,
+                    "risk_skoru": 0.498,
+                    "gecikme_olasiligi": 0.229
+                },
+                "M-MOD2-014": {
+                    "ortalama": 0.48267726039533093,
+                    "risk_skoru": 0.527,
+                    "gecikme_olasiligi": 0.274
+                },
+                "M-DUK-015": {
+                    "ortalama": 0.5294833925218781,
+                    "risk_skoru": 0.467,
+                    "gecikme_olasiligi": 0.201
+                },
+                "M-KK-016": {
+                    "ortalama": 0.5428096133934006,
+                    "risk_skoru": 0.432,
+                    "gecikme_olasiligi": 0.207
+                },
+                "M-D90K-017": {
+                    "ortalama": 0.5046843919616736,
+                    "risk_skoru": 0.468,
+                    "gecikme_olasiligi": 0.22
+                },
+                "M-YK-004": {
+                    "ortalama": 0.5236066390594016,
+                    "risk_skoru": 0.452,
+                    "gecikme_olasiligi": 0.241
+                }
+            },
+            "performans_dagilimi": {
+                "min": 0.0,
+                "max": 1.0,
+                "std": 0.2729240233544268,
+                "q25": 0.3035739360438625,
+                "q75": 0.7041564930234611
+            }
+        },
+        "Efe Erbaş": {
+            "ortalama_performans": 0.5050975698651707,
+            "risk_skoru": 0.4918125,
+            "gecikme_olasiligi": 0.2358125,
+            "performans_kararliligi": 0.8596795875883614,
+            "tasarim_bazli_sonuclar": {
+                "M-KAM-001": {
+                    "ortalama": 0.5076895756514843,
+                    "risk_skoru": 0.48,
+                    "gecikme_olasiligi": 0.228
+                },
+                "M-KKK-002": {
+                    "ortalama": 0.4846887235912318,
+                    "risk_skoru": 0.522,
+                    "gecikme_olasiligi": 0.259
+                },
+                "M-OSK1.5-003": {
+                    "ortalama": 0.4772981017261508,
+                    "risk_skoru": 0.53,
+                    "gecikme_olasiligi": 0.286
+                },
+                "M-PA-005": {
+                    "ortalama": 0.5063932894630022,
+                    "risk_skoru": 0.488,
+                    "gecikme_olasiligi": 0.248
+                },
+                "M-RPV3.5-006": {
+                    "ortalama": 0.5564793764344981,
+                    "risk_skoru": 0.411,
+                    "gecikme_olasiligi": 0.184
+                },
+                "M-MOD4-007": {
+                    "ortalama": 0.5310068203545493,
+                    "risk_skoru": 0.444,
+                    "gecikme_olasiligi": 0.205
+                },
+                "M-MOD3-008": {
+                    "ortalama": 0.5291367355578792,
+                    "risk_skoru": 0.463,
+                    "gecikme_olasiligi": 0.205
+                },
+                "M-RPV2.5-009": {
+                    "ortalama": 0.47968528674441335,
+                    "risk_skoru": 0.548,
+                    "gecikme_olasiligi": 0.224
+                },
+                "M-TK1-010": {
+                    "ortalama": 0.5611078489102892,
+                    "risk_skoru": 0.388,
+                    "gecikme_olasiligi": 0.168
+                },
+                "M-AVK-011": {
+                    "ortalama": 0.48429939424714313,
+                    "risk_skoru": 0.535,
+                    "gecikme_olasiligi": 0.242
+                },
+                "M-CKM-012": {
+                    "ortalama": 0.49486326997850266,
+                    "risk_skoru": 0.518,
+                    "gecikme_olasiligi": 0.244
+                },
+                "M-MOD2-014": {
+                    "ortalama": 0.45759032068574684,
+                    "risk_skoru": 0.556,
+                    "gecikme_olasiligi": 0.304
+                },
+                "M-DUK-015": {
+                    "ortalama": 0.4936138956488742,
+                    "risk_skoru": 0.512,
+                    "gecikme_olasiligi": 0.243
+                },
+                "M-KK-016": {
+                    "ortalama": 0.5071720132900561,
+                    "risk_skoru": 0.5,
+                    "gecikme_olasiligi": 0.238
+                },
+                "M-D90K-017": {
+                    "ortalama": 0.4859214691515378,
+                    "risk_skoru": 0.526,
+                    "gecikme_olasiligi": 0.267
+                },
+                "M-YK-004": {
+                    "ortalama": 0.5246149964073725,
+                    "risk_skoru": 0.448,
+                    "gecikme_olasiligi": 0.228
+                }
+            },
+            "performans_dagilimi": {
+                "min": 0.0,
+                "max": 1.0,
+                "std": 0.26487771934577525,
+                "q25": 0.3140824816739718,
+                "q75": 0.6965099013485285
+            }
+        },
+        "Emre Seçer": {
+            "ortalama_performans": 0.5049960886069537,
+            "risk_skoru": 0.4924375,
+            "gecikme_olasiligi": 0.2348125,
+            "performans_kararliligi": 0.8596365096621336,
+            "tasarim_bazli_sonuclar": {
+                "M-KAM-001": {
+                    "ortalama": 0.4950552880387235,
+                    "risk_skoru": 0.504,
+                    "gecikme_olasiligi": 0.259
+                },
+                "M-KKK-002": {
+                    "ortalama": 0.5019017763269351,
+                    "risk_skoru": 0.505,
+                    "gecikme_olasiligi": 0.221
+                },
+                "M-OSK1.5-003": {
+                    "ortalama": 0.5246520154383937,
+                    "risk_skoru": 0.467,
+                    "gecikme_olasiligi": 0.238
+                },
+                "M-PA-005": {
+                    "ortalama": 0.5009971898584343,
+                    "risk_skoru": 0.505,
+                    "gecikme_olasiligi": 0.225
+                },
+                "M-RPV3.5-006": {
+                    "ortalama": 0.4959718446365519,
+                    "risk_skoru": 0.511,
+                    "gecikme_olasiligi": 0.23
+                },
+                "M-MOD4-007": {
+                    "ortalama": 0.5120404544063542,
+                    "risk_skoru": 0.484,
+                    "gecikme_olasiligi": 0.201
+                },
+                "M-MOD3-008": {
+                    "ortalama": 0.4502983824081807,
+                    "risk_skoru": 0.563,
+                    "gecikme_olasiligi": 0.281
+                },
+                "M-RPV2.5-009": {
+                    "ortalama": 0.5172058540860792,
+                    "risk_skoru": 0.472,
+                    "gecikme_olasiligi": 0.226
+                },
+                "M-TK1-010": {
+                    "ortalama": 0.5078689423766003,
+                    "risk_skoru": 0.49,
+                    "gecikme_olasiligi": 0.259
+                },
+                "M-AVK-011": {
+                    "ortalama": 0.5003359473076601,
+                    "risk_skoru": 0.495,
+                    "gecikme_olasiligi": 0.251
+                },
+                "M-CKM-012": {
+                    "ortalama": 0.4760983009518733,
+                    "risk_skoru": 0.542,
+                    "gecikme_olasiligi": 0.271
+                },
+                "M-MOD2-014": {
+                    "ortalama": 0.5146221296984753,
+                    "risk_skoru": 0.477,
+                    "gecikme_olasiligi": 0.234
+                },
+                "M-DUK-015": {
+                    "ortalama": 0.46249044443335435,
+                    "risk_skoru": 0.561,
+                    "gecikme_olasiligi": 0.279
+                },
+                "M-KK-016": {
+                    "ortalama": 0.5342436848368339,
+                    "risk_skoru": 0.45,
+                    "gecikme_olasiligi": 0.198
+                },
+                "M-D90K-017": {
+                    "ortalama": 0.52295735751959,
+                    "risk_skoru": 0.465,
+                    "gecikme_olasiligi": 0.221
+                },
+                "M-YK-004": {
+                    "ortalama": 0.5631978053872185,
+                    "risk_skoru": 0.388,
+                    "gecikme_olasiligi": 0.163
+                }
+            },
+            "performans_dagilimi": {
+                "min": 0.0,
+                "max": 1.0,
+                "std": 0.26491837454003303,
+                "q25": 0.3139339645960313,
+                "q75": 0.6974281658282367
+            }
+        }
+    },
+    "simulasyon_zamani": "2025-03-07 16:42:47"
 }

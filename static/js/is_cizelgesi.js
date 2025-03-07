@@ -206,10 +206,8 @@ window.showGenetikDetay = function(tasarimKodu, sonuc) {
             }
         }
         initDashboard();
-        initOptimization();
         initTimers();
         showLastAssignmentDetails();
-        checkOptimizationStatus(); // Optimizasyon durumunu kontrol et
     });
 
     function initDashboard() {
@@ -255,193 +253,8 @@ window.showGenetikDetay = function(tasarimKodu, sonuc) {
             });
         }
 
-        // Optimizasyon sonuçlarını ve son atama detaylarını güncelle
-        checkOptimizationStatus();
+        // Son atama detaylarını güncelle
         showLastAssignmentDetails();
-    }
-
-    function initOptimization() {
-        let kontrolSayisi = 0;
-        const maksKontrolSayisi = 100; // 20'den 100'e çıkarıldı
-
-        // Optimizasyon durumunu kontrol et
-        function sonuclariKontrolEt() {
-            $.ajax({
-                url: '/api/optimizasyon-durumu',
-                method: 'GET',
-                success: function(response) {
-                    console.log("Optimizasyon kontrol sonucu:", response); // Hata ayıklama için log ekle
-                    
-                    const taguchiHazir = response.taguchi_hazir && Object.keys(response.taguchi_sonuclari).length > 0;
-                    const genetikHazir = response.genetik_hazir && Object.keys(response.genetik_sonuclari).length > 0;
-                    
-                    $('#taguchiSonuclar').toggle(taguchiHazir);
-                    $('#genetikSonuclar').toggle(genetikHazir);
-                    
-                    // Yükleme ekranını kontrol et
-                    if ((taguchiHazir && genetikHazir) || response.error) {
-                        $('#optimizasyonYukleniyor').hide();
-                    } else {
-                        $('#optimizasyonYukleniyor').show();
-                        
-                        // Kontrol sayısını artır
-                        kontrolSayisi++;
-                        // Uzun süre uyarısını kaldırdık
-                    }
-                    
-                    if (taguchiHazir) {
-                        const taguchiHTML = Object.entries(response.taguchi_sonuclari.best_parameters || {})
-                            .map(([kod, sure]) => {
-                                const iyilestirme = ((1 - sure/480) * 100).toFixed(1);
-                                return `
-                                    <tr>
-                                        <td>${kod}</td>
-                                        <td>${sure.toFixed(1)}</td>
-                                        <td>${iyilestirme}%</td>
-                                    </tr>
-                                `;
-                            })
-                            .join('');
-                        $('#taguchiTablo').html(taguchiHTML || '<tr><td colspan="3" class="text-center">Sonuç bulunamadı</td></tr>');
-                    }
-                    
-                    if (genetikHazir) {
-                        const genetikHTML = Object.entries(response.genetik_sonuclari)
-                            .map(([kod, atama]) => {
-                                // Personel ihtiyacı bilgisi
-                                let personelIhtiyaciHTML = '';
-                                if (atama.personel_ihtiyaci) {
-                                    personelIhtiyaciHTML = `
-                                        <div class="small text-muted mt-1">
-                                            <strong>İhtiyaç:</strong> 
-                                            ${atama.personel_ihtiyaci.ustabasi > 0 ? `${atama.personel_ihtiyaci.ustabasi} Ustabaşı, ` : ''}
-                                            ${atama.personel_ihtiyaci.kalifiyeli > 0 ? `${atama.personel_ihtiyaci.kalifiyeli} Kalifiye, ` : ''}
-                                            ${atama.personel_ihtiyaci.cirak > 0 ? `${atama.personel_ihtiyaci.cirak} Çırak` : ''}
-                                        </div>
-                                    `.replace(/, $/, '');
-                                }
-                                
-                                // Atanan çalışanları seviyelerine göre listele
-                                let calisanlarHTML = '';
-                                
-                                // Ustabaşı listesi
-                                if (atama.atanan_calisanlar.ustabasi && atama.atanan_calisanlar.ustabasi.length > 0) {
-                                    calisanlarHTML += `<div><strong>Ustabaşı:</strong> ${atama.atanan_calisanlar.ustabasi.join(', ')}</div>`;
-                                }
-                                
-                                // Kalifiye listesi
-                                if (atama.atanan_calisanlar.kalifiyeli && atama.atanan_calisanlar.kalifiyeli.length > 0) {
-                                    calisanlarHTML += `<div><strong>Kalifiye:</strong> ${atama.atanan_calisanlar.kalifiyeli.join(', ')}</div>`;
-                                }
-                                
-                                // Çırak listesi
-                                if (atama.atanan_calisanlar.cirak && atama.atanan_calisanlar.cirak.length > 0) {
-                                    calisanlarHTML += `<div><strong>Çırak:</strong> ${atama.atanan_calisanlar.cirak.join(', ')}</div>`;
-                                }
-                                
-                                // Eksik personel bilgisi
-                                let eksikHTML = '';
-                                const toplamEksik = (atama.eksik_personel.ustabasi || 0) + 
-                                                   (atama.eksik_personel.kalifiyeli || 0) + 
-                                                   (atama.eksik_personel.cirak || 0);
-                                
-                                if (toplamEksik > 0) {
-                                    eksikHTML = `<div class="text-danger mt-1"><strong>Eksik Personel:</strong> `;
-                                    
-                                    if (atama.eksik_personel.ustabasi > 0) {
-                                        eksikHTML += `${atama.eksik_personel.ustabasi} Ustabaşı, `;
-                                    }
-                                    
-                                    if (atama.eksik_personel.kalifiyeli > 0) {
-                                        eksikHTML += `${atama.eksik_personel.kalifiyeli} Kalifiye, `;
-                                    }
-                                    
-                                    if (atama.eksik_personel.cirak > 0) {
-                                        eksikHTML += `${atama.eksik_personel.cirak} Çırak`;
-                                    }
-                                    
-                                    eksikHTML = eksikHTML.replace(/, $/, '');
-                                    eksikHTML += `</div>`;
-                                }
-                                
-                                return `
-                                <tr>
-                                    <td>${kod}</td>
-                                        <td>
-                                            ${calisanlarHTML}
-                                            ${eksikHTML}
-                                        </td>
-                                        <td>
-                                            <span class="badge bg-success">
-                                                <i class="bi bi-check-circle"></i> Optimizasyon Tamamlandı
-                                            </span>
-                                        </td>
-                                </tr>
-                                `;
-                            })
-                            .join('');
-                        $('#genetikTablo').html(genetikHTML || '<tr><td colspan="3" class="text-center">Sonuç bulunamadı</td></tr>');
-                    }
-                    
-                    // Eğer optimizasyon tamamlanmadıysa, tekrar kontrol et
-                    if (!taguchiHazir || !genetikHazir) {
-                        setTimeout(sonuclariKontrolEt, 3000);
-                    }
-                },
-                error: function(xhr, status, error) {
-                    console.error('Optimizasyon kontrol hatası:', error);
-                    $('#optimizasyonYukleniyor').html(`
-                        <div class="alert alert-danger">
-                            <h5>Bir hata oluştu</h5>
-                            <p>Optimizasyon sırasında bir hata oluştu: ${error}</p>
-                            <button class="btn btn-primary mt-3" onclick="optimizasyonuBaslat()">Yeniden Başlat</button>
-                        </div>
-                    `);
-                }
-            });
-        }
-
-        // Optimizasyonu başlat
-        window.optimizasyonuBaslat = function() {
-            kontrolSayisi = 0;
-            $('#taguchiSonuclar, #genetikSonuclar').hide();
-            $('#optimizasyonYukleniyor').show().html(`
-                <div class="text-center p-4">
-                    <div class="spinner-border text-primary mb-3" role="status">
-                        <span class="visually-hidden">Yükleniyor...</span>
-                    </div>
-                    <h5>Optimizasyon çalışıyor...</h5>
-                    <p class="text-muted">Optimizasyon işlemi devam ediyor. Bu işlem birkaç dakika sürebilir.</p>
-                    <div class="progress mt-3" style="height: 10px;">
-                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%"></div>
-                    </div>
-                            </div>
-                        `);
-            $('#optimizasyonHata').hide();
-            
-            $.ajax({
-                url: '/api/optimizasyon-baslat',
-                method: 'POST',
-                success: function(response) {
-                    console.log("Optimizasyon başlatıldı:", response);
-                    // Optimizasyon durumunu kontrol etmeye başla
-                    setTimeout(checkOptimizationStatus, 3000);
-                },
-                error: function(xhr, status, error) {
-                    console.error("Optimizasyon başlatma hatası:", error);
-                    $('#optimizasyonYukleniyor').hide();
-                    $('#optimizasyonHata').show().html(`
-                        <div class="alert alert-danger">
-                            <h5>Optimizasyon başlatılamadı</h5>
-                            <p>${error}</p>
-                            <button class="btn btn-primary mt-3" onclick="optimizasyonuBaslat()">Yeniden Dene</button>
-                        </div>
-                    `);
-                }
-                });
-        };
-
-        $('#optimizasyonBaslat').click(optimizasyonuBaslat);
     }
 
     function initTimers() {
@@ -517,20 +330,28 @@ window.showGenetikDetay = function(tasarimKodu, sonuc) {
     }
 
     function saveRemainingTime(kod, remaining) {
-        $.ajax({
-            url: '/api/update-kalan-sure',
-            method: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({
-                tasarim_kodu: kod,
-                kalan_sure: Math.floor(remaining / 60)
-            }),
-            success: function(resp){
-                if(!resp.success){
-                    console.log('kalanSure kaydet hata', resp.message);
+        try {
+            const minutes = Math.ceil(remaining / 60);
+            fetch('/api/update-kalan-sure', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    tasarim_kodu: kod,
+                    kalan_sure: minutes
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (!data.success) {
+                    console.error('Kalan süre kaydedilemedi:', data.message);
                 }
-            }
-        });
+            })
+            .catch(error => console.error('Kalan süre kaydedilirken hata:', error));
+        } catch (error) {
+            console.error('Kalan süre kaydedilirken hata:', error);
+        }
     }
 
     function updateKalanSure(kod, val){
@@ -578,179 +399,24 @@ window.showGenetikDetay = function(tasarimKodu, sonuc) {
     }
 
     function updateIsStatus(kod, durum, tamamlanmaYuzdesi) {
-        $.ajax({
-            url: '/api/is-guncelle',
+        fetch('/api/is-durum-guncelle', {
             method: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
                 tasarim_kodu: kod,
                 durum: durum,
                 tamamlanma_yuzdesi: tamamlanmaYuzdesi
-            }),
-            success: function(resp){
-                if(!resp.success){
-                    console.log('İş durumu güncelleme hatası:', resp.message);
-                }
-            }
-        });
-    }
-
-    function checkOptimizationStatus() {
-        fetch('/api/optimizasyon-durumu')
-            .then(response => response.json())
-            .then(data => {
-                console.log('Optimizasyon durumu:', data); // Debug için log ekledim
-                
-                const yukleniyor = document.getElementById('optimizasyonYukleniyor');
-                const hataDiv = document.getElementById('optimizasyonHata');
-                
-                if (data.status === 'completed') {
-                    if (yukleniyor) yukleniyor.style.display = 'none';
-                    if (hataDiv) hataDiv.style.display = 'none';
-                    
-                    // Sonuçları göster
-                    showTaguchiSonuclari();
-                    showGenetikSonuclari();
-                    
-                    // Optimizasyon tamamlandı mesajı
-                    const basariliDiv = document.createElement('div');
-                    basariliDiv.className = 'alert alert-success';
-                    basariliDiv.innerHTML = '<i class="bi bi-check-circle"></i> Optimizasyon başarıyla tamamlandı.';
-                    document.getElementById('optimizasyonSonuclar').prepend(basariliDiv);
-                    
-                } else if (data.status === 'running') {
-                    if (yukleniyor) {
-                        yukleniyor.style.display = 'block';
-                        yukleniyor.innerHTML = `
-                            <div class="text-center p-4">
-                                <div class="spinner-border text-primary mb-3" role="status">
-                                    <span class="visually-hidden">Yükleniyor...</span>
-                                </div>
-                                <h5>Optimizasyon çalışıyor...</h5>
-                                <p class="text-muted">Optimizasyon işlemi devam ediyor. Bu işlem birkaç dakika sürebilir.</p>
-                                <div class="progress mt-3" style="height: 10px;">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated" 
-                                         role="progressbar" style="width: 100%"></div>
-                                </div>
-                            </div>
-                        `;
-                    }
-                    if (hataDiv) hataDiv.style.display = 'none';
-                    
-                    // 3 saniye sonra tekrar kontrol et
-                    setTimeout(checkOptimizationStatus, 3000);
-                    
-                } else if (data.status === 'error') {
-                    if (yukleniyor) yukleniyor.style.display = 'none';
-                    if (hataDiv) {
-                        hataDiv.style.display = 'block';
-                        hataDiv.innerHTML = `
-                            <div class="alert alert-danger">
-                                <h5><i class="bi bi-exclamation-triangle"></i> Optimizasyon Hatası</h5>
-                                <p>${data.message || 'Optimizasyon sırasında bir hata oluştu.'}</p>
-                                <button class="btn btn-primary mt-3" onclick="optimizasyonuBaslat()">
-                                    <i class="bi bi-arrow-clockwise"></i> Yeniden Dene
-                                </button>
-                            </div>
-                        `;
-                    }
-                }
             })
-            .catch(error => {
-                console.error('Optimizasyon durumu kontrol hatası:', error);
-                const hataDiv = document.getElementById('optimizasyonHata');
-                if (hataDiv) {
-                    hataDiv.style.display = 'block';
-                    hataDiv.innerHTML = `
-                        <div class="alert alert-danger">
-                            <h5><i class="bi bi-exclamation-triangle"></i> Bağlantı Hatası</h5>
-                            <p>Sunucu ile bağlantı kurulamadı. Lütfen internet bağlantınızı kontrol edin.</p>
-                            <button class="btn btn-primary mt-3" onclick="checkOptimizationStatus()">
-                                <i class="bi bi-arrow-clockwise"></i> Tekrar Dene
-                            </button>
-                        </div>
-                    `;
-                }
-                if (document.getElementById('optimizasyonYukleniyor')) {
-                    document.getElementById('optimizasyonYukleniyor').style.display = 'none';
-                }
-            });
-    }
-
-    function showGenetikDetay(tasarimKodu, sonuc) {
-        const detayHTML = `
-            <div class="modal fade" id="genetikDetayModal" tabindex="-1">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Genetik Algoritma Detayı - ${tasarimKodu}</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h6>Atanan Personel:</h6>
-                                    <div class="list-group mb-3">
-                                        ${Object.entries(sonuc.atanan_calisanlar || {}).map(([seviye, calisanlar]) => {
-                                            if (calisanlar && calisanlar.length > 0) {
-                                                return `
-                                                    <div class="list-group-item">
-                                                        <h6 class="mb-2">${seviye.charAt(0).toUpperCase() + seviye.slice(1)}:</h6>
-                                                        ${calisanlar.map(calisan => 
-                                                            `<div class="d-flex justify-content-between align-items-center">
-                                                                <span>${calisan}</span>
-                                                                <span class="badge bg-primary">Atandı</span>
-                                                            </div>`
-                                                        ).join('')}
-                                                    </div>
-                                                `;
-                                            }
-                                            return '';
-                                        }).join('')}
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <h6>Alternatif Personeller:</h6>
-                                    ${sonuc.alternatif_calisanlar && sonuc.alternatif_calisanlar.length > 0 ? `
-                                        <div class="list-group">
-                                            ${sonuc.alternatif_calisanlar
-                                                .sort((a, b) => b.uygunluk - a.uygunluk)
-                                                .map(alt => {
-                                                    const seviyeRenk = {
-                                                        'ustabasi': 'danger',
-                                                        'kalifiyeli': 'warning',
-                                                        'cirak': 'info'
-                                                    };
-                                                    return `
-                                                        <div class="list-group-item d-flex justify-content-between align-items-center">
-                                                            <div>
-                                                                <span class="badge bg-${seviyeRenk[alt.seviye]}">${alt.seviye.charAt(0).toUpperCase() + alt.seviye.slice(1)}</span>
-                                                                ${alt.calisan}
-                                                            </div>
-                                                            <span class="badge bg-secondary">Uygunluk: ${alt.uygunluk.toFixed(1)}</span>
-                                                        </div>
-                                                    `;
-                                                }).join('')}
-                                        </div>
-                                    ` : '<div class="alert alert-info">Alternatif personel bulunmamaktadır.</div>'}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
-
-        // Varsa önceki modalı kaldır
-        $('#genetikDetayModal').remove();
-        
-        // Yeni modalı ekle ve göster
-        $('body').append(detayHTML);
-        const modal = new bootstrap.Modal(document.getElementById('genetikDetayModal'));
-        modal.show();
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (!data.success) {
+                console.error('İş durumu güncellenemedi:', data.message);
+            }
+        })
+        .catch(error => console.error('İş durumu güncellenirken hata:', error));
     }
 })();
 
@@ -1244,76 +910,104 @@ function calculateWorkloadEffect(calisan) {
     };
 }
 
-// İş kaydetme fonksiyonu
-$('#isKaydet').click(async function() {
-    try {
-        // Form verilerini topla
-        const formData = {};
-        $('#yeniIsForm').serializeArray().forEach(item => {
-            formData[item.name] = item.value;
-        });
-
-        // İş atama isteği yap
-        const response = await fetch('/api/is-atama', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        });
-
-        const data = await response.json();
-        
-        if (data.success) {
-            // Başarılı atama
-            const atananCalisanlar = data.atanan_calisanlar;
-            let mesaj = 'İş başarıyla kaydedildi.\n\nAtanan Çalışanlar:';
-            
-            // Her seviye için atanan çalışanları göster
-            for (const [seviye, calisanlar] of Object.entries(atananCalisanlar)) {
-                if (calisanlar.length > 0) {
-                    const seviyeAdi = seviye === 'ustabasi' ? 'Ustabaşı' : 
-                                    seviye === 'kalifiyeli' ? 'Kalifiye' : 'Çırak';
-                    mesaj += `\n${seviyeAdi}: ${calisanlar.join(', ')}`;
-                }
-            }
-            
-            // Fason işçi kontrolü
-            const fasonIsciVar = Object.values(atananCalisanlar)
-                .flat()
-                .some(calisan => calisan.startsWith('Fason İşçi'));
-            
-            if (fasonIsciVar) {
-                mesaj += '\n\nNot: Bazı pozisyonlar için fason işçi atanmıştır.';
-            }
-            
-            showAlert('success', mesaj);
-            $('#yeniIsModal').modal('hide');
-            setTimeout(() => location.reload(), 1500);
-        } else {
-            showAlert('danger', 'Hata: ' + data.message);
-        }
-    } catch (error) {
-        console.error('İş kaydetme hatası:', error);
-        showAlert('danger', 'İş kaydedilirken bir hata oluştu.');
+// İş kaydetme
+$('#isKaydet').click(function() {
+    const form = $('#yeniIsForm')[0];
+    if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
     }
+    
+    // Öncelik değerini doğrudan seçili option'dan al
+    const oncelikSelect = form.querySelector('select[name="oncelik"]');
+    const secilenOncelik = oncelikSelect.options[oncelikSelect.selectedIndex].value;
+    
+    const formData = {
+        kod: $('#tasarimKoduSelect').val(),
+        proje_adi: $('input[name="proje_adi"]').val(),
+        teslimat_tarihi: $('input[name="teslimat_tarihi"]').val(),
+        durum: $('select[name="durum"]').val(),
+        oncelik: secilenOncelik
+    };
+    
+    console.log('Gönderilen form verisi:', formData); // Debug için log ekle
+    
+    // Yükleme göstergesini göster
+    $('#loadingSpinner').show();
+    
+    // API isteği gönder
+    $.ajax({
+        url: '/api/is-kaydet',
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(formData),
+        success: function(response) {
+            if (response.success) {
+                // Başarılı mesajı göster
+                showAlert('success', response.message);
+                
+                // Modalı kapat
+                $('#yeniIsModal').modal('hide');
+                
+                // Formu temizle
+                $('#yeniIsForm')[0].reset();
+                
+                // İş listesini güncelle - Optimizasyon tamamlanana kadar bekle
+                setTimeout(function() {
+                    // Sayfayı yenile
+                    window.location.reload();
+                }, 1000);
+            } else {
+                showAlert('error', response.message || 'Bir hata oluştu');
+                $('#loadingSpinner').hide();
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('Hata:', error);
+            showAlert('error', 'İş kaydedilirken bir hata oluştu');
+            $('#loadingSpinner').hide();
+        }
+    });
 });
 
 // Bildirim gösterme fonksiyonu
-function showAlert(type, message) {
-    const alertDiv = document.createElement('div');
-    alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed top-0 end-0 m-3`;
-    alertDiv.style.zIndex = '9999';
-    alertDiv.innerHTML = `
-        ${message}
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    `;
-    document.body.appendChild(alertDiv);
+function bildirimGoster(tip, mesaj) {
+    // Mevcut bildirimleri temizle
+    $('.toast').remove();
+    $('.alert').remove();
     
-    // 5 saniye sonra otomatik kapat
-    setTimeout(() => {
-        alertDiv.remove();
-    }, 5000);
+    // Mesaj kontrolü
+    const mesajText = mesaj && mesaj.trim() ? mesaj : (
+        tip === 'success' ? 'İşlem başarıyla tamamlandı' :
+        tip === 'error' ? 'Bir hata oluştu' :
+        'Bildirim'
+    );
+    
+    // Bootstrap toast bildirimi oluştur
+    const bildirimHTML = `
+        <div class="toast align-items-center text-white border-0 position-fixed top-0 end-0 m-3 bg-${tip}" 
+             role="alert" aria-live="assertive" aria-atomic="true" style="z-index: 9999;">
+            <div class="d-flex">
+                <div class="toast-body">
+                    ${mesajText}
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    `;
+    
+    // Bildirimi ekle ve göster
+    $('body').append(bildirimHTML);
+    const toast = new bootstrap.Toast($('.toast').last(), {
+        delay: 3000,
+        animation: true
+    });
+    toast.show();
+}
+
+// showAlert fonksiyonunu bildirimGoster'a yönlendir
+function showAlert(type, message) {
+    bildirimGoster(type, message);
 }
 
 // Atama detayları işlemleri
@@ -1386,20 +1080,14 @@ $('#tumAtamaDetaylariModal').on('show.bs.modal', function() {
     });
 });
 
-// Tasarım kodu seçimi
-document.addEventListener('DOMContentLoaded', () => {
+// Tasarım kodu seçildiğinde süreyi otomatik doldur
+document.addEventListener('DOMContentLoaded', function() {
     const selectEl = document.getElementById('tasarimKoduSelect');
+    
     if(selectEl){
-        const opt = selectEl.options[selectEl.selectedIndex];
-        if(opt){
-            const sure = opt.getAttribute('data-sure');
-            document.getElementById('kalanSureInput').value = sure;
-        }
-
-        selectEl.addEventListener('change', function(){
-            const sure = this.options[this.selectedIndex].getAttribute('data-sure');
-            document.getElementById('kalanSureInput').value = sure;
-        });
+        // Süre ile ilgili kodlar kaldırıldı çünkü artık kalanSureInput elementi yok
+        
+        // Diğer event listener'lar ve işlemler buraya eklenebilir
     }
 }); 
 
@@ -1585,12 +1273,6 @@ function getPersonelDurum(calisan) {
 
 // Optimizasyon sonuçlarını göster
 document.addEventListener('DOMContentLoaded', function() {
-    // Genetik algoritma sonuçlarını göster
-    showGenetikSonuclari();
-    
-    // Taguchi sonuçlarını göster
-    showTaguchiSonuclari();
-    
     // Son atama detaylarını göster
     showLastAssignmentDetails();
 }); 
