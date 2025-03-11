@@ -1,0 +1,201 @@
+[
+    {
+        "tarih": "2025-03-07 20:19:51",
+        "is_id": "1",
+        "tasarim_kodu": "M-CKM-012",
+        "proje_adi": "Optimak STU",
+        "degerlendirmeler": [
+            {
+                "calisan": "YAHYA SARI",
+                "seviye": "Çırak",
+                "is_kalitesi": 3,
+                "sure_yonetimi": 2,
+                "is_birligi": 3,
+                "problem_cozme": 4,
+                "teknik_yetkinlik": 5,
+                "notlar": "",
+                "ortalama_puan": 3.4
+            },
+            {
+                "calisan": "SEYFETTİN DUYMUŞ",
+                "seviye": "Çırak",
+                "is_kalitesi": 4,
+                "sure_yonetimi": 5,
+                "is_birligi": 4,
+                "problem_cozme": 5,
+                "teknik_yetkinlik": 4,
+                "notlar": "",
+                "ortalama_puan": 4.4
+            }
+        ],
+        "genel_notlar": ""
+    },
+    {
+        "tarih": "2025-03-07 20:42:58",
+        "is_id": "1",
+        "tasarim_kodu": "M-CKM-012",
+        "proje_adi": "Coca Cola",
+        "degerlendirmeler": [
+            {
+                "calisan": "YAHYA SARI",
+                "seviye": "Çırak",
+                "is_kalitesi": 5,
+                "sure_yonetimi": 5,
+                "is_birligi": 5,
+                "problem_cozme": 5,
+                "teknik_yetkinlik": 5,
+                "notlar": "",
+                "ortalama_puan": 5.0
+            },
+            {
+                "calisan": "SEYFETTİN DUYMUŞ",
+                "seviye": "Çırak",
+                "is_kalitesi": 5,
+                "sure_yonetimi": 5,
+                "is_birligi": 5,
+                "problem_cozme": 5,
+                "teknik_yetkinlik": 5,
+                "notlar": "",
+                "ortalama_puan": 5.0
+            }
+        ],
+        "genel_notlar": ""
+    },
+    {
+        "tarih": "2025-03-07 20:49:25",
+        "is_id": "1",
+        "tasarim_kodu": "M-KAM-001",
+        "proje_adi": "Coca Cola",
+        "degerlendirmeler": [
+            {
+                "calisan": "Emre Seçer",
+                "seviye": "Ustabaşı",
+                "is_kalitesi": 5,
+                "sure_yonetimi": 5,
+                "is_birligi": 5,
+                "problem_cozme": 5,
+                "teknik_yetkinlik": 5,
+                "notlar": "",
+                "ortalama_puan": 5.0
+            },
+            {
+                "calisan": "HASAN AKYILDIZ",
+                "seviye": "Kalifiye",
+                "is_kalitesi": 3,
+                "sure_yonetimi": 4,
+                "is_birligi": 4,
+                "problem_cozme": 4,
+                "teknik_yetkinlik": 3,
+                "notlar": "",
+                "ortalama_puan": 3.6
+            },
+            {
+                "calisan": "RAFET KARABAYIR",
+                "seviye": "Kalifiye",
+                "is_kalitesi": 5,
+                "sure_yonetimi": 4,
+                "is_birligi": 4,
+                "problem_cozme": 4,
+                "teknik_yetkinlik": 5,
+                "notlar": "",
+                "ortalama_puan": 4.4
+            },
+            {
+                "calisan": "SEYFETTİN DUYMUŞ",
+                "seviye": "Çırak",
+                "is_kalitesi": 4,
+                "sure_yonetimi": 4,
+                "is_birligi": 3,
+                "problem_cozme": 3,
+                "teknik_yetkinlik": 4,
+                "notlar": "",
+                "ortalama_puan": 3.6
+            },
+            {
+                "calisan": "HÜSEYİN GÜNDOĞDU",
+                "seviye": "Çırak",
+                "is_kalitesi": 4,
+                "sure_yonetimi": 4,
+                "is_birligi": 4,
+                "problem_cozme": 2,
+                "teknik_yetkinlik": 3,
+                "notlar": "",
+                "ortalama_puan": 3.4
+            },
+            {
+                "calisan": "SİNAN ÖZYOL",
+                "seviye": "Çırak",
+                "is_kalitesi": 3,
+                "sure_yonetimi": 3,
+                "is_birligi": 3,
+                "problem_cozme": 4,
+                "teknik_yetkinlik": 4,
+                "notlar": "",
+                "ortalama_puan": 3.4
+            }
+        ],
+        "genel_notlar": ""
+    },
+    {
+        "tarih": "2025-03-11 16:34:07",
+        "is_id": "1",
+        "tasarim_kodu": "M-CKM-012",
+        "proje_adi": "Erikli Su",
+        "degerlendirmeler": [
+            {
+                "calisan": "YAHYA SARI",
+                "seviye": "Çırak",
+                "is_kalitesi": 5,
+                "sure_yonetimi": 5,
+                "is_birligi": 5,
+                "problem_cozme": 5,
+                "teknik_yetkinlik": 5,
+                "notlar": "",
+                "ortalama_puan": 5.0
+            },
+            {
+                "calisan": "SEYFETTİN DUYMUŞ",
+                "seviye": "Çırak",
+                "is_kalitesi": 4,
+                "sure_yonetimi": 5,
+                "is_birligi": 4,
+                "problem_cozme": 4,
+                "teknik_yetkinlik": 3,
+                "notlar": "",
+                "ortalama_puan": 4.0
+            }
+        ],
+        "genel_notlar": ""
+    },
+    {
+        "tarih": "2025-03-11 16:41:30",
+        "is_id": "1",
+        "tasarim_kodu": "M-CKM-012",
+        "proje_adi": "Erikli Su",
+        "degerlendirmeler": [
+            {
+                "calisan": "YAHYA SARI",
+                "seviye": "Çırak",
+                "is_kalitesi": 1,
+                "sure_yonetimi": 1,
+                "is_birligi": 1,
+                "problem_cozme": 1,
+                "teknik_yetkinlik": 1,
+                "notlar": "",
+                "ortalama_puan": 1.0
+            },
+            {
+                "calisan": "SEYFETTİN DUYMUŞ",
+                "seviye": "Çırak",
+                "is_kalitesi": 4,
+                "sure_yonetimi": 3,
+                "is_birligi": 1,
+                "problem_cozme": 3,
+                "teknik_yetkinlik": 3,
+                "notlar": "",
+                "ortalama_puan": 2.8
+            }
+        ],
+        "genel_notlar": ""
+    }
+]

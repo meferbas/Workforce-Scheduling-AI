@@ -21,11 +21,20 @@ def calisan_performans_dagilimi(veriler: Dict, calisan: str) -> Dict[str, Dict]:
     """Her tasarım kodu için çalışanın performans dağılımını ve trendini hesaplar."""
     dagilimlar = {}
     for tasarim_kodu in veriler:
-        performanslar = [proje[calisan] for proje in veriler[tasarim_kodu]]
+        performanslar = [proje[calisan] for proje in veriler[tasarim_kodu] if calisan in proje]
+        if not performanslar:
+            continue
+            
+        # Son 10 proje ve önceki projeleri ayır
+        son_10_proje = performanslar[-10:] if len(performanslar) > 10 else performanslar
+        onceki_projeler = performanslar[:-10] if len(performanslar) > 10 else []
         
-        # Son projelere daha fazla ağırlık ver
-        agirliklar = np.linspace(0.5, 1.0, len(performanslar))
-        agirlikli_performans = np.average(performanslar, weights=agirliklar)
+        # Ağırlıklı ortalama hesapla
+        son_10_ortalama = np.mean(son_10_proje) if son_10_proje else 0
+        onceki_ortalama = np.mean(onceki_projeler) if onceki_projeler else son_10_ortalama
+        
+        # Son 10 projeye %60, önceki projelere %40 ağırlık ver
+        agirlikli_performans = (son_10_ortalama * 0.6) + (onceki_ortalama * 0.4)
         
         # Trend analizi (son projelerdeki değişim)
         trend = 0
@@ -40,7 +49,7 @@ def calisan_performans_dagilimi(veriler: Dict, calisan: str) -> Dict[str, Dict]:
         }
     return dagilimlar
 
-def monte_carlo_simulasyonu(veriler: Dict, calisan_listesi: List[str], iterasyon_sayisi: int = 1000) -> Dict:
+def monte_carlo_simulasyonu(veriler: Dict, calisan_listesi: List[str], iterasyon_sayisi: int = 10000) -> Dict:
     """Monte Carlo simülasyonu yaparak gelecek performans tahminlerini üretir."""
     sonuclar = {
         'calisanlar': {},

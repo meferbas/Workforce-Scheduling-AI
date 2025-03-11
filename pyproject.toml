@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.poetry]
+name = "proje-adi"
+version = "0.1.0"
+description = "İş gücü çizelgeleme projesi"
+authors = ["Senin Adın <email@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+flask = "^2.2.2"
+numpy = "^1.21"
+matplotlib = "^3.4"
+json5 = "^0.9.5"
+scipy = "^1.8"

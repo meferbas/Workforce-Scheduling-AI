@@ -15,6 +15,7 @@ from threading import Thread
 import time
 import threading
 from monte_carlo_simulasyon import simulasyon_calistir
+from raporlama import PerformansRaporu
 
 # Global değişkenler
 monte_carlo_running = False
@@ -884,13 +885,15 @@ def is_guncelle():
 
 @app.route('/api/performans-simulasyonu', methods=['POST'])
 def performans_simulasyonu():
+    """Yeni bir Monte Carlo simülasyonu çalıştırır"""
     try:
         # Simülasyonu çalıştır
         sonuc = simulasyon_calistir()
         
         # Monte Carlo sonuçlarını oku
+        mc_sonuclari_dosya = os.path.join(ROOT_DIR, 'veri', 'monte_carlo_sonuclari.json')
         try:
-            with open(os.path.join(ROOT_DIR, 'veri', 'monte_carlo_sonuclari.json'), 'r', encoding='utf-8') as f:
+            with open(mc_sonuclari_dosya, 'r', encoding='utf-8') as f:
                 mc_sonuclari = json.load(f)
                 if not mc_sonuclari:
                     raise Exception("Monte Carlo sonuçları boş")
@@ -1240,6 +1243,176 @@ def periyodik_guncelleme():
         
         # 30 saniye bekle
         time.sleep(30)
+
+@app.route('/api/rapor/haftalik', methods=['GET'])
+def haftalik_rapor():
+    """Haftalık performans raporu oluştur"""
+    try:
+        rapor = PerformansRaporu()
+        rapor_adi = rapor.haftalik_performans_raporu()
+        if rapor_adi:
+            return jsonify({
+                'success': True,
+                'rapor_url': url_for('static', filename=f'raporlar/{rapor_adi}')
+            })
+        return jsonify({'success': False, 'mesaj': 'Rapor oluşturulamadı'})
+    except Exception as e:
+        return jsonify({'success': False, 'mesaj': str(e)})
+
+@app.route('/api/rapor/personel/<calisan_adi>', methods=['GET'])
+def personel_rapor(calisan_adi):
+    """Personel performans raporu oluştur"""
+    try:
+        rapor = PerformansRaporu()
+        rapor_adi = rapor.personel_performans_raporu(calisan_adi)
+        if rapor_adi:
+            return jsonify({
+                'success': True,
+                'rapor_url': url_for('static', filename=f'raporlar/{rapor_adi}')
+            })
+        return jsonify({'success': False, 'mesaj': 'Rapor oluşturulamadı'})
+    except Exception as e:
+        return jsonify({'success': False, 'mesaj': str(e)})
+
+@app.route('/api/rapor/excel', methods=['GET'])
+def excel_rapor():
+    """Excel raporu oluştur"""
+    try:
+        rapor = PerformansRaporu()
+        rapor_adi = rapor.excel_raporu_olustur()
+        if rapor_adi:
+            return jsonify({
+                'success': True,
+                'rapor_url': url_for('static', filename=f'raporlar/{rapor_adi}')
+            })
+        return jsonify({'success': False, 'mesaj': 'Rapor oluşturulamadı'})
+    except Exception as e:
+        return jsonify({'success': False, 'mesaj': str(e)})
+
+# Performans değerlendirme endpoint'i
+@app.route('/api/performans-degerlendirme-kaydet', methods=['POST'])
+def performans_degerlendirme_kaydet():
+    try:
+        data = request.get_json()
+        is_id = data.get('is_id')
+        
+        # İş bilgilerini bul
+        is_listesi = load_json_file(os.path.join(ROOT_DIR, 'veri', 'is_listesi.json')) or []
+        is_bilgisi = next((is_item for is_item in is_listesi if str(is_item['id']) == str(is_id)), None)
+        
+        if not is_bilgisi:
+            return jsonify({'success': False, 'mesaj': 'İş bulunamadı'})
+        
+        tasarim_kodu = is_bilgisi['tasarim_kodu']
+        
+        # Çalışan değerlendirmelerini topla
+        calisan_degerlendirmeleri = {}
+        degerlendirmeler = []  # Detaylı değerlendirmeler için liste
+        genel_notlar = data.get('notlar', '')
+        
+        for key, value in data.items():
+            if key.startswith('calisan_') and '_isim' in key:
+                index = key.split('_')[1]
+                calisan_adi = value
+                
+                # Monte Carlo için normalize edilmiş değerlendirme
+                calisan_degerlendirmeleri[calisan_adi] = {
+                    'is_kalitesi': int(data.get(f'calisan_{index}_is_kalitesi', 0)),
+                    'sure_yonetimi': int(data.get(f'calisan_{index}_sure_yonetimi', 0)),
+                    'is_birligi': int(data.get(f'calisan_{index}_is_birligi', 0)),
+                    'problem_cozme': int(data.get(f'calisan_{index}_problem_cozme', 0)),
+                    'teknik_yetkinlik': int(data.get(f'calisan_{index}_teknik_yetkinlik', 0))
+                }
+                
+                # Detaylı değerlendirme kaydı
+                puanlar = list(calisan_degerlendirmeleri[calisan_adi].values())
+                ortalama_puan = sum(puanlar) / len(puanlar)
+                
+                degerlendirme = {
+                    'calisan': calisan_adi,
+                    'seviye': data.get(f'calisan_{index}_seviye'),
+                    'is_kalitesi': int(data.get(f'calisan_{index}_is_kalitesi', 0)),
+                    'sure_yonetimi': int(data.get(f'calisan_{index}_sure_yonetimi', 0)),
+                    'is_birligi': int(data.get(f'calisan_{index}_is_birligi', 0)),
+                    'problem_cozme': int(data.get(f'calisan_{index}_problem_cozme', 0)),
+                    'teknik_yetkinlik': int(data.get(f'calisan_{index}_teknik_yetkinlik', 0)),
+                    'notlar': data.get(f'calisan_{index}_notlar', ''),
+                    'ortalama_puan': ortalama_puan
+                }
+                degerlendirmeler.append(degerlendirme)
+        
+        # 1. Monte Carlo için normalize edilmiş verileri kaydet
+        for calisan, degerler in calisan_degerlendirmeleri.items():
+            puanlar = list(degerler.values())
+            # 1-5 aralığından 0-1 aralığına normalize et
+            normalize_puan = (sum(puanlar) - len(puanlar)) / (len(puanlar) * 4)  # (toplam - min) / (max - min)
+            
+            # Geçmiş performans verilerini yükle
+            performans_dosyasi = os.path.join(ROOT_DIR, 'veri', 'gecmis_proje_performans_verileri.json')
+            performans_verileri = load_json_file(performans_dosyasi) or {}
+            
+            # Tasarım kodu için veri yoksa oluştur
+            if tasarim_kodu not in performans_verileri:
+                performans_verileri[tasarim_kodu] = []
+            
+            # Yeni projeyi ekle
+            yeni_proje = {calisan: normalize_puan}
+            performans_verileri[tasarim_kodu].append(yeni_proje)
+            
+            # Dosyaya kaydet
+            save_json_file(performans_dosyasi, performans_verileri)
+        
+        # 2. Detaylı değerlendirme verilerini kaydet
+        performans_kaydi = {
+            'tarih': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+            'is_id': is_id,
+            'tasarim_kodu': tasarim_kodu,
+            'proje_adi': is_bilgisi['proje_adi'],
+            'degerlendirmeler': degerlendirmeler,
+            'genel_notlar': genel_notlar
+        }
+        
+        # Mevcut değerlendirmeleri yükle
+        degerlendirmeler_dosyasi = os.path.join(ROOT_DIR, 'veri', 'performans_degerlendirmeleri.json')
+        tum_degerlendirmeler = load_json_file(degerlendirmeler_dosyasi) or []
+        
+        # Yeni değerlendirmeyi ekle
+        tum_degerlendirmeler.append(performans_kaydi)
+        
+        # Dosyaya kaydet
+        save_json_file(degerlendirmeler_dosyasi, tum_degerlendirmeler)
+        
+        return jsonify({'success': True, 'mesaj': 'Performans değerlendirmesi başarıyla kaydedildi'})
+        
+    except Exception as e:
+        print(f"Performans değerlendirme hatası: {str(e)}")
+        return jsonify({'success': False, 'mesaj': f'Bir hata oluştu: {str(e)}'})
+
+@app.route('/api/son-simulasyon-verileri', methods=['GET'])
+def son_simulasyon_verileri():
+    """Son Monte Carlo simülasyon verilerini getirir"""
+    try:
+        # Monte Carlo sonuçlarını oku
+        mc_sonuclari_dosya = os.path.join(ROOT_DIR, 'veri', 'monte_carlo_sonuclari.json')
+        if os.path.exists(mc_sonuclari_dosya):
+            with open(mc_sonuclari_dosya, 'r', encoding='utf-8') as f:
+                mc_sonuclari = json.load(f)
+                if mc_sonuclari:
+                    return jsonify({
+                        'success': True,
+                        'monte_carlo_sonuclari': mc_sonuclari
+                    })
+        
+        return jsonify({
+            'success': False,
+            'mesaj': 'Henüz simülasyon verisi bulunmuyor'
+        })
+        
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'mesaj': f'Simülasyon verileri alınırken hata oluştu: {str(e)}'
+        }), 500
 
 if __name__ == '__main__':
     # Periyodik güncelleme işlemini başlat

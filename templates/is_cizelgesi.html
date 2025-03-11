@@ -238,6 +238,57 @@
         </div>
     </div>
 
+    <!-- Performans Simülasyonu kartından sonra -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header py-2">
+                    <h5 class="card-title mb-0">Raporlar</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h6 class="card-title">Haftalık Performans Raporu</h6>
+                                    <p class="card-text small">Tüm çalışanların haftalık performans ve iş durumlarını içeren PDF raporu.</p>
+                                    <button class="btn btn-primary btn-sm" onclick="raporOlustur('haftalik')">
+                                        <i class="bi bi-file-pdf"></i> PDF Oluştur
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h6 class="card-title">Personel Performans Raporu</h6>
+                                    <p class="card-text small">Seçilen personelin detaylı performans raporunu oluşturur.</p>
+                                    <select class="form-select form-select-sm mb-2" id="personelSelect">
+                                        <option value="">Personel Seçiniz</option>
+                                    </select>
+                                    <button class="btn btn-primary btn-sm" onclick="raporOlustur('personel')" id="personelRaporBtn" disabled>
+                                        <i class="bi bi-file-pdf"></i> PDF Oluştur
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h6 class="card-title">Excel Raporu</h6>
+                                    <p class="card-text small">Tüm performans ve iş verilerini içeren detaylı Excel raporu.</p>
+                                    <button class="btn btn-primary btn-sm" onclick="raporOlustur('excel')">
+                                        <i class="bi bi-file-excel"></i> Excel Oluştur
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Son Personel Atama Detayları -->
     <div class="card mb-4" id="atamaDetaylari" style="display: none;">
         <div class="card-header d-flex justify-content-between align-items-center">
@@ -392,6 +443,59 @@
             </div>
         </div>
     </div>
+
+    <!-- İş Güncelleme Modal'ından sonra -->
+    <!-- Performans Değerlendirme Modal -->
+    <div class="modal fade" id="performansDegerlendirmeModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Performans Değerlendirmesi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-info">
+                        <i class="bi bi-info-circle"></i> Lütfen her çalışan için aşağıdaki kriterlere göre 1-5 arası puan verin.
+                        <br>
+                        <small>1: Çok Yetersiz, 2: Yetersiz, 3: Orta, 4: İyi, 5: Çok İyi</small>
+                    </div>
+                    <form id="performansDegerlendirmeForm">
+                        <input type="hidden" name="is_id" id="degerlendirmeIsId">
+                        <div id="calisanDegerlendirmeleri">
+                            <!-- Çalışan değerlendirme formları buraya dinamik olarak eklenecek -->
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Genel Notlar</label>
+                            <textarea class="form-control" name="notlar" rows="3" placeholder="Projeyle ilgili genel değerlendirmelerinizi yazabilirsiniz..."></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                    <button type="button" class="btn btn-primary" id="degerlendirmeKaydet">Değerlendirmeyi Kaydet</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- İş Tamamlama Onay Modal -->
+    <div class="modal fade" id="isTamamlamaOnayModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">İşi Tamamla</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>İş tamamlandığı için aktif işler tablosundan kaldırılacaktır. Onaylıyor musunuz?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                    <button type="button" class="btn btn-primary" id="isTamamlamaOnayla">Onayla</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
 
@@ -404,75 +508,6 @@
 
 <!-- JavaScript dosyalarını ekle -->
 <script src="{{ url_for('static', filename='js/is_cizelgesi.js') }}"></script>
-
-<!-- Performans Trend Grafiği için Script -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Performans trend grafiği için Chart.js konfigürasyonu
-    const ctx = document.getElementById('performanceTrendChart').getContext('2d');
-    const performanceChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: [], // Zaman etiketleri
-            datasets: [{
-                label: 'Verimlilik',
-                data: [], // Verimlilik verileri
-                borderColor: 'rgb(75, 192, 192)',
-                tension: 0.1
-            }, {
-                label: 'İş Yükü',
-                data: [], // İş yükü verileri
-                borderColor: 'rgb(255, 99, 132)',
-                tension: 0.1
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Performans Trendi'
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    max: 100,
-                    title: {
-                        display: true,
-                        text: 'Yüzde (%)'
-                    }
-                },
-                x: {
-                    title: {
-                        display: true,
-                        text: 'Zaman'
-                    }
-                }
-            }
-        }
-    });
-
-    // Grafiği güncelleme fonksiyonu
-    window.updatePerformanceChart = function(newData) {
-        const chart = performanceChart;
-        
-        // Yeni veriyi ekle
-        chart.data.labels.push(new Date().toLocaleTimeString());
-        chart.data.datasets[0].data.push(newData.efficiency);
-        chart.data.datasets[1].data.push(newData.workload);
-        
-        // Son 10 veriyi göster
-        if (chart.data.labels.length > 10) {
-            chart.data.labels.shift();
-            chart.data.datasets[0].data.shift();
-            chart.data.datasets[1].data.shift();
-        }
-        
-        chart.update();
-    };
-});
-</script>
 
 <!-- Bildirim fonksiyonu -->
 <script>
@@ -516,17 +551,20 @@ function bildirimGoster(tip, mesaj) {
 
 // Monte Carlo simülasyonu için
 $(document).ready(function() {
-    // Sayfa yüklendiğinde mevcut simülasyon verilerini kontrol et
+    // Sayfa yüklendiğinde mevcut simülasyon verilerini getir
     $.ajax({
-        url: '/api/performans-simulasyonu',
-        method: 'POST',
+        url: '/api/son-simulasyon-verileri',
+        method: 'GET',
         success: function(response) {
             if (response.success && response.monte_carlo_sonuclari) {
                 gosterSimulasyonSonuclari(response.monte_carlo_sonuclari);
+                doldurPersonelSelect(response.monte_carlo_sonuclari);
+                $('#simulasyonSonuclari').show();
             }
         }
     });
 
+    // Simülasyon başlatma butonu için event listener
     $('#simulasyonBaslat').click(function() {
         $(this).prop('disabled', true);
         $(this).html('<span class="spinner-border spinner-border-sm"></span> Simülasyon çalışıyor...');
@@ -537,7 +575,9 @@ $(document).ready(function() {
             success: function(response) {
                 if (response.success) {
                     gosterSimulasyonSonuclari(response.monte_carlo_sonuclari);
+                    doldurPersonelSelect(response.monte_carlo_sonuclari);
                     bildirimGoster('success', 'Simülasyon başarıyla tamamlandı');
+                    $('#simulasyonSonuclari').show();
                 } else {
                     bildirimGoster('error', response.mesaj);
                 }
@@ -717,6 +757,311 @@ function showLastAssignmentDetails() {
         error: function(xhr, status, error) {
             console.error('Son atama detayı hatası:', error);
             $('#atamaDetaylari').hide();
+        }
+    });
+}
+</script>
+
+<!-- Raporlama fonksiyonları -->
+<script>
+function doldurPersonelSelect(monte_carlo_sonuclari) {
+    const personelSelect = $('#personelSelect');
+    personelSelect.empty();
+    personelSelect.append('<option value="">Personel Seçiniz</option>');
+    
+    if (monte_carlo_sonuclari && monte_carlo_sonuclari.calisanlar) {
+        // Çalışanları alfabetik sıraya göre sırala
+        const calisanlar = Object.keys(monte_carlo_sonuclari.calisanlar).sort();
+        
+        calisanlar.forEach(calisan => {
+            personelSelect.append(`<option value="${calisan}">${calisan}</option>`);
+        });
+    }
+    
+    // Select box değiştiğinde buton durumunu güncelle
+    personelSelect.on('change', function() {
+        $('#personelRaporBtn').prop('disabled', !this.value);
+    });
+}
+
+function raporOlustur(tip) {
+    let url = '';
+    if (tip === 'haftalik') {
+        url = '/api/rapor/haftalik';
+    } else if (tip === 'personel') {
+        const calisan = document.getElementById('personelSelect').value;
+        if (!calisan) {
+            bildirimGoster('error', 'Lütfen bir personel seçin');
+            return;
+        }
+        url = `/api/rapor/personel/${calisan}`;
+    } else if (tip === 'excel') {
+        url = '/api/rapor/excel';
+    }
+
+    // Rapor oluşturma isteği
+    $.ajax({
+        url: url,
+        method: 'GET',
+        beforeSend: function() {
+            bildirimGoster('info', 'Rapor oluşturuluyor...');
+        },
+        success: function(response) {
+            if (response.success) {
+                bildirimGoster('success', 'Rapor başarıyla oluşturuldu');
+                // Raporu yeni sekmede aç
+                window.open(response.rapor_url, '_blank');
+            } else {
+                bildirimGoster('error', response.mesaj || 'Rapor oluşturulamadı');
+            }
+        },
+        error: function() {
+            bildirimGoster('error', 'Rapor oluşturulurken bir hata oluştu');
+        }
+    });
+}
+</script>
+
+<!-- İş güncelleme fonksiyonunu güncelle -->
+<script>
+function isGuncelle(tasarimKodu) {
+    const modal = new bootstrap.Modal(document.getElementById('isGuncellemeModal'));
+    const form = document.getElementById('isGuncellemeForm');
+    form.querySelector('[name="tasarim_kodu"]').value = tasarimKodu;
+    
+    // Durum değişikliğini izle
+    form.querySelector('[name="durum"]').addEventListener('change', function(e) {
+        const oncelikDiv = form.querySelector('[name="oncelik"]').closest('.mb-3');
+        if (e.target.value === 'tamamlandi') {
+            oncelikDiv.style.display = 'none';
+        } else {
+            oncelikDiv.style.display = 'block';
+        }
+    });
+    
+    modal.show();
+}
+
+// İş güncelleme kaydet butonuna tıklandığında
+document.getElementById('isGuncellemeKaydet').addEventListener('click', function() {
+    const form = document.getElementById('isGuncellemeForm');
+    const tasarimKodu = form.querySelector('[name="tasarim_kodu"]').value;
+    const durum = form.querySelector('[name="durum"]').value;
+    const oncelik = form.querySelector('[name="oncelik"]').value;
+    
+    if (durum === 'tamamlandi') {
+        // Modal'ı kapat ve performans değerlendirmesini göster
+        bootstrap.Modal.getInstance(document.getElementById('isGuncellemeModal')).hide();
+        performansDegerlendirmesiGoster(tasarimKodu);
+    } else {
+        // Normal güncelleme işlemi
+        const isItem = Array.from(document.querySelectorAll('tr[data-tasarim-kodu]')).find(tr => tr.dataset.tasarimKodu === tasarimKodu);
+        if (!isItem) return;
+        
+        const isId = isItem.dataset.isId;
+        isGuncellemeKaydet(isId, durum, false);
+        bootstrap.Modal.getInstance(document.getElementById('isGuncellemeModal')).hide();
+    }
+});
+
+// Performans değerlendirme modalını göster
+function performansDegerlendirmesiGoster(tasarimKodu) {
+    const isItem = Array.from(document.querySelectorAll('tr[data-tasarim-kodu]')).find(tr => tr.dataset.tasarimKodu === tasarimKodu);
+    if (!isItem) return;
+    
+    const isId = isItem.dataset.isId;
+    document.getElementById('degerlendirmeIsId').value = isId;
+    
+    // Çalışan değerlendirme formlarını oluştur
+    const calisanlarDiv = document.getElementById('calisanDegerlendirmeleri');
+    calisanlarDiv.innerHTML = '';
+    
+    // Atanan çalışanları bul
+    const atananCalisanlar = [];
+    const calisanHucresi = isItem.querySelector('td:nth-child(4)');
+    
+    if (calisanHucresi) {
+        const ustabasi = calisanHucresi.querySelector('div:nth-child(1)').textContent.replace('Ustabaşı:', '').trim();
+        const kalifiye = calisanHucresi.querySelector('div:nth-child(2)').textContent.replace('Kalifiye:', '').trim();
+        const cirak = calisanHucresi.querySelector('div:nth-child(3)').textContent.replace('Çırak:', '').trim();
+        
+        if (ustabasi !== '-') atananCalisanlar.push(...ustabasi.split(',').map(c => ({ isim: c.trim(), seviye: 'Ustabaşı' })));
+        if (kalifiye !== '-') atananCalisanlar.push(...kalifiye.split(',').map(c => ({ isim: c.trim(), seviye: 'Kalifiye' })));
+        if (cirak !== '-') atananCalisanlar.push(...cirak.split(',').map(c => ({ isim: c.trim(), seviye: 'Çırak' })));
+    }
+    
+    // Her çalışan için değerlendirme formu oluştur
+    atananCalisanlar.forEach((calisan, index) => {
+        if (!calisan.isim.startsWith('Fason')) {  // Fason işçileri değerlendirmeye alma
+            calisanlarDiv.innerHTML += `
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <h6 class="mb-0">${calisan.isim} (${calisan.seviye})</h6>
+                    </div>
+                    <div class="card-body">
+                        <input type="hidden" name="calisan_${index}_isim" value="${calisan.isim}">
+                        <input type="hidden" name="calisan_${index}_seviye" value="${calisan.seviye}">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">İş Kalitesi</label>
+                                <select class="form-select" name="calisan_${index}_is_kalitesi" required>
+                                    <option value="">Seçiniz</option>
+                                    <option value="1">1 - Çok Yetersiz</option>
+                                    <option value="2">2 - Yetersiz</option>
+                                    <option value="3">3 - Orta</option>
+                                    <option value="4">4 - İyi</option>
+                                    <option value="5">5 - Çok İyi</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Süre Yönetimi</label>
+                                <select class="form-select" name="calisan_${index}_sure_yonetimi" required>
+                                    <option value="">Seçiniz</option>
+                                    <option value="1">1 - Çok Yetersiz</option>
+                                    <option value="2">2 - Yetersiz</option>
+                                    <option value="3">3 - Orta</option>
+                                    <option value="4">4 - İyi</option>
+                                    <option value="5">5 - Çok İyi</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">İş Birliği</label>
+                                <select class="form-select" name="calisan_${index}_is_birligi" required>
+                                    <option value="">Seçiniz</option>
+                                    <option value="1">1 - Çok Yetersiz</option>
+                                    <option value="2">2 - Yetersiz</option>
+                                    <option value="3">3 - Orta</option>
+                                    <option value="4">4 - İyi</option>
+                                    <option value="5">5 - Çok İyi</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Problem Çözme</label>
+                                <select class="form-select" name="calisan_${index}_problem_cozme" required>
+                                    <option value="">Seçiniz</option>
+                                    <option value="1">1 - Çok Yetersiz</option>
+                                    <option value="2">2 - Yetersiz</option>
+                                    <option value="3">3 - Orta</option>
+                                    <option value="4">4 - İyi</option>
+                                    <option value="5">5 - Çok İyi</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Teknik Yetkinlik</label>
+                                <select class="form-select" name="calisan_${index}_teknik_yetkinlik" required>
+                                    <option value="">Seçiniz</option>
+                                    <option value="1">1 - Çok Yetersiz</option>
+                                    <option value="2">2 - Yetersiz</option>
+                                    <option value="3">3 - Orta</option>
+                                    <option value="4">4 - İyi</option>
+                                    <option value="5">5 - Çok İyi</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Özel Notlar</label>
+                                <textarea class="form-control" name="calisan_${index}_notlar" rows="2" placeholder="Bu çalışan için özel notlarınızı yazabilirsiniz..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+    });
+    
+    // Değerlendirme modalını göster
+    const performansModal = new bootstrap.Modal(document.getElementById('performansDegerlendirmeModal'));
+    performansModal.show();
+}
+
+// Performans değerlendirmesini kaydet
+document.getElementById('degerlendirmeKaydet').addEventListener('click', function() {
+    const form = document.getElementById('performansDegerlendirmeForm');
+    const formData = new FormData(form);
+    const data = {};
+    
+    for (let [key, value] of formData.entries()) {
+        data[key] = value;
+    }
+    
+    $.ajax({
+        url: '/api/performans-degerlendirme-kaydet',
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        success: function(response) {
+            if (response.success) {
+                bildirimGoster('success', 'Performans değerlendirmesi başarıyla kaydedildi');
+                $('#performansDegerlendirmeModal').modal('hide');
+                
+                // İş tamamlama onay modalını göster
+                const onayModal = new bootstrap.Modal(document.getElementById('isTamamlamaOnayModal'));
+                
+                // Onay butonuna tıklandığında
+                document.getElementById('isTamamlamaOnayla').onclick = function() {
+                    // İşi sil
+                    $.ajax({
+                        url: '/api/is-sil',
+                        method: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify({ is_id: data.is_id }),
+                        success: function(response) {
+                            if (response.success) {
+                                bildirimGoster('success', 'İş başarıyla silindi');
+                                setTimeout(() => {
+                                    window.location.reload();
+                                }, 1500);
+                            } else {
+                                bildirimGoster('error', response.mesaj || 'İş silinemedi');
+                            }
+                        },
+                        error: function() {
+                            bildirimGoster('error', 'İş silinirken bir hata oluştu');
+                        }
+                    });
+                    onayModal.hide();
+                };
+                
+                onayModal.show();
+            } else {
+                bildirimGoster('error', response.mesaj || 'Değerlendirme kaydedilemedi');
+            }
+        },
+        error: function() {
+            bildirimGoster('error', 'Değerlendirme kaydedilirken bir hata oluştu');
+        }
+    });
+});
+
+// İş güncelleme fonksiyonunu güncelle
+function isGuncellemeKaydet(isId, durum, sayfayiYenile = false) {
+    $.ajax({
+        url: '/api/is-guncelle',
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            is_id: isId,
+            durum: durum,
+            oncelik: 'normal' // Varsayılan öncelik değeri ekle
+        }),
+        success: function(response) {
+            if (response.success) {
+                bildirimGoster('success', 'İş durumu güncellendi');
+                if (sayfayiYenile) {
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1500);
+                }
+            } else {
+                bildirimGoster('error', response.mesaj || 'İş güncellenemedi');
+            }
+        },
+        error: function(xhr) {
+            try {
+                const response = xhr.responseJSON || {};
+                bildirimGoster('error', response.mesaj || 'İş güncellenirken bir hata oluştu');
+            } catch (e) {
+                bildirimGoster('error', 'İş güncellenirken bir hata oluştu');
+            }
         }
     });
 }

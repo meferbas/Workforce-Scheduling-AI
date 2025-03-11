@@ -1,2285 +1,2285 @@
 {
     "calisanlar": {
         "AYKUT BONCUK": {
-            "ortalama_performans": 0.5087366433387949,
-            "risk_skoru": 0.486375,
-            "gecikme_olasiligi": 0.2355625,
-            "performans_kararliligi": 0.8562719974335011,
+            "ortalama_performans": 0.509323107979198,
+            "risk_skoru": 0.48511875,
+            "gecikme_olasiligi": 0.2383125,
+            "performans_kararliligi": 0.8523231156419542,
             "tasarim_bazli_sonuclar": {
                 "M-KAM-001": {
-                    "ortalama": 0.5510686489274269,
-                    "risk_skoru": 0.432,
-                    "gecikme_olasiligi": 0.19
+                    "ortalama": 0.6137606154673917,
+                    "risk_skoru": 0.3215,
+                    "gecikme_olasiligi": 0.1143
                 },
                 "M-KKK-002": {
-                    "ortalama": 0.4925269267188121,
-                    "risk_skoru": 0.497,
-                    "gecikme_olasiligi": 0.254
+                    "ortalama": 0.5333543495628958,
+                    "risk_skoru": 0.448,
+                    "gecikme_olasiligi": 0.2103
                 },
                 "M-OSK1.5-003": {
-                    "ortalama": 0.5724047972117876,
-                    "risk_skoru": 0.394,
-                    "gecikme_olasiligi": 0.185
+                    "ortalama": 0.5054421586811206,
+                    "risk_skoru": 0.4911,
+                    "gecikme_olasiligi": 0.2425
                 },
                 "M-PA-005": {
-                    "ortalama": 0.5152141420939912,
-                    "risk_skoru": 0.461,
-                    "gecikme_olasiligi": 0.223
+                    "ortalama": 0.49830953269422773,
+                    "risk_skoru": 0.496,
+                    "gecikme_olasiligi": 0.2501
                 },
                 "M-RPV3.5-006": {
-                    "ortalama": 0.5472225885181454,
-                    "risk_skoru": 0.433,
-                    "gecikme_olasiligi": 0.181
+                    "ortalama": 0.4783123939674656,
+                    "risk_skoru": 0.5299,
+                    "gecikme_olasiligi": 0.2695
                 },
                 "M-MOD4-007": {
-                    "ortalama": 0.47515292956264293,
-                    "risk_skoru": 0.548,
-                    "gecikme_olasiligi": 0.255
+                    "ortalama": 0.4420992786450422,
+                    "risk_skoru": 0.5921,
+                    "gecikme_olasiligi": 0.3084
                 },
                 "M-MOD3-008": {
-                    "ortalama": 0.49466068424719606,
-                    "risk_skoru": 0.491,
-                    "gecikme_olasiligi": 0.245
+                    "ortalama": 0.4546217242476702,
+                    "risk_skoru": 0.5663,
+                    "gecikme_olasiligi": 0.2992
                 },
                 "M-RPV2.5-009": {
-                    "ortalama": 0.5149368337165646,
-                    "risk_skoru": 0.482,
-                    "gecikme_olasiligi": 0.226
+                    "ortalama": 0.535075847884095,
+                    "risk_skoru": 0.4412,
+                    "gecikme_olasiligi": 0.2009
                 },
                 "M-TK1-010": {
-                    "ortalama": 0.516142792688677,
-                    "risk_skoru": 0.469,
-                    "gecikme_olasiligi": 0.228
+                    "ortalama": 0.5378707160835269,
+                    "risk_skoru": 0.4424,
+                    "gecikme_olasiligi": 0.2073
                 },
                 "M-AVK-011": {
-                    "ortalama": 0.5144455349341288,
-                    "risk_skoru": 0.486,
-                    "gecikme_olasiligi": 0.245
+                    "ortalama": 0.6281543973267638,
+                    "risk_skoru": 0.3198,
+                    "gecikme_olasiligi": 0.1228
                 },
                 "M-CKM-012": {
-                    "ortalama": 0.44519769840520307,
-                    "risk_skoru": 0.577,
-                    "gecikme_olasiligi": 0.306
+                    "ortalama": 0.4101637995893725,
+                    "risk_skoru": 0.6302,
+                    "gecikme_olasiligi": 0.3651
                 },
                 "M-MOD2-014": {
-                    "ortalama": 0.48299408813174455,
-                    "risk_skoru": 0.532,
-                    "gecikme_olasiligi": 0.264
+                    "ortalama": 0.5407983212506993,
+                    "risk_skoru": 0.4376,
+                    "gecikme_olasiligi": 0.1972
                 },
                 "M-DUK-015": {
-                    "ortalama": 0.5081836997583321,
-                    "risk_skoru": 0.477,
-                    "gecikme_olasiligi": 0.241
+                    "ortalama": 0.5100040938333825,
+                    "risk_skoru": 0.4836,
+                    "gecikme_olasiligi": 0.2384
                 },
                 "M-KK-016": {
-                    "ortalama": 0.49015566414184897,
-                    "risk_skoru": 0.517,
-                    "gecikme_olasiligi": 0.268
+                    "ortalama": 0.4392385883231497,
+                    "risk_skoru": 0.5935,
+                    "gecikme_olasiligi": 0.3124
                 },
                 "M-D90K-017": {
-                    "ortalama": 0.5130564032231216,
-                    "risk_skoru": 0.488,
-                    "gecikme_olasiligi": 0.229
+                    "ortalama": 0.47388369363766114,
+                    "risk_skoru": 0.543,
+                    "gecikme_olasiligi": 0.2805
                 },
                 "M-YK-004": {
-                    "ortalama": 0.5064228611410954,
-                    "risk_skoru": 0.498,
-                    "gecikme_olasiligi": 0.229
+                    "ortalama": 0.5480802164727012,
+                    "risk_skoru": 0.4257,
+                    "gecikme_olasiligi": 0.1941
                 }
             },
             "performans_dagilimi": {
                 "min": 0.0,
                 "max": 1.0,
-                "std": 0.26807461887177875,
-                "q25": 0.313123916052006,
-                "q75": 0.703852015944825
+                "std": 0.27173229874091687,
+                "q25": 0.31091216783092207,
+                "q75": 0.7087317292796047
             }
         },
         "RAFET KARABAYIR": {
-            "ortalama_performans": 0.5090701223888143,
-            "risk_skoru": 0.4839375,
-            "gecikme_olasiligi": 0.2306875,
-            "performans_kararliligi": 0.8601600986765475,
+            "ortalama_performans": 0.5059443498449938,
+            "risk_skoru": 0.48979375,
+            "gecikme_olasiligi": 0.23831875,
+            "performans_kararliligi": 0.8561521196222313,
             "tasarim_bazli_sonuclar": {
                 "M-KAM-001": {
-                    "ortalama": 0.5244749316877292,
-                    "risk_skoru": 0.466,
-                    "gecikme_olasiligi": 0.223
+                    "ortalama": 0.5185941195887878,
+                    "risk_skoru": 0.4706,
+                    "gecikme_olasiligi": 0.2285
                 },
                 "M-KKK-002": {
-                    "ortalama": 0.4829868761292198,
-                    "risk_skoru": 0.512,
-                    "gecikme_olasiligi": 0.258
+                    "ortalama": 0.38061015383865143,
+                    "risk_skoru": 0.675,
+                    "gecikme_olasiligi": 0.4107
                 },
                 "M-OSK1.5-003": {
-                    "ortalama": 0.49936482919304254,
-                    "risk_skoru": 0.495,
-                    "gecikme_olasiligi": 0.234
+                    "ortalama": 0.5857892058022818,
+                    "risk_skoru": 0.3624,
+                    "gecikme_olasiligi": 0.1344
                 },
                 "M-PA-005": {
-                    "ortalama": 0.4959195145832634,
-                    "risk_skoru": 0.499,
-                    "gecikme_olasiligi": 0.267
+                    "ortalama": 0.5408909336065079,
+                    "risk_skoru": 0.4352,
+                    "gecikme_olasiligi": 0.2021
                 },
                 "M-RPV3.5-006": {
-                    "ortalama": 0.48340786931503404,
-                    "risk_skoru": 0.53,
-                    "gecikme_olasiligi": 0.263
+                    "ortalama": 0.43269048379213526,
+                    "risk_skoru": 0.6009,
+                    "gecikme_olasiligi": 0.3275
                 },
                 "M-MOD4-007": {
-                    "ortalama": 0.4766685578930162,
-                    "risk_skoru": 0.538,
-                    "gecikme_olasiligi": 0.258
+                    "ortalama": 0.5194142943318917,
+                    "risk_skoru": 0.4675,
+                    "gecikme_olasiligi": 0.2217
                 },
                 "M-MOD3-008": {
-                    "ortalama": 0.5366705987792952,
-                    "risk_skoru": 0.43,
-                    "gecikme_olasiligi": 0.19
+                    "ortalama": 0.5971261147054362,
+                    "risk_skoru": 0.3563,
+                    "gecikme_olasiligi": 0.147
                 },
                 "M-RPV2.5-009": {
-                    "ortalama": 0.48846321930474246,
-                    "risk_skoru": 0.518,
-                    "gecikme_olasiligi": 0.253
+                    "ortalama": 0.4712299023657491,
+                    "risk_skoru": 0.544,
+                    "gecikme_olasiligi": 0.2623
                 },
                 "M-TK1-010": {
-                    "ortalama": 0.5022706258350876,
-                    "risk_skoru": 0.482,
-                    "gecikme_olasiligi": 0.247
+                    "ortalama": 0.4644717555071409,
+                    "risk_skoru": 0.5525,
+                    "gecikme_olasiligi": 0.3005
                 },
                 "M-AVK-011": {
-                    "ortalama": 0.5315926329247954,
-                    "risk_skoru": 0.454,
-                    "gecikme_olasiligi": 0.206
+                    "ortalama": 0.5146801016108595,
+                    "risk_skoru": 0.4796,
+                    "gecikme_olasiligi": 0.2255
                 },
                 "M-CKM-012": {
-                    "ortalama": 0.5176043850416493,
-                    "risk_skoru": 0.467,
-                    "gecikme_olasiligi": 0.225
+                    "ortalama": 0.5036453185881042,
+                    "risk_skoru": 0.4954,
+                    "gecikme_olasiligi": 0.2366
                 },
                 "M-MOD2-014": {
-                    "ortalama": 0.5109664634458437,
-                    "risk_skoru": 0.489,
-                    "gecikme_olasiligi": 0.201
+                    "ortalama": 0.5407316829257088,
+                    "risk_skoru": 0.4347,
+                    "gecikme_olasiligi": 0.1848
                 },
                 "M-DUK-015": {
-                    "ortalama": 0.49397960758184883,
-                    "risk_skoru": 0.519,
-                    "gecikme_olasiligi": 0.256
+                    "ortalama": 0.5039684762388279,
+                    "risk_skoru": 0.4964,
+                    "gecikme_olasiligi": 0.2466
                 },
                 "M-KK-016": {
-                    "ortalama": 0.5834304561555238,
-                    "risk_skoru": 0.377,
-                    "gecikme_olasiligi": 0.156
+                    "ortalama": 0.5091620091239074,
+                    "risk_skoru": 0.4895,
+                    "gecikme_olasiligi": 0.2123
                 },
                 "M-D90K-017": {
-                    "ortalama": 0.5085473393809447,
-                    "risk_skoru": 0.49,
-                    "gecikme_olasiligi": 0.223
+                    "ortalama": 0.4945034150255555,
+                    "risk_skoru": 0.5072,
+                    "gecikme_olasiligi": 0.2477
                 },
                 "M-YK-004": {
-                    "ortalama": 0.5087740509699925,
-                    "risk_skoru": 0.477,
-                    "gecikme_olasiligi": 0.231
+                    "ortalama": 0.517601630468355,
+                    "risk_skoru": 0.4695,
+                    "gecikme_olasiligi": 0.2249
                 }
             },
             "performans_dagilimi": {
                 "min": 0.0,
                 "max": 1.0,
-                "std": 0.26442380880269883,
-                "q25": 0.3183870108598179,
-                "q75": 0.7007155637961404
+                "std": 0.26818639076001677,
+                "q25": 0.31058945313253494,
+                "q75": 0.7017537265067979
             }
         },
         "RAMAZAN ŞAMASTI": {
-            "ortalama_performans": 0.5013950537922156,
-            "risk_skoru": 0.501375,
-            "gecikme_olasiligi": 0.242375,
-            "performans_kararliligi": 0.8553552772118769,
+            "ortalama_performans": 0.4995750488486413,
+            "risk_skoru": 0.5007,
+            "gecikme_olasiligi": 0.2475125,
+            "performans_kararliligi": 0.8548540581371318,
             "tasarim_bazli_sonuclar": {
                 "M-KAM-001": {
-                    "ortalama": 0.5121614427634646,
-                    "risk_skoru": 0.485,
-                    "gecikme_olasiligi": 0.24
+                    "ortalama": 0.4331394727658414,
+                    "risk_skoru": 0.5986,
+                    "gecikme_olasiligi": 0.3339
                 },
                 "M-KKK-002": {
-                    "ortalama": 0.48930636798694466,
-                    "risk_skoru": 0.515,
-                    "gecikme_olasiligi": 0.255
+                    "ortalama": 0.4886680214393319,
+                    "risk_skoru": 0.5206,
+                    "gecikme_olasiligi": 0.2542
                 },
                 "M-OSK1.5-003": {
-                    "ortalama": 0.5122547243704809,
-                    "risk_skoru": 0.475,
-                    "gecikme_olasiligi": 0.254
+                    "ortalama": 0.46231214869600346,
+                    "risk_skoru": 0.5517,
+                    "gecikme_olasiligi": 0.3051
                 },
                 "M-PA-005": {
-                    "ortalama": 0.4983332789379301,
-                    "risk_skoru": 0.486,
-                    "gecikme_olasiligi": 0.229
+                    "ortalama": 0.4663162396951675,
+                    "risk_skoru": 0.5536,
+                    "gecikme_olasiligi": 0.2768
                 },
                 "M-RPV3.5-006": {
-                    "ortalama": 0.43356801830238373,
-                    "risk_skoru": 0.607,
-                    "gecikme_olasiligi": 0.312
+                    "ortalama": 0.49340109436973234,
+                    "risk_skoru": 0.5129,
+                    "gecikme_olasiligi": 0.2383
                 },
                 "M-MOD4-007": {
-                    "ortalama": 0.4870506794997417,
-                    "risk_skoru": 0.509,
-                    "gecikme_olasiligi": 0.244
+                    "ortalama": 0.5329040418497006,
+                    "risk_skoru": 0.4472,
+                    "gecikme_olasiligi": 0.1892
                 },
                 "M-MOD3-008": {
-                    "ortalama": 0.5022336386226527,
-                    "risk_skoru": 0.515,
-                    "gecikme_olasiligi": 0.232
+                    "ortalama": 0.5233615824902232,
+                    "risk_skoru": 0.4661,
+                    "gecikme_olasiligi": 0.216
                 },
                 "M-RPV2.5-009": {
-                    "ortalama": 0.5491209029784541,
-                    "risk_skoru": 0.432,
-                    "gecikme_olasiligi": 0.208
+                    "ortalama": 0.5484943397158876,
+                    "risk_skoru": 0.4319,
+                    "gecikme_olasiligi": 0.1887
                 },
                 "M-TK1-010": {
-                    "ortalama": 0.5143004582442489,
-                    "risk_skoru": 0.484,
-                    "gecikme_olasiligi": 0.226
+                    "ortalama": 0.4805026035004018,
+                    "risk_skoru": 0.526,
+                    "gecikme_olasiligi": 0.2775
                 },
                 "M-AVK-011": {
-                    "ortalama": 0.5075305280188113,
-                    "risk_skoru": 0.506,
-                    "gecikme_olasiligi": 0.222
+                    "ortalama": 0.5581222995672515,
+                    "risk_skoru": 0.4154,
+                    "gecikme_olasiligi": 0.1802
                 },
                 "M-CKM-012": {
-                    "ortalama": 0.5047663738700113,
-                    "risk_skoru": 0.494,
-                    "gecikme_olasiligi": 0.226
+                    "ortalama": 0.4522000860620591,
+                    "risk_skoru": 0.5707,
+                    "gecikme_olasiligi": 0.3116
                 },
                 "M-MOD2-014": {
-                    "ortalama": 0.47805911860421274,
-                    "risk_skoru": 0.544,
-                    "gecikme_olasiligi": 0.261
+                    "ortalama": 0.44887391323822157,
+                    "risk_skoru": 0.576,
+                    "gecikme_olasiligi": 0.301
                 },
                 "M-DUK-015": {
-                    "ortalama": 0.5238373200201989,
-                    "risk_skoru": 0.471,
-                    "gecikme_olasiligi": 0.215
+                    "ortalama": 0.5245319207762513,
+                    "risk_skoru": 0.4589,
+                    "gecikme_olasiligi": 0.2184
                 },
                 "M-KK-016": {
-                    "ortalama": 0.5078421588234904,
-                    "risk_skoru": 0.493,
-                    "gecikme_olasiligi": 0.249
+                    "ortalama": 0.569567570542233,
+                    "risk_skoru": 0.4038,
+                    "gecikme_olasiligi": 0.1791
                 },
                 "M-D90K-017": {
-                    "ortalama": 0.4664308099940981,
-                    "risk_skoru": 0.565,
-                    "gecikme_olasiligi": 0.285
+                    "ortalama": 0.46949785803090427,
+                    "risk_skoru": 0.5387,
+                    "gecikme_olasiligi": 0.2855
                 },
                 "M-YK-004": {
-                    "ortalama": 0.5355250396383253,
-                    "risk_skoru": 0.441,
-                    "gecikme_olasiligi": 0.22
+                    "ortalama": 0.5413075888390505,
+                    "risk_skoru": 0.4391,
+                    "gecikme_olasiligi": 0.2047
                 }
             },
             "performans_dagilimi": {
                 "min": 0.0,
                 "max": 1.0,
-                "std": 0.2689281714399991,
-                "q25": 0.30706136533068795,
-                "q75": 0.697231792001767
+                "std": 0.2693937098958217,
+                "q25": 0.302369294238828,
+                "q75": 0.6962302386124178
             }
         },
         "SÜHA DEMİR": {
-            "ortalama_performans": 0.5096483990702051,
-            "risk_skoru": 0.4870625,
-            "gecikme_olasiligi": 0.2261875,
-            "performans_kararliligi": 0.8604905944574772,
+            "ortalama_performans": 0.49887682700944536,
+            "risk_skoru": 0.50248125,
+            "gecikme_olasiligi": 0.24508125,
+            "performans_kararliligi": 0.8584966515650209,
             "tasarim_bazli_sonuclar": {
                 "M-KAM-001": {
-                    "ortalama": 0.49744299910196516,
-                    "risk_skoru": 0.514,
-                    "gecikme_olasiligi": 0.233
+                    "ortalama": 0.4365600994832659,
+                    "risk_skoru": 0.6013,
+                    "gecikme_olasiligi": 0.3195
                 },
                 "M-KKK-002": {
-                    "ortalama": 0.4516054649330596,
-                    "risk_skoru": 0.582,
-                    "gecikme_olasiligi": 0.298
+                    "ortalama": 0.39259228041626065,
+                    "risk_skoru": 0.6655,
+                    "gecikme_olasiligi": 0.3821
                 },
                 "M-OSK1.5-003": {
-                    "ortalama": 0.4774114133273521,
-                    "risk_skoru": 0.541,
-                    "gecikme_olasiligi": 0.271
+                    "ortalama": 0.5189202434665116,
+                    "risk_skoru": 0.4773,
+                    "gecikme_olasiligi": 0.2043
                 },
                 "M-PA-005": {
-                    "ortalama": 0.5553576406299756,
-                    "risk_skoru": 0.419,
-                    "gecikme_olasiligi": 0.171
+                    "ortalama": 0.5235033776288738,
+                    "risk_skoru": 0.4625,
+                    "gecikme_olasiligi": 0.2177
                 },
                 "M-RPV3.5-006": {
-                    "ortalama": 0.5347531540684568,
-                    "risk_skoru": 0.445,
-                    "gecikme_olasiligi": 0.189
+                    "ortalama": 0.5674620349079718,
+                    "risk_skoru": 0.3906,
+                    "gecikme_olasiligi": 0.1671
                 },
                 "M-MOD4-007": {
-                    "ortalama": 0.5235186679374358,
-                    "risk_skoru": 0.462,
-                    "gecikme_olasiligi": 0.238
+                    "ortalama": 0.44878246643294134,
+                    "risk_skoru": 0.5768,
+                    "gecikme_olasiligi": 0.326
                 },
                 "M-MOD3-008": {
-                    "ortalama": 0.5656182302453303,
-                    "risk_skoru": 0.397,
-                    "gecikme_olasiligi": 0.162
+                    "ortalama": 0.5197422610130695,
+                    "risk_skoru": 0.4734,
+                    "gecikme_olasiligi": 0.2063
                 },
                 "M-RPV2.5-009": {
-                    "ortalama": 0.47592281031626454,
-                    "risk_skoru": 0.527,
-                    "gecikme_olasiligi": 0.236
+                    "ortalama": 0.4993598056990215,
+                    "risk_skoru": 0.5017,
+                    "gecikme_olasiligi": 0.2137
                 },
                 "M-TK1-010": {
-                    "ortalama": 0.505692477342633,
-                    "risk_skoru": 0.487,
-                    "gecikme_olasiligi": 0.216
+                    "ortalama": 0.5453810765427272,
+                    "risk_skoru": 0.4304,
+                    "gecikme_olasiligi": 0.1787
                 },
                 "M-AVK-011": {
-                    "ortalama": 0.43748157031824814,
-                    "risk_skoru": 0.591,
-                    "gecikme_olasiligi": 0.324
+                    "ortalama": 0.4122712736784073,
+                    "risk_skoru": 0.6334,
+                    "gecikme_olasiligi": 0.3547
                 },
                 "M-CKM-012": {
-                    "ortalama": 0.49834205317726116,
-                    "risk_skoru": 0.508,
-                    "gecikme_olasiligi": 0.247
+                    "ortalama": 0.5412562352709096,
+                    "risk_skoru": 0.4363,
+                    "gecikme_olasiligi": 0.206
                 },
                 "M-MOD2-014": {
-                    "ortalama": 0.4953990822932624,
-                    "risk_skoru": 0.51,
-                    "gecikme_olasiligi": 0.237
+                    "ortalama": 0.4803970311676077,
+                    "risk_skoru": 0.53,
+                    "gecikme_olasiligi": 0.2693
                 },
                 "M-DUK-015": {
-                    "ortalama": 0.5166908444599734,
-                    "risk_skoru": 0.483,
-                    "gecikme_olasiligi": 0.242
+                    "ortalama": 0.5496283807199734,
+                    "risk_skoru": 0.4303,
+                    "gecikme_olasiligi": 0.2039
                 },
                 "M-KK-016": {
-                    "ortalama": 0.5614360487693362,
-                    "risk_skoru": 0.413,
-                    "gecikme_olasiligi": 0.15
+                    "ortalama": 0.5334268779518532,
+                    "risk_skoru": 0.4485,
+                    "gecikme_olasiligi": 0.1953
                 },
                 "M-D90K-017": {
-                    "ortalama": 0.5273070824798812,
-                    "risk_skoru": 0.454,
-                    "gecikme_olasiligi": 0.213
+                    "ortalama": 0.47305695395542335,
+                    "risk_skoru": 0.5424,
+                    "gecikme_olasiligi": 0.2813
                 },
                 "M-YK-004": {
-                    "ortalama": 0.5303948457228469,
-                    "risk_skoru": 0.46,
-                    "gecikme_olasiligi": 0.192
+                    "ortalama": 0.5396888338163075,
+                    "risk_skoru": 0.4393,
+                    "gecikme_olasiligi": 0.1954
                 }
             },
             "performans_dagilimi": {
                 "min": 0.0,
                 "max": 1.0,
-                "std": 0.2641111560901232,
-                "q25": 0.32021760074807953,
-                "q75": 0.7029762542723889
+                "std": 0.2659918687055858,
+                "q25": 0.3044398046251152,
+                "q75": 0.6921819391244382
             }
         },
         "İsmail CAN": {
-            "ortalama_performans": 0.49205696321596043,
-            "risk_skoru": 0.517875,
-            "gecikme_olasiligi": 0.2535,
-            "performans_kararliligi": 0.8571145961322095,
+            "ortalama_performans": 0.4941918833263455,
+            "risk_skoru": 0.50879375,
+            "gecikme_olasiligi": 0.25356875,
+            "performans_kararliligi": 0.854630820555272,
             "tasarim_bazli_sonuclar": {
                 "M-KAM-001": {
-                    "ortalama": 0.5018340825590999,
-                    "risk_skoru": 0.497,
-                    "gecikme_olasiligi": 0.237
+                    "ortalama": 0.47734473835951186,
+                    "risk_skoru": 0.5359,
+                    "gecikme_olasiligi": 0.2688
                 },
                 "M-KKK-002": {
-                    "ortalama": 0.5069481956414073,
-                    "risk_skoru": 0.503,
-                    "gecikme_olasiligi": 0.248
+                    "ortalama": 0.5109715185047581,
+                    "risk_skoru": 0.4807,
+                    "gecikme_olasiligi": 0.2442
                 },
                 "M-OSK1.5-003": {
-                    "ortalama": 0.49900553315814583,
-                    "risk_skoru": 0.501,
-                    "gecikme_olasiligi": 0.242
+                    "ortalama": 0.48993049618915585,
+                    "risk_skoru": 0.5232,
+                    "gecikme_olasiligi": 0.2564
                 },
                 "M-PA-005": {
-                    "ortalama": 0.4212450043745177,
-                    "risk_skoru": 0.636,
-                    "gecikme_olasiligi": 0.332
+                    "ortalama": 0.4574540390017139,
+                    "risk_skoru": 0.5667,
+                    "gecikme_olasiligi": 0.2832
                 },
                 "M-RPV3.5-006": {
-                    "ortalama": 0.5172267786441773,
-                    "risk_skoru": 0.485,
-                    "gecikme_olasiligi": 0.208
+                    "ortalama": 0.48865422782866674,
+                    "risk_skoru": 0.5185,
+                    "gecikme_olasiligi": 0.2531
                 },
                 "M-MOD4-007": {
-                    "ortalama": 0.5109990576835965,
-                    "risk_skoru": 0.489,
-                    "gecikme_olasiligi": 0.236
+                    "ortalama": 0.4407594399321562,
+                    "risk_skoru": 0.5878,
+                    "gecikme_olasiligi": 0.3174
                 },
                 "M-MOD3-008": {
-                    "ortalama": 0.45679134932888044,
-                    "risk_skoru": 0.585,
-                    "gecikme_olasiligi": 0.299
+                    "ortalama": 0.37941798371338425,
+                    "risk_skoru": 0.6801,
+                    "gecikme_olasiligi": 0.4005
                 },
                 "M-RPV2.5-009": {
-                    "ortalama": 0.4682069597014909,
-                    "risk_skoru": 0.551,
-                    "gecikme_olasiligi": 0.283
+                    "ortalama": 0.5085074073516204,
+                    "risk_skoru": 0.4917,
+                    "gecikme_olasiligi": 0.233
                 },
                 "M-TK1-010": {
-                    "ortalama": 0.4484866467033527,
-                    "risk_skoru": 0.581,
-                    "gecikme_olasiligi": 0.304
+                    "ortalama": 0.45204648549455134,
+                    "risk_skoru": 0.5659,
+                    "gecikme_olasiligi": 0.2988
                 },
                 "M-AVK-011": {
-                    "ortalama": 0.48258531442443703,
-                    "risk_skoru": 0.526,
-                    "gecikme_olasiligi": 0.248
+                    "ortalama": 0.5157865930061613,
+                    "risk_skoru": 0.4779,
+                    "gecikme_olasiligi": 0.2253
                 },
                 "M-CKM-012": {
-                    "ortalama": 0.49016588715209697,
-                    "risk_skoru": 0.505,
-                    "gecikme_olasiligi": 0.259
+                    "ortalama": 0.5257734925193578,
+                    "risk_skoru": 0.4589,
+                    "gecikme_olasiligi": 0.2136
                 },
                 "M-MOD2-014": {
-                    "ortalama": 0.49475992103367455,
-                    "risk_skoru": 0.509,
-                    "gecikme_olasiligi": 0.272
+                    "ortalama": 0.5139997274090651,
+                    "risk_skoru": 0.4727,
+                    "gecikme_olasiligi": 0.2349
                 },
                 "M-DUK-015": {
-                    "ortalama": 0.520682468675637,
-                    "risk_skoru": 0.472,
-                    "gecikme_olasiligi": 0.195
+                    "ortalama": 0.584805322838951,
+                    "risk_skoru": 0.3689,
+                    "gecikme_olasiligi": 0.1412
                 },
                 "M-KK-016": {
-                    "ortalama": 0.5207688475876759,
-                    "risk_skoru": 0.466,
-                    "gecikme_olasiligi": 0.224
+                    "ortalama": 0.5161704909812226,
+                    "risk_skoru": 0.4743,
+                    "gecikme_olasiligi": 0.2383
                 },
                 "M-D90K-017": {
-                    "ortalama": 0.5360974142912085,
-                    "risk_skoru": 0.468,
-                    "gecikme_olasiligi": 0.228
+                    "ortalama": 0.5402499064253917,
+                    "risk_skoru": 0.4429,
+                    "gecikme_olasiligi": 0.209
                 },
                 "M-YK-004": {
-                    "ortalama": 0.4971079504959691,
-                    "risk_skoru": 0.512,
-                    "gecikme_olasiligi": 0.241
+                    "ortalama": 0.5051982636658613,
+                    "risk_skoru": 0.4946,
+                    "gecikme_olasiligi": 0.2394
                 }
             },
             "performans_dagilimi": {
                 "min": 0.0,
                 "max": 1.0,
-                "std": 0.2672876763599385,
-                "q25": 0.2975674554659836,
-                "q75": 0.686099593833164
+                "std": 0.2696007969616634,
+                "q25": 0.2968757024307139,
+                "q75": 0.6906820268182206
             }
         },
         "Oktay ALICI": {
-            "ortalama_performans": 0.4991090896383513,
-            "risk_skoru": 0.5055625,
-            "gecikme_olasiligi": 0.247625,
-            "performans_kararliligi": 0.8536482148175027,
+            "ortalama_performans": 0.5009402820816891,
+            "risk_skoru": 0.49734375,
+            "gecikme_olasiligi": 0.2487625,
+            "performans_kararliligi": 0.8519088865261004,
             "tasarim_bazli_sonuclar": {
                 "M-KAM-001": {
-                    "ortalama": 0.5003042526248045,
-                    "risk_skoru": 0.498,
-                    "gecikme_olasiligi": 0.263
+                    "ortalama": 0.5323480719842387,
+                    "risk_skoru": 0.4471,
+                    "gecikme_olasiligi": 0.2203
                 },
                 "M-KKK-002": {
-                    "ortalama": 0.5128922487277063,
-                    "risk_skoru": 0.49,
-                    "gecikme_olasiligi": 0.258
+                    "ortalama": 0.5965504235601838,
+                    "risk_skoru": 0.3616,
+                    "gecikme_olasiligi": 0.1612
                 },
                 "M-OSK1.5-003": {
-                    "ortalama": 0.5094003805306321,
-                    "risk_skoru": 0.477,
-                    "gecikme_olasiligi": 0.214
-                },
-                "M-PA-005": {
-                    "ortalama": 0.49508137585595724,
-                    "risk_skoru": 0.51,
-                    "gecikme_olasiligi": 0.252
-                },
-                "M-RPV3.5-006": {
-                    "ortalama": 0.5081184394851996,
-                    "risk_skoru": 0.482,
-                    "gecikme_olasiligi": 0.227
-                },
-                "M-MOD4-007": {
-                    "ortalama": 0.4689247136896827,
-                    "risk_skoru": 0.54,
-                    "gecikme_olasiligi": 0.298
-                },
-                "M-MOD3-008": {
-                    "ortalama": 0.5420064926821365,
-                    "risk_skoru": 0.452,
-                    "gecikme_olasiligi": 0.209
-                },
-                "M-RPV2.5-009": {
-                    "ortalama": 0.4983793588836626,
-                    "risk_skoru": 0.502,
-                    "gecikme_olasiligi": 0.237
-                },
-                "M-TK1-010": {
-                    "ortalama": 0.5181177239403153,
-                    "risk_skoru": 0.487,
-                    "gecikme_olasiligi": 0.217
-                },
-                "M-AVK-011": {
-                    "ortalama": 0.5205664269584144,
-                    "risk_skoru": 0.472,
+                    "ortalama": 0.5254600131827452,
+                    "risk_skoru": 0.4661,
                     "gecikme_olasiligi": 0.206
                 },
+                "M-PA-005": {
+                    "ortalama": 0.5051826773810997,
+                    "risk_skoru": 0.497,
+                    "gecikme_olasiligi": 0.2335
+                },
+                "M-RPV3.5-006": {
+                    "ortalama": 0.5502917048898879,
+                    "risk_skoru": 0.4223,
+                    "gecikme_olasiligi": 0.1762
+                },
+                "M-MOD4-007": {
+                    "ortalama": 0.39896442979473024,
+                    "risk_skoru": 0.6415,
+                    "gecikme_olasiligi": 0.3967
+                },
+                "M-MOD3-008": {
+                    "ortalama": 0.5511533704906715,
+                    "risk_skoru": 0.4197,
+                    "gecikme_olasiligi": 0.2
+                },
+                "M-RPV2.5-009": {
+                    "ortalama": 0.5415206805553111,
+                    "risk_skoru": 0.4319,
+                    "gecikme_olasiligi": 0.1818
+                },
+                "M-TK1-010": {
+                    "ortalama": 0.5239775950271898,
+                    "risk_skoru": 0.4573,
+                    "gecikme_olasiligi": 0.2156
+                },
+                "M-AVK-011": {
+                    "ortalama": 0.4746591408844724,
+                    "risk_skoru": 0.5383,
+                    "gecikme_olasiligi": 0.2753
+                },
                 "M-CKM-012": {
-                    "ortalama": 0.4878497154858776,
-                    "risk_skoru": 0.535,
-                    "gecikme_olasiligi": 0.249
+                    "ortalama": 0.42852966609722387,
+                    "risk_skoru": 0.6048,
+                    "gecikme_olasiligi": 0.3308
                 },
                 "M-MOD2-014": {
-                    "ortalama": 0.4657004246265604,
-                    "risk_skoru": 0.551,
-                    "gecikme_olasiligi": 0.291
+                    "ortalama": 0.5058160960949227,
+                    "risk_skoru": 0.495,
+                    "gecikme_olasiligi": 0.2412
                 },
                 "M-DUK-015": {
-                    "ortalama": 0.44578045469355304,
-                    "risk_skoru": 0.589,
-                    "gecikme_olasiligi": 0.296
+                    "ortalama": 0.42511309223477844,
+                    "risk_skoru": 0.6178,
+                    "gecikme_olasiligi": 0.3332
                 },
                 "M-KK-016": {
-                    "ortalama": 0.5169008927113823,
-                    "risk_skoru": 0.475,
-                    "gecikme_olasiligi": 0.232
+                    "ortalama": 0.4914726491620349,
+                    "risk_skoru": 0.5071,
+                    "gecikme_olasiligi": 0.2576
                 },
                 "M-D90K-017": {
-                    "ortalama": 0.5060844621027579,
-                    "risk_skoru": 0.513,
-                    "gecikme_olasiligi": 0.227
+                    "ortalama": 0.5192397487347531,
+                    "risk_skoru": 0.472,
+                    "gecikme_olasiligi": 0.2247
                 },
                 "M-YK-004": {
-                    "ortalama": 0.4896380712149792,
-                    "risk_skoru": 0.516,
-                    "gecikme_olasiligi": 0.286
+                    "ortalama": 0.44476515323277954,
+                    "risk_skoru": 0.578,
+                    "gecikme_olasiligi": 0.3261
                 }
             },
             "performans_dagilimi": {
                 "min": 0.0,
                 "max": 1.0,
-                "std": 0.2705104297273002,
-                "q25": 0.3019397148586159,
-                "q75": 0.6985805948305447
+                "std": 0.2721131322390557,
+                "q25": 0.3011609314960777,
+                "q75": 0.6994611834801356
             }
         },
         "OZAN ACAR": {
-            "ortalama_performans": 0.5180158020804204,
-            "risk_skoru": 0.471875,
-            "gecikme_olasiligi": 0.2230625,
-            "performans_kararliligi": 0.8570558941240488,
+            "ortalama_performans": 0.5149233897611643,
+            "risk_skoru": 0.47890625,
+            "gecikme_olasiligi": 0.231725,
+            "performans_kararliligi": 0.8521366513231587,
             "tasarim_bazli_sonuclar": {
                 "M-KAM-001": {
-                    "ortalama": 0.5358653240431986,
-                    "risk_skoru": 0.449,
-                    "gecikme_olasiligi": 0.203
+                    "ortalama": 0.5258427669774989,
+                    "risk_skoru": 0.4569,
+                    "gecikme_olasiligi": 0.2213
                 },
                 "M-KKK-002": {
-                    "ortalama": 0.5127646420051157,
-                    "risk_skoru": 0.476,
-                    "gecikme_olasiligi": 0.217
+                    "ortalama": 0.4266495436488488,
+                    "risk_skoru": 0.615,
+                    "gecikme_olasiligi": 0.3325
                 },
                 "M-OSK1.5-003": {
-                    "ortalama": 0.546053232346939,
-                    "risk_skoru": 0.417,
-                    "gecikme_olasiligi": 0.191
+                    "ortalama": 0.5504521257873896,
+                    "risk_skoru": 0.4256,
+                    "gecikme_olasiligi": 0.1907
                 },
                 "M-PA-005": {
-                    "ortalama": 0.5117974997638994,
-                    "risk_skoru": 0.498,
-                    "gecikme_olasiligi": 0.209
+                    "ortalama": 0.45889646897168795,
+                    "risk_skoru": 0.5662,
+                    "gecikme_olasiligi": 0.2834
                 },
                 "M-RPV3.5-006": {
-                    "ortalama": 0.5385188592732909,
-                    "risk_skoru": 0.451,
-                    "gecikme_olasiligi": 0.208
+                    "ortalama": 0.5465195281595971,
+                    "risk_skoru": 0.4305,
+                    "gecikme_olasiligi": 0.2015
                 },
                 "M-MOD4-007": {
-                    "ortalama": 0.4900302422260712,
-                    "risk_skoru": 0.507,
-                    "gecikme_olasiligi": 0.259
+                    "ortalama": 0.461871157232708,
+                    "risk_skoru": 0.5582,
+                    "gecikme_olasiligi": 0.2913
                 },
                 "M-MOD3-008": {
-                    "ortalama": 0.4828389797881764,
-                    "risk_skoru": 0.526,
-                    "gecikme_olasiligi": 0.257
+                    "ortalama": 0.5807887292319271,
+                    "risk_skoru": 0.3775,
+                    "gecikme_olasiligi": 0.1656
                 },
                 "M-RPV2.5-009": {
-                    "ortalama": 0.4909015607587927,
-                    "risk_skoru": 0.513,
-                    "gecikme_olasiligi": 0.261
+                    "ortalama": 0.53145769715025,
+                    "risk_skoru": 0.4503,
+                    "gecikme_olasiligi": 0.1943
                 },
                 "M-TK1-010": {
-                    "ortalama": 0.5593983810836289,
-                    "risk_skoru": 0.418,
-                    "gecikme_olasiligi": 0.166
+                    "ortalama": 0.5690162464073979,
+                    "risk_skoru": 0.3996,
+                    "gecikme_olasiligi": 0.17
                 },
                 "M-AVK-011": {
-                    "ortalama": 0.49415963394140255,
-                    "risk_skoru": 0.531,
-                    "gecikme_olasiligi": 0.258
+                    "ortalama": 0.5385160976282414,
+                    "risk_skoru": 0.4444,
+                    "gecikme_olasiligi": 0.2005
                 },
                 "M-CKM-012": {
-                    "ortalama": 0.49535538459990247,
-                    "risk_skoru": 0.495,
-                    "gecikme_olasiligi": 0.252
+                    "ortalama": 0.5190146534830816,
+                    "risk_skoru": 0.4736,
+                    "gecikme_olasiligi": 0.2358
                 },
                 "M-MOD2-014": {
-                    "ortalama": 0.5348021139015191,
-                    "risk_skoru": 0.434,
-                    "gecikme_olasiligi": 0.192
+                    "ortalama": 0.5295463826253102,
+                    "risk_skoru": 0.4575,
+                    "gecikme_olasiligi": 0.1958
                 },
                 "M-DUK-015": {
-                    "ortalama": 0.5108910884776349,
-                    "risk_skoru": 0.472,
-                    "gecikme_olasiligi": 0.242
+                    "ortalama": 0.4287919728157141,
+                    "risk_skoru": 0.6024,
+                    "gecikme_olasiligi": 0.3414
                 },
                 "M-KK-016": {
-                    "ortalama": 0.5150591709202121,
-                    "risk_skoru": 0.472,
-                    "gecikme_olasiligi": 0.225
+                    "ortalama": 0.5944303882890134,
+                    "risk_skoru": 0.3669,
+                    "gecikme_olasiligi": 0.152
                 },
                 "M-D90K-017": {
-                    "ortalama": 0.49498333359443664,
-                    "risk_skoru": 0.505,
-                    "gecikme_olasiligi": 0.253
+                    "ortalama": 0.42531432646033474,
+                    "risk_skoru": 0.6144,
+                    "gecikme_olasiligi": 0.3417
                 },
                 "M-YK-004": {
-                    "ortalama": 0.5748333865625045,
-                    "risk_skoru": 0.386,
-                    "gecikme_olasiligi": 0.176
+                    "ortalama": 0.5516661513096262,
+                    "risk_skoru": 0.4235,
+                    "gecikme_olasiligi": 0.1898
                 }
             },
             "performans_dagilimi": {
                 "min": 0.0,
                 "max": 1.0,
-                "std": 0.2673425759918827,
-                "q25": 0.32587555267795765,
-                "q75": 0.7151990978951721
+                "std": 0.2719037961088822,
+                "q25": 0.3169441892568997,
+                "q75": 0.7159253451489718
             }
         },
         "HASAN AKYILDIZ": {
-            "ortalama_performans": 0.5105503851067512,
-            "risk_skoru": 0.4870625,
-            "gecikme_olasiligi": 0.2315625,
-            "performans_kararliligi": 0.8571602131064042,
+            "ortalama_performans": 0.5098536523734231,
+            "risk_skoru": 0.4846875,
+            "gecikme_olasiligi": 0.2333625,
+            "performans_kararliligi": 0.8561224349537755,
             "tasarim_bazli_sonuclar": {
                 "M-KAM-001": {
-                    "ortalama": 0.5058223694431162,
-                    "risk_skoru": 0.489,
-                    "gecikme_olasiligi": 0.24
+                    "ortalama": 0.5397635336310588,
+                    "risk_skoru": 0.4373,
+                    "gecikme_olasiligi": 0.2094
                 },
                 "M-KKK-002": {
-                    "ortalama": 0.5129599815584062,
-                    "risk_skoru": 0.484,
-                    "gecikme_olasiligi": 0.241
+                    "ortalama": 0.5321823531960659,
+                    "risk_skoru": 0.4507,
+                    "gecikme_olasiligi": 0.2193
                 },
                 "M-OSK1.5-003": {
-                    "ortalama": 0.554776912918876,
-                    "risk_skoru": 0.401,
-                    "gecikme_olasiligi": 0.187
+                    "ortalama": 0.6330099189714932,
+                    "risk_skoru": 0.3011,
+                    "gecikme_olasiligi": 0.1069
                 },
                 "M-PA-005": {
-                    "ortalama": 0.49968743040736363,
-                    "risk_skoru": 0.507,
-                    "gecikme_olasiligi": 0.241
+                    "ortalama": 0.47284720395139074,
+                    "risk_skoru": 0.5457,
+                    "gecikme_olasiligi": 0.2703
                 },
                 "M-RPV3.5-006": {
-                    "ortalama": 0.532757055636023,
-                    "risk_skoru": 0.45,
-                    "gecikme_olasiligi": 0.21
+                    "ortalama": 0.5487271572419747,
+                    "risk_skoru": 0.4275,
+                    "gecikme_olasiligi": 0.1834
                 },
                 "M-MOD4-007": {
-                    "ortalama": 0.5501483447582481,
-                    "risk_skoru": 0.41,
-                    "gecikme_olasiligi": 0.146
+                    "ortalama": 0.5433809063351301,
+                    "risk_skoru": 0.4233,
+                    "gecikme_olasiligi": 0.1533
                 },
                 "M-MOD3-008": {
-                    "ortalama": 0.47596726701397185,
-                    "risk_skoru": 0.539,
-                    "gecikme_olasiligi": 0.276
+                    "ortalama": 0.43240799872174246,
+                    "risk_skoru": 0.6011,
+                    "gecikme_olasiligi": 0.33
                 },
                 "M-RPV2.5-009": {
-                    "ortalama": 0.5139544302260213,
-                    "risk_skoru": 0.479,
-                    "gecikme_olasiligi": 0.233
+                    "ortalama": 0.43916719256773384,
+                    "risk_skoru": 0.591,
+                    "gecikme_olasiligi": 0.3248
                 },
                 "M-TK1-010": {
-                    "ortalama": 0.5495240974906009,
-                    "risk_skoru": 0.436,
-                    "gecikme_olasiligi": 0.191
+                    "ortalama": 0.5674322254949041,
+                    "risk_skoru": 0.4046,
+                    "gecikme_olasiligi": 0.1803
                 },
                 "M-AVK-011": {
-                    "ortalama": 0.535210749145763,
-                    "risk_skoru": 0.451,
-                    "gecikme_olasiligi": 0.197
+                    "ortalama": 0.4996837402405583,
+                    "risk_skoru": 0.4988,
+                    "gecikme_olasiligi": 0.2304
                 },
                 "M-CKM-012": {
-                    "ortalama": 0.5201462180279253,
-                    "risk_skoru": 0.479,
-                    "gecikme_olasiligi": 0.228
+                    "ortalama": 0.5163280283824129,
+                    "risk_skoru": 0.466,
+                    "gecikme_olasiligi": 0.2254
                 },
                 "M-MOD2-014": {
-                    "ortalama": 0.4986768020502906,
-                    "risk_skoru": 0.507,
-                    "gecikme_olasiligi": 0.252
+                    "ortalama": 0.4733426643765108,
+                    "risk_skoru": 0.5404,
+                    "gecikme_olasiligi": 0.2753
                 },
                 "M-DUK-015": {
-                    "ortalama": 0.4667633411800152,
-                    "risk_skoru": 0.558,
-                    "gecikme_olasiligi": 0.27
+                    "ortalama": 0.43084886631855224,
+                    "risk_skoru": 0.6024,
+                    "gecikme_olasiligi": 0.3332
                 },
                 "M-KK-016": {
-                    "ortalama": 0.4665131867967436,
-                    "risk_skoru": 0.55,
-                    "gecikme_olasiligi": 0.294
+                    "ortalama": 0.5044253786926716,
+                    "risk_skoru": 0.4978,
+                    "gecikme_olasiligi": 0.2401
                 },
                 "M-D90K-017": {
-                    "ortalama": 0.5250430687664891,
-                    "risk_skoru": 0.477,
-                    "gecikme_olasiligi": 0.208
+                    "ortalama": 0.5433194981829811,
+                    "risk_skoru": 0.4364,
+                    "gecikme_olasiligi": 0.1943
                 },
                 "M-YK-004": {
-                    "ortalama": 0.46085490628816683,
-                    "risk_skoru": 0.576,
-                    "gecikme_olasiligi": 0.291
+                    "ortalama": 0.48079177166958614,
+                    "risk_skoru": 0.5309,
+                    "gecikme_olasiligi": 0.2574
                 }
             },
             "performans_dagilimi": {
                 "min": 0.0,
                 "max": 1.0,
-                "std": 0.26724500640198673,
-                "q25": 0.3160353110229098,
-                "q75": 0.7077894972672751
+                "std": 0.26821406100932194,
+                "q25": 0.3150902112398567,
+                "q75": 0.7062357244455715
             }
         },
         "SERKAN DEMİR": {
-            "ortalama_performans": 0.49704257385726053,
-            "risk_skoru": 0.507,
-            "gecikme_olasiligi": 0.2520625,
-            "performans_kararliligi": 0.8522659873460419,
+            "ortalama_performans": 0.4911363365030477,
+            "risk_skoru": 0.51439375,
+            "gecikme_olasiligi": 0.2605875,
+            "performans_kararliligi": 0.8516968408513934,
             "tasarim_bazli_sonuclar": {
                 "M-KAM-001": {
-                    "ortalama": 0.48677629794965677,
-                    "risk_skoru": 0.52,
-                    "gecikme_olasiligi": 0.263
+                    "ortalama": 0.5713489129918583,
+                    "risk_skoru": 0.39,
+                    "gecikme_olasiligi": 0.1669
                 },
                 "M-KKK-002": {
-                    "ortalama": 0.4715188350289207,
-                    "risk_skoru": 0.545,
-                    "gecikme_olasiligi": 0.268
-                },
-                "M-OSK1.5-003": {
-                    "ortalama": 0.5298225072001734,
-                    "risk_skoru": 0.46,
-                    "gecikme_olasiligi": 0.197
-                },
-                "M-PA-005": {
-                    "ortalama": 0.5073827411639295,
-                    "risk_skoru": 0.477,
-                    "gecikme_olasiligi": 0.227
-                },
-                "M-RPV3.5-006": {
-                    "ortalama": 0.4670410804951783,
-                    "risk_skoru": 0.557,
-                    "gecikme_olasiligi": 0.281
-                },
-                "M-MOD4-007": {
-                    "ortalama": 0.48596636223416007,
-                    "risk_skoru": 0.531,
-                    "gecikme_olasiligi": 0.266
-                },
-                "M-MOD3-008": {
-                    "ortalama": 0.45259762713632506,
-                    "risk_skoru": 0.58,
-                    "gecikme_olasiligi": 0.301
-                },
-                "M-RPV2.5-009": {
-                    "ortalama": 0.5222758892181105,
-                    "risk_skoru": 0.476,
-                    "gecikme_olasiligi": 0.202
-                },
-                "M-TK1-010": {
-                    "ortalama": 0.5023572886681725,
-                    "risk_skoru": 0.494,
+                    "ortalama": 0.4664556886598316,
+                    "risk_skoru": 0.554,
                     "gecikme_olasiligi": 0.273
                 },
+                "M-OSK1.5-003": {
+                    "ortalama": 0.485643409519575,
+                    "risk_skoru": 0.5228,
+                    "gecikme_olasiligi": 0.259
+                },
+                "M-PA-005": {
+                    "ortalama": 0.5421291684744871,
+                    "risk_skoru": 0.4376,
+                    "gecikme_olasiligi": 0.1914
+                },
+                "M-RPV3.5-006": {
+                    "ortalama": 0.4108645199291981,
+                    "risk_skoru": 0.6303,
+                    "gecikme_olasiligi": 0.3571
+                },
+                "M-MOD4-007": {
+                    "ortalama": 0.45491009974414054,
+                    "risk_skoru": 0.5696,
+                    "gecikme_olasiligi": 0.3022
+                },
+                "M-MOD3-008": {
+                    "ortalama": 0.39958058376773625,
+                    "risk_skoru": 0.6522,
+                    "gecikme_olasiligi": 0.3734
+                },
+                "M-RPV2.5-009": {
+                    "ortalama": 0.489455964431009,
+                    "risk_skoru": 0.5203,
+                    "gecikme_olasiligi": 0.2505
+                },
+                "M-TK1-010": {
+                    "ortalama": 0.5495230005656933,
+                    "risk_skoru": 0.4281,
+                    "gecikme_olasiligi": 0.2045
+                },
                 "M-AVK-011": {
-                    "ortalama": 0.5080704728629868,
-                    "risk_skoru": 0.499,
-                    "gecikme_olasiligi": 0.247
+                    "ortalama": 0.49026099584858546,
+                    "risk_skoru": 0.5111,
+                    "gecikme_olasiligi": 0.2609
                 },
                 "M-CKM-012": {
-                    "ortalama": 0.5460266167156632,
-                    "risk_skoru": 0.422,
-                    "gecikme_olasiligi": 0.204
+                    "ortalama": 0.5929985038299784,
+                    "risk_skoru": 0.363,
+                    "gecikme_olasiligi": 0.1461
                 },
                 "M-MOD2-014": {
-                    "ortalama": 0.4474348382564541,
-                    "risk_skoru": 0.586,
-                    "gecikme_olasiligi": 0.3
+                    "ortalama": 0.4190363142024287,
+                    "risk_skoru": 0.6255,
+                    "gecikme_olasiligi": 0.3493
                 },
                 "M-DUK-015": {
-                    "ortalama": 0.4770401493379529,
-                    "risk_skoru": 0.533,
-                    "gecikme_olasiligi": 0.283
+                    "ortalama": 0.4664354216811011,
+                    "risk_skoru": 0.5435,
+                    "gecikme_olasiligi": 0.2975
                 },
                 "M-KK-016": {
-                    "ortalama": 0.5173028946300097,
-                    "risk_skoru": 0.472,
-                    "gecikme_olasiligi": 0.243
+                    "ortalama": 0.5244013562506763,
+                    "risk_skoru": 0.4694,
+                    "gecikme_olasiligi": 0.233
                 },
                 "M-D90K-017": {
-                    "ortalama": 0.5025111600295386,
-                    "risk_skoru": 0.496,
-                    "gecikme_olasiligi": 0.246
+                    "ortalama": 0.5023728260449034,
+                    "risk_skoru": 0.4984,
+                    "gecikme_olasiligi": 0.2475
                 },
                 "M-YK-004": {
-                    "ortalama": 0.5285564207889368,
-                    "risk_skoru": 0.464,
-                    "gecikme_olasiligi": 0.232
+                    "ortalama": 0.49276461810756045,
+                    "risk_skoru": 0.5145,
+                    "gecikme_olasiligi": 0.2571
                 }
             },
             "performans_dagilimi": {
                 "min": 0.0,
                 "max": 1.0,
-                "std": 0.27178485301241323,
-                "q25": 0.2971991449191093,
-                "q75": 0.6949728814251478
+                "std": 0.2723078764455837,
+                "q25": 0.2903661752438774,
+                "q75": 0.6901894648992338
             }
         },
         "CENGİZ CAN": {
-            "ortalama_performans": 0.5049289512595413,
-            "risk_skoru": 0.491375,
-            "gecikme_olasiligi": 0.2411875,
-            "performans_kararliligi": 0.8551120037216043,
+            "ortalama_performans": 0.5099880738110847,
+            "risk_skoru": 0.48588125,
+            "gecikme_olasiligi": 0.23943125,
+            "performans_kararliligi": 0.8501356971310676,
             "tasarim_bazli_sonuclar": {
                 "M-KAM-001": {
-                    "ortalama": 0.48840084916639503,
-                    "risk_skoru": 0.517,
-                    "gecikme_olasiligi": 0.254
+                    "ortalama": 0.46365561893923984,
+                    "risk_skoru": 0.5493,
+                    "gecikme_olasiligi": 0.2963
                 },
                 "M-KKK-002": {
-                    "ortalama": 0.5232458502358804,
-                    "risk_skoru": 0.45,
-                    "gecikme_olasiligi": 0.216
+                    "ortalama": 0.5150094018085202,
+                    "risk_skoru": 0.4784,
+                    "gecikme_olasiligi": 0.2345
                 },
                 "M-OSK1.5-003": {
-                    "ortalama": 0.5119149381450043,
-                    "risk_skoru": 0.48,
-                    "gecikme_olasiligi": 0.229
+                    "ortalama": 0.5063801864638448,
+                    "risk_skoru": 0.4905,
+                    "gecikme_olasiligi": 0.2327
                 },
                 "M-PA-005": {
-                    "ortalama": 0.5227839700610618,
-                    "risk_skoru": 0.465,
-                    "gecikme_olasiligi": 0.211
+                    "ortalama": 0.46816457832403185,
+                    "risk_skoru": 0.5479,
+                    "gecikme_olasiligi": 0.2898
                 },
                 "M-RPV3.5-006": {
-                    "ortalama": 0.51443838065395,
-                    "risk_skoru": 0.485,
-                    "gecikme_olasiligi": 0.235
+                    "ortalama": 0.4557274854290899,
+                    "risk_skoru": 0.5669,
+                    "gecikme_olasiligi": 0.2947
                 },
                 "M-MOD4-007": {
-                    "ortalama": 0.47561537026187317,
-                    "risk_skoru": 0.527,
-                    "gecikme_olasiligi": 0.268
+                    "ortalama": 0.530183487009801,
+                    "risk_skoru": 0.4559,
+                    "gecikme_olasiligi": 0.2059
                 },
                 "M-MOD3-008": {
-                    "ortalama": 0.5102131820638365,
-                    "risk_skoru": 0.47,
-                    "gecikme_olasiligi": 0.227
+                    "ortalama": 0.5294860941223889,
+                    "risk_skoru": 0.4553,
+                    "gecikme_olasiligi": 0.2053
                 },
                 "M-RPV2.5-009": {
-                    "ortalama": 0.4863526110015126,
-                    "risk_skoru": 0.538,
-                    "gecikme_olasiligi": 0.272
+                    "ortalama": 0.5191382829282435,
+                    "risk_skoru": 0.4727,
+                    "gecikme_olasiligi": 0.2305
                 },
                 "M-TK1-010": {
-                    "ortalama": 0.5286451103276958,
-                    "risk_skoru": 0.448,
-                    "gecikme_olasiligi": 0.216
+                    "ortalama": 0.5432876144574066,
+                    "risk_skoru": 0.4374,
+                    "gecikme_olasiligi": 0.2063
                 },
                 "M-AVK-011": {
-                    "ortalama": 0.5258905554850402,
-                    "risk_skoru": 0.465,
-                    "gecikme_olasiligi": 0.242
+                    "ortalama": 0.5299406124581787,
+                    "risk_skoru": 0.4577,
+                    "gecikme_olasiligi": 0.2337
                 },
                 "M-CKM-012": {
-                    "ortalama": 0.5253114046013001,
-                    "risk_skoru": 0.472,
-                    "gecikme_olasiligi": 0.225
+                    "ortalama": 0.6081314271287221,
+                    "risk_skoru": 0.3436,
+                    "gecikme_olasiligi": 0.1405
                 },
                 "M-MOD2-014": {
-                    "ortalama": 0.4667636601892835,
-                    "risk_skoru": 0.554,
-                    "gecikme_olasiligi": 0.309
+                    "ortalama": 0.430873840344145,
+                    "risk_skoru": 0.5992,
+                    "gecikme_olasiligi": 0.35
                 },
                 "M-DUK-015": {
-                    "ortalama": 0.5281294907852958,
-                    "risk_skoru": 0.455,
-                    "gecikme_olasiligi": 0.221
+                    "ortalama": 0.591637484773916,
+                    "risk_skoru": 0.3635,
+                    "gecikme_olasiligi": 0.1467
                 },
                 "M-KK-016": {
-                    "ortalama": 0.46687826458348414,
-                    "risk_skoru": 0.534,
-                    "gecikme_olasiligi": 0.274
+                    "ortalama": 0.4727040176691202,
+                    "risk_skoru": 0.5459,
+                    "gecikme_olasiligi": 0.2724
                 },
                 "M-D90K-017": {
-                    "ortalama": 0.49910624687004146,
-                    "risk_skoru": 0.509,
-                    "gecikme_olasiligi": 0.237
+                    "ortalama": 0.4580921151673323,
+                    "risk_skoru": 0.5636,
+                    "gecikme_olasiligi": 0.2884
                 },
                 "M-YK-004": {
-                    "ortalama": 0.505173335721006,
-                    "risk_skoru": 0.493,
-                    "gecikme_olasiligi": 0.223
+                    "ortalama": 0.537396933953375,
+                    "risk_skoru": 0.4463,
+                    "gecikme_olasiligi": 0.2032
                 }
             },
             "performans_dagilimi": {
                 "min": 0.0,
                 "max": 1.0,
-                "std": 0.2691542274221191,
-                "q25": 0.30814686133193364,
-                "q75": 0.6999777701160219
+                "std": 0.2737373767582099,
+                "q25": 0.31035935902794,
+                "q75": 0.7124540072339121
             }
         },
         "ERSİN KÖSEOĞLU": {
-            "ortalama_performans": 0.5024164779538812,
-            "risk_skoru": 0.494125,
-            "gecikme_olasiligi": 0.2423125,
-            "performans_kararliligi": 0.8561735940828069,
+            "ortalama_performans": 0.5012044044583553,
+            "risk_skoru": 0.49803125,
+            "gecikme_olasiligi": 0.24704375,
+            "performans_kararliligi": 0.8531474871526017,
             "tasarim_bazli_sonuclar": {
                 "M-KAM-001": {
-                    "ortalama": 0.48912019785766864,
-                    "risk_skoru": 0.504,
-                    "gecikme_olasiligi": 0.249
+                    "ortalama": 0.4771264938105138,
+                    "risk_skoru": 0.5345,
+                    "gecikme_olasiligi": 0.2691
                 },
                 "M-KKK-002": {
-                    "ortalama": 0.5315134690678753,
-                    "risk_skoru": 0.445,
-                    "gecikme_olasiligi": 0.218
+                    "ortalama": 0.5619736320565757,
+                    "risk_skoru": 0.4081,
+                    "gecikme_olasiligi": 0.1837
                 },
                 "M-OSK1.5-003": {
-                    "ortalama": 0.5157782780102651,
-                    "risk_skoru": 0.483,
-                    "gecikme_olasiligi": 0.215
+                    "ortalama": 0.536201348673576,
+                    "risk_skoru": 0.4484,
+                    "gecikme_olasiligi": 0.2089
                 },
                 "M-PA-005": {
-                    "ortalama": 0.48139827740084573,
-                    "risk_skoru": 0.534,
-                    "gecikme_olasiligi": 0.275
+                    "ortalama": 0.37406546191853757,
+                    "risk_skoru": 0.6814,
+                    "gecikme_olasiligi": 0.4203
                 },
                 "M-RPV3.5-006": {
-                    "ortalama": 0.5071419022132048,
-                    "risk_skoru": 0.479,
-                    "gecikme_olasiligi": 0.227
+                    "ortalama": 0.5554337265914161,
+                    "risk_skoru": 0.4217,
+                    "gecikme_olasiligi": 0.1845
                 },
                 "M-MOD4-007": {
-                    "ortalama": 0.47629627906041977,
-                    "risk_skoru": 0.532,
-                    "gecikme_olasiligi": 0.27
+                    "ortalama": 0.48520146870222625,
+                    "risk_skoru": 0.522,
+                    "gecikme_olasiligi": 0.2608
                 },
                 "M-MOD3-008": {
-                    "ortalama": 0.501223729436761,
-                    "risk_skoru": 0.497,
-                    "gecikme_olasiligi": 0.244
+                    "ortalama": 0.5111673716504249,
+                    "risk_skoru": 0.4825,
+                    "gecikme_olasiligi": 0.2363
                 },
                 "M-RPV2.5-009": {
-                    "ortalama": 0.5468791628217952,
-                    "risk_skoru": 0.438,
-                    "gecikme_olasiligi": 0.202
+                    "ortalama": 0.5646709579048774,
+                    "risk_skoru": 0.404,
+                    "gecikme_olasiligi": 0.1823
                 },
                 "M-TK1-010": {
-                    "ortalama": 0.48317249026779613,
-                    "risk_skoru": 0.532,
-                    "gecikme_olasiligi": 0.264
+                    "ortalama": 0.4707304348662281,
+                    "risk_skoru": 0.5454,
+                    "gecikme_olasiligi": 0.2714
                 },
                 "M-AVK-011": {
-                    "ortalama": 0.4861418856100593,
-                    "risk_skoru": 0.524,
-                    "gecikme_olasiligi": 0.272
+                    "ortalama": 0.5520582460423968,
+                    "risk_skoru": 0.4196,
+                    "gecikme_olasiligi": 0.1911
                 },
                 "M-CKM-012": {
-                    "ortalama": 0.5214639822724471,
-                    "risk_skoru": 0.466,
-                    "gecikme_olasiligi": 0.205
+                    "ortalama": 0.4917069849773598,
+                    "risk_skoru": 0.5148,
+                    "gecikme_olasiligi": 0.2432
                 },
                 "M-MOD2-014": {
-                    "ortalama": 0.463762937865955,
-                    "risk_skoru": 0.556,
-                    "gecikme_olasiligi": 0.296
+                    "ortalama": 0.44679246916413556,
+                    "risk_skoru": 0.579,
+                    "gecikme_olasiligi": 0.3064
                 },
                 "M-DUK-015": {
-                    "ortalama": 0.5118553897745971,
-                    "risk_skoru": 0.485,
-                    "gecikme_olasiligi": 0.226
+                    "ortalama": 0.5359592791973349,
+                    "risk_skoru": 0.4456,
+                    "gecikme_olasiligi": 0.2039
                 },
                 "M-KK-016": {
-                    "ortalama": 0.47031442444315047,
-                    "risk_skoru": 0.549,
-                    "gecikme_olasiligi": 0.3
+                    "ortalama": 0.4394548446588491,
+                    "risk_skoru": 0.5872,
+                    "gecikme_olasiligi": 0.3357
                 },
                 "M-D90K-017": {
-                    "ortalama": 0.5309637586117751,
-                    "risk_skoru": 0.432,
-                    "gecikme_olasiligi": 0.199
+                    "ortalama": 0.5526698160941736,
+                    "risk_skoru": 0.4191,
+                    "gecikme_olasiligi": 0.1702
                 },
                 "M-YK-004": {
-                    "ortalama": 0.521637482547484,
-                    "risk_skoru": 0.45,
-                    "gecikme_olasiligi": 0.215
+                    "ortalama": 0.46405793502505965,
+                    "risk_skoru": 0.5552,
+                    "gecikme_olasiligi": 0.2849
                 }
             },
             "performans_dagilimi": {
                 "min": 0.0,
                 "max": 1.0,
-                "std": 0.2681663717892245,
-                "q25": 0.30771850162191083,
-                "q75": 0.6974559308640118
+                "std": 0.2709727964643299,
+                "q25": 0.30268524081099646,
+                "q75": 0.6998165870455035
             }
         },
         "SEYFETTİN DUYMUŞ": {
-            "ortalama_performans": 0.5029648745200092,
-            "risk_skoru": 0.4954375,
-            "gecikme_olasiligi": 0.2425,
-            "performans_kararliligi": 0.8555286373637342,
+            "ortalama_performans": 0.5138365690637163,
+            "risk_skoru": 0.47889375,
+            "gecikme_olasiligi": 0.23276875,
+            "performans_kararliligi": 0.8524659345215475,
             "tasarim_bazli_sonuclar": {
                 "M-KAM-001": {
-                    "ortalama": 0.4922021306384853,
-                    "risk_skoru": 0.517,
-                    "gecikme_olasiligi": 0.25
+                    "ortalama": 0.49009418465833543,
+                    "risk_skoru": 0.5123,
+                    "gecikme_olasiligi": 0.2513
                 },
                 "M-KKK-002": {
-                    "ortalama": 0.523140367697875,
-                    "risk_skoru": 0.468,
-                    "gecikme_olasiligi": 0.218
+                    "ortalama": 0.4937802711489802,
+                    "risk_skoru": 0.507,
+                    "gecikme_olasiligi": 0.2529
                 },
                 "M-OSK1.5-003": {
-                    "ortalama": 0.46923838459974776,
-                    "risk_skoru": 0.537,
-                    "gecikme_olasiligi": 0.283
+                    "ortalama": 0.4078149759495328,
+                    "risk_skoru": 0.6345,
+                    "gecikme_olasiligi": 0.359
                 },
                 "M-PA-005": {
-                    "ortalama": 0.5351903670792819,
-                    "risk_skoru": 0.445,
-                    "gecikme_olasiligi": 0.219
+                    "ortalama": 0.5172152786029507,
+                    "risk_skoru": 0.4739,
+                    "gecikme_olasiligi": 0.2227
                 },
                 "M-RPV3.5-006": {
-                    "ortalama": 0.5142435592063971,
-                    "risk_skoru": 0.5,
-                    "gecikme_olasiligi": 0.215
+                    "ortalama": 0.5577471596504013,
+                    "risk_skoru": 0.4122,
+                    "gecikme_olasiligi": 0.1745
                 },
                 "M-MOD4-007": {
-                    "ortalama": 0.5066126078226282,
-                    "risk_skoru": 0.473,
-                    "gecikme_olasiligi": 0.236
+                    "ortalama": 0.4647921566891905,
+                    "risk_skoru": 0.5508,
+                    "gecikme_olasiligi": 0.2823
                 },
                 "M-MOD3-008": {
-                    "ortalama": 0.5296241617259346,
-                    "risk_skoru": 0.473,
-                    "gecikme_olasiligi": 0.234
+                    "ortalama": 0.5155617293782992,
+                    "risk_skoru": 0.4741,
+                    "gecikme_olasiligi": 0.233
                 },
                 "M-RPV2.5-009": {
-                    "ortalama": 0.5123302437906118,
-                    "risk_skoru": 0.493,
-                    "gecikme_olasiligi": 0.232
+                    "ortalama": 0.5075045184271566,
+                    "risk_skoru": 0.4895,
+                    "gecikme_olasiligi": 0.227
                 },
                 "M-TK1-010": {
-                    "ortalama": 0.49981045648006284,
-                    "risk_skoru": 0.497,
-                    "gecikme_olasiligi": 0.237
+                    "ortalama": 0.5153899635133178,
+                    "risk_skoru": 0.4783,
+                    "gecikme_olasiligi": 0.2191
                 },
                 "M-AVK-011": {
-                    "ortalama": 0.5173718896903945,
-                    "risk_skoru": 0.463,
-                    "gecikme_olasiligi": 0.239
+                    "ortalama": 0.4712010183150184,
+                    "risk_skoru": 0.5413,
+                    "gecikme_olasiligi": 0.2924
                 },
                 "M-CKM-012": {
-                    "ortalama": 0.43201178621625436,
-                    "risk_skoru": 0.601,
-                    "gecikme_olasiligi": 0.336
+                    "ortalama": 0.6708975386025804,
+                    "risk_skoru": 0.2635,
+                    "gecikme_olasiligi": 0.1027
                 },
                 "M-MOD2-014": {
-                    "ortalama": 0.4917326660917755,
-                    "risk_skoru": 0.504,
-                    "gecikme_olasiligi": 0.275
+                    "ortalama": 0.4809459839299185,
+                    "risk_skoru": 0.5282,
+                    "gecikme_olasiligi": 0.2831
                 },
                 "M-DUK-015": {
-                    "ortalama": 0.5299609251650433,
-                    "risk_skoru": 0.447,
-                    "gecikme_olasiligi": 0.171
+                    "ortalama": 0.5708535797466723,
+                    "risk_skoru": 0.3839,
+                    "gecikme_olasiligi": 0.1372
                 },
                 "M-KK-016": {
-                    "ortalama": 0.49497539785461087,
-                    "risk_skoru": 0.519,
-                    "gecikme_olasiligi": 0.245
+                    "ortalama": 0.5223009166942074,
+                    "risk_skoru": 0.4692,
+                    "gecikme_olasiligi": 0.2206
                 },
                 "M-D90K-017": {
-                    "ortalama": 0.4888116557226084,
-                    "risk_skoru": 0.503,
-                    "gecikme_olasiligi": 0.252
+                    "ortalama": 0.5528412161728613,
+                    "risk_skoru": 0.4208,
+                    "gecikme_olasiligi": 0.1881
                 },
                 "M-YK-004": {
-                    "ortalama": 0.5101813925384355,
-                    "risk_skoru": 0.487,
-                    "gecikme_olasiligi": 0.238
+                    "ortalama": 0.4824446135400383,
+                    "risk_skoru": 0.5228,
+                    "gecikme_olasiligi": 0.2784
                 }
             },
             "performans_dagilimi": {
                 "min": 0.0,
                 "max": 1.0,
-                "std": 0.2687669647075937,
-                "q25": 0.3080111929915346,
-                "q75": 0.6986290772857251
+                "std": 0.2716008702843683,
+                "q25": 0.3164379981456921,
+                "q75": 0.7141197103507977
             }
         },
         "FATİH YAŞAR": {
-            "ortalama_performans": 0.5037968989295013,
-            "risk_skoru": 0.4936875,
-            "gecikme_olasiligi": 0.239375,
-            "performans_kararliligi": 0.8549330778915893,
+            "ortalama_performans": 0.5105776106577521,
+            "risk_skoru": 0.483475,
+            "gecikme_olasiligi": 0.23429375,
+            "performans_kararliligi": 0.8546237414058768,
             "tasarim_bazli_sonuclar": {
                 "M-KAM-001": {
-                    "ortalama": 0.5253547954350948,
-                    "risk_skoru": 0.469,
-                    "gecikme_olasiligi": 0.215
+                    "ortalama": 0.49183632409637384,
+                    "risk_skoru": 0.5152,
+                    "gecikme_olasiligi": 0.2616
                 },
                 "M-KKK-002": {
-                    "ortalama": 0.4842174952826886,
-                    "risk_skoru": 0.526,
-                    "gecikme_olasiligi": 0.254
+                    "ortalama": 0.49119118254286875,
+                    "risk_skoru": 0.5126,
+                    "gecikme_olasiligi": 0.2645
                 },
                 "M-OSK1.5-003": {
-                    "ortalama": 0.544230254039532,
-                    "risk_skoru": 0.436,
-                    "gecikme_olasiligi": 0.181
+                    "ortalama": 0.46899647230631464,
+                    "risk_skoru": 0.5509,
+                    "gecikme_olasiligi": 0.2766
                 },
                 "M-PA-005": {
-                    "ortalama": 0.5068225809158472,
-                    "risk_skoru": 0.483,
-                    "gecikme_olasiligi": 0.239
+                    "ortalama": 0.5431550652780649,
+                    "risk_skoru": 0.4383,
+                    "gecikme_olasiligi": 0.196
                 },
                 "M-RPV3.5-006": {
-                    "ortalama": 0.5051801199376659,
-                    "risk_skoru": 0.496,
-                    "gecikme_olasiligi": 0.248
+                    "ortalama": 0.47230850365565374,
+                    "risk_skoru": 0.5377,
+                    "gecikme_olasiligi": 0.2884
                 },
                 "M-MOD4-007": {
-                    "ortalama": 0.4757823924148505,
-                    "risk_skoru": 0.545,
-                    "gecikme_olasiligi": 0.257
+                    "ortalama": 0.49853858862403283,
+                    "risk_skoru": 0.509,
+                    "gecikme_olasiligi": 0.2498
                 },
                 "M-MOD3-008": {
-                    "ortalama": 0.488535344106062,
-                    "risk_skoru": 0.511,
-                    "gecikme_olasiligi": 0.261
+                    "ortalama": 0.5499596273734211,
+                    "risk_skoru": 0.4191,
+                    "gecikme_olasiligi": 0.1734
                 },
                 "M-RPV2.5-009": {
-                    "ortalama": 0.5216559703870112,
-                    "risk_skoru": 0.459,
-                    "gecikme_olasiligi": 0.217
+                    "ortalama": 0.5407000639856383,
+                    "risk_skoru": 0.4374,
+                    "gecikme_olasiligi": 0.199
                 },
                 "M-TK1-010": {
-                    "ortalama": 0.49638103555762736,
-                    "risk_skoru": 0.507,
-                    "gecikme_olasiligi": 0.24
+                    "ortalama": 0.5104428140361223,
+                    "risk_skoru": 0.4836,
+                    "gecikme_olasiligi": 0.2336
                 },
                 "M-AVK-011": {
-                    "ortalama": 0.5054090305275191,
-                    "risk_skoru": 0.485,
-                    "gecikme_olasiligi": 0.238
+                    "ortalama": 0.5579187839748355,
+                    "risk_skoru": 0.4117,
+                    "gecikme_olasiligi": 0.183
                 },
                 "M-CKM-012": {
-                    "ortalama": 0.4790814774237437,
-                    "risk_skoru": 0.516,
-                    "gecikme_olasiligi": 0.263
+                    "ortalama": 0.5494510533131651,
+                    "risk_skoru": 0.4208,
+                    "gecikme_olasiligi": 0.1715
                 },
                 "M-MOD2-014": {
-                    "ortalama": 0.49992894867513793,
-                    "risk_skoru": 0.49,
-                    "gecikme_olasiligi": 0.25
+                    "ortalama": 0.47133120341671103,
+                    "risk_skoru": 0.5397,
+                    "gecikme_olasiligi": 0.2855
                 },
                 "M-DUK-015": {
-                    "ortalama": 0.5149732640858206,
-                    "risk_skoru": 0.473,
-                    "gecikme_olasiligi": 0.237
+                    "ortalama": 0.5168533611992159,
+                    "risk_skoru": 0.4753,
+                    "gecikme_olasiligi": 0.2377
                 },
                 "M-KK-016": {
-                    "ortalama": 0.5368418533882425,
-                    "risk_skoru": 0.448,
-                    "gecikme_olasiligi": 0.216
+                    "ortalama": 0.5124366734439585,
+                    "risk_skoru": 0.4794,
+                    "gecikme_olasiligi": 0.2322
                 },
                 "M-D90K-017": {
-                    "ortalama": 0.490409718417831,
-                    "risk_skoru": 0.512,
-                    "gecikme_olasiligi": 0.245
+                    "ortalama": 0.49107380992789423,
+                    "risk_skoru": 0.5138,
+                    "gecikme_olasiligi": 0.2574
                 },
                 "M-YK-004": {
-                    "ortalama": 0.48594610227734664,
-                    "risk_skoru": 0.543,
-                    "gecikme_olasiligi": 0.269
+                    "ortalama": 0.5030482433497613,
+                    "risk_skoru": 0.4911,
+                    "gecikme_olasiligi": 0.2385
                 }
             },
             "performans_dagilimi": {
                 "min": 0.0,
                 "max": 1.0,
-                "std": 0.2693203688067527,
-                "q25": 0.30938153422343345,
-                "q75": 0.6992648603380338
+                "std": 0.26960736135547486,
+                "q25": 0.31532984401616304,
+                "q75": 0.7084333715029398
             }
         },
         "YAHYA SARI": {
-            "ortalama_performans": 0.4824282676404036,
-            "risk_skoru": 0.5265625,
-            "gecikme_olasiligi": 0.264625,
-            "performans_kararliligi": 0.8571788204147051,
+            "ortalama_performans": 0.48817343432325516,
+            "risk_skoru": 0.51950625,
+            "gecikme_olasiligi": 0.2660125,
+            "performans_kararliligi": 0.8502207609376314,
             "tasarim_bazli_sonuclar": {
                 "M-KAM-001": {
-                    "ortalama": 0.43395295455149996,
-                    "risk_skoru": 0.601,
-                    "gecikme_olasiligi": 0.316
+                    "ortalama": 0.4287899028262861,
+                    "risk_skoru": 0.6131,
+                    "gecikme_olasiligi": 0.3242
                 },
                 "M-KKK-002": {
-                    "ortalama": 0.5043067288350577,
-                    "risk_skoru": 0.495,
-                    "gecikme_olasiligi": 0.246
+                    "ortalama": 0.5288278405483464,
+                    "risk_skoru": 0.4547,
+                    "gecikme_olasiligi": 0.2128
                 },
                 "M-OSK1.5-003": {
-                    "ortalama": 0.4649017832147575,
-                    "risk_skoru": 0.553,
-                    "gecikme_olasiligi": 0.271
+                    "ortalama": 0.4245182252263975,
+                    "risk_skoru": 0.6178,
+                    "gecikme_olasiligi": 0.338
                 },
                 "M-PA-005": {
-                    "ortalama": 0.4740719367524338,
-                    "risk_skoru": 0.552,
-                    "gecikme_olasiligi": 0.273
+                    "ortalama": 0.4951517234062614,
+                    "risk_skoru": 0.5019,
+                    "gecikme_olasiligi": 0.2563
                 },
                 "M-RPV3.5-006": {
-                    "ortalama": 0.49917375364924976,
-                    "risk_skoru": 0.5,
-                    "gecikme_olasiligi": 0.254
+                    "ortalama": 0.40540702234648995,
+                    "risk_skoru": 0.6399,
+                    "gecikme_olasiligi": 0.3742
                 },
                 "M-MOD4-007": {
-                    "ortalama": 0.47638707166762095,
-                    "risk_skoru": 0.531,
-                    "gecikme_olasiligi": 0.271
+                    "ortalama": 0.4923457429532704,
+                    "risk_skoru": 0.5098,
+                    "gecikme_olasiligi": 0.2602
                 },
                 "M-MOD3-008": {
-                    "ortalama": 0.47290015839085636,
-                    "risk_skoru": 0.559,
-                    "gecikme_olasiligi": 0.281
+                    "ortalama": 0.465265338281448,
+                    "risk_skoru": 0.5469,
+                    "gecikme_olasiligi": 0.2913
                 },
                 "M-RPV2.5-009": {
-                    "ortalama": 0.49363415923294657,
-                    "risk_skoru": 0.509,
-                    "gecikme_olasiligi": 0.239
+                    "ortalama": 0.4923369027267859,
+                    "risk_skoru": 0.5088,
+                    "gecikme_olasiligi": 0.2519
                 },
                 "M-TK1-010": {
-                    "ortalama": 0.5002354867083942,
-                    "risk_skoru": 0.503,
-                    "gecikme_olasiligi": 0.243
+                    "ortalama": 0.5370256488851037,
+                    "risk_skoru": 0.4483,
+                    "gecikme_olasiligi": 0.209
                 },
                 "M-AVK-011": {
-                    "ortalama": 0.4697892079956106,
-                    "risk_skoru": 0.541,
-                    "gecikme_olasiligi": 0.288
+                    "ortalama": 0.46921656737051526,
+                    "risk_skoru": 0.5482,
+                    "gecikme_olasiligi": 0.286
                 },
                 "M-CKM-012": {
-                    "ortalama": 0.4633714208351918,
-                    "risk_skoru": 0.537,
-                    "gecikme_olasiligi": 0.284
+                    "ortalama": 0.6844508832877756,
+                    "risk_skoru": 0.2456,
+                    "gecikme_olasiligi": 0.089
                 },
                 "M-MOD2-014": {
-                    "ortalama": 0.4712731509260921,
-                    "risk_skoru": 0.541,
-                    "gecikme_olasiligi": 0.29
+                    "ortalama": 0.46890597969009995,
+                    "risk_skoru": 0.5458,
+                    "gecikme_olasiligi": 0.2873
                 },
                 "M-DUK-015": {
-                    "ortalama": 0.5081339712333773,
-                    "risk_skoru": 0.479,
-                    "gecikme_olasiligi": 0.239
+                    "ortalama": 0.5055236563211369,
+                    "risk_skoru": 0.4935,
+                    "gecikme_olasiligi": 0.2396
                 },
                 "M-KK-016": {
-                    "ortalama": 0.46322275559634946,
-                    "risk_skoru": 0.559,
-                    "gecikme_olasiligi": 0.294
+                    "ortalama": 0.40221336958272946,
+                    "risk_skoru": 0.6444,
+                    "gecikme_olasiligi": 0.3774
                 },
                 "M-D90K-017": {
-                    "ortalama": 0.5052575635480585,
-                    "risk_skoru": 0.486,
-                    "gecikme_olasiligi": 0.25
+                    "ortalama": 0.5417059655339668,
+                    "risk_skoru": 0.4399,
+                    "gecikme_olasiligi": 0.1951
                 },
                 "M-YK-004": {
-                    "ortalama": 0.5182401791089613,
-                    "risk_skoru": 0.479,
-                    "gecikme_olasiligi": 0.195
+                    "ortalama": 0.46909018018546983,
+                    "risk_skoru": 0.5535,
+                    "gecikme_olasiligi": 0.2639
                 }
             },
             "performans_dagilimi": {
                 "min": 0.0,
                 "max": 1.0,
-                "std": 0.26722759923452416,
-                "q25": 0.2866298279064651,
-                "q75": 0.6765363674384529
+                "std": 0.273659678307171,
+                "q25": 0.2849709439514468,
+                "q75": 0.6878783398737328
             }
         },
         "SİNAN ÖZYOL": {
-            "ortalama_performans": 0.5058984708427979,
-            "risk_skoru": 0.4924375,
-            "gecikme_olasiligi": 0.2419375,
-            "performans_kararliligi": 0.8548684000248938,
+            "ortalama_performans": 0.5127468311650281,
+            "risk_skoru": 0.48105625,
+            "gecikme_olasiligi": 0.238025,
+            "performans_kararliligi": 0.849466386444887,
             "tasarim_bazli_sonuclar": {
                 "M-KAM-001": {
-                    "ortalama": 0.5248226089391047,
-                    "risk_skoru": 0.466,
-                    "gecikme_olasiligi": 0.212
+                    "ortalama": 0.4982995808124735,
+                    "risk_skoru": 0.4992,
+                    "gecikme_olasiligi": 0.2491
                 },
                 "M-KKK-002": {
-                    "ortalama": 0.5274501239916769,
-                    "risk_skoru": 0.445,
-                    "gecikme_olasiligi": 0.239
+                    "ortalama": 0.5505204799568557,
+                    "risk_skoru": 0.4287,
+                    "gecikme_olasiligi": 0.1975
                 },
                 "M-OSK1.5-003": {
-                    "ortalama": 0.4554782160780023,
-                    "risk_skoru": 0.56,
-                    "gecikme_olasiligi": 0.299
+                    "ortalama": 0.4946459582942568,
+                    "risk_skoru": 0.5061,
+                    "gecikme_olasiligi": 0.2442
                 },
                 "M-PA-005": {
-                    "ortalama": 0.5187343273888757,
-                    "risk_skoru": 0.465,
-                    "gecikme_olasiligi": 0.224
+                    "ortalama": 0.471886955782365,
+                    "risk_skoru": 0.5388,
+                    "gecikme_olasiligi": 0.2822
                 },
                 "M-RPV3.5-006": {
-                    "ortalama": 0.5168170439929465,
-                    "risk_skoru": 0.46,
-                    "gecikme_olasiligi": 0.222
+                    "ortalama": 0.4978213584506555,
+                    "risk_skoru": 0.502,
+                    "gecikme_olasiligi": 0.2524
                 },
                 "M-MOD4-007": {
-                    "ortalama": 0.4730689993647135,
-                    "risk_skoru": 0.529,
-                    "gecikme_olasiligi": 0.304
+                    "ortalama": 0.5173036664308841,
+                    "risk_skoru": 0.4711,
+                    "gecikme_olasiligi": 0.2376
                 },
                 "M-MOD3-008": {
-                    "ortalama": 0.4964166855750145,
-                    "risk_skoru": 0.514,
-                    "gecikme_olasiligi": 0.249
+                    "ortalama": 0.5449971268614818,
+                    "risk_skoru": 0.4363,
+                    "gecikme_olasiligi": 0.2057
                 },
                 "M-RPV2.5-009": {
-                    "ortalama": 0.5089846780300448,
-                    "risk_skoru": 0.492,
-                    "gecikme_olasiligi": 0.255
+                    "ortalama": 0.42425237907748015,
+                    "risk_skoru": 0.6071,
+                    "gecikme_olasiligi": 0.3533
                 },
                 "M-TK1-010": {
-                    "ortalama": 0.5050173023060388,
-                    "risk_skoru": 0.499,
-                    "gecikme_olasiligi": 0.247
+                    "ortalama": 0.444980153142366,
+                    "risk_skoru": 0.5836,
+                    "gecikme_olasiligi": 0.3293
                 },
                 "M-AVK-011": {
-                    "ortalama": 0.4738438230092376,
-                    "risk_skoru": 0.551,
-                    "gecikme_olasiligi": 0.275
+                    "ortalama": 0.5203594676794457,
+                    "risk_skoru": 0.466,
+                    "gecikme_olasiligi": 0.2214
                 },
                 "M-CKM-012": {
-                    "ortalama": 0.5162572893307654,
-                    "risk_skoru": 0.479,
-                    "gecikme_olasiligi": 0.217
+                    "ortalama": 0.5157927584324932,
+                    "risk_skoru": 0.4796,
+                    "gecikme_olasiligi": 0.2196
                 },
                 "M-MOD2-014": {
-                    "ortalama": 0.46170281609659436,
-                    "risk_skoru": 0.565,
-                    "gecikme_olasiligi": 0.271
+                    "ortalama": 0.4859492974365554,
+                    "risk_skoru": 0.5172,
+                    "gecikme_olasiligi": 0.2395
                 },
                 "M-DUK-015": {
-                    "ortalama": 0.576928202745423,
-                    "risk_skoru": 0.4,
-                    "gecikme_olasiligi": 0.181
+                    "ortalama": 0.627643973538461,
+                    "risk_skoru": 0.3218,
+                    "gecikme_olasiligi": 0.1327
                 },
                 "M-KK-016": {
-                    "ortalama": 0.5252064515110689,
-                    "risk_skoru": 0.463,
-                    "gecikme_olasiligi": 0.209
+                    "ortalama": 0.6316765984953175,
+                    "risk_skoru": 0.3103,
+                    "gecikme_olasiligi": 0.1209
                 },
                 "M-D90K-017": {
-                    "ortalama": 0.49042130285156965,
-                    "risk_skoru": 0.529,
-                    "gecikme_olasiligi": 0.24
+                    "ortalama": 0.5065111937386577,
+                    "risk_skoru": 0.484,
+                    "gecikme_olasiligi": 0.2298
                 },
                 "M-YK-004": {
-                    "ortalama": 0.5232256622736899,
-                    "risk_skoru": 0.462,
-                    "gecikme_olasiligi": 0.227
+                    "ortalama": 0.4713083505106994,
+                    "risk_skoru": 0.5451,
+                    "gecikme_olasiligi": 0.2932
                 }
             },
             "performans_dagilimi": {
                 "min": 0.0,
                 "max": 1.0,
-                "std": 0.26938040015478687,
-                "q25": 0.30774686451389743,
-                "q75": 0.7043051861989342
+                "std": 0.2743479666000032,
+                "q25": 0.31163884951442333,
+                "q75": 0.7155525418195313
             }
         },
         "YILMAZ UZUN": {
-            "ortalama_performans": 0.5040898498507906,
-            "risk_skoru": 0.493625,
-            "gecikme_olasiligi": 0.2373125,
-            "performans_kararliligi": 0.8588569776401737,
+            "ortalama_performans": 0.4975090834159376,
+            "risk_skoru": 0.50353125,
+            "gecikme_olasiligi": 0.2477875,
+            "performans_kararliligi": 0.8563552910719989,
             "tasarim_bazli_sonuclar": {
                 "M-KAM-001": {
-                    "ortalama": 0.5146270191009497,
-                    "risk_skoru": 0.471,
-                    "gecikme_olasiligi": 0.21
+                    "ortalama": 0.4937745511137107,
+                    "risk_skoru": 0.5158,
+                    "gecikme_olasiligi": 0.2327
                 },
                 "M-KKK-002": {
-                    "ortalama": 0.48405120293018367,
-                    "risk_skoru": 0.521,
-                    "gecikme_olasiligi": 0.269
+                    "ortalama": 0.4615140965326428,
+                    "risk_skoru": 0.5566,
+                    "gecikme_olasiligi": 0.2946
                 },
                 "M-OSK1.5-003": {
-                    "ortalama": 0.4867978638718443,
-                    "risk_skoru": 0.522,
-                    "gecikme_olasiligi": 0.246
+                    "ortalama": 0.501507924890292,
+                    "risk_skoru": 0.4988,
+                    "gecikme_olasiligi": 0.2384
                 },
                 "M-PA-005": {
-                    "ortalama": 0.5285325392273295,
-                    "risk_skoru": 0.46,
-                    "gecikme_olasiligi": 0.22
+                    "ortalama": 0.5673545042186208,
+                    "risk_skoru": 0.4006,
+                    "gecikme_olasiligi": 0.1657
                 },
                 "M-RPV3.5-006": {
-                    "ortalama": 0.5465499697675564,
-                    "risk_skoru": 0.431,
-                    "gecikme_olasiligi": 0.171
+                    "ortalama": 0.4902574246052347,
+                    "risk_skoru": 0.513,
+                    "gecikme_olasiligi": 0.2452
                 },
                 "M-MOD4-007": {
-                    "ortalama": 0.4963167019370886,
-                    "risk_skoru": 0.516,
-                    "gecikme_olasiligi": 0.227
+                    "ortalama": 0.5006888733677968,
+                    "risk_skoru": 0.5011,
+                    "gecikme_olasiligi": 0.2293
                 },
                 "M-MOD3-008": {
-                    "ortalama": 0.5329813622419617,
-                    "risk_skoru": 0.452,
-                    "gecikme_olasiligi": 0.21
+                    "ortalama": 0.5458881086862977,
+                    "risk_skoru": 0.4355,
+                    "gecikme_olasiligi": 0.2027
                 },
                 "M-RPV2.5-009": {
-                    "ortalama": 0.4908192293420574,
-                    "risk_skoru": 0.512,
-                    "gecikme_olasiligi": 0.265
+                    "ortalama": 0.4256473654815544,
+                    "risk_skoru": 0.6066,
+                    "gecikme_olasiligi": 0.3467
                 },
                 "M-TK1-010": {
-                    "ortalama": 0.5234001814722284,
-                    "risk_skoru": 0.476,
-                    "gecikme_olasiligi": 0.213
+                    "ortalama": 0.506684228054359,
+                    "risk_skoru": 0.4862,
+                    "gecikme_olasiligi": 0.2332
                 },
                 "M-AVK-011": {
-                    "ortalama": 0.5304568459129929,
-                    "risk_skoru": 0.457,
-                    "gecikme_olasiligi": 0.211
+                    "ortalama": 0.5034317718987967,
+                    "risk_skoru": 0.4904,
+                    "gecikme_olasiligi": 0.2365
                 },
                 "M-CKM-012": {
-                    "ortalama": 0.4797769384721644,
-                    "risk_skoru": 0.517,
-                    "gecikme_olasiligi": 0.278
+                    "ortalama": 0.45781244192913945,
+                    "risk_skoru": 0.559,
+                    "gecikme_olasiligi": 0.3037
                 },
                 "M-MOD2-014": {
-                    "ortalama": 0.5037143461510497,
-                    "risk_skoru": 0.498,
-                    "gecikme_olasiligi": 0.226
+                    "ortalama": 0.4657947755588131,
+                    "risk_skoru": 0.5518,
+                    "gecikme_olasiligi": 0.2776
                 },
                 "M-DUK-015": {
-                    "ortalama": 0.4517645939467611,
-                    "risk_skoru": 0.576,
-                    "gecikme_olasiligi": 0.309
+                    "ortalama": 0.43456105055684513,
+                    "risk_skoru": 0.5978,
+                    "gecikme_olasiligi": 0.3302
                 },
                 "M-KK-016": {
-                    "ortalama": 0.475251775994745,
-                    "risk_skoru": 0.55,
-                    "gecikme_olasiligi": 0.278
+                    "ortalama": 0.450323414036869,
+                    "risk_skoru": 0.5773,
+                    "gecikme_olasiligi": 0.3046
                 },
                 "M-D90K-017": {
-                    "ortalama": 0.5180517862666396,
-                    "risk_skoru": 0.454,
-                    "gecikme_olasiligi": 0.226
+                    "ortalama": 0.5680133208362418,
+                    "risk_skoru": 0.4001,
+                    "gecikme_olasiligi": 0.1763
                 },
                 "M-YK-004": {
-                    "ortalama": 0.5023452409770969,
-                    "risk_skoru": 0.485,
-                    "gecikme_olasiligi": 0.238
+                    "ortalama": 0.5868914828877889,
+                    "risk_skoru": 0.3659,
+                    "gecikme_olasiligi": 0.1472
                 }
             },
             "performans_dagilimi": {
                 "min": 0.0,
                 "max": 1.0,
-                "std": 0.2656529901580503,
-                "q25": 0.31264319019719444,
-                "q75": 0.7011648191721356
+                "std": 0.26799692995256597,
+                "q25": 0.301915449728231,
+                "q75": 0.6923634366672995
             }
         },
         "Özgür YAPAREL": {
-            "ortalama_performans": 0.5034118080936308,
-            "risk_skoru": 0.496,
-            "gecikme_olasiligi": 0.2389375,
-            "performans_kararliligi": 0.8589517081171131,
+            "ortalama_performans": 0.5029378609976075,
+            "risk_skoru": 0.49535625,
+            "gecikme_olasiligi": 0.246275,
+            "performans_kararliligi": 0.8525562668060139,
             "tasarim_bazli_sonuclar": {
                 "M-KAM-001": {
-                    "ortalama": 0.46366342899599283,
-                    "risk_skoru": 0.561,
-                    "gecikme_olasiligi": 0.312
+                    "ortalama": 0.39259998928876555,
+                    "risk_skoru": 0.6651,
+                    "gecikme_olasiligi": 0.3877
                 },
                 "M-KKK-002": {
-                    "ortalama": 0.5412821603830282,
-                    "risk_skoru": 0.441,
-                    "gecikme_olasiligi": 0.214
+                    "ortalama": 0.5995629441015966,
+                    "risk_skoru": 0.3506,
+                    "gecikme_olasiligi": 0.145
                 },
                 "M-OSK1.5-003": {
-                    "ortalama": 0.4949256946735338,
-                    "risk_skoru": 0.515,
-                    "gecikme_olasiligi": 0.259
+                    "ortalama": 0.5907567903543669,
+                    "risk_skoru": 0.3698,
+                    "gecikme_olasiligi": 0.1606
                 },
                 "M-PA-005": {
-                    "ortalama": 0.5140484194492825,
-                    "risk_skoru": 0.479,
-                    "gecikme_olasiligi": 0.204
+                    "ortalama": 0.4936342164564191,
+                    "risk_skoru": 0.5131,
+                    "gecikme_olasiligi": 0.2428
                 },
                 "M-RPV3.5-006": {
-                    "ortalama": 0.4956249183273891,
-                    "risk_skoru": 0.509,
-                    "gecikme_olasiligi": 0.247
+                    "ortalama": 0.5181426747239287,
+                    "risk_skoru": 0.4703,
+                    "gecikme_olasiligi": 0.2222
                 },
                 "M-MOD4-007": {
-                    "ortalama": 0.5221965655450933,
-                    "risk_skoru": 0.451,
-                    "gecikme_olasiligi": 0.202
+                    "ortalama": 0.5523089674331162,
+                    "risk_skoru": 0.4164,
+                    "gecikme_olasiligi": 0.172
                 },
                 "M-MOD3-008": {
-                    "ortalama": 0.527979394108296,
-                    "risk_skoru": 0.464,
-                    "gecikme_olasiligi": 0.201
+                    "ortalama": 0.5026654669832906,
+                    "risk_skoru": 0.495,
+                    "gecikme_olasiligi": 0.2525
                 },
                 "M-RPV2.5-009": {
-                    "ortalama": 0.5168291551510965,
-                    "risk_skoru": 0.478,
-                    "gecikme_olasiligi": 0.218
+                    "ortalama": 0.42560456596069596,
+                    "risk_skoru": 0.6149,
+                    "gecikme_olasiligi": 0.3398
                 },
                 "M-TK1-010": {
-                    "ortalama": 0.46903973470139226,
-                    "risk_skoru": 0.543,
-                    "gecikme_olasiligi": 0.278
+                    "ortalama": 0.5052646526513278,
+                    "risk_skoru": 0.4903,
+                    "gecikme_olasiligi": 0.25
                 },
                 "M-AVK-011": {
-                    "ortalama": 0.5238827447687732,
-                    "risk_skoru": 0.472,
-                    "gecikme_olasiligi": 0.236
+                    "ortalama": 0.4558238398696273,
+                    "risk_skoru": 0.5657,
+                    "gecikme_olasiligi": 0.3066
                 },
                 "M-CKM-012": {
-                    "ortalama": 0.4989107898379092,
-                    "risk_skoru": 0.503,
-                    "gecikme_olasiligi": 0.231
+                    "ortalama": 0.5212110078814667,
+                    "risk_skoru": 0.4692,
+                    "gecikme_olasiligi": 0.221
                 },
                 "M-MOD2-014": {
-                    "ortalama": 0.5190261985581343,
-                    "risk_skoru": 0.459,
-                    "gecikme_olasiligi": 0.211
+                    "ortalama": 0.5775294875589602,
+                    "risk_skoru": 0.3791,
+                    "gecikme_olasiligi": 0.1463
                 },
                 "M-DUK-015": {
-                    "ortalama": 0.49562258325071634,
-                    "risk_skoru": 0.514,
-                    "gecikme_olasiligi": 0.233
+                    "ortalama": 0.43829098413307976,
+                    "risk_skoru": 0.593,
+                    "gecikme_olasiligi": 0.3181
                 },
                 "M-KK-016": {
-                    "ortalama": 0.5464860288974157,
-                    "risk_skoru": 0.421,
-                    "gecikme_olasiligi": 0.18
+                    "ortalama": 0.5918140202815776,
+                    "risk_skoru": 0.3562,
+                    "gecikme_olasiligi": 0.1345
                 },
                 "M-D90K-017": {
-                    "ortalama": 0.459596202194903,
-                    "risk_skoru": 0.572,
-                    "gecikme_olasiligi": 0.317
+                    "ortalama": 0.4189069120729145,
+                    "risk_skoru": 0.6188,
+                    "gecikme_olasiligi": 0.362
                 },
                 "M-YK-004": {
-                    "ortalama": 0.46547491065513735,
-                    "risk_skoru": 0.554,
-                    "gecikme_olasiligi": 0.28
+                    "ortalama": 0.46288925621058796,
+                    "risk_skoru": 0.5582,
+                    "gecikme_olasiligi": 0.2793
                 }
             },
             "performans_dagilimi": {
                 "min": 0.0,
                 "max": 1.0,
-                "std": 0.26556382649269733,
-                "q25": 0.3098477122871999,
-                "q75": 0.6997201986611684
+                "std": 0.2715177095457919,
+                "q25": 0.3035576123629376,
+                "q75": 0.7027014251531077
             }
         },
         "Gökhan KOLAÇ": {
-            "ortalama_performans": 0.5000367003153733,
-            "risk_skoru": 0.501625,
-            "gecikme_olasiligi": 0.246875,
-            "performans_kararliligi": 0.8559993631694369,
+            "ortalama_performans": 0.5142223361998015,
+            "risk_skoru": 0.4798375,
+            "gecikme_olasiligi": 0.2325,
+            "performans_kararliligi": 0.8526885006115519,
             "tasarim_bazli_sonuclar": {
                 "M-KAM-001": {
-                    "ortalama": 0.49663571707250337,
-                    "risk_skoru": 0.495,
-                    "gecikme_olasiligi": 0.262
+                    "ortalama": 0.5143586346077645,
+                    "risk_skoru": 0.4839,
+                    "gecikme_olasiligi": 0.236
                 },
                 "M-KKK-002": {
-                    "ortalama": 0.501944985087297,
-                    "risk_skoru": 0.507,
-                    "gecikme_olasiligi": 0.237
+                    "ortalama": 0.5334828411021009,
+                    "risk_skoru": 0.4504,
+                    "gecikme_olasiligi": 0.2048
                 },
                 "M-OSK1.5-003": {
-                    "ortalama": 0.4794805510014925,
-                    "risk_skoru": 0.524,
-                    "gecikme_olasiligi": 0.266
+                    "ortalama": 0.4836892706165383,
+                    "risk_skoru": 0.5244,
+                    "gecikme_olasiligi": 0.256
                 },
                 "M-PA-005": {
-                    "ortalama": 0.5453416915146734,
-                    "risk_skoru": 0.434,
-                    "gecikme_olasiligi": 0.192
+                    "ortalama": 0.6009722689006988,
+                    "risk_skoru": 0.3519,
+                    "gecikme_olasiligi": 0.1437
                 },
                 "M-RPV3.5-006": {
-                    "ortalama": 0.5117289238812411,
-                    "risk_skoru": 0.48,
-                    "gecikme_olasiligi": 0.231
+                    "ortalama": 0.5763428438072173,
+                    "risk_skoru": 0.3828,
+                    "gecikme_olasiligi": 0.1543
                 },
                 "M-MOD4-007": {
-                    "ortalama": 0.49890637735412163,
-                    "risk_skoru": 0.49,
-                    "gecikme_olasiligi": 0.254
+                    "ortalama": 0.525520520813453,
+                    "risk_skoru": 0.4652,
+                    "gecikme_olasiligi": 0.2255
                 },
                 "M-MOD3-008": {
-                    "ortalama": 0.44644513719151263,
-                    "risk_skoru": 0.586,
-                    "gecikme_olasiligi": 0.29
+                    "ortalama": 0.3936847964179714,
+                    "risk_skoru": 0.6637,
+                    "gecikme_olasiligi": 0.3834
                 },
                 "M-RPV2.5-009": {
-                    "ortalama": 0.5425160631232945,
-                    "risk_skoru": 0.458,
-                    "gecikme_olasiligi": 0.199
+                    "ortalama": 0.5642200998496851,
+                    "risk_skoru": 0.4016,
+                    "gecikme_olasiligi": 0.1714
                 },
                 "M-TK1-010": {
-                    "ortalama": 0.4946499469789362,
-                    "risk_skoru": 0.511,
-                    "gecikme_olasiligi": 0.232
+                    "ortalama": 0.4680342153172921,
+                    "risk_skoru": 0.5474,
+                    "gecikme_olasiligi": 0.2806
                 },
                 "M-AVK-011": {
-                    "ortalama": 0.5156400401792064,
-                    "risk_skoru": 0.48,
-                    "gecikme_olasiligi": 0.247
+                    "ortalama": 0.5615638188000437,
+                    "risk_skoru": 0.4126,
+                    "gecikme_olasiligi": 0.1845
                 },
                 "M-CKM-012": {
-                    "ortalama": 0.5229498393649041,
-                    "risk_skoru": 0.461,
-                    "gecikme_olasiligi": 0.237
+                    "ortalama": 0.49921333099028153,
+                    "risk_skoru": 0.5065,
+                    "gecikme_olasiligi": 0.2568
                 },
                 "M-MOD2-014": {
-                    "ortalama": 0.5334280567947637,
-                    "risk_skoru": 0.454,
-                    "gecikme_olasiligi": 0.194
+                    "ortalama": 0.5308198669520884,
+                    "risk_skoru": 0.4509,
+                    "gecikme_olasiligi": 0.1979
                 },
                 "M-DUK-015": {
-                    "ortalama": 0.4954841174225817,
-                    "risk_skoru": 0.519,
-                    "gecikme_olasiligi": 0.264
+                    "ortalama": 0.55495365680549,
+                    "risk_skoru": 0.4175,
+                    "gecikme_olasiligi": 0.1877
                 },
                 "M-KK-016": {
-                    "ortalama": 0.4752643290554479,
-                    "risk_skoru": 0.531,
-                    "gecikme_olasiligi": 0.267
+                    "ortalama": 0.4646375636403519,
+                    "risk_skoru": 0.5539,
+                    "gecikme_olasiligi": 0.2958
                 },
                 "M-D90K-017": {
-                    "ortalama": 0.4773943177574348,
-                    "risk_skoru": 0.544,
-                    "gecikme_olasiligi": 0.281
+                    "ortalama": 0.4852140944025166,
+                    "risk_skoru": 0.5233,
+                    "gecikme_olasiligi": 0.2615
                 },
                 "M-YK-004": {
-                    "ortalama": 0.46277711126656196,
-                    "risk_skoru": 0.552,
-                    "gecikme_olasiligi": 0.297
+                    "ortalama": 0.47084955617333146,
+                    "risk_skoru": 0.5414,
+                    "gecikme_olasiligi": 0.2801
                 }
             },
             "performans_dagilimi": {
                 "min": 0.0,
                 "max": 1.0,
-                "std": 0.2683287506311643,
-                "q25": 0.30291355181949686,
-                "q75": 0.6954937708126883
+                "std": 0.271395927924912,
+                "q25": 0.31647507604839525,
+                "q75": 0.713720154180849
             }
         },
         "EMRE ÇELEBİ": {
-            "ortalama_performans": 0.4933093236319288,
-            "risk_skoru": 0.5098125,
-            "gecikme_olasiligi": 0.253375,
-            "performans_kararliligi": 0.8588642627837552,
+            "ortalama_performans": 0.4853997839058616,
+            "risk_skoru": 0.52250625,
+            "gecikme_olasiligi": 0.26343125,
+            "performans_kararliligi": 0.8569522107781844,
             "tasarim_bazli_sonuclar": {
                 "M-KAM-001": {
-                    "ortalama": 0.5007376564610047,
-                    "risk_skoru": 0.494,
-                    "gecikme_olasiligi": 0.242
+                    "ortalama": 0.5050713898914286,
+                    "risk_skoru": 0.4912,
+                    "gecikme_olasiligi": 0.2487
                 },
                 "M-KKK-002": {
-                    "ortalama": 0.4902886261505205,
-                    "risk_skoru": 0.502,
-                    "gecikme_olasiligi": 0.278
+                    "ortalama": 0.5359298855650559,
+                    "risk_skoru": 0.4487,
+                    "gecikme_olasiligi": 0.2075
                 },
                 "M-OSK1.5-003": {
-                    "ortalama": 0.46634192791992074,
-                    "risk_skoru": 0.536,
-                    "gecikme_olasiligi": 0.302
+                    "ortalama": 0.4395804520476995,
+                    "risk_skoru": 0.5902,
+                    "gecikme_olasiligi": 0.3264
                 },
                 "M-PA-005": {
-                    "ortalama": 0.4454658633514748,
-                    "risk_skoru": 0.588,
-                    "gecikme_olasiligi": 0.308
+                    "ortalama": 0.5262321935797193,
+                    "risk_skoru": 0.4646,
+                    "gecikme_olasiligi": 0.213
                 },
                 "M-RPV3.5-006": {
-                    "ortalama": 0.49694975787379875,
-                    "risk_skoru": 0.49,
-                    "gecikme_olasiligi": 0.229
+                    "ortalama": 0.42713924631046596,
+                    "risk_skoru": 0.6152,
+                    "gecikme_olasiligi": 0.3279
                 },
                 "M-MOD4-007": {
-                    "ortalama": 0.5077285315553574,
-                    "risk_skoru": 0.489,
-                    "gecikme_olasiligi": 0.238
+                    "ortalama": 0.451953217351453,
+                    "risk_skoru": 0.577,
+                    "gecikme_olasiligi": 0.3027
                 },
                 "M-MOD3-008": {
-                    "ortalama": 0.4817412901875217,
-                    "risk_skoru": 0.542,
-                    "gecikme_olasiligi": 0.268
+                    "ortalama": 0.47117956318442383,
+                    "risk_skoru": 0.545,
+                    "gecikme_olasiligi": 0.2744
                 },
                 "M-RPV2.5-009": {
-                    "ortalama": 0.5290932478346274,
-                    "risk_skoru": 0.45,
-                    "gecikme_olasiligi": 0.199
+                    "ortalama": 0.541093011526536,
+                    "risk_skoru": 0.4326,
+                    "gecikme_olasiligi": 0.1818
                 },
                 "M-TK1-010": {
-                    "ortalama": 0.5375880270601014,
-                    "risk_skoru": 0.447,
-                    "gecikme_olasiligi": 0.195
+                    "ortalama": 0.5443060824099579,
+                    "risk_skoru": 0.4324,
+                    "gecikme_olasiligi": 0.1924
                 },
                 "M-AVK-011": {
-                    "ortalama": 0.49569582939937,
-                    "risk_skoru": 0.521,
-                    "gecikme_olasiligi": 0.255
+                    "ortalama": 0.5596691546544892,
+                    "risk_skoru": 0.4123,
+                    "gecikme_olasiligi": 0.1882
                 },
                 "M-CKM-012": {
-                    "ortalama": 0.5130849731187109,
-                    "risk_skoru": 0.482,
-                    "gecikme_olasiligi": 0.232
+                    "ortalama": 0.49339471923100153,
+                    "risk_skoru": 0.5119,
+                    "gecikme_olasiligi": 0.2498
                 },
                 "M-MOD2-014": {
-                    "ortalama": 0.5225728556923227,
-                    "risk_skoru": 0.477,
-                    "gecikme_olasiligi": 0.208
+                    "ortalama": 0.5066756134122011,
+                    "risk_skoru": 0.4855,
+                    "gecikme_olasiligi": 0.2313
                 },
                 "M-DUK-015": {
-                    "ortalama": 0.43707554740203364,
-                    "risk_skoru": 0.609,
-                    "gecikme_olasiligi": 0.312
+                    "ortalama": 0.39705431807230446,
+                    "risk_skoru": 0.659,
+                    "gecikme_olasiligi": 0.3647
                 },
                 "M-KK-016": {
-                    "ortalama": 0.48746095751969276,
-                    "risk_skoru": 0.514,
-                    "gecikme_olasiligi": 0.254
+                    "ortalama": 0.48217502714850125,
+                    "risk_skoru": 0.524,
+                    "gecikme_olasiligi": 0.2608
                 },
                 "M-D90K-017": {
-                    "ortalama": 0.4979921350566002,
-                    "risk_skoru": 0.494,
-                    "gecikme_olasiligi": 0.263
+                    "ortalama": 0.4025061684501344,
+                    "risk_skoru": 0.6436,
+                    "gecikme_olasiligi": 0.3814
                 },
                 "M-YK-004": {
-                    "ortalama": 0.4831319515278027,
-                    "risk_skoru": 0.522,
-                    "gecikme_olasiligi": 0.271
+                    "ortalama": 0.4824364996584127,
+                    "risk_skoru": 0.5269,
+                    "gecikme_olasiligi": 0.2639
                 }
             },
             "performans_dagilimi": {
                 "min": 0.0,
                 "max": 1.0,
-                "std": 0.26564613418629385,
-                "q25": 0.29732489757683983,
-                "q75": 0.6831711001838736
+                "std": 0.2674395157991949,
+                "q25": 0.287956399398268,
+                "q75": 0.6786561640664002
             }
         },
         "YASİN AKKAYA": {
-            "ortalama_performans": 0.4925436840964715,
-            "risk_skoru": 0.512375,
-            "gecikme_olasiligi": 0.253125,
-            "performans_kararliligi": 0.8569525867354957,
+            "ortalama_performans": 0.5111092721486976,
+            "risk_skoru": 0.48446875,
+            "gecikme_olasiligi": 0.2356125,
+            "performans_kararliligi": 0.8531667848525464,
             "tasarim_bazli_sonuclar": {
                 "M-KAM-001": {
-                    "ortalama": 0.49282894017850926,
-                    "risk_skoru": 0.513,
-                    "gecikme_olasiligi": 0.23
+                    "ortalama": 0.533539718018224,
+                    "risk_skoru": 0.4462,
+                    "gecikme_olasiligi": 0.1902
                 },
                 "M-KKK-002": {
-                    "ortalama": 0.5194792111631723,
-                    "risk_skoru": 0.479,
-                    "gecikme_olasiligi": 0.214
+                    "ortalama": 0.49277782310140994,
+                    "risk_skoru": 0.5103,
+                    "gecikme_olasiligi": 0.2599
                 },
                 "M-OSK1.5-003": {
-                    "ortalama": 0.5029028616472226,
-                    "risk_skoru": 0.489,
-                    "gecikme_olasiligi": 0.261
+                    "ortalama": 0.5159068731276384,
+                    "risk_skoru": 0.4763,
+                    "gecikme_olasiligi": 0.2439
                 },
                 "M-PA-005": {
-                    "ortalama": 0.549564520032224,
-                    "risk_skoru": 0.433,
-                    "gecikme_olasiligi": 0.181
+                    "ortalama": 0.6129449119629151,
+                    "risk_skoru": 0.337,
+                    "gecikme_olasiligi": 0.1352
                 },
                 "M-RPV3.5-006": {
-                    "ortalama": 0.4548077971402172,
-                    "risk_skoru": 0.561,
-                    "gecikme_olasiligi": 0.315
+                    "ortalama": 0.4709382775701462,
+                    "risk_skoru": 0.5417,
+                    "gecikme_olasiligi": 0.3002
                 },
                 "M-MOD4-007": {
-                    "ortalama": 0.4760085350408411,
-                    "risk_skoru": 0.535,
-                    "gecikme_olasiligi": 0.286
+                    "ortalama": 0.5049256473180104,
+                    "risk_skoru": 0.4966,
+                    "gecikme_olasiligi": 0.2442
                 },
                 "M-MOD3-008": {
-                    "ortalama": 0.5016953473363082,
-                    "risk_skoru": 0.49,
-                    "gecikme_olasiligi": 0.262
+                    "ortalama": 0.5351810159326312,
+                    "risk_skoru": 0.4486,
+                    "gecikme_olasiligi": 0.2121
                 },
                 "M-RPV2.5-009": {
-                    "ortalama": 0.4753244508040175,
-                    "risk_skoru": 0.542,
-                    "gecikme_olasiligi": 0.268
+                    "ortalama": 0.42800201208370353,
+                    "risk_skoru": 0.6086,
+                    "gecikme_olasiligi": 0.3267
                 },
                 "M-TK1-010": {
-                    "ortalama": 0.5086217031172935,
-                    "risk_skoru": 0.482,
-                    "gecikme_olasiligi": 0.231
+                    "ortalama": 0.564221394103635,
+                    "risk_skoru": 0.4064,
+                    "gecikme_olasiligi": 0.1841
                 },
                 "M-AVK-011": {
-                    "ortalama": 0.4577619291608795,
-                    "risk_skoru": 0.566,
-                    "gecikme_olasiligi": 0.269
+                    "ortalama": 0.4996460974457208,
+                    "risk_skoru": 0.5032,
+                    "gecikme_olasiligi": 0.215
                 },
                 "M-CKM-012": {
-                    "ortalama": 0.48879154575960343,
-                    "risk_skoru": 0.516,
-                    "gecikme_olasiligi": 0.269
+                    "ortalama": 0.46581474259476346,
+                    "risk_skoru": 0.5493,
+                    "gecikme_olasiligi": 0.3042
                 },
                 "M-MOD2-014": {
-                    "ortalama": 0.4852617683823614,
-                    "risk_skoru": 0.538,
-                    "gecikme_olasiligi": 0.256
+                    "ortalama": 0.5790515616235777,
+                    "risk_skoru": 0.3827,
+                    "gecikme_olasiligi": 0.162
                 },
                 "M-DUK-015": {
-                    "ortalama": 0.46572631236840756,
-                    "risk_skoru": 0.552,
-                    "gecikme_olasiligi": 0.278
+                    "ortalama": 0.4763339213952667,
+                    "risk_skoru": 0.5349,
+                    "gecikme_olasiligi": 0.2647
                 },
                 "M-KK-016": {
-                    "ortalama": 0.5101139530231383,
-                    "risk_skoru": 0.496,
-                    "gecikme_olasiligi": 0.224
+                    "ortalama": 0.535193947634411,
+                    "risk_skoru": 0.4482,
+                    "gecikme_olasiligi": 0.1899
                 },
                 "M-D90K-017": {
-                    "ortalama": 0.5001122389880696,
-                    "risk_skoru": 0.494,
-                    "gecikme_olasiligi": 0.252
+                    "ortalama": 0.4507915389551721,
+                    "risk_skoru": 0.5751,
+                    "gecikme_olasiligi": 0.302
                 },
                 "M-YK-004": {
-                    "ortalama": 0.4916978314012771,
-                    "risk_skoru": 0.512,
-                    "gecikme_olasiligi": 0.254
+                    "ortalama": 0.5124788715119356,
+                    "risk_skoru": 0.4864,
+                    "gecikme_olasiligi": 0.2355
                 }
             },
             "performans_dagilimi": {
                 "min": 0.0,
                 "max": 1.0,
-                "std": 0.2674391643575267,
-                "q25": 0.2972247040915762,
-                "q75": 0.6888234474249372
+                "std": 0.27095499178595484,
+                "q25": 0.31319422410495384,
+                "q75": 0.7100380481657563
             }
         },
         "HÜSEYİN GÜNDOĞDU": {
-            "ortalama_performans": 0.5208514325535275,
-            "risk_skoru": 0.4685625,
-            "gecikme_olasiligi": 0.212875,
-            "performans_kararliligi": 0.8619840775825731,
+            "ortalama_performans": 0.54043357980566,
+            "risk_skoru": 0.43851875,
+            "gecikme_olasiligi": 0.19739375,
+            "performans_kararliligi": 0.8590791656102097,
             "tasarim_bazli_sonuclar": {
                 "M-KAM-001": {
-                    "ortalama": 0.5516910911560455,
-                    "risk_skoru": 0.41,
-                    "gecikme_olasiligi": 0.18
+                    "ortalama": 0.5605466424826498,
+                    "risk_skoru": 0.4074,
+                    "gecikme_olasiligi": 0.1747
                 },
                 "M-KKK-002": {
-                    "ortalama": 0.5262034713937337,
-                    "risk_skoru": 0.467,
-                    "gecikme_olasiligi": 0.214
+                    "ortalama": 0.5717123381891447,
+                    "risk_skoru": 0.3935,
+                    "gecikme_olasiligi": 0.17
                 },
                 "M-OSK1.5-003": {
-                    "ortalama": 0.5154844810273671,
-                    "risk_skoru": 0.478,
-                    "gecikme_olasiligi": 0.221
+                    "ortalama": 0.5617710448266391,
+                    "risk_skoru": 0.4071,
+                    "gecikme_olasiligi": 0.1755
                 },
                 "M-PA-005": {
-                    "ortalama": 0.5405187776018398,
-                    "risk_skoru": 0.455,
-                    "gecikme_olasiligi": 0.206
+                    "ortalama": 0.6522706138884885,
+                    "risk_skoru": 0.2821,
+                    "gecikme_olasiligi": 0.1143
                 },
                 "M-RPV3.5-006": {
-                    "ortalama": 0.5221418813211746,
-                    "risk_skoru": 0.457,
-                    "gecikme_olasiligi": 0.206
+                    "ortalama": 0.5831732533171454,
+                    "risk_skoru": 0.3768,
+                    "gecikme_olasiligi": 0.148
                 },
                 "M-MOD4-007": {
-                    "ortalama": 0.5623069906251128,
-                    "risk_skoru": 0.421,
-                    "gecikme_olasiligi": 0.145
+                    "ortalama": 0.6305873673422602,
+                    "risk_skoru": 0.2974,
+                    "gecikme_olasiligi": 0.0958
                 },
                 "M-MOD3-008": {
-                    "ortalama": 0.5726095503727493,
-                    "risk_skoru": 0.383,
-                    "gecikme_olasiligi": 0.161
+                    "ortalama": 0.5510717162112514,
+                    "risk_skoru": 0.4245,
+                    "gecikme_olasiligi": 0.1827
                 },
                 "M-RPV2.5-009": {
-                    "ortalama": 0.4637276228010559,
-                    "risk_skoru": 0.554,
-                    "gecikme_olasiligi": 0.297
+                    "ortalama": 0.48406764469893,
+                    "risk_skoru": 0.5236,
+                    "gecikme_olasiligi": 0.278
                 },
                 "M-TK1-010": {
-                    "ortalama": 0.5053836364230753,
-                    "risk_skoru": 0.498,
-                    "gecikme_olasiligi": 0.238
+                    "ortalama": 0.5032443687923839,
+                    "risk_skoru": 0.4898,
+                    "gecikme_olasiligi": 0.2315
                 },
                 "M-AVK-011": {
-                    "ortalama": 0.5109002561097135,
-                    "risk_skoru": 0.471,
-                    "gecikme_olasiligi": 0.252
+                    "ortalama": 0.490394230452558,
+                    "risk_skoru": 0.513,
+                    "gecikme_olasiligi": 0.279
                 },
                 "M-CKM-012": {
-                    "ortalama": 0.5023548836022079,
-                    "risk_skoru": 0.494,
-                    "gecikme_olasiligi": 0.217
+                    "ortalama": 0.4939715284624898,
+                    "risk_skoru": 0.5056,
+                    "gecikme_olasiligi": 0.2325
                 },
                 "M-MOD2-014": {
-                    "ortalama": 0.5317371949253696,
-                    "risk_skoru": 0.458,
-                    "gecikme_olasiligi": 0.164
+                    "ortalama": 0.48097228854521545,
+                    "risk_skoru": 0.5311,
+                    "gecikme_olasiligi": 0.2335
                 },
                 "M-DUK-015": {
-                    "ortalama": 0.49054424262375007,
-                    "risk_skoru": 0.516,
-                    "gecikme_olasiligi": 0.241
+                    "ortalama": 0.481784692863859,
+                    "risk_skoru": 0.5273,
+                    "gecikme_olasiligi": 0.2545
                 },
                 "M-KK-016": {
-                    "ortalama": 0.48802339653949073,
-                    "risk_skoru": 0.516,
-                    "gecikme_olasiligi": 0.227
+                    "ortalama": 0.5369692915299649,
+                    "risk_skoru": 0.4402,
+                    "gecikme_olasiligi": 0.1677
                 },
                 "M-D90K-017": {
-                    "ortalama": 0.526927807314657,
-                    "risk_skoru": 0.458,
-                    "gecikme_olasiligi": 0.218
+                    "ortalama": 0.52584441575331,
+                    "risk_skoru": 0.4563,
+                    "gecikme_olasiligi": 0.2197
                 },
                 "M-YK-004": {
-                    "ortalama": 0.5230676370190981,
-                    "risk_skoru": 0.461,
-                    "gecikme_olasiligi": 0.219
+                    "ortalama": 0.5385558395342704,
+                    "risk_skoru": 0.4406,
+                    "gecikme_olasiligi": 0.2009
                 }
             },
             "performans_dagilimi": {
                 "min": 0.0,
                 "max": 1.0,
-                "std": 0.26269366419598594,
-                "q25": 0.33316004404168026,
-                "q75": 0.7116886185554598
+                "std": 0.265443811747223,
+                "q25": 0.3511617141608547,
+                "q75": 0.7373234010629982
             }
         },
         "AHMET ŞAHİN": {
-            "ortalama_performans": 0.5031735349035992,
-            "risk_skoru": 0.4919375,
-            "gecikme_olasiligi": 0.2453125,
-            "performans_kararliligi": 0.8510249549520646,
+            "ortalama_performans": 0.4976666938926158,
+            "risk_skoru": 0.504075,
+            "gecikme_olasiligi": 0.25076875,
+            "performans_kararliligi": 0.8524442119317501,
             "tasarim_bazli_sonuclar": {
                 "M-KAM-001": {
-                    "ortalama": 0.5256924235450714,
-                    "risk_skoru": 0.453,
-                    "gecikme_olasiligi": 0.233
+                    "ortalama": 0.44233656646926595,
+                    "risk_skoru": 0.5831,
+                    "gecikme_olasiligi": 0.3266
                 },
                 "M-KKK-002": {
-                    "ortalama": 0.47529007704685206,
-                    "risk_skoru": 0.555,
-                    "gecikme_olasiligi": 0.284
+                    "ortalama": 0.4382113656794403,
+                    "risk_skoru": 0.5886,
+                    "gecikme_olasiligi": 0.3278
                 },
                 "M-OSK1.5-003": {
-                    "ortalama": 0.5149065444658185,
-                    "risk_skoru": 0.466,
-                    "gecikme_olasiligi": 0.231
+                    "ortalama": 0.5760759426769344,
+                    "risk_skoru": 0.3926,
+                    "gecikme_olasiligi": 0.1603
                 },
                 "M-PA-005": {
-                    "ortalama": 0.5244544776155959,
-                    "risk_skoru": 0.449,
-                    "gecikme_olasiligi": 0.216
+                    "ortalama": 0.4959125885497322,
+                    "risk_skoru": 0.5098,
+                    "gecikme_olasiligi": 0.2422
                 },
                 "M-RPV3.5-006": {
-                    "ortalama": 0.4987390149986952,
-                    "risk_skoru": 0.498,
-                    "gecikme_olasiligi": 0.245
+                    "ortalama": 0.5363899345565493,
+                    "risk_skoru": 0.4425,
+                    "gecikme_olasiligi": 0.1954
                 },
                 "M-MOD4-007": {
-                    "ortalama": 0.4897461316150416,
-                    "risk_skoru": 0.511,
-                    "gecikme_olasiligi": 0.26
+                    "ortalama": 0.5406673088052836,
+                    "risk_skoru": 0.4386,
+                    "gecikme_olasiligi": 0.2107
                 },
                 "M-MOD3-008": {
-                    "ortalama": 0.5149421366233562,
-                    "risk_skoru": 0.464,
-                    "gecikme_olasiligi": 0.243
+                    "ortalama": 0.44384017322974406,
+                    "risk_skoru": 0.58,
+                    "gecikme_olasiligi": 0.3198
                 },
                 "M-RPV2.5-009": {
-                    "ortalama": 0.4601860388733318,
-                    "risk_skoru": 0.56,
-                    "gecikme_olasiligi": 0.28
+                    "ortalama": 0.45060402545057593,
+                    "risk_skoru": 0.5786,
+                    "gecikme_olasiligi": 0.3051
                 },
                 "M-TK1-010": {
-                    "ortalama": 0.4883626605763844,
-                    "risk_skoru": 0.529,
-                    "gecikme_olasiligi": 0.276
+                    "ortalama": 0.45681661895996667,
+                    "risk_skoru": 0.5673,
+                    "gecikme_olasiligi": 0.3027
                 },
                 "M-AVK-011": {
-                    "ortalama": 0.47436175405900505,
-                    "risk_skoru": 0.542,
-                    "gecikme_olasiligi": 0.285
+                    "ortalama": 0.5464409809999303,
+                    "risk_skoru": 0.4332,
+                    "gecikme_olasiligi": 0.1995
                 },
                 "M-CKM-012": {
-                    "ortalama": 0.5008340017067501,
-                    "risk_skoru": 0.498,
-                    "gecikme_olasiligi": 0.229
+                    "ortalama": 0.5650092285313517,
+                    "risk_skoru": 0.402,
+                    "gecikme_olasiligi": 0.1644
                 },
                 "M-MOD2-014": {
-                    "ortalama": 0.48267726039533093,
-                    "risk_skoru": 0.527,
-                    "gecikme_olasiligi": 0.274
+                    "ortalama": 0.48889119764914013,
+                    "risk_skoru": 0.5177,
+                    "gecikme_olasiligi": 0.2574
                 },
                 "M-DUK-015": {
-                    "ortalama": 0.5294833925218781,
-                    "risk_skoru": 0.467,
-                    "gecikme_olasiligi": 0.201
+                    "ortalama": 0.48523189430151087,
+                    "risk_skoru": 0.5226,
+                    "gecikme_olasiligi": 0.2521
                 },
                 "M-KK-016": {
-                    "ortalama": 0.5428096133934006,
-                    "risk_skoru": 0.432,
-                    "gecikme_olasiligi": 0.207
+                    "ortalama": 0.4649405264843917,
+                    "risk_skoru": 0.5522,
+                    "gecikme_olasiligi": 0.2869
                 },
                 "M-D90K-017": {
-                    "ortalama": 0.5046843919616736,
-                    "risk_skoru": 0.468,
-                    "gecikme_olasiligi": 0.22
+                    "ortalama": 0.534102105362342,
+                    "risk_skoru": 0.4486,
+                    "gecikme_olasiligi": 0.2043
                 },
                 "M-YK-004": {
-                    "ortalama": 0.5236066390594016,
-                    "risk_skoru": 0.452,
-                    "gecikme_olasiligi": 0.241
+                    "ortalama": 0.4971966445756914,
+                    "risk_skoru": 0.5078,
+                    "gecikme_olasiligi": 0.2571
                 }
             },
             "performans_dagilimi": {
                 "min": 0.0,
                 "max": 1.0,
-                "std": 0.2729240233544268,
-                "q25": 0.3035739360438625,
-                "q75": 0.7041564930234611
+                "std": 0.2716208645044135,
+                "q25": 0.2992235994336331,
+                "q75": 0.6970863315971412
             }
         },
         "Efe Erbaş": {
-            "ortalama_performans": 0.5050975698651707,
-            "risk_skoru": 0.4918125,
-            "gecikme_olasiligi": 0.2358125,
-            "performans_kararliligi": 0.8596795875883614,
+            "ortalama_performans": 0.4889633806711264,
+            "risk_skoru": 0.51781875,
+            "gecikme_olasiligi": 0.2558125,
+            "performans_kararliligi": 0.8581804519997718,
             "tasarim_bazli_sonuclar": {
                 "M-KAM-001": {
-                    "ortalama": 0.5076895756514843,
-                    "risk_skoru": 0.48,
-                    "gecikme_olasiligi": 0.228
+                    "ortalama": 0.5284400568020604,
+                    "risk_skoru": 0.4598,
+                    "gecikme_olasiligi": 0.2009
                 },
                 "M-KKK-002": {
-                    "ortalama": 0.4846887235912318,
-                    "risk_skoru": 0.522,
-                    "gecikme_olasiligi": 0.259
+                    "ortalama": 0.4736309041063351,
+                    "risk_skoru": 0.5391,
+                    "gecikme_olasiligi": 0.2706
                 },
                 "M-OSK1.5-003": {
-                    "ortalama": 0.4772981017261508,
-                    "risk_skoru": 0.53,
-                    "gecikme_olasiligi": 0.286
+                    "ortalama": 0.4230333682738479,
+                    "risk_skoru": 0.6128,
+                    "gecikme_olasiligi": 0.3513
                 },
                 "M-PA-005": {
-                    "ortalama": 0.5063932894630022,
-                    "risk_skoru": 0.488,
-                    "gecikme_olasiligi": 0.248
+                    "ortalama": 0.5125227562740616,
+                    "risk_skoru": 0.4819,
+                    "gecikme_olasiligi": 0.2413
                 },
                 "M-RPV3.5-006": {
-                    "ortalama": 0.5564793764344981,
-                    "risk_skoru": 0.411,
-                    "gecikme_olasiligi": 0.184
+                    "ortalama": 0.561856311736369,
+                    "risk_skoru": 0.4066,
+                    "gecikme_olasiligi": 0.18
                 },
                 "M-MOD4-007": {
-                    "ortalama": 0.5310068203545493,
-                    "risk_skoru": 0.444,
-                    "gecikme_olasiligi": 0.205
+                    "ortalama": 0.4769256989868499,
+                    "risk_skoru": 0.542,
+                    "gecikme_olasiligi": 0.2625
                 },
                 "M-MOD3-008": {
-                    "ortalama": 0.5291367355578792,
-                    "risk_skoru": 0.463,
-                    "gecikme_olasiligi": 0.205
+                    "ortalama": 0.5048062734833971,
+                    "risk_skoru": 0.4957,
+                    "gecikme_olasiligi": 0.2307
                 },
                 "M-RPV2.5-009": {
-                    "ortalama": 0.47968528674441335,
-                    "risk_skoru": 0.548,
-                    "gecikme_olasiligi": 0.224
+                    "ortalama": 0.44350102697222965,
+                    "risk_skoru": 0.592,
+                    "gecikme_olasiligi": 0.3013
                 },
                 "M-TK1-010": {
-                    "ortalama": 0.5611078489102892,
-                    "risk_skoru": 0.388,
-                    "gecikme_olasiligi": 0.168
+                    "ortalama": 0.5315250834445883,
+                    "risk_skoru": 0.454,
+                    "gecikme_olasiligi": 0.1953
                 },
                 "M-AVK-011": {
-                    "ortalama": 0.48429939424714313,
-                    "risk_skoru": 0.535,
-                    "gecikme_olasiligi": 0.242
+                    "ortalama": 0.5128624207223708,
+                    "risk_skoru": 0.4803,
+                    "gecikme_olasiligi": 0.2181
                 },
                 "M-CKM-012": {
-                    "ortalama": 0.49486326997850266,
-                    "risk_skoru": 0.518,
-                    "gecikme_olasiligi": 0.244
+                    "ortalama": 0.4107554144503717,
+                    "risk_skoru": 0.6351,
+                    "gecikme_olasiligi": 0.3537
                 },
                 "M-MOD2-014": {
-                    "ortalama": 0.45759032068574684,
-                    "risk_skoru": 0.556,
-                    "gecikme_olasiligi": 0.304
+                    "ortalama": 0.501557816053779,
+                    "risk_skoru": 0.4969,
+                    "gecikme_olasiligi": 0.2465
                 },
                 "M-DUK-015": {
-                    "ortalama": 0.4936138956488742,
-                    "risk_skoru": 0.512,
-                    "gecikme_olasiligi": 0.243
+                    "ortalama": 0.4505544181927039,
+                    "risk_skoru": 0.5812,
+                    "gecikme_olasiligi": 0.2933
                 },
                 "M-KK-016": {
-                    "ortalama": 0.5071720132900561,
-                    "risk_skoru": 0.5,
-                    "gecikme_olasiligi": 0.238
+                    "ortalama": 0.47291156425737146,
+                    "risk_skoru": 0.543,
+                    "gecikme_olasiligi": 0.2692
                 },
                 "M-D90K-017": {
-                    "ortalama": 0.4859214691515378,
-                    "risk_skoru": 0.526,
-                    "gecikme_olasiligi": 0.267
+                    "ortalama": 0.4823962521817276,
+                    "risk_skoru": 0.5223,
+                    "gecikme_olasiligi": 0.2698
                 },
                 "M-YK-004": {
-                    "ortalama": 0.5246149964073725,
-                    "risk_skoru": 0.448,
-                    "gecikme_olasiligi": 0.228
+                    "ortalama": 0.5361347247999592,
+                    "risk_skoru": 0.4424,
+                    "gecikme_olasiligi": 0.2085
                 }
             },
             "performans_dagilimi": {
                 "min": 0.0,
                 "max": 1.0,
-                "std": 0.26487771934577525,
-                "q25": 0.3140824816739718,
-                "q75": 0.6965099013485285
+                "std": 0.2662888919953555,
+                "q25": 0.29492462282502274,
+                "q75": 0.6806341516207802
             }
         },
         "Emre Seçer": {
-            "ortalama_performans": 0.5049960886069537,
-            "risk_skoru": 0.4924375,
-            "gecikme_olasiligi": 0.2348125,
-            "performans_kararliligi": 0.8596365096621336,
+            "ortalama_performans": 0.5342354149616172,
+            "risk_skoru": 0.449425,
+            "gecikme_olasiligi": 0.2061,
+            "performans_kararliligi": 0.8570732187778254,
             "tasarim_bazli_sonuclar": {
                 "M-KAM-001": {
-                    "ortalama": 0.4950552880387235,
-                    "risk_skoru": 0.504,
-                    "gecikme_olasiligi": 0.259
+                    "ortalama": 0.5549823198318515,
+                    "risk_skoru": 0.4246,
+                    "gecikme_olasiligi": 0.1931
                 },
                 "M-KKK-002": {
-                    "ortalama": 0.5019017763269351,
-                    "risk_skoru": 0.505,
-                    "gecikme_olasiligi": 0.221
+                    "ortalama": 0.5163220965858041,
+                    "risk_skoru": 0.4691,
+                    "gecikme_olasiligi": 0.2025
                 },
                 "M-OSK1.5-003": {
-                    "ortalama": 0.5246520154383937,
-                    "risk_skoru": 0.467,
-                    "gecikme_olasiligi": 0.238
+                    "ortalama": 0.5443105610360888,
+                    "risk_skoru": 0.4365,
+                    "gecikme_olasiligi": 0.2084
                 },
                 "M-PA-005": {
-                    "ortalama": 0.5009971898584343,
-                    "risk_skoru": 0.505,
-                    "gecikme_olasiligi": 0.225
+                    "ortalama": 0.4849858904956875,
+                    "risk_skoru": 0.5188,
+                    "gecikme_olasiligi": 0.2612
                 },
                 "M-RPV3.5-006": {
-                    "ortalama": 0.4959718446365519,
-                    "risk_skoru": 0.511,
-                    "gecikme_olasiligi": 0.23
+                    "ortalama": 0.5971848882804184,
+                    "risk_skoru": 0.3462,
+                    "gecikme_olasiligi": 0.122
                 },
                 "M-MOD4-007": {
-                    "ortalama": 0.5120404544063542,
-                    "risk_skoru": 0.484,
-                    "gecikme_olasiligi": 0.201
+                    "ortalama": 0.5789183153201588,
+                    "risk_skoru": 0.3803,
+                    "gecikme_olasiligi": 0.1485
                 },
                 "M-MOD3-008": {
-                    "ortalama": 0.4502983824081807,
-                    "risk_skoru": 0.563,
-                    "gecikme_olasiligi": 0.281
+                    "ortalama": 0.4990273459595325,
+                    "risk_skoru": 0.5053,
+                    "gecikme_olasiligi": 0.2333
                 },
                 "M-RPV2.5-009": {
-                    "ortalama": 0.5172058540860792,
-                    "risk_skoru": 0.472,
-                    "gecikme_olasiligi": 0.226
+                    "ortalama": 0.5158094121308001,
+                    "risk_skoru": 0.4809,
+                    "gecikme_olasiligi": 0.2346
                 },
                 "M-TK1-010": {
-                    "ortalama": 0.5078689423766003,
-                    "risk_skoru": 0.49,
-                    "gecikme_olasiligi": 0.259
+                    "ortalama": 0.5390479272425708,
+                    "risk_skoru": 0.4449,
+                    "gecikme_olasiligi": 0.208
                 },
                 "M-AVK-011": {
-                    "ortalama": 0.5003359473076601,
-                    "risk_skoru": 0.495,
-                    "gecikme_olasiligi": 0.251
+                    "ortalama": 0.5428725542034721,
+                    "risk_skoru": 0.4335,
+                    "gecikme_olasiligi": 0.202
                 },
                 "M-CKM-012": {
-                    "ortalama": 0.4760983009518733,
-                    "risk_skoru": 0.542,
-                    "gecikme_olasiligi": 0.271
+                    "ortalama": 0.45906333346252376,
+                    "risk_skoru": 0.5621,
+                    "gecikme_olasiligi": 0.2909
                 },
                 "M-MOD2-014": {
-                    "ortalama": 0.5146221296984753,
-                    "risk_skoru": 0.477,
-                    "gecikme_olasiligi": 0.234
+                    "ortalama": 0.5504938996892884,
+                    "risk_skoru": 0.4297,
+                    "gecikme_olasiligi": 0.2076
                 },
                 "M-DUK-015": {
-                    "ortalama": 0.46249044443335435,
-                    "risk_skoru": 0.561,
-                    "gecikme_olasiligi": 0.279
+                    "ortalama": 0.4863481307017417,
+                    "risk_skoru": 0.5216,
+                    "gecikme_olasiligi": 0.2575
                 },
                 "M-KK-016": {
-                    "ortalama": 0.5342436848368339,
-                    "risk_skoru": 0.45,
-                    "gecikme_olasiligi": 0.198
+                    "ortalama": 0.5167713097032057,
+                    "risk_skoru": 0.4782,
+                    "gecikme_olasiligi": 0.2257
                 },
                 "M-D90K-017": {
-                    "ortalama": 0.52295735751959,
-                    "risk_skoru": 0.465,
-                    "gecikme_olasiligi": 0.221
+                    "ortalama": 0.5291461766515003,
+                    "risk_skoru": 0.4589,
+                    "gecikme_olasiligi": 0.2028
                 },
                 "M-YK-004": {
-                    "ortalama": 0.5631978053872185,
-                    "risk_skoru": 0.388,
-                    "gecikme_olasiligi": 0.163
+                    "ortalama": 0.6324824780912314,
+                    "risk_skoru": 0.3002,
+                    "gecikme_olasiligi": 0.0995
                 }
             },
             "performans_dagilimi": {
                 "min": 0.0,
                 "max": 1.0,
-                "std": 0.26491837454003303,
-                "q25": 0.3139339645960313,
-                "q75": 0.6974281658282367
+                "std": 0.2673263747015758,
+                "q25": 0.34208144224543335,
+                "q75": 0.7324161920262592
             }
         }
     },
-    "simulasyon_zamani": "2025-03-07 16:42:47"
+    "simulasyon_zamani": "2025-03-11 16:41:38"
 }

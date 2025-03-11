@@ -1,28 +1,68 @@
 [
     {
-        "tarih": "2025-03-07 16:42:46",
+        "tarih": "2025-03-07 17:17:51",
         "tasarim_kodu": "M-KAM-001",
         "proje_adi": "ABC",
         "atanan_calisanlar": {
             "ustabasi": [
-                "AYKUT BONCUK"
+                "Fason İşçi (Ustabasi)"
             ],
             "kalifiyeli": [
-                "SÜHA DEMİR",
-                "OZAN ACAR"
+                "Fason İşçi (Kalifiyeli)",
+                "Fason İşçi (Kalifiyeli)"
             ],
             "cirak": [
-                "YILMAZ UZUN",
-                "AHMET ŞAHİN",
-                "Özgür YAPAREL"
+                "Fason İşçi (Cirak)",
+                "Fason İşçi (Cirak)",
+                "Fason İşçi (Cirak)"
             ]
         },
         "optimize_sure": 1821.49529955857
     },
     {
-        "tarih": "2025-03-07 16:42:46",
+        "tarih": "2025-03-07 17:21:34",
         "tasarim_kodu": "M-KAM-001",
         "proje_adi": "ABC",
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "Emre Seçer"
+            ],
+            "kalifiyeli": [
+                "HASAN AKYILDIZ",
+                "RAFET KARABAYIR"
+            ],
+            "cirak": [
+                "SEYFETTİN DUYMUŞ",
+                "HÜSEYİN GÜNDOĞDU",
+                "SİNAN ÖZYOL"
+            ]
+        },
+        "optimize_sure": 1821.49529955857
+    },
+    {
+        "tarih": "2025-03-07 17:21:34",
+        "tasarim_kodu": "M-KAM-001",
+        "proje_adi": "ABC",
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "Emre Seçer"
+            ],
+            "kalifiyeli": [
+                "HASAN AKYILDIZ",
+                "RAFET KARABAYIR"
+            ],
+            "cirak": [
+                "SEYFETTİN DUYMUŞ",
+                "HÜSEYİN GÜNDOĞDU",
+                "SİNAN ÖZYOL"
+            ]
+        },
+        "optimize_sure": 1821.49529955857
+    },
+    {
+        "tarih": "2025-03-07 17:22:00",
+        "tasarim_kodu": "M-KAM-001",
+        "proje_adi": "Erikli Su",
         "atanan_calisanlar": {
             "ustabasi": [
                 "AYKUT BONCUK"
@@ -33,8 +73,758 @@
             ],
             "cirak": [
                 "YILMAZ UZUN",
-                "AHMET ŞAHİN",
-                "Özgür YAPAREL"
+                "Özgür YAPAREL",
+                "Gökhan KOLAÇ"
+            ]
+        },
+        "optimize_sure": 1821.49529955857
+    },
+    {
+        "tarih": "2025-03-07 17:22:00",
+        "tasarim_kodu": "M-KAM-001",
+        "proje_adi": "Erikli Su",
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "AYKUT BONCUK"
+            ],
+            "kalifiyeli": [
+                "SÜHA DEMİR",
+                "OZAN ACAR"
+            ],
+            "cirak": [
+                "YILMAZ UZUN",
+                "Özgür YAPAREL",
+                "Gökhan KOLAÇ"
+            ]
+        },
+        "optimize_sure": 1821.49529955857
+    },
+    {
+        "tarih": "2025-03-07 17:29:12",
+        "tasarim_kodu": "M-KAM-001",
+        "proje_adi": "ABC",
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "Emre Seçer"
+            ],
+            "kalifiyeli": [
+                "HASAN AKYILDIZ",
+                "RAFET KARABAYIR"
+            ],
+            "cirak": [
+                "SEYFETTİN DUYMUŞ",
+                "HÜSEYİN GÜNDOĞDU",
+                "SİNAN ÖZYOL"
+            ]
+        },
+        "optimize_sure": 1821.49529955857
+    },
+    {
+        "tarih": "2025-03-07 17:29:12",
+        "tasarim_kodu": "M-KAM-001",
+        "proje_adi": "ABC",
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "Emre Seçer"
+            ],
+            "kalifiyeli": [
+                "HASAN AKYILDIZ",
+                "RAFET KARABAYIR"
+            ],
+            "cirak": [
+                "SEYFETTİN DUYMUŞ",
+                "HÜSEYİN GÜNDOĞDU",
+                "SİNAN ÖZYOL"
+            ]
+        },
+        "optimize_sure": 1821.49529955857
+    },
+    {
+        "tarih": "2025-03-07 17:29:54",
+        "tasarim_kodu": "M-KAM-001",
+        "proje_adi": "ABC",
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "AYKUT BONCUK"
+            ],
+            "kalifiyeli": [
+                "OZAN ACAR",
+                "SÜHA DEMİR"
+            ],
+            "cirak": [
+                "YILMAZ UZUN",
+                "Özgür YAPAREL",
+                "AHMET ŞAHİN"
+            ]
+        },
+        "optimize_sure": 1821.49529955857
+    },
+    {
+        "tarih": "2025-03-07 17:29:54",
+        "tasarim_kodu": "M-KAM-001",
+        "proje_adi": "ABC",
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "AYKUT BONCUK"
+            ],
+            "kalifiyeli": [
+                "OZAN ACAR",
+                "SÜHA DEMİR"
+            ],
+            "cirak": [
+                "YILMAZ UZUN",
+                "Özgür YAPAREL",
+                "AHMET ŞAHİN"
+            ]
+        },
+        "optimize_sure": 1821.49529955857
+    },
+    {
+        "tarih": "2025-03-07 17:39:22",
+        "tasarim_kodu": "M-KAM-001",
+        "proje_adi": "ABC",
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "Emre Seçer"
+            ],
+            "kalifiyeli": [
+                "HASAN AKYILDIZ",
+                "RAFET KARABAYIR"
+            ],
+            "cirak": [
+                "SEYFETTİN DUYMUŞ",
+                "HÜSEYİN GÜNDOĞDU",
+                "SİNAN ÖZYOL"
+            ]
+        },
+        "optimize_sure": 1821.49529955857
+    },
+    {
+        "tarih": "2025-03-07 17:39:22",
+        "tasarim_kodu": "M-KAM-001",
+        "proje_adi": "ABC",
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "Emre Seçer"
+            ],
+            "kalifiyeli": [
+                "HASAN AKYILDIZ",
+                "RAFET KARABAYIR"
+            ],
+            "cirak": [
+                "SEYFETTİN DUYMUŞ",
+                "HÜSEYİN GÜNDOĞDU",
+                "SİNAN ÖZYOL"
+            ]
+        },
+        "optimize_sure": 1821.49529955857
+    },
+    {
+        "tarih": "2025-03-07 17:46:44",
+        "tasarim_kodu": "M-CKM-012",
+        "proje_adi": "ABC",
+        "atanan_calisanlar": {
+            "ustabasi": [],
+            "kalifiyeli": [],
+            "cirak": [
+                "YAHYA SARI",
+                "SEYFETTİN DUYMUŞ"
+            ]
+        },
+        "optimize_sure": 127.73662632136829
+    },
+    {
+        "tarih": "2025-03-07 17:46:44",
+        "tasarim_kodu": "M-CKM-012",
+        "proje_adi": "ABC",
+        "atanan_calisanlar": {
+            "ustabasi": [],
+            "kalifiyeli": [],
+            "cirak": [
+                "YAHYA SARI",
+                "SEYFETTİN DUYMUŞ"
+            ]
+        },
+        "optimize_sure": 127.73662632136829
+    },
+    {
+        "tarih": "2025-03-07 17:49:23",
+        "tasarim_kodu": "M-CKM-012",
+        "proje_adi": "Coca Cola",
+        "atanan_calisanlar": {
+            "ustabasi": [],
+            "kalifiyeli": [],
+            "cirak": [
+                "YAHYA SARI",
+                "SEYFETTİN DUYMUŞ"
+            ]
+        },
+        "optimize_sure": 127.73662632136829
+    },
+    {
+        "tarih": "2025-03-07 17:52:15",
+        "tasarim_kodu": "M-CKM-012",
+        "proje_adi": "Coca Cola",
+        "atanan_calisanlar": {
+            "ustabasi": [],
+            "kalifiyeli": [],
+            "cirak": [
+                "YAHYA SARI",
+                "SEYFETTİN DUYMUŞ"
+            ]
+        },
+        "optimize_sure": 127.73662632136829
+    },
+    {
+        "tarih": "2025-03-07 17:52:15",
+        "tasarim_kodu": "M-CKM-012",
+        "proje_adi": "Coca Cola",
+        "atanan_calisanlar": {
+            "ustabasi": [],
+            "kalifiyeli": [],
+            "cirak": [
+                "YAHYA SARI",
+                "SEYFETTİN DUYMUŞ"
+            ]
+        },
+        "optimize_sure": 127.73662632136829
+    },
+    {
+        "tarih": "2025-03-07 19:51:51",
+        "tasarim_kodu": "M-CKM-012",
+        "proje_adi": "ABC",
+        "atanan_calisanlar": {
+            "ustabasi": [],
+            "kalifiyeli": [],
+            "cirak": [
+                "YAHYA SARI",
+                "SEYFETTİN DUYMUŞ"
+            ]
+        },
+        "optimize_sure": 127.73662632136829
+    },
+    {
+        "tarih": "2025-03-07 19:56:24",
+        "tasarim_kodu": "M-KAM-001",
+        "proje_adi": "ABC",
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "Emre Seçer"
+            ],
+            "kalifiyeli": [
+                "HASAN AKYILDIZ",
+                "RAFET KARABAYIR"
+            ],
+            "cirak": [
+                "SEYFETTİN DUYMUŞ",
+                "HÜSEYİN GÜNDOĞDU",
+                "SİNAN ÖZYOL"
+            ]
+        },
+        "optimize_sure": 1821.49529955857
+    },
+    {
+        "tarih": "2025-03-07 19:56:24",
+        "tasarim_kodu": "M-KAM-001",
+        "proje_adi": "ABC",
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "Emre Seçer"
+            ],
+            "kalifiyeli": [
+                "HASAN AKYILDIZ",
+                "RAFET KARABAYIR"
+            ],
+            "cirak": [
+                "SEYFETTİN DUYMUŞ",
+                "HÜSEYİN GÜNDOĞDU",
+                "SİNAN ÖZYOL"
+            ]
+        },
+        "optimize_sure": 1821.49529955857
+    },
+    {
+        "tarih": "2025-03-07 20:06:11",
+        "tasarim_kodu": "M-KAM-001",
+        "proje_adi": "Deneme",
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "Emre Seçer"
+            ],
+            "kalifiyeli": [
+                "HASAN AKYILDIZ",
+                "RAFET KARABAYIR"
+            ],
+            "cirak": [
+                "SEYFETTİN DUYMUŞ",
+                "HÜSEYİN GÜNDOĞDU",
+                "SİNAN ÖZYOL"
+            ]
+        },
+        "optimize_sure": 1821.49529955857
+    },
+    {
+        "tarih": "2025-03-07 20:06:11",
+        "tasarim_kodu": "M-KAM-001",
+        "proje_adi": "Deneme",
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "Emre Seçer"
+            ],
+            "kalifiyeli": [
+                "HASAN AKYILDIZ",
+                "RAFET KARABAYIR"
+            ],
+            "cirak": [
+                "SEYFETTİN DUYMUŞ",
+                "HÜSEYİN GÜNDOĞDU",
+                "SİNAN ÖZYOL"
+            ]
+        },
+        "optimize_sure": 1821.49529955857
+    },
+    {
+        "tarih": "2025-03-07 20:19:31",
+        "tasarim_kodu": "M-CKM-012",
+        "proje_adi": "Optimak STU",
+        "atanan_calisanlar": {
+            "ustabasi": [],
+            "kalifiyeli": [],
+            "cirak": [
+                "YAHYA SARI",
+                "SEYFETTİN DUYMUŞ"
+            ]
+        },
+        "optimize_sure": 127.73662632136829
+    },
+    {
+        "tarih": "2025-03-07 20:20:04",
+        "tasarim_kodu": "M-KAM-001",
+        "proje_adi": "Optimak STU",
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "Emre Seçer"
+            ],
+            "kalifiyeli": [
+                "HASAN AKYILDIZ",
+                "RAFET KARABAYIR"
+            ],
+            "cirak": [
+                "SEYFETTİN DUYMUŞ",
+                "HÜSEYİN GÜNDOĞDU",
+                "SİNAN ÖZYOL"
+            ]
+        },
+        "optimize_sure": 1821.49529955857
+    },
+    {
+        "tarih": "2025-03-07 20:28:13",
+        "tasarim_kodu": "M-CKM-012",
+        "proje_adi": "Coca Cola",
+        "atanan_calisanlar": {
+            "ustabasi": [],
+            "kalifiyeli": [],
+            "cirak": [
+                "YAHYA SARI",
+                "SEYFETTİN DUYMUŞ"
+            ]
+        },
+        "optimize_sure": 127.73662632136829
+    },
+    {
+        "tarih": "2025-03-07 20:28:13",
+        "tasarim_kodu": "M-CKM-012",
+        "proje_adi": "Coca Cola",
+        "atanan_calisanlar": {
+            "ustabasi": [],
+            "kalifiyeli": [],
+            "cirak": [
+                "YAHYA SARI",
+                "SEYFETTİN DUYMUŞ"
+            ]
+        },
+        "optimize_sure": 127.73662632136829
+    },
+    {
+        "tarih": "2025-03-07 20:31:17",
+        "tasarim_kodu": "M-CKM-012",
+        "proje_adi": "ABC",
+        "atanan_calisanlar": {
+            "ustabasi": [],
+            "kalifiyeli": [],
+            "cirak": [
+                "YAHYA SARI",
+                "SEYFETTİN DUYMUŞ"
+            ]
+        },
+        "optimize_sure": 127.73662632136829
+    },
+    {
+        "tarih": "2025-03-07 20:31:17",
+        "tasarim_kodu": "M-CKM-012",
+        "proje_adi": "ABC",
+        "atanan_calisanlar": {
+            "ustabasi": [],
+            "kalifiyeli": [],
+            "cirak": [
+                "YAHYA SARI",
+                "SEYFETTİN DUYMUŞ"
+            ]
+        },
+        "optimize_sure": 127.73662632136829
+    },
+    {
+        "tarih": "2025-03-07 20:32:35",
+        "tasarim_kodu": "M-CKM-012",
+        "proje_adi": "Optimak STU",
+        "atanan_calisanlar": {
+            "ustabasi": [],
+            "kalifiyeli": [],
+            "cirak": [
+                "YAHYA SARI",
+                "SEYFETTİN DUYMUŞ"
+            ]
+        },
+        "optimize_sure": 127.73662632136829
+    },
+    {
+        "tarih": "2025-03-07 20:32:35",
+        "tasarim_kodu": "M-CKM-012",
+        "proje_adi": "Optimak STU",
+        "atanan_calisanlar": {
+            "ustabasi": [],
+            "kalifiyeli": [],
+            "cirak": [
+                "YAHYA SARI",
+                "SEYFETTİN DUYMUŞ"
+            ]
+        },
+        "optimize_sure": 127.73662632136829
+    },
+    {
+        "tarih": "2025-03-07 20:33:34",
+        "tasarim_kodu": "M-CKM-012",
+        "proje_adi": "ABC",
+        "atanan_calisanlar": {
+            "ustabasi": [],
+            "kalifiyeli": [],
+            "cirak": [
+                "YAHYA SARI",
+                "SEYFETTİN DUYMUŞ"
+            ]
+        },
+        "optimize_sure": 127.73662632136829
+    },
+    {
+        "tarih": "2025-03-07 20:33:34",
+        "tasarim_kodu": "M-CKM-012",
+        "proje_adi": "ABC",
+        "atanan_calisanlar": {
+            "ustabasi": [],
+            "kalifiyeli": [],
+            "cirak": [
+                "YAHYA SARI",
+                "SEYFETTİN DUYMUŞ"
+            ]
+        },
+        "optimize_sure": 127.73662632136829
+    },
+    {
+        "tarih": "2025-03-07 20:34:48",
+        "tasarim_kodu": "M-CKM-012",
+        "proje_adi": "Optimak STU",
+        "atanan_calisanlar": {
+            "ustabasi": [],
+            "kalifiyeli": [],
+            "cirak": [
+                "YAHYA SARI",
+                "SEYFETTİN DUYMUŞ"
+            ]
+        },
+        "optimize_sure": 127.73662632136829
+    },
+    {
+        "tarih": "2025-03-07 20:34:48",
+        "tasarim_kodu": "M-CKM-012",
+        "proje_adi": "Optimak STU",
+        "atanan_calisanlar": {
+            "ustabasi": [],
+            "kalifiyeli": [],
+            "cirak": [
+                "YAHYA SARI",
+                "SEYFETTİN DUYMUŞ"
+            ]
+        },
+        "optimize_sure": 127.73662632136829
+    },
+    {
+        "tarih": "2025-03-07 20:36:18",
+        "tasarim_kodu": "M-CKM-012",
+        "proje_adi": "Coca Cola",
+        "atanan_calisanlar": {
+            "ustabasi": [],
+            "kalifiyeli": [],
+            "cirak": [
+                "YAHYA SARI",
+                "SEYFETTİN DUYMUŞ"
+            ]
+        },
+        "optimize_sure": 127.73662632136829
+    },
+    {
+        "tarih": "2025-03-07 20:36:18",
+        "tasarim_kodu": "M-CKM-012",
+        "proje_adi": "Coca Cola",
+        "atanan_calisanlar": {
+            "ustabasi": [],
+            "kalifiyeli": [],
+            "cirak": [
+                "YAHYA SARI",
+                "SEYFETTİN DUYMUŞ"
+            ]
+        },
+        "optimize_sure": 127.73662632136829
+    },
+    {
+        "tarih": "2025-03-07 20:37:47",
+        "tasarim_kodu": "M-CKM-012",
+        "proje_adi": "Erikli Su",
+        "atanan_calisanlar": {
+            "ustabasi": [],
+            "kalifiyeli": [],
+            "cirak": [
+                "YAHYA SARI",
+                "SEYFETTİN DUYMUŞ"
+            ]
+        },
+        "optimize_sure": 127.73662632136829
+    },
+    {
+        "tarih": "2025-03-07 20:42:37",
+        "tasarim_kodu": "M-CKM-012",
+        "proje_adi": "Coca Cola",
+        "atanan_calisanlar": {
+            "ustabasi": [],
+            "kalifiyeli": [],
+            "cirak": [
+                "YAHYA SARI",
+                "SEYFETTİN DUYMUŞ"
+            ]
+        },
+        "optimize_sure": 127.73662632136829
+    },
+    {
+        "tarih": "2025-03-07 20:42:37",
+        "tasarim_kodu": "M-CKM-012",
+        "proje_adi": "Coca Cola",
+        "atanan_calisanlar": {
+            "ustabasi": [],
+            "kalifiyeli": [],
+            "cirak": [
+                "YAHYA SARI",
+                "SEYFETTİN DUYMUŞ"
+            ]
+        },
+        "optimize_sure": 127.73662632136829
+    },
+    {
+        "tarih": "2025-03-07 20:47:03",
+        "tasarim_kodu": "M-KAM-001",
+        "proje_adi": "Coca Cola",
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "Emre Seçer"
+            ],
+            "kalifiyeli": [
+                "HASAN AKYILDIZ",
+                "RAFET KARABAYIR"
+            ],
+            "cirak": [
+                "SEYFETTİN DUYMUŞ",
+                "HÜSEYİN GÜNDOĞDU",
+                "SİNAN ÖZYOL"
+            ]
+        },
+        "optimize_sure": 1821.49529955857
+    },
+    {
+        "tarih": "2025-03-07 20:50:41",
+        "tasarim_kodu": "M-KAM-001",
+        "proje_adi": "Coca Cola",
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "Emre Seçer"
+            ],
+            "kalifiyeli": [
+                "HASAN AKYILDIZ",
+                "RAFET KARABAYIR"
+            ],
+            "cirak": [
+                "SEYFETTİN DUYMUŞ",
+                "HÜSEYİN GÜNDOĞDU",
+                "SİNAN ÖZYOL"
+            ]
+        },
+        "optimize_sure": 1821.49529955857
+    },
+    {
+        "tarih": "2025-03-07 20:50:41",
+        "tasarim_kodu": "M-KAM-001",
+        "proje_adi": "Coca Cola",
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "Emre Seçer"
+            ],
+            "kalifiyeli": [
+                "HASAN AKYILDIZ",
+                "RAFET KARABAYIR"
+            ],
+            "cirak": [
+                "SEYFETTİN DUYMUŞ",
+                "HÜSEYİN GÜNDOĞDU",
+                "SİNAN ÖZYOL"
+            ]
+        },
+        "optimize_sure": 1821.49529955857
+    },
+    {
+        "tarih": "2025-03-07 20:50:50",
+        "tasarim_kodu": "M-KAM-001",
+        "proje_adi": "Erikli Su",
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "AYKUT BONCUK"
+            ],
+            "kalifiyeli": [
+                "OZAN ACAR",
+                "CENGİZ CAN"
+            ],
+            "cirak": [
+                "Gökhan KOLAÇ",
+                "YASİN AKKAYA",
+                "FATİH YAŞAR"
+            ]
+        },
+        "optimize_sure": 1821.49529955857
+    },
+    {
+        "tarih": "2025-03-07 20:50:50",
+        "tasarim_kodu": "M-KAM-001",
+        "proje_adi": "Erikli Su",
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "AYKUT BONCUK"
+            ],
+            "kalifiyeli": [
+                "OZAN ACAR",
+                "CENGİZ CAN"
+            ],
+            "cirak": [
+                "Gökhan KOLAÇ",
+                "YASİN AKKAYA",
+                "FATİH YAŞAR"
+            ]
+        },
+        "optimize_sure": 1821.49529955857
+    },
+    {
+        "tarih": "2025-03-11 16:33:43",
+        "tasarim_kodu": "M-CKM-012",
+        "proje_adi": "Erikli Su",
+        "atanan_calisanlar": {
+            "ustabasi": [],
+            "kalifiyeli": [],
+            "cirak": [
+                "YAHYA SARI",
+                "SEYFETTİN DUYMUŞ"
+            ]
+        },
+        "optimize_sure": 127.73662632136829
+    },
+    {
+        "tarih": "2025-03-11 16:33:43",
+        "tasarim_kodu": "M-CKM-012",
+        "proje_adi": "Erikli Su",
+        "atanan_calisanlar": {
+            "ustabasi": [],
+            "kalifiyeli": [],
+            "cirak": [
+                "YAHYA SARI",
+                "SEYFETTİN DUYMUŞ"
+            ]
+        },
+        "optimize_sure": 127.73662632136829
+    },
+    {
+        "tarih": "2025-03-11 16:41:06",
+        "tasarim_kodu": "M-CKM-012",
+        "proje_adi": "Erikli Su",
+        "atanan_calisanlar": {
+            "ustabasi": [],
+            "kalifiyeli": [],
+            "cirak": [
+                "YAHYA SARI",
+                "SEYFETTİN DUYMUŞ"
+            ]
+        },
+        "optimize_sure": 127.73662632136829
+    },
+    {
+        "tarih": "2025-03-11 16:44:03",
+        "tasarim_kodu": "M-KAM-001",
+        "proje_adi": "Erikli Su",
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "Emre Seçer"
+            ],
+            "kalifiyeli": [
+                "HASAN AKYILDIZ",
+                "RAFET KARABAYIR"
+            ],
+            "cirak": [
+                "SEYFETTİN DUYMUŞ",
+                "HÜSEYİN GÜNDOĞDU",
+                "SİNAN ÖZYOL"
+            ]
+        },
+        "optimize_sure": 1821.49529955857
+    },
+    {
+        "tarih": "2025-03-11 16:44:03",
+        "tasarim_kodu": "M-KAM-001",
+        "proje_adi": "Erikli Su",
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "Emre Seçer"
+            ],
+            "kalifiyeli": [
+                "HASAN AKYILDIZ",
+                "RAFET KARABAYIR"
+            ],
+            "cirak": [
+                "SEYFETTİN DUYMUŞ",
+                "HÜSEYİN GÜNDOĞDU",
+                "SİNAN ÖZYOL"
+            ]
+        },
+        "optimize_sure": 1821.49529955857
+    },
+    {
+        "tarih": "2025-03-11 16:44:09",
+        "tasarim_kodu": "M-KAM-001",
+        "proje_adi": "Erikli Su",
+        "atanan_calisanlar": {
+            "ustabasi": [
+                "AYKUT BONCUK"
+            ],
+            "kalifiyeli": [
+                "OZAN ACAR",
+                "CENGİZ CAN"
+            ],
+            "cirak": [
+                "Gökhan KOLAÇ",
+                "FATİH YAŞAR",
+                "YASİN AKKAYA"
             ]
         },
         "optimize_sure": 1821.49529955857

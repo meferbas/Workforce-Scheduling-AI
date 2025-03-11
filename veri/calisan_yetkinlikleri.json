@@ -7,7 +7,7 @@
     "RAFET KARABAYIR": {
         "yetkinlik_seviyesi": 2,
         "tecrube_yili": 8,
-        "verimlilik_puani": 0.9
+        "verimlilik_puani": 0.7878
     },
     "RAMAZAN ŞAMASTI": {
         "yetkinlik_seviyesi": 2,
@@ -37,7 +37,7 @@
     "HASAN AKYILDIZ": {
         "yetkinlik_seviyesi": 2,
         "tecrube_yili": 5,
-        "verimlilik_puani": 0.83
+        "verimlilik_puani": 0.7426999999999999
     },
     "SERKAN DEMİR": {
         "yetkinlik_seviyesi": 2,
@@ -57,7 +57,7 @@
     "SEYFETTİN DUYMUŞ": {
         "yetkinlik_seviyesi": 3,
         "tecrube_yili": 3,
-        "verimlilik_puani": 0.74
+        "verimlilik_puani": 0.826275518
     },
     "FATİH YAŞAR": {
         "yetkinlik_seviyesi": 3,
@@ -67,12 +67,12 @@
     "YAHYA SARI": {
         "yetkinlik_seviyesi": 3,
         "tecrube_yili": 2,
-        "verimlilik_puani": 0.7
+        "verimlilik_puani": 0.7134417999999998
     },
     "SİNAN ÖZYOL": {
         "yetkinlik_seviyesi": 3,
         "tecrube_yili": 2,
-        "verimlilik_puani": 0.68
+        "verimlilik_puani": 0.7172
     },
     "YILMAZ UZUN": {
         "yetkinlik_seviyesi": 3,
@@ -102,7 +102,7 @@
     "HÜSEYİN GÜNDOĞDU": {
         "yetkinlik_seviyesi": 3,
         "tecrube_yili": 0.5,
-        "verimlilik_puani": 0.53
+        "verimlilik_puani": 0.6773
     },
     "AHMET ŞAHİN": {
         "yetkinlik_seviyesi": 3,
@@ -117,6 +117,6 @@
     "Emre Seçer": {
         "yetkinlik_seviyesi": 1,
         "tecrube_yili": 15,
-        "verimlilik_puani": 0.8
+        "verimlilik_puani": 0.728
     }
 }
