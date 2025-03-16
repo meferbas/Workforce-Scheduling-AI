@@ -49,7 +49,7 @@ def calisan_performans_dagilimi(veriler: Dict, calisan: str) -> Dict[str, Dict]:
         }
     return dagilimlar
 
-def monte_carlo_simulasyonu(veriler: Dict, calisan_listesi: List[str], iterasyon_sayisi: int = 10000) -> Dict:
+def monte_carlo_simulasyonu(veriler: Dict, calisan_listesi: List[str], iterasyon_sayisi: int = 100000) -> Dict:
     """Monte Carlo simülasyonu yaparak gelecek performans tahminlerini üretir."""
     sonuclar = {
         'calisanlar': {},

@@ -422,59 +422,59 @@ window.showGenetikDetay = function(tasarimKodu, sonuc) {
 
 // İş güncelleme fonksiyonu
 function isGuncelle(tasarimKodu) {
-    var modal = new bootstrap.Modal(document.getElementById('isGuncellemeModal'));
-    
-    var isRow = $(`tr[data-tasarim-kodu="${tasarimKodu}"]`);
-    var durum = isRow.find('.badge.durum-badge').text().trim().toLowerCase().replace(/\s+/g, '_');
-    var oncelik = isRow.find('.badge.oncelik-badge').text().trim().toLowerCase();
-    
-    $('#isGuncellemeForm input[name="tasarim_kodu"]').val(tasarimKodu);
-    $('#isGuncellemeForm select[name="durum"]').val(durum);
-    $('#isGuncellemeForm select[name="oncelik"]').val(oncelik);
-    
-    modal.show();
-}
+    const tamamlanmaYuzdesi = $(`#tamamlanmaYuzdesi_${tasarimKodu}`).val();
+    const yeniDurum = $(`#isDurumu_${tasarimKodu}`).val();
+    const kalanSure = $(`#kalanSure_${tasarimKodu}`).val();
 
-$('#isGuncellemeKaydet').click(function() {
-    var formData = {};
-    $('#isGuncellemeForm').serializeArray().forEach(function(item) {
-        formData[item.name] = item.value;
-    });
-    
     $.ajax({
         url: '/api/is-guncelle',
         method: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(formData),
+        data: {
+            tasarim_kodu: tasarimKodu,
+            tamamlanma_yuzdesi: tamamlanmaYuzdesi,
+            yeni_durum: yeniDurum,
+            kalan_sure: kalanSure
+        },
         success: function(response) {
             if (response.success) {
-                var isRow = $(`tr[data-tasarim-kodu="${formData.tasarim_kodu}"]`);
+                bildirimGoster('success', 'İş durumu güncellendi');
+                // İş çizelgesini güncelle
+                socket.emit('is_cizelgesi_guncelle');
+                // Çalışan durumlarını güncelle
+                socket.emit('calisan_durumlarini_guncelle');
                 
-                isRow.find('.badge.durum-badge')
-                    .text(formData.durum.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase()))
-                    .removeClass('bg-warning bg-secondary')
-                    .addClass(formData.durum === 'devam_ediyor' ? 'bg-warning' : 'bg-secondary');
-                
-                isRow.find('.badge.oncelik-badge')
-                    .text(formData.oncelik.charAt(0).toUpperCase() + formData.oncelik.slice(1))
-                    .removeClass('bg-danger bg-info')
-                    .addClass(formData.oncelik === 'kritik' ? 'bg-danger' : 'bg-info');
-                
-                $('#isGuncellemeModal').modal('hide');
-                
-                // Tabloyu yeniden sırala
-                initDashboard();
-                
-                alert('İş başarıyla güncellendi');
+                // Performans değerlendirme formunu güncelle
+                if (yeniDurum === 'Tamamlandı') {
+                    $.get(`/api/tasarim-kodu-bilgileri/${tasarimKodu}`, function(data) {
+                        if (data && data.atanan_calisanlar) {
+                            $('#performansDegerlendirmeForm').data('tasarimKodu', tasarimKodu);
+                            let html = '';
+                            Object.entries(data.atanan_calisanlar).forEach(([seviye, calisanlar]) => {
+                                calisanlar.forEach(calisan => {
+                                    html += `
+                                        <div class="mb-3">
+                                            <label class="form-label">${calisan} (${seviye})</label>
+                                            <input type="number" class="form-control" 
+                                                   name="performans_${calisan}" 
+                                                   min="0" max="100" required>
+                                        </div>
+                                    `;
+                                });
+                            });
+                            $('#performansInputlar').html(html);
+                            $('#performansDegerlendirmeModal').modal('show');
+                        }
+                    });
+                }
             } else {
-                alert('Hata oluştu: ' + response.message);
+                bildirimGoster('error', 'İş güncellemesinde hata oluştu: ' + response.error);
             }
         },
         error: function(xhr, status, error) {
-            alert('Hata oluştu: ' + error);
+            bildirimGoster('error', 'İş güncellemesinde hata oluştu: ' + error);
         }
     });
-});
+}
 
 // İş silme fonksiyonu
 function isSil(isId) {
@@ -1275,4 +1275,118 @@ function getPersonelDurum(calisan) {
 document.addEventListener('DOMContentLoaded', function() {
     // Son atama detaylarını göster
     showLastAssignmentDetails();
+});
+
+// Taguchi sonuçlarını göster
+function gosterTaguchiSonuclari(data) {
+    if (!data || !data.best_parameters) {
+        return;
+    }
+
+    let html = '<h6 class="mb-3">Optimizasyon Sonuçları:</h6>';
+    
+    // Ortalama iyileştirme
+    if (data.average_improvement) {
+        html += `
+            <div class="alert alert-success">
+                <i class="bi bi-graph-up"></i> Ortalama İyileştirme Oranı: <strong>%${data.average_improvement.toFixed(2)}</strong>
+            </div>
+        `;
+    }
+
+    // Tasarım bazlı sonuçlar tablosu
+    html += `
+        <div class="table-responsive">
+            <table class="table table-sm table-hover">
+                <thead>
+                    <tr>
+                        <th>Tasarım Kodu</th>
+                        <th>Optimize Süre (dk)</th>
+                        <th>İyileştirme (%)</th>
+                        <th>Departman</th>
+                    </tr>
+                </thead>
+                <tbody>
+    `;
+
+    // Her tasarım kodu için sonuçları ekle
+    for (let [kod, bilgi] of Object.entries(data.best_parameters)) {
+        html += `
+            <tr>
+                <td>${kod}</td>
+                <td>${bilgi.sure.toFixed(2)}</td>
+                <td class="text-success">%${bilgi.iyilestirme_orani.toFixed(2)}</td>
+                <td>${bilgi.departman}</td>
+            </tr>
+        `;
+    }
+
+    html += `
+                </tbody>
+            </table>
+        </div>
+    `;
+
+    // Son optimizasyon zamanı
+    if (data.timestamp) {
+        html += `
+            <div class="text-muted small mt-2">
+                <i class="bi bi-clock"></i> Son Optimizasyon: ${data.timestamp}
+            </div>
+        `;
+    }
+
+    $('#taguchiRaporu').html(html);
+    $('#taguchiSonuclari').show();
+}
+
+// Sayfa yüklendiğinde son Taguchi sonuçlarını getir
+function getSonTaguchiSonuclari() {
+    $.ajax({
+        url: '/api/son-taguchi-sonuclari',
+        method: 'GET',
+        success: function(data) {
+            if (data && data.best_parameters) {
+                gosterTaguchiSonuclari(data);
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('Taguchi sonuçları alınırken hata oluştu:', error);
+        }
+    });
+}
+
+// Sayfa yüklendiğinde çalışacak fonksiyonlar
+$(document).ready(function() {
+    // ... existing code ...
+    
+    // Son Taguchi sonuçlarını getir
+    getSonTaguchiSonuclari();
+    
+    // Taguchi optimizasyonu başlat butonu
+    $('#taguchiOptimizasyonBaslat').click(function() {
+        $(this).prop('disabled', true);
+        $('#taguchiLoading').show();
+        
+        $.ajax({
+            url: '/api/taguchi-optimizasyon',
+            method: 'POST',
+            success: function(data) {
+                $('#taguchiLoading').hide();
+                $('#taguchiOptimizasyonBaslat').prop('disabled', false);
+                
+                if (data.success && data.taguchi_sonuclari) {
+                    gosterTaguchiSonuclari(data.taguchi_sonuclari);
+                    bildirimGoster('success', 'Taguchi optimizasyonu başarıyla tamamlandı.');
+                } else {
+                    bildirimGoster('error', 'Taguchi optimizasyonu sırasında bir hata oluştu.');
+                }
+            },
+            error: function(xhr, status, error) {
+                $('#taguchiLoading').hide();
+                $('#taguchiOptimizasyonBaslat').prop('disabled', false);
+                bildirimGoster('error', 'Taguchi optimizasyonu başlatılırken hata oluştu: ' + error);
+            }
+        });
+    });
 }); 

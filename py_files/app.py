@@ -841,47 +841,60 @@ def is_kaydet():
 def is_guncelle():
     try:
         data = request.get_json()
-        tasarim_kodu = data.get('tasarim_kodu')
-        durum = data.get('durum')
-        oncelik = data.get('oncelik')  # Yeni eklenen öncelik parametresi
+        if not data:
+            return jsonify({'success': False, 'mesaj': 'Veri alınamadı'}), 400
 
-        if not all([tasarim_kodu, durum, oncelik]):  # oncelik kontrolü eklendi
-            return jsonify({'success': False, 'message': 'Eksik parametreler'})
+        is_id = str(data.get('is_id'))
+        durum = data.get('durum')
+        oncelik = data.get('oncelik', 'normal')
+
+        if not is_id:
+            return jsonify({'success': False, 'mesaj': 'is_id parametresi gerekli'}), 400
+
+        if not durum:
+            return jsonify({'success': False, 'mesaj': 'durum parametresi gerekli'}), 400
 
         # is_listesi.json dosyasını oku
-        with open('veri/is_listesi.json', 'r', encoding='utf-8') as f:
-            is_listesi = json.load(f)
+        try:
+            with open(os.path.join(ROOT_DIR, 'veri', 'is_listesi.json'), 'r', encoding='utf-8') as f:
+                is_listesi = json.load(f)
+        except Exception as e:
+            print(f"Dosya okuma hatası: {str(e)}")
+            return jsonify({'success': False, 'mesaj': 'İş listesi yüklenemedi'}), 500
 
         # İşi bul ve güncelle
         is_guncellendi = False
         for is_item in is_listesi:
-            if is_item['tasarim_kodu'] == tasarim_kodu:
-                eski_durum = is_item['durum']
+            if str(is_item.get('id')) == is_id:
+                eski_durum = is_item.get('durum', 'beklemede')
                 is_item['durum'] = durum
-                is_item['oncelik'] = oncelik  # Öncelik güncelleme
+                is_item['oncelik'] = oncelik
                 is_guncellendi = True
                 
                 # Durum değişikliği bildirimi gönder
                 if eski_durum != durum:
-                    is_durumu_guncellendi(is_item['id'], eski_durum, durum)
-                    bildirim_gonder(f"İş durumu güncellendi: {is_item.get('proje_adi', tasarim_kodu)} - {durum}", "bilgi")
-                
+                    bildirim_gonder(f"İş durumu güncellendi: {is_item.get('proje_adi')} - {durum}", "bilgi")
                 break
 
         if not is_guncellendi:
-            return jsonify({'success': False, 'message': 'İş bulunamadı'})
+            return jsonify({'success': False, 'mesaj': 'İş bulunamadı'}), 404
 
         # Güncellenmiş listeyi kaydet
-        with open('veri/is_listesi.json', 'w', encoding='utf-8') as f:
-            json.dump(is_listesi, f, ensure_ascii=False, indent=4)
-            
+        try:
+            with open(os.path.join(ROOT_DIR, 'veri', 'is_listesi.json'), 'w', encoding='utf-8') as f:
+                json.dump(is_listesi, f, ensure_ascii=False, indent=4)
+        except Exception as e:
+            print(f"Dosya yazma hatası: {str(e)}")
+            return jsonify({'success': False, 'mesaj': 'Değişiklikler kaydedilemedi'}), 500
+
         # İş çizelgesi güncellemesi gönder
         socketio.emit('is_cizelgesi_guncellendi', is_listesi)
 
-        return jsonify({'success': True})
+        return jsonify({'success': True, 'mesaj': 'İş başarıyla güncellendi'})
 
     except Exception as e:
-        return jsonify({'success': False, 'message': str(e)}), 500
+        print(f"İş güncelleme hatası: {str(e)}")
+        return jsonify({'success': False, 'mesaj': f'İş güncellenirken bir hata oluştu: {str(e)}'}), 500
 
 @app.route('/api/performans-simulasyonu', methods=['POST'])
 def performans_simulasyonu():
@@ -1003,16 +1016,24 @@ def atama_detayi_kaydet():
 
 @app.route('/api/tasarim-kodu-bilgileri/<tasarim_kodu>')
 def tasarim_kodu_bilgileri(tasarim_kodu):
+    """Tasarım kodu ile ilgili detaylı bilgileri getir"""
     try:
-        if tasarim_kodu in tasarim_kod_bilgileri:
-            return jsonify({
-                "success": True,
-                "personel_ihtiyaci": tasarim_kod_bilgileri[tasarim_kodu].get("personel_ihtiyaci", {"ustabasi": 0, "kalifiyeli": 0, "cirak": 0}),
-                "urun_adi": tasarim_kod_bilgileri[tasarim_kodu].get("urun_adi", "")
-            })
-        return jsonify({"success": False, "message": "Tasarım kodu bulunamadı"}), 404
+        # İş listesini yükle
+        is_listesi = load_json_file(os.path.join(ROOT_DIR, 'veri', 'is_listesi.json'))
+        if not is_listesi:
+            return jsonify({"error": "İş listesi yüklenemedi"}), 404
+        
+        # Tasarım kodunu bul
+        is_bilgisi = next((is_bilgi for is_bilgi in is_listesi 
+                          if is_bilgi.get('tasarim_kodu') == tasarim_kodu), None)
+        
+        if not is_bilgisi:
+            return jsonify({"error": "Tasarım kodu bulunamadı"}), 404
+            
+        return jsonify(is_bilgisi)
+        
     except Exception as e:
-        return jsonify({"success": False, "message": str(e)}), 500
+        return jsonify({"error": str(e)}), 500
 
 @app.route('/api/calisan-bilgileri/<calisan_adi>')
 def calisan_bilgileri(calisan_adi):
@@ -1294,99 +1315,132 @@ def excel_rapor():
 def performans_degerlendirme_kaydet():
     try:
         data = request.get_json()
+        if not data:
+            return jsonify({'success': False, 'mesaj': 'Veri alınamadı'}), 400
+
         is_id = data.get('is_id')
-        
-        # İş bilgilerini bul
-        is_listesi = load_json_file(os.path.join(ROOT_DIR, 'veri', 'is_listesi.json')) or []
-        is_bilgisi = next((is_item for is_item in is_listesi if str(is_item['id']) == str(is_id)), None)
-        
+        if not is_id:
+            return jsonify({'success': False, 'mesaj': 'İş ID bulunamadı'}), 400
+
+        # İş bilgilerini al
+        try:
+            with open(os.path.join(ROOT_DIR, 'veri', 'is_listesi.json'), 'r', encoding='utf-8') as f:
+                is_listesi = json.load(f)
+        except Exception as e:
+            return jsonify({'success': False, 'mesaj': f'İş listesi yüklenemedi: {str(e)}'}), 500
+
+        # İşi bul
+        is_bilgisi = None
+        for is_item in is_listesi:
+            if str(is_item.get('id')) == str(is_id):
+                is_bilgisi = is_item
+                break
+
         if not is_bilgisi:
-            return jsonify({'success': False, 'mesaj': 'İş bulunamadı'})
-        
-        tasarim_kodu = is_bilgisi['tasarim_kodu']
-        
-        # Çalışan değerlendirmelerini topla
-        calisan_degerlendirmeleri = {}
-        degerlendirmeler = []  # Detaylı değerlendirmeler için liste
-        genel_notlar = data.get('notlar', '')
-        
+            return jsonify({'success': False, 'mesaj': 'İş bulunamadı'}), 404
+
+        tasarim_kodu = is_bilgisi.get('tasarim_kodu')
+        if not tasarim_kodu:
+            return jsonify({'success': False, 'mesaj': 'Tasarım kodu bulunamadı'}), 400
+
+        # Performans değerlendirmelerini kaydet
+        performans_verileri = {}
+        calisan_performanslari = {}  # Geçmiş proje performansları için
+
+        # Form verilerinden çalışan değerlendirmelerini al
         for key, value in data.items():
-            if key.startswith('calisan_') and '_isim' in key:
+            if key.startswith('calisan_') and key.endswith('_isim'):
                 index = key.split('_')[1]
                 calisan_adi = value
                 
-                # Monte Carlo için normalize edilmiş değerlendirme
-                calisan_degerlendirmeleri[calisan_adi] = {
-                    'is_kalitesi': int(data.get(f'calisan_{index}_is_kalitesi', 0)),
-                    'sure_yonetimi': int(data.get(f'calisan_{index}_sure_yonetimi', 0)),
-                    'is_birligi': int(data.get(f'calisan_{index}_is_birligi', 0)),
-                    'problem_cozme': int(data.get(f'calisan_{index}_problem_cozme', 0)),
-                    'teknik_yetkinlik': int(data.get(f'calisan_{index}_teknik_yetkinlik', 0))
-                }
+                # Her bir değerlendirme kriterini al ve 0-1 aralığına dönüştür
+                is_kalitesi = float(data.get(f'calisan_{index}_is_kalitesi', 0)) / 5
+                sure_yonetimi = float(data.get(f'calisan_{index}_sure_yonetimi', 0)) / 5
+                is_birligi = float(data.get(f'calisan_{index}_is_birligi', 0)) / 5
+                problem_cozme = float(data.get(f'calisan_{index}_problem_cozme', 0)) / 5
+                teknik_yetkinlik = float(data.get(f'calisan_{index}_teknik_yetkinlik', 0)) / 5
                 
-                # Detaylı değerlendirme kaydı
-                puanlar = list(calisan_degerlendirmeleri[calisan_adi].values())
-                ortalama_puan = sum(puanlar) / len(puanlar)
+                # Genel performans puanını hesapla (0-1 arası)
+                genel_performans = (is_kalitesi + sure_yonetimi + is_birligi + problem_cozme + teknik_yetkinlik) / 5
                 
-                degerlendirme = {
-                    'calisan': calisan_adi,
-                    'seviye': data.get(f'calisan_{index}_seviye'),
-                    'is_kalitesi': int(data.get(f'calisan_{index}_is_kalitesi', 0)),
-                    'sure_yonetimi': int(data.get(f'calisan_{index}_sure_yonetimi', 0)),
-                    'is_birligi': int(data.get(f'calisan_{index}_is_birligi', 0)),
-                    'problem_cozme': int(data.get(f'calisan_{index}_problem_cozme', 0)),
-                    'teknik_yetkinlik': int(data.get(f'calisan_{index}_teknik_yetkinlik', 0)),
-                    'notlar': data.get(f'calisan_{index}_notlar', ''),
-                    'ortalama_puan': ortalama_puan
+                # Çalışan performansını kaydet
+                calisan_performanslari[calisan_adi] = round(genel_performans, 2)
+                
+                # Detaylı performans verilerini de kaydet
+                performans_verileri[calisan_adi] = {
+                    'is_kalitesi': is_kalitesi,
+                    'sure_yonetimi': sure_yonetimi,
+                    'is_birligi': is_birligi,
+                    'problem_cozme': problem_cozme,
+                    'teknik_yetkinlik': teknik_yetkinlik,
+                    'genel_performans': genel_performans,
+                    'notlar': data.get(f'calisan_{index}_notlar', '')
                 }
-                degerlendirmeler.append(degerlendirme)
-        
-        # 1. Monte Carlo için normalize edilmiş verileri kaydet
-        for calisan, degerler in calisan_degerlendirmeleri.items():
-            puanlar = list(degerler.values())
-            # 1-5 aralığından 0-1 aralığına normalize et
-            normalize_puan = (sum(puanlar) - len(puanlar)) / (len(puanlar) * 4)  # (toplam - min) / (max - min)
+
+        # Geçmiş proje performans verilerini güncelle
+        try:
+            gecmis_performans_dosyasi = os.path.join(ROOT_DIR, 'veri', 'gecmis_proje_performans_verileri.json')
             
-            # Geçmiş performans verilerini yükle
-            performans_dosyasi = os.path.join(ROOT_DIR, 'veri', 'gecmis_proje_performans_verileri.json')
-            performans_verileri = load_json_file(performans_dosyasi) or {}
-            
-            # Tasarım kodu için veri yoksa oluştur
-            if tasarim_kodu not in performans_verileri:
-                performans_verileri[tasarim_kodu] = []
-            
-            # Yeni projeyi ekle
-            yeni_proje = {calisan: normalize_puan}
-            performans_verileri[tasarim_kodu].append(yeni_proje)
-            
+            # Dosyayı oku veya yeni oluştur
+            try:
+                with open(gecmis_performans_dosyasi, 'r', encoding='utf-8') as f:
+                    gecmis_veriler = json.load(f)
+            except FileNotFoundError:
+                gecmis_veriler = {}
+
+            # Tasarım kodu için liste oluştur veya mevcut listeyi al
+            if tasarim_kodu not in gecmis_veriler:
+                gecmis_veriler[tasarim_kodu] = []
+
+            # Yeni performans verilerini ekle
+            gecmis_veriler[tasarim_kodu].append(calisan_performanslari)
+
             # Dosyaya kaydet
-            save_json_file(performans_dosyasi, performans_verileri)
-        
-        # 2. Detaylı değerlendirme verilerini kaydet
-        performans_kaydi = {
-            'tarih': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+            with open(gecmis_performans_dosyasi, 'w', encoding='utf-8') as f:
+                json.dump(gecmis_veriler, f, indent=4, ensure_ascii=False)
+
+        except Exception as e:
+            print(f"Geçmiş performans verileri kaydedilirken hata: {str(e)}")
+            return jsonify({'success': False, 'mesaj': 'Geçmiş performans verileri kaydedilemedi'}), 500
+
+        # Performans değerlendirmelerini kaydet
+        degerlendirme = {
             'is_id': is_id,
             'tasarim_kodu': tasarim_kodu,
-            'proje_adi': is_bilgisi['proje_adi'],
-            'degerlendirmeler': degerlendirmeler,
-            'genel_notlar': genel_notlar
+            'tarih': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+            'calisan_performanslari': performans_verileri,
+            'genel_notlar': data.get('notlar', '')
         }
-        
-        # Mevcut değerlendirmeleri yükle
-        degerlendirmeler_dosyasi = os.path.join(ROOT_DIR, 'veri', 'performans_degerlendirmeleri.json')
-        tum_degerlendirmeler = load_json_file(degerlendirmeler_dosyasi) or []
-        
-        # Yeni değerlendirmeyi ekle
-        tum_degerlendirmeler.append(performans_kaydi)
-        
-        # Dosyaya kaydet
-        save_json_file(degerlendirmeler_dosyasi, tum_degerlendirmeler)
-        
-        return jsonify({'success': True, 'mesaj': 'Performans değerlendirmesi başarıyla kaydedildi'})
-        
+
+        try:
+            performans_dosyasi = os.path.join(ROOT_DIR, 'veri', 'performans_degerlendirmeleri.json')
+            
+            try:
+                with open(performans_dosyasi, 'r', encoding='utf-8') as f:
+                    mevcut_degerlendirmeler = json.load(f)
+            except FileNotFoundError:
+                mevcut_degerlendirmeler = []
+
+            mevcut_degerlendirmeler.append(degerlendirme)
+
+            with open(performans_dosyasi, 'w', encoding='utf-8') as f:
+                json.dump(mevcut_degerlendirmeler, f, indent=4, ensure_ascii=False)
+
+        except Exception as e:
+            print(f"Performans değerlendirmesi kaydedilirken hata: {str(e)}")
+            return jsonify({'success': False, 'mesaj': 'Performans değerlendirmesi kaydedilemedi'}), 500
+
+        return jsonify({
+            'success': True,
+            'mesaj': 'Performans değerlendirmesi başarıyla kaydedildi'
+        })
+
     except Exception as e:
-        print(f"Performans değerlendirme hatası: {str(e)}")
-        return jsonify({'success': False, 'mesaj': f'Bir hata oluştu: {str(e)}'})
+        print(f"Beklenmeyen hata: {str(e)}")
+        return jsonify({
+            'success': False,
+            'mesaj': f'Performans değerlendirmesi kaydedilirken bir hata oluştu: {str(e)}'
+        }), 500
 
 @app.route('/api/son-simulasyon-verileri', methods=['GET'])
 def son_simulasyon_verileri():
@@ -1413,6 +1467,234 @@ def son_simulasyon_verileri():
             'success': False,
             'mesaj': f'Simülasyon verileri alınırken hata oluştu: {str(e)}'
         }), 500
+
+@app.route('/api/genetik-optimizasyon', methods=['POST'])
+def genetik_optimizasyon():
+    try:
+        # Veri klasörünün varlığını kontrol et
+        if not os.path.exists('veri'):
+            os.makedirs('veri')
+        
+        # Genetik algoritma optimizasyonunu başlat
+        print("Genetik algoritma optimizasyonu başlatılıyor...")
+        bildirim_gonder("Genetik algoritma optimizasyonu başlatıldı", "bilgi")
+        optimizasyon_ilerlemesi("genetik", 0, "Başlatılıyor...")
+        
+        tasarim_kod_bilgileri, calisan_yetkinlikleri = geneticalgorithm.load_dataset()
+        if not tasarim_kod_bilgileri or not calisan_yetkinlikleri:
+            raise Exception("Veri setleri yüklenemedi!")
+            
+        print("Veri setleri yüklendi, genetik algoritma çalıştırılıyor...")
+        optimizasyon_ilerlemesi("genetik", 10, "Veri setleri yüklendi")
+        
+        # İlerleme bildirimi için callback fonksiyonu
+        def ilerleme_callback(nesil, toplam_nesil, en_iyi_uygunluk):
+            ilerleme_yuzdesi = min(10 + int((nesil / toplam_nesil) * 90), 100)
+            optimizasyon_ilerlemesi("genetik", ilerleme_yuzdesi, f"Nesil: {nesil}/{toplam_nesil}, En iyi uygunluk: {en_iyi_uygunluk:.2f}")
+        
+        best_assignment, fitness_history, task_worker_rankings = geneticalgorithm.genetic_algorithm(
+            tasarim_kod_bilgileri, 
+            calisan_yetkinlikleri,
+            ilerleme_callback=ilerleme_callback
+        )
+        
+        if not best_assignment:
+            raise Exception("Genetik algoritma sonuç üretemedi!")
+        
+        print("Genetik algoritma tamamlandı, sonuçlar kaydediliyor...")
+        optimizasyon_ilerlemesi("genetik", 95, "Sonuçlar kaydediliyor...")
+        
+        # Sonuçları JSON olarak kaydet
+        results = {}
+        for task, workers in best_assignment.items():
+            personel_ihtiyaci = tasarim_kod_bilgileri[task].get("personel_ihtiyaci", {
+                "ustabasi": 0,
+                "kalifiyeli": 0,
+                "cirak": 0
+            })
+            
+            # Atanan çalışanları seviyelerine göre grupla
+            atanan_calisanlar = {
+                "ustabasi": [],
+                "kalifiyeli": [],
+                "cirak": []
+            }
+            
+            for worker in workers:
+                level = calisan_yetkinlikleri[worker]["yetkinlik_seviyesi"]
+                if level == 1:
+                    atanan_calisanlar["ustabasi"].append(worker)
+                elif level == 2:
+                    atanan_calisanlar["kalifiyeli"].append(worker)
+                else:
+                    atanan_calisanlar["cirak"].append(worker)
+            
+            # Eksik personel sayılarını hesapla
+            eksik_personel = {
+                "ustabasi": max(0, personel_ihtiyaci.get("ustabasi", 0) - len(atanan_calisanlar["ustabasi"])),
+                "kalifiyeli": max(0, personel_ihtiyaci.get("kalifiyeli", 0) - len(atanan_calisanlar["kalifiyeli"])),
+                "cirak": max(0, personel_ihtiyaci.get("cirak", 0) - len(atanan_calisanlar["cirak"]))
+            }
+            
+            # Alternatif çalışanları seviyelerine göre grupla
+            alternatif_calisanlar = []
+            
+            # Her seviye için alternatif çalışanları ekle
+            for level_name, level_rankings in task_worker_rankings[task].items():
+                for worker, score in level_rankings:
+                    if worker not in workers:  # Atanmamış çalışanları alternatif olarak ekle
+                        alternatif_calisanlar.append({
+                            "calisan": worker,
+                            "uygunluk": float(score),
+                            "seviye": level_name  # Seviye bilgisini ekle
+                        })
+            
+            results[str(task)] = {
+                "atanan_calisanlar": atanan_calisanlar,
+                "eksik_personel": eksik_personel,
+                "alternatif_calisanlar": alternatif_calisanlar,
+                "personel_ihtiyaci": personel_ihtiyaci
+            }
+        
+        # Sonuçları kaydet
+        with open(os.path.join(ROOT_DIR, 'veri', 'genetik_sonuclari.json'), 'w', encoding='utf-8') as f:
+            json.dump(results, f, ensure_ascii=False, indent=4)
+        
+        optimizasyon_ilerlemesi("genetik", 100, "Tamamlandı")
+        bildirim_gonder("Genetik algoritma optimizasyonu tamamlandı", "basari")
+        print("Genetik algoritma optimizasyonu başarıyla tamamlandı!")
+        
+        return jsonify({
+            "success": True,
+            "genetik_sonuclari": results
+        })
+    except Exception as e:
+        error_msg = f"Genetik algoritma optimizasyonu hatası: {str(e)}"
+        print(error_msg)
+        bildirim_gonder(error_msg, "hata")
+        return jsonify({
+            "success": False,
+            "error": error_msg
+        }), 500
+
+@app.route('/api/son-genetik-sonuclari', methods=['GET'])
+def son_genetik_sonuclari():
+    try:
+        # Genetik algoritma sonuçlarını oku
+        sonuc_dosyasi = os.path.join(ROOT_DIR, 'veri', 'genetik_sonuclari.json')
+        if os.path.exists(sonuc_dosyasi):
+            with open(sonuc_dosyasi, 'r', encoding='utf-8') as f:
+                sonuclar = json.load(f)
+            return jsonify({
+                "success": True,
+                "genetik_sonuclari": sonuclar
+            })
+        else:
+            return jsonify({
+                "success": False,
+                "message": "Henüz genetik algoritma sonuçları bulunmuyor"
+            })
+    except Exception as e:
+        return jsonify({
+            "success": False,
+            "error": str(e)
+        }), 500
+
+@app.route('/api/taguchi-optimizasyon', methods=['POST'])
+def taguchi_optimizasyon():
+    try:
+        # Veri klasörünün varlığını kontrol et
+        if not os.path.exists('veri'):
+            os.makedirs('veri')
+        
+        # Taguchi optimizasyonunu başlat
+        print("Taguchi optimizasyonu başlatılıyor...")
+        bildirim_gonder("Taguchi optimizasyonu başlatıldı", "bilgi")
+        optimizasyon_ilerlemesi("taguchi", 0, "Başlatılıyor...")
+        
+        # Taguchi optimizasyonunu çalıştır
+        sonuclar = taguchi.main()
+        
+        if not sonuclar or 'best_parameters' not in sonuclar:
+            raise Exception("Taguchi optimizasyonu sonuç üretemedi!")
+        
+        print("Taguchi optimizasyonu tamamlandı!")
+        optimizasyon_ilerlemesi("taguchi", 100, "Tamamlandı")
+        bildirim_gonder("Taguchi optimizasyonu tamamlandı", "basari")
+        
+        return jsonify({
+            "success": True,
+            "taguchi_sonuclari": sonuclar
+        })
+    except Exception as e:
+        error_msg = f"Taguchi optimizasyonu hatası: {str(e)}"
+        print(error_msg)
+        bildirim_gonder(error_msg, "hata")
+        return jsonify({
+            "success": False,
+            "error": error_msg
+        }), 500
+
+@app.route('/api/son-taguchi-sonuclari', methods=['GET'])
+def son_taguchi_sonuclari():
+    """Son Taguchi optimizasyon sonuçlarını getir"""
+    try:
+        sonuc_dosyasi = os.path.join(ROOT_DIR, 'veri', 'taguchi_sonuclari.json')
+        if os.path.exists(sonuc_dosyasi):
+            with open(sonuc_dosyasi, 'r', encoding='utf-8') as f:
+                sonuclar = json.load(f)
+                if sonuclar and 'best_parameters' in sonuclar:
+                    return jsonify(sonuclar)
+                else:
+                    return jsonify({"success": False, "message": "Henüz optimizasyon sonucu bulunmuyor"})
+        return jsonify({"success": False, "message": "Henüz optimizasyon yapılmamış"})
+    except Exception as e:
+        return jsonify({"success": False, "message": str(e)}), 500
+
+@app.route('/api/is-durum-guncelle', methods=['POST'])
+def is_durum_guncelle():
+    try:
+        data = request.get_json()
+        tasarim_kodu = data.get('tasarim_kodu')
+        durum = data.get('durum')
+        tamamlanma_yuzdesi = data.get('tamamlanma_yuzdesi', 0)
+        
+        if not tasarim_kodu or not durum:
+            return jsonify({"success": False, "message": "Eksik parametreler"}), 400
+            
+        # İş listesini yükle
+        is_listesi = load_json_file(os.path.join(ROOT_DIR, 'veri', 'is_listesi.json'))
+        if not is_listesi:
+            return jsonify({"success": False, "message": "İş listesi yüklenemedi"}), 500
+            
+        # İşi bul ve güncelle
+        is_guncellendi = False
+        for is_item in is_listesi:
+            if is_item['tasarim_kodu'] == tasarim_kodu:
+                eski_durum = is_item.get('durum', 'beklemede')
+                is_item['durum'] = durum
+                is_guncellendi = True
+                
+                # Durum değişikliği bildirimi gönder
+                if eski_durum != durum:
+                    bildirim_gonder(f"İş durumu güncellendi: {is_item.get('proje_adi', tasarim_kodu)} - {durum}", "bilgi")
+                
+                break
+                
+        if not is_guncellendi:
+            return jsonify({"success": False, "message": "İş bulunamadı"}), 404
+            
+        # Güncellenmiş listeyi kaydet
+        save_json_file(os.path.join(ROOT_DIR, 'veri', 'is_listesi.json'), is_listesi)
+        
+        # İş çizelgesi güncellemesi gönder
+        socketio.emit('is_cizelgesi_guncellendi', is_listesi)
+        
+        return jsonify({"success": True, "message": "İş durumu güncellendi"})
+        
+    except Exception as e:
+        print(f"İş durumu güncelleme hatası: {str(e)}")
+        return jsonify({"success": False, "message": str(e)}), 500
 
 if __name__ == '__main__':
     # Periyodik güncelleme işlemini başlat

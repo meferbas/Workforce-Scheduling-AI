@@ -1,100 +1,100 @@
 {
     "best_parameters": {
         "M-KAM-001": {
-            "sure": 1821.49529955857,
+            "sure": 1851.4676753360036,
             "optimum_seviye": 1,
-            "iyilestirme_orani": 21.739145584960617,
+            "iyilestirme_orani": 20.451377377291326,
             "method": "Taguchi (Geçmiş Veriler)",
             "departman": "Montaj"
         },
         "M-KKK-002": {
-            "sure": 203.39497185061842,
+            "sure": 225.11147405264273,
             "optimum_seviye": 1,
-            "iyilestirme_orani": 37.9073048181688,
+            "iyilestirme_orani": 31.277661325131966,
             "method": "Taguchi (Geçmiş Veriler)",
             "departman": "Montaj"
         },
         "M-OSK1.5-003": {
-            "sure": 72.88399575047768,
+            "sure": 115.55149018868683,
             "optimum_seviye": 1,
-            "iyilestirme_orani": 65.54491218855452,
+            "iyilestirme_orani": 45.37433492498259,
             "method": "Taguchi (Geçmiş Veriler)",
             "departman": "Montaj"
         },
         "M-PA-005": {
-            "sure": 38.13104005636022,
+            "sure": 49.53145040781912,
             "optimum_seviye": 1,
-            "iyilestirme_orani": 50.27467065025836,
+            "iyilestirme_orani": 35.40780211977511,
             "method": "Taguchi (Geçmiş Veriler)",
             "departman": "Montaj"
         },
         "M-RPV3.5-006": {
-            "sure": 138.0,
+            "sure": 161.9721612966178,
             "optimum_seviye": 1,
-            "iyilestirme_orani": 47.60488514838955,
+            "iyilestirme_orani": 38.5032609137691,
             "method": "Taguchi (Geçmiş Veriler)",
             "departman": "Montaj"
         },
         "M-MOD4-007": {
-            "sure": 184.0,
+            "sure": 198.40246575196818,
             "optimum_seviye": 1,
-            "iyilestirme_orani": 42.76530665145938,
+            "iyilestirme_orani": 38.285302788542225,
             "method": "Taguchi (Geçmiş Veriler)",
             "departman": "Montaj"
         },
         "M-MOD3-008": {
-            "sure": 177.66291201578153,
+            "sure": 205.4556905969101,
             "optimum_seviye": 1,
-            "iyilestirme_orani": 43.55427735797251,
+            "iyilestirme_orani": 34.724165020838726,
             "method": "Taguchi (Geçmiş Veriler)",
             "departman": "Montaj"
         },
         "M-RPV2.5-009": {
-            "sure": 124.14961496905859,
+            "sure": 164.31671507710334,
             "optimum_seviye": 1,
-            "iyilestirme_orani": 52.8486080634035,
+            "iyilestirme_orani": 37.593347862854785,
             "method": "Taguchi (Geçmiş Veriler)",
             "departman": "Montaj"
         },
         "M-TK1-010": {
-            "sure": 114.67823077855454,
+            "sure": 156.52587990411172,
             "optimum_seviye": 1,
-            "iyilestirme_orani": 58.35435270116649,
+            "iyilestirme_orani": 43.1572884986884,
             "method": "Taguchi (Geçmiş Veriler)",
             "departman": "Montaj"
         },
         "M-AVK-011": {
-            "sure": 75.48332911743117,
+            "sure": 124.01269657668745,
             "optimum_seviye": 1,
-            "iyilestirme_orani": 62.16058361562477,
+            "iyilestirme_orani": 37.83305376722159,
             "method": "Taguchi (Geçmiş Veriler)",
             "departman": "Montaj"
         },
         "M-CKM-012": {
-            "sure": 127.73662632136829,
+            "sure": 161.6465849302433,
             "optimum_seviye": 1,
-            "iyilestirme_orani": 53.16713975385213,
+            "iyilestirme_orani": 40.73452431521786,
             "method": "Taguchi (Geçmiş Veriler)",
             "departman": "Montaj"
         },
         "M-MOD2-014": {
-            "sure": 170.3538836002833,
+            "sure": 218.13014700715317,
             "optimum_seviye": 1,
-            "iyilestirme_orani": 46.00225571336575,
+            "iyilestirme_orani": 30.85842453151678,
             "method": "Taguchi (Geçmiş Veriler)",
             "departman": "Montaj"
         },
         "M-DUK-015": {
-            "sure": 685.7561759530184,
+            "sure": 703.8252947487603,
             "optimum_seviye": 1,
-            "iyilestirme_orani": 26.40258548781686,
+            "iyilestirme_orani": 24.46335333430113,
             "method": "Taguchi (Geçmiş Veriler)",
             "departman": "Montaj"
         },
         "M-KK-016": {
-            "sure": 524.670545474509,
+            "sure": 548.0954740635607,
             "optimum_seviye": 1,
-            "iyilestirme_orani": 33.54534899311701,
+            "iyilestirme_orani": 30.57835290829064,
             "method": "Taguchi (Geçmiş Veriler)",
             "departman": "Montaj"
         },
@@ -106,14 +106,14 @@
             "departman": "Montaj"
         },
         "M-YK-004": {
-            "sure": 241.5455048944985,
+            "sure": 285.0875021123937,
             "optimum_seviye": 1,
-            "iyilestirme_orani": 47.69666789249013,
+            "iyilestirme_orani": 38.26825173501887,
             "method": "Taguchi (Geçmiş Veriler)",
             "departman": "Montaj"
         }
     },
-    "average_improvement": 45.119457854193264,
+    "average_improvement": 34.99086140437081,
     "parameter_effects": {},
-    "timestamp": "2025-03-06 16:35:45"
+    "timestamp": "2025-03-15 19:16:11"
 }

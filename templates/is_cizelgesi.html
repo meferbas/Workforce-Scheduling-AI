@@ -198,7 +198,7 @@
                             </button>
                         </td>
                         <td>
-                            <button class="btn btn-sm btn-primary" onclick="isGuncelle('{{ is.tasarim_kodu }}')">
+                            <button class="btn btn-sm btn-primary" onclick="isGuncelle('{{ is.tasarim_kodu }}', '{{ is.id }}')">
                                 <i class="bi bi-pencil"></i>
                             </button>
                         </td>
@@ -230,6 +230,56 @@
                     <div id="simulasyonSonuclari" class="mt-3" style="display: none;">
                         <h6 class="mb-2">Simülasyon Sonuçları:</h6>
                         <div id="simulasyonRaporu" class="bg-light" style="max-height: 600px; overflow-y: auto;">
+                            <!-- Sonuçlar buraya gelecek -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Performans Simülasyonu kartından sonra -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header py-2">
+                    <h5 class="card-title mb-0">Genetik Algoritma Optimizasyonu</h5>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info" role="alert">
+                        <i class="bi bi-info-circle"></i> Genetik algoritma optimizasyonu, çalışanların tasarımlara en uygun şekilde atanmasını sağlar. Bu işlem birkaç dakika sürebilir.
+                    </div>
+                    <button id="genetikOptimizasyonBaslat" class="btn btn-primary">
+                        Genetik Optimizasyonu Başlat
+                    </button>
+                    <div id="genetikSonuclari" class="mt-3" style="display: none;">
+                        <h6 class="mb-2">Optimizasyon Sonuçları:</h6>
+                        <div id="genetikRaporu" class="bg-light p-3" style="max-height: 600px; overflow-y: auto;">
+                            <!-- Sonuçlar buraya gelecek -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Genetik Algoritma kartından sonra -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header py-2">
+                    <h5 class="card-title mb-0">Taguchi Optimizasyonu</h5>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info" role="alert">
+                        <i class="bi bi-info-circle"></i> Taguchi optimizasyonu, tasarım kodlarının montaj sürelerini optimize eder. Bu işlem birkaç dakika sürebilir.
+                    </div>
+                    <button id="taguchiOptimizasyonBaslat" class="btn btn-primary">
+                        Taguchi Optimizasyonu Başlat
+                    </button>
+                    <div id="taguchiSonuclari" class="mt-3" style="display: none;">
+                        <h6 class="mb-2">Optimizasyon Sonuçları:</h6>
+                        <div id="taguchiRaporu" class="bg-light p-3" style="max-height: 600px; overflow-y: auto;">
                             <!-- Sonuçlar buraya gelecek -->
                         </div>
                     </div>
@@ -364,6 +414,7 @@
                 <div class="modal-body">
                     <form id="isGuncellemeForm">
                         <input type="hidden" name="tasarim_kodu">
+                        <input type="hidden" name="is_id">
                         <div class="mb-3">
                             <label class="form-label">Durum</label>
                             <select class="form-select" name="durum" required>
@@ -824,20 +875,55 @@ function raporOlustur(tip) {
 
 <!-- İş güncelleme fonksiyonunu güncelle -->
 <script>
-function isGuncelle(tasarimKodu) {
+function isGuncelle(tasarimKodu, isId) {
+    // İş bilgilerini bul
+    const isItem = document.querySelector(`tr[data-is-id="${isId}"]`);
+    if (!isItem) {
+        bildirimGoster('error', 'İş bulunamadı');
+        return;
+    }
+    
     const modal = new bootstrap.Modal(document.getElementById('isGuncellemeModal'));
     const form = document.getElementById('isGuncellemeForm');
+    
+    // Form alanlarını doldur
     form.querySelector('[name="tasarim_kodu"]').value = tasarimKodu;
+    form.querySelector('[name="is_id"]').value = isId;
     
     // Durum değişikliğini izle
-    form.querySelector('[name="durum"]').addEventListener('change', function(e) {
-        const oncelikDiv = form.querySelector('[name="oncelik"]').closest('.mb-3');
+    const durumSelect = form.querySelector('[name="durum"]');
+    const oncelikDiv = form.querySelector('[name="oncelik"]').closest('.mb-3');
+    
+    // Event listener'ı temizle ve yeniden ekle
+    const newDurumSelect = durumSelect.cloneNode(true);
+    durumSelect.parentNode.replaceChild(newDurumSelect, durumSelect);
+    
+    newDurumSelect.addEventListener('change', function(e) {
         if (e.target.value === 'tamamlandi') {
             oncelikDiv.style.display = 'none';
         } else {
             oncelikDiv.style.display = 'block';
         }
     });
+    
+    // Mevcut durum ve öncelik değerlerini al
+    const durumBadge = isItem.querySelector('.durum-badge');
+    const oncelikBadge = isItem.querySelector('.oncelik-badge');
+    
+    if (durumBadge) {
+        const durumText = durumBadge.textContent.trim().toLowerCase().replace(' ', '_');
+        newDurumSelect.value = durumText;
+        
+        // Durum tamamlandı ise öncelik alanını gizle
+        if (durumText === 'tamamlandi') {
+            oncelikDiv.style.display = 'none';
+        }
+    }
+    
+    if (oncelikBadge) {
+        const oncelikText = oncelikBadge.textContent.trim().toLowerCase();
+        form.querySelector('[name="oncelik"]').value = oncelikText;
+    }
     
     modal.show();
 }
@@ -846,30 +932,87 @@ function isGuncelle(tasarimKodu) {
 document.getElementById('isGuncellemeKaydet').addEventListener('click', function() {
     const form = document.getElementById('isGuncellemeForm');
     const tasarimKodu = form.querySelector('[name="tasarim_kodu"]').value;
+    const isId = form.querySelector('[name="is_id"]').value;
     const durum = form.querySelector('[name="durum"]').value;
     const oncelik = form.querySelector('[name="oncelik"]').value;
+    
+    if (!isId) {
+        bildirimGoster('error', 'İş ID bulunamadı');
+        return;
+    }
     
     if (durum === 'tamamlandi') {
         // Modal'ı kapat ve performans değerlendirmesini göster
         bootstrap.Modal.getInstance(document.getElementById('isGuncellemeModal')).hide();
-        performansDegerlendirmesiGoster(tasarimKodu);
+        performansDegerlendirmesiGoster(tasarimKodu, isId);
     } else {
         // Normal güncelleme işlemi
-        const isItem = Array.from(document.querySelectorAll('tr[data-tasarim-kodu]')).find(tr => tr.dataset.tasarimKodu === tasarimKodu);
-        if (!isItem) return;
-        
-        const isId = isItem.dataset.isId;
-        isGuncellemeKaydet(isId, durum, false);
-        bootstrap.Modal.getInstance(document.getElementById('isGuncellemeModal')).hide();
+        // İş güncelleme isteği gönder
+        $.ajax({
+            url: '/api/is-guncelle',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                is_id: isId,
+                tasarim_kodu: tasarimKodu,
+                durum: durum,
+                oncelik: oncelik
+            }),
+            success: function(response) {
+                bootstrap.Modal.getInstance(document.getElementById('isGuncellemeModal')).hide();
+                if (response.success) {
+                    bildirimGoster('success', 'İş durumu güncellendi');
+                    // Sayfayı yenilemeden görsel güncelleme yap
+                    const isItem = document.querySelector(`tr[data-is-id="${isId}"]`);
+                    if (isItem) {
+                        const durumBadge = isItem.querySelector('.durum-badge');
+                        if (durumBadge) {
+                            durumBadge.textContent = durum.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
+                            durumBadge.className = 'badge durum-badge ' + 
+                                (durum === 'devam_ediyor' ? 'bg-warning' : 'bg-secondary');
+                        }
+                        
+                        const oncelikBadge = isItem.querySelector('.oncelik-badge');
+                        if (oncelikBadge) {
+                            oncelikBadge.textContent = oncelik.charAt(0).toUpperCase() + oncelik.slice(1);
+                            oncelikBadge.className = 'badge oncelik-badge ' + 
+                                (oncelik === 'kritik' ? 'bg-danger' : 'bg-info');
+                        }
+                    }
+                } else {
+                    bildirimGoster('error', response.mesaj || 'İş güncellenemedi');
+                    console.error('İş güncelleme hatası:', response);
+                }
+            },
+            error: function(xhr) {
+                bootstrap.Modal.getInstance(document.getElementById('isGuncellemeModal')).hide();
+                try {
+                    const response = xhr.responseJSON || {};
+                    bildirimGoster('error', response.mesaj || 'İş güncellenirken bir hata oluştu');
+                    console.error('İş güncelleme hatası:', xhr);
+                } catch (e) {
+                    bildirimGoster('error', 'İş güncellenirken bir hata oluştu');
+                    console.error('İş güncelleme hatası:', e);
+                }
+            }
+        });
     }
 });
 
 // Performans değerlendirme modalını göster
-function performansDegerlendirmesiGoster(tasarimKodu) {
-    const isItem = Array.from(document.querySelectorAll('tr[data-tasarim-kodu]')).find(tr => tr.dataset.tasarimKodu === tasarimKodu);
-    if (!isItem) return;
+function performansDegerlendirmesiGoster(tasarimKodu, isId) {
+    if (!isId) {
+        bildirimGoster('error', 'İş ID bulunamadı');
+        return;
+    }
     
-    const isId = isItem.dataset.isId;
+    // İş bilgilerini bul
+    const isItem = document.querySelector(`tr[data-is-id="${isId}"]`);
+    if (!isItem) {
+        bildirimGoster('error', 'İş bulunamadı');
+        return;
+    }
+    
     document.getElementById('degerlendirmeIsId').value = isId;
     
     // Çalışan değerlendirme formlarını oluştur
@@ -1031,39 +1174,165 @@ document.getElementById('degerlendirmeKaydet').addEventListener('click', functio
         }
     });
 });
+</script>
 
-// İş güncelleme fonksiyonunu güncelle
-function isGuncellemeKaydet(isId, durum, sayfayiYenile = false) {
+<!-- Genetik algoritma optimizasyonu için olan script bloğundan sonra -->
+<script>
+// Genetik algoritma optimizasyonu için
+$(document).ready(function() {
+    // Sayfa yüklendiğinde mevcut genetik optimizasyon sonuçlarını getir
     $.ajax({
-        url: '/api/is-guncelle',
-        method: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify({
-            is_id: isId,
-            durum: durum,
-            oncelik: 'normal' // Varsayılan öncelik değeri ekle
-        }),
+        url: '/api/son-genetik-sonuclari',
+        method: 'GET',
         success: function(response) {
-            if (response.success) {
-                bildirimGoster('success', 'İş durumu güncellendi');
-                if (sayfayiYenile) {
-                    setTimeout(() => {
-                        window.location.reload();
-                    }, 1500);
-                }
-            } else {
-                bildirimGoster('error', response.mesaj || 'İş güncellenemedi');
-            }
-        },
-        error: function(xhr) {
-            try {
-                const response = xhr.responseJSON || {};
-                bildirimGoster('error', response.mesaj || 'İş güncellenirken bir hata oluştu');
-            } catch (e) {
-                bildirimGoster('error', 'İş güncellenirken bir hata oluştu');
+            if (response.success && response.genetik_sonuclari) {
+                gosterGenetikSonuclari(response.genetik_sonuclari);
+                $('#genetikSonuclari').show();
             }
         }
     });
+
+    // Genetik optimizasyon başlatma butonu için event listener
+    $('#genetikOptimizasyonBaslat').click(function() {
+        $(this).prop('disabled', true);
+        $(this).html('<span class="spinner-border spinner-border-sm"></span> Optimizasyon çalışıyor...');
+        
+        $.ajax({
+            url: '/api/genetik-optimizasyon',
+            method: 'POST',
+            success: function(response) {
+                if (response.success) {
+                    gosterGenetikSonuclari(response.genetik_sonuclari);
+                    bildirimGoster('success', 'Genetik optimizasyon başarıyla tamamlandı');
+                    $('#genetikSonuclari').show();
+                } else {
+                    bildirimGoster('error', response.mesaj);
+                }
+            },
+            error: function(xhr) {
+                bildirimGoster('error', 'Optimizasyon sırasında bir hata oluştu');
+            },
+            complete: function() {
+                $('#genetikOptimizasyonBaslat').prop('disabled', false);
+                $('#genetikOptimizasyonBaslat').html('Genetik Optimizasyonu Başlat');
+            }
+        });
+    });
+});
+
+function gosterGenetikSonuclari(genetik_sonuclari) {
+    let sonucHTML = '<div class="container-fluid p-0">';
+    
+    // Her tasarım kodu için sonuçları göster
+    Object.entries(genetik_sonuclari).forEach(([tasarim_kodu, sonuc]) => {
+        sonucHTML += `
+            <div class="card shadow-sm mb-3">
+                <div class="card-header py-2 bg-light">
+                    <h6 class="mb-0">${tasarim_kodu}</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="mb-2">Atanan Çalışanlar</h6>
+                            <div class="mb-3">
+                                <small class="text-muted">Ustabaşı:</small><br>
+                                ${sonuc.atanan_calisanlar.ustabasi.length > 0 ? 
+                                    sonuc.atanan_calisanlar.ustabasi.join(', ') : '-'}
+                            </div>
+                            <div class="mb-3">
+                                <small class="text-muted">Kalifiye:</small><br>
+                                ${sonuc.atanan_calisanlar.kalifiyeli.length > 0 ? 
+                                    sonuc.atanan_calisanlar.kalifiyeli.join(', ') : '-'}
+                            </div>
+                            <div class="mb-3">
+                                <small class="text-muted">Çırak:</small><br>
+                                ${sonuc.atanan_calisanlar.cirak.length > 0 ? 
+                                    sonuc.atanan_calisanlar.cirak.join(', ') : '-'}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="mb-2">Alternatif Çalışanlar</h6>
+                            <div class="table-responsive">
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Çalışan</th>
+                                            <th>Seviye</th>
+                                            <th>Uygunluk</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        ${sonuc.alternatif_calisanlar.slice(0, 5).map(alt => `
+                                            <tr>
+                                                <td>${alt.calisan}</td>
+                                                <td><small>${alt.seviye}</small></td>
+                                                <td>${alt.uygunluk.toFixed(1)}%</td>
+                                            </tr>
+                                        `).join('')}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+    
+    sonucHTML += '</div>';
+    $('#genetikRaporu').html(sonucHTML);
 }
+</script>
+
+<!-- Taguchi Optimizasyonu için JavaScript kodları -->
+<script>
+// Taguchi Optimizasyonu için JavaScript kodları
+$(document).ready(function() {
+    $('#taguchiOptimizasyonBaslat').click(function() {
+        var btn = $(this);
+        btn.prop('disabled', true);
+        btn.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Optimizasyon çalışıyor...');
+        
+        // Taguchi optimizasyonunu başlat
+        $.ajax({
+            url: '/api/taguchi-optimizasyon',
+            method: 'POST',
+            success: function(response) {
+                if (response.success) {
+                    showAlert('success', 'Taguchi optimizasyonu başarıyla tamamlandı.');
+                    // Sonuçları göster
+                    $('#taguchiSonuclari').show();
+                    var html = '<div class="table-responsive"><table class="table table-sm table-hover">';
+                    html += '<thead><tr><th>Tasarım Kodu</th><th>Optimize Süre (dk)</th><th>İyileştirme Oranı</th></tr></thead><tbody>';
+                    
+                    for (var kod in response.taguchi_sonuclari.best_parameters) {
+                        var sonuc = response.taguchi_sonuclari.best_parameters[kod];
+                        html += `<tr>
+                            <td>${kod}</td>
+                            <td>${sonuc.sure.toFixed(2)}</td>
+                            <td>${sonuc.iyilestirme_orani.toFixed(2)}%</td>
+                        </tr>`;
+                    }
+                    
+                    html += '</tbody></table></div>';
+                    html += `<div class="alert alert-success mt-3">
+                        <strong>Ortalama İyileştirme:</strong> ${response.taguchi_sonuclari.average_improvement.toFixed(2)}%
+                    </div>`;
+                    
+                    $('#taguchiRaporu').html(html);
+                } else {
+                    showAlert('error', 'Taguchi optimizasyonu sırasında bir hata oluştu: ' + response.error);
+                }
+            },
+            error: function(xhr, status, error) {
+                showAlert('error', 'Taguchi optimizasyonu başlatılırken bir hata oluştu: ' + error);
+            },
+            complete: function() {
+                btn.prop('disabled', false);
+                btn.html('Taguchi Optimizasyonu Başlat');
+            }
+        });
+    });
+});
 </script>
 {% endblock %}

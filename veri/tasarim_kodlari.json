@@ -1,7 +1,7 @@
 {
     "M-KAM-001": {
         "urun_adi": "Koli Acma Makinesi",
-        "tahmini_montaj_suresi": 1821.49529955857,
+        "tahmini_montaj_suresi": 1851.4676753360036,
         "minimum_yetkinlik_seviyesi": 2,
         "ortalama_uretim_adedi": 42,
         "zorluk_derecesi": 2,
@@ -15,7 +15,7 @@
     },
     "M-KKK-002": {
         "urun_adi": "Kare Kayar konveyor",
-        "tahmini_montaj_suresi": 203.39497185061842,
+        "tahmini_montaj_suresi": 225.11147405264273,
         "minimum_yetkinlik_seviyesi": 3,
         "ortalama_uretim_adedi": 30,
         "zorluk_derecesi": 1,
@@ -29,7 +29,7 @@
     },
     "M-OSK1.5-003": {
         "urun_adi": "1,5 metre osetol konveyor",
-        "tahmini_montaj_suresi": 72.88399575047768,
+        "tahmini_montaj_suresi": 115.55149018868683,
         "minimum_yetkinlik_seviyesi": 1,
         "ortalama_uretim_adedi": 25,
         "zorluk_derecesi": 3,
@@ -43,7 +43,7 @@
     },
     "M-PA-005": {
         "urun_adi": "Poset Acma",
-        "tahmini_montaj_suresi": 38.13104005636022,
+        "tahmini_montaj_suresi": 49.53145040781912,
         "minimum_yetkinlik_seviyesi": 2,
         "ortalama_uretim_adedi": 35,
         "zorluk_derecesi": 2,
@@ -57,7 +57,7 @@
     },
     "M-RPV3.5-006": {
         "urun_adi": "3,5mt rampali pvc",
-        "tahmini_montaj_suresi": 138.0,
+        "tahmini_montaj_suresi": 161.9721612966178,
         "minimum_yetkinlik_seviyesi": 1,
         "ortalama_uretim_adedi": 20,
         "zorluk_derecesi": 3,
@@ -71,7 +71,7 @@
     },
     "M-MOD4-007": {
         "urun_adi": "4 mt moduler konveyor",
-        "tahmini_montaj_suresi": 184.0,
+        "tahmini_montaj_suresi": 198.40246575196818,
         "minimum_yetkinlik_seviyesi": 3,
         "ortalama_uretim_adedi": 50,
         "zorluk_derecesi": 1,
@@ -85,7 +85,7 @@
     },
     "M-MOD3-008": {
         "urun_adi": "3 mt moduler konveyor",
-        "tahmini_montaj_suresi": 177.66291201578153,
+        "tahmini_montaj_suresi": 205.4556905969101,
         "minimum_yetkinlik_seviyesi": 2,
         "ortalama_uretim_adedi": 100,
         "zorluk_derecesi": 2,
@@ -99,7 +99,7 @@
     },
     "M-RPV2.5-009": {
         "urun_adi": "2,5mt pvc rampali konveyor",
-        "tahmini_montaj_suresi": 124.14961496905859,
+        "tahmini_montaj_suresi": 164.31671507710334,
         "minimum_yetkinlik_seviyesi": 2,
         "ortalama_uretim_adedi": 30,
         "zorluk_derecesi": 2,
@@ -113,7 +113,7 @@
     },
     "M-TK1-010": {
         "urun_adi": "1 mt tartim konveyo",
-        "tahmini_montaj_suresi": 114.67823077855454,
+        "tahmini_montaj_suresi": 156.52587990411172,
         "minimum_yetkinlik_seviyesi": 2,
         "ortalama_uretim_adedi": 75,
         "zorluk_derecesi": 2,
@@ -127,7 +127,7 @@
     },
     "M-AVK-011": {
         "urun_adi": "Avare konveyor",
-        "tahmini_montaj_suresi": 75.48332911743117,
+        "tahmini_montaj_suresi": 124.01269657668745,
         "minimum_yetkinlik_seviyesi": 2,
         "ortalama_uretim_adedi": 40,
         "zorluk_derecesi": 2,
@@ -141,7 +141,7 @@
     },
     "M-CKM-012": {
         "urun_adi": "Cektirme mekanizmasi",
-        "tahmini_montaj_suresi": 127.73662632136829,
+        "tahmini_montaj_suresi": 161.6465849302433,
         "minimum_yetkinlik_seviyesi": 3,
         "ortalama_uretim_adedi": 25,
         "zorluk_derecesi": 1,
@@ -155,7 +155,7 @@
     },
     "M-MOD2-014": {
         "urun_adi": "2 mt moduler konveyor",
-        "tahmini_montaj_suresi": 170.3538836002833,
+        "tahmini_montaj_suresi": 218.13014700715317,
         "minimum_yetkinlik_seviyesi": 2,
         "ortalama_uretim_adedi": 15,
         "zorluk_derecesi": 2,
@@ -169,7 +169,7 @@
     },
     "M-DUK-015": {
         "urun_adi": "Donuslu U konveyor",
-        "tahmini_montaj_suresi": 685.7561759530184,
+        "tahmini_montaj_suresi": 703.8252947487603,
         "minimum_yetkinlik_seviyesi": 1,
         "ortalama_uretim_adedi": 10,
         "zorluk_derecesi": 3,
@@ -183,7 +183,7 @@
     },
     "M-KK-016": {
         "urun_adi": "Koli Kapama",
-        "tahmini_montaj_suresi": 524.670545474509,
+        "tahmini_montaj_suresi": 548.0954740635607,
         "minimum_yetkinlik_seviyesi": 1,
         "ortalama_uretim_adedi": 5,
         "zorluk_derecesi": 3,
@@ -211,7 +211,7 @@
     },
     "M-YK-004": {
         "urun_adi": "Yayma Konveyoru",
-        "tahmini_montaj_suresi": 241.5455048944985,
+        "tahmini_montaj_suresi": 285.0875021123937,
         "minimum_yetkinlik_seviyesi": 1,
         "ortalama_uretim_adedi": 15,
         "zorluk_derecesi": 3,

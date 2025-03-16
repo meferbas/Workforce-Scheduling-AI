@@ -197,5 +197,155 @@
             }
         ],
         "genel_notlar": ""
+    },
+    {
+        "tarih": "2025-03-12 16:16:16",
+        "is_id": "1",
+        "tasarim_kodu": "M-CKM-012",
+        "proje_adi": "Nike",
+        "degerlendirmeler": [
+            {
+                "calisan": "SEYFETTİN DUYMUŞ",
+                "seviye": "Çırak",
+                "is_kalitesi": 5,
+                "sure_yonetimi": 5,
+                "is_birligi": 5,
+                "problem_cozme": 5,
+                "teknik_yetkinlik": 5,
+                "notlar": "",
+                "ortalama_puan": 5.0
+            },
+            {
+                "calisan": "FATİH YAŞAR",
+                "seviye": "Çırak",
+                "is_kalitesi": 2,
+                "sure_yonetimi": 3,
+                "is_birligi": 3,
+                "problem_cozme": 4,
+                "teknik_yetkinlik": 4,
+                "notlar": "",
+                "ortalama_puan": 3.2
+            }
+        ],
+        "genel_notlar": ""
+    },
+    {
+        "tarih": "2025-03-15 16:59:45",
+        "is_id": "1",
+        "tasarim_kodu": "M-CKM-012",
+        "proje_adi": "Deneme",
+        "degerlendirmeler": [
+            {
+                "calisan": "SEYFETTİN DUYMUŞ",
+                "seviye": "Çırak",
+                "is_kalitesi": 1,
+                "sure_yonetimi": 1,
+                "is_birligi": 1,
+                "problem_cozme": 2,
+                "teknik_yetkinlik": 1,
+                "notlar": "",
+                "ortalama_puan": 1.2
+            },
+            {
+                "calisan": "YAHYA SARI",
+                "seviye": "Çırak",
+                "is_kalitesi": 3,
+                "sure_yonetimi": 4,
+                "is_birligi": 4,
+                "problem_cozme": 4,
+                "teknik_yetkinlik": 4,
+                "notlar": "",
+                "ortalama_puan": 3.8
+            }
+        ],
+        "genel_notlar": ""
+    },
+    {
+        "tarih": "2025-03-15 17:00:57",
+        "is_id": "1",
+        "tasarim_kodu": "M-CKM-012",
+        "proje_adi": "Damla Su",
+        "degerlendirmeler": [
+            {
+                "calisan": "SEYFETTİN DUYMUŞ",
+                "seviye": "Çırak",
+                "is_kalitesi": 1,
+                "sure_yonetimi": 1,
+                "is_birligi": 1,
+                "problem_cozme": 1,
+                "teknik_yetkinlik": 1,
+                "notlar": "",
+                "ortalama_puan": 1.0
+            },
+            {
+                "calisan": "YAHYA SARI",
+                "seviye": "Çırak",
+                "is_kalitesi": 3,
+                "sure_yonetimi": 3,
+                "is_birligi": 4,
+                "problem_cozme": 3,
+                "teknik_yetkinlik": 4,
+                "notlar": "",
+                "ortalama_puan": 3.4
+            }
+        ],
+        "genel_notlar": ""
+    },
+    {
+        "tarih": "2025-03-15 17:03:19",
+        "is_id": "1",
+        "tasarim_kodu": "M-CKM-012",
+        "proje_adi": "Ornek",
+        "degerlendirmeler": [
+            {
+                "calisan": "SEYFETTİN DUYMUŞ",
+                "seviye": "Çırak",
+                "is_kalitesi": 1,
+                "sure_yonetimi": 1,
+                "is_birligi": 1,
+                "problem_cozme": 1,
+                "teknik_yetkinlik": 1,
+                "notlar": "",
+                "ortalama_puan": 1.0
+            },
+            {
+                "calisan": "YAHYA SARI",
+                "seviye": "Çırak",
+                "is_kalitesi": 4,
+                "sure_yonetimi": 4,
+                "is_birligi": 4,
+                "problem_cozme": 2,
+                "teknik_yetkinlik": 4,
+                "notlar": "",
+                "ortalama_puan": 3.6
+            }
+        ],
+        "genel_notlar": ""
+    },
+    {
+        "is_id": "2",
+        "tasarim_kodu": "M-CKM-012",
+        "tarih": "2025-03-15 19:10:21",
+        "calisan_performanslari": {
+            "HÜSEYİN GÜNDOĞDU": {
+                "is_kalitesi": 1.0,
+                "sure_yonetimi": 1.0,
+                "is_birligi": 1.0,
+                "problem_cozme": 1.0,
+                "teknik_yetkinlik": 1.0,
+                "genel_performans": 1.0,
+                "notlar": ""
+            },
+            "Gökhan KOLAÇ": {
+                "is_kalitesi": 0.8,
+                "sure_yonetimi": 0.8,
+                "is_birligi": 0.6,
+                "problem_cozme": 0.6,
+                "teknik_yetkinlik": 0.8,
+                "genel_performans": 0.7200000000000001,
+                "notlar": ""
+            }
+        },
+        "genel_notlar": ""
     }
 ]

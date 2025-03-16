@@ -5,6 +5,7 @@ import os
 from scipy import stats
 import matplotlib.pyplot as plt
 from datetime import datetime
+import random
 
 # Ana dizin yolunu belirle
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
@@ -41,7 +42,6 @@ def analyze_historical_data(gecmis_veriler, kod):
     # Temel istatistikler
     ortalama = np.mean(sureler)
     std = np.std(sureler)
-    minimum = np.min(sureler)
     
     # Aykırı değerleri tespit et
     q1 = np.percentile(sureler, 25)
@@ -58,12 +58,18 @@ def analyze_historical_data(gecmis_veriler, kod):
         ortalama = np.mean(filtered_sureler)
         std = np.std(filtered_sureler)
         minimum = np.min(filtered_sureler)
+    else:
+        minimum = np.min(sureler)
     
     # Normal dağılım varsayımı altında güven aralığı
     guven_araligi = stats.norm.interval(0.95, loc=ortalama, scale=std)
     
-    # Optimum süre: Alt güven aralığı ile minimum arasında bir değer
-    optimum_sure = (guven_araligi[0] + minimum) / 2
+    # Optimum süre: Alt güven aralığı, ortalama ve minimum değerin ağırlıklı ortalaması
+    optimum_sure = (
+        guven_araligi[0] * 0.4 +  # Alt güven aralığı %40 ağırlık
+        ortalama * 0.4 +          # Ortalama %40 ağırlık
+        minimum * 0.2             # Minimum %20 ağırlık
+    )
     
     return {
         "optimum_sure": optimum_sure,
@@ -234,7 +240,7 @@ def create_orthogonal_array(parameter_count, level_count):
 
 def taguchi_optimization(parameter_levels, gecmis_veriler, level_count=3, snr_type="smaller"):
     """
-    Taguchi optimizasyonu gerçekleştir
+    Taguchi optimizasyonu gerçekleştir ve birden fazla çalıştırmanın ortalamasını al
     
     Parametreler:
     - parameter_levels: Parametre seviyeleri
@@ -242,94 +248,53 @@ def taguchi_optimization(parameter_levels, gecmis_veriler, level_count=3, snr_ty
     - level_count: Seviye sayısı
     - snr_type: SNR tipi
     """
+    CALISTIRMA_SAYISI = 5  # Optimizasyonun kaç kez tekrarlanacağı
+    
     keys = list(parameter_levels.keys())
     parameter_count = len(keys)
     
     print(f"Toplam parametre sayısı: {parameter_count}, Seviye sayısı: {level_count}")
+    print(f"Optimizasyon {CALISTIRMA_SAYISI} kez tekrarlanacak ve ortalama sonuç alınacak")
     
-    # Ortogonal dizi oluştur
-    orthogonal_array = create_orthogonal_array(parameter_count, level_count)
+    # Her tasarım kodu için optimize edilmiş süreleri tutacak sözlük
+    tum_optimum_sureler = {}
+    tum_improvement_data = {}
+    tum_snr_values = []
     
-    if orthogonal_array is not None:
-        print(f"Ortogonal dizi kullanılıyor. Toplam {len(orthogonal_array)} deney yapılacak.")
-        # Ortogonal dizi kullanarak deneyleri oluştur
-        experiments = []
-        for row in orthogonal_array:
-            experiment = []
-            for i, level_idx in enumerate(row):
-                key = keys[i]
-                experiment.append(parameter_levels[key][level_idx])
-            experiments.append(experiment)
-    else:
-        # Parametre sayısı çok fazla ise
-        if parameter_count > 15 or (level_count ** parameter_count) > 1000000:
-            print("Parametre sayısı çok fazla, rastgele örnekleme yöntemi kullanılıyor...")
-            print("Bu yöntem, tam faktöriyel tasarım yerine rastgele seçilmiş kombinasyonları değerlendirir.")
+    for calistirma in range(CALISTIRMA_SAYISI):
+        print(f"\nOptimizasyon çalıştırması {calistirma + 1}/{CALISTIRMA_SAYISI}")
+        
+        # Ortogonal dizi oluştur
+        orthogonal_array = create_orthogonal_array(parameter_count, level_count)
+        
+        if orthogonal_array is not None:
+            print(f"Ortogonal dizi kullanılıyor. Toplam {len(orthogonal_array)} deney yapılacak.")
+            # Ortogonal dizi kullanarak deneyleri oluştur
+            experiments = []
+            for row in orthogonal_array:
+                experiment = []
+                for i, level_idx in enumerate(row):
+                    key = keys[i]
+                    experiment.append(parameter_levels[key][level_idx])
+                experiments.append(experiment)
             
-            # Rastgele örnekleme için maksimum kombinasyon sayısı
-            max_combinations = 10000
-            print(f"Toplam {max_combinations} rastgele kombinasyon değerlendirilecek.")
+            # Deneyleri değerlendir
+            experiment_results = []
+            snr_values = []
+            for experiment in experiments:
+                total_time = sum(experiment)
+                experiment_results.append(total_time)
+                snr_values.append(calculate_snr([total_time], snr_type))
             
-            # Parametre seviyelerini liste olarak hazırla
-            level_lists = [parameter_levels[key] for key in keys]
-            
-            # En iyi kombinasyonu bulmak için değişkenler
-            best_combination = None
-            best_snr = float('-inf')
-            best_total_time = float('inf')
-            
-            # İlerleme takibi için değişkenler
-            processed_count = 0
-            last_progress_report = 0
-            start_time = datetime.now()
-            
-            print("Rastgele kombinasyonlar değerlendiriliyor...")
-            
-            # Rastgele kombinasyonları değerlendir
-            import random
-            for _ in range(max_combinations):
-                # Her parametre için rastgele bir seviye seç
-                combination = [random.choice(levels) for levels in level_lists]
-                
-                total_time = sum(combination)
-                snr_value = calculate_snr([total_time], snr_type)
-                
-                # En iyi kombinasyonu güncelle
-                if snr_value > best_snr:
-                    best_snr = snr_value
-                    best_combination = combination
-                    best_total_time = total_time
-                
-                # İlerleme durumunu güncelle
-                processed_count += 1
-                progress_percent = (processed_count / max_combinations) * 100
-                
-                # Her %10'luk ilerleme için rapor ver
-                if progress_percent - last_progress_report >= 10:
-                    elapsed_time = (datetime.now() - start_time).total_seconds()
-                    estimated_total_time = elapsed_time / (progress_percent / 100)
-                    remaining_time = estimated_total_time - elapsed_time
-                    
-                    print(f"İlerleme: %{progress_percent:.1f} - "
-                          f"İşlenen: {processed_count}/{max_combinations} - "
-                          f"Tahmini kalan süre: {remaining_time/60:.1f} dakika")
-                    
-                    last_progress_report = progress_percent
-            
-            # Sonuçları hazırla
+            # En iyi kombinasyonu bul
+            best_idx = np.argmax(snr_values)
+            best_combination = experiments[best_idx]
             best_parameters = dict(zip(keys, best_combination))
-            results = [best_total_time]
-            snr_values = [best_snr]
-            
-            print(f"Rastgele örnekleme değerlendirmesi tamamlandı. En iyi SNR: {best_snr:.2f}, Toplam süre: {best_total_time:.2f}")
             
         else:
-            # Tam faktöriyel tasarım
-            print("Tam faktöriyel tasarım kullanılıyor. Bu işlem zaman alabilir...")
-            print(f"Toplam {level_count ** parameter_count} kombinasyon hesaplanacak.")
-            
-            # Daha verimli bir yaklaşım: Tüm kombinasyonları bir kerede oluşturmak yerine
-            # her seferinde bir kombinasyon oluştur ve değerlendir
+            # Rastgele örnekleme için
+            print("Rastgele örnekleme yöntemi kullanılıyor...")
+            max_combinations = 10000
             
             # Parametre seviyelerini liste olarak hazırla
             level_lists = [parameter_levels[key] for key in keys]
@@ -339,63 +304,72 @@ def taguchi_optimization(parameter_levels, gecmis_veriler, level_count=3, snr_ty
             best_snr = float('-inf')
             best_total_time = float('inf')
             
-            # İlerleme takibi için değişkenler
-            total_combinations = level_count ** parameter_count
-            processed_count = 0
-            last_progress_report = 0
-            start_time = datetime.now()
-            
-            print("Kombinasyonlar değerlendiriliyor...")
-            
-            # Her bir kombinasyonu değerlendir
-            for combination in product(*level_lists):
+            # Rastgele kombinasyonları değerlendir
+            experiment_results = []
+            snr_values = []
+            for _ in range(max_combinations):
+                combination = [random.choice(levels) for levels in level_lists]
                 total_time = sum(combination)
                 snr_value = calculate_snr([total_time], snr_type)
                 
-                # En iyi kombinasyonu güncelle
+                experiment_results.append(total_time)
+                snr_values.append(snr_value)
+                
                 if snr_value > best_snr:
                     best_snr = snr_value
                     best_combination = combination
                     best_total_time = total_time
-                
-                # İlerleme durumunu güncelle
-                processed_count += 1
-                progress_percent = (processed_count / total_combinations) * 100
-                
-                # Her %5'lik ilerleme için rapor ver
-                if progress_percent - last_progress_report >= 5:
-                    elapsed_time = (datetime.now() - start_time).total_seconds()
-                    estimated_total_time = elapsed_time / (progress_percent / 100)
-                    remaining_time = estimated_total_time - elapsed_time
-                    
-                    print(f"İlerleme: %{progress_percent:.1f} - "
-                          f"İşlenen: {processed_count}/{total_combinations} - "
-                          f"Tahmini kalan süre: {remaining_time/60:.1f} dakika")
-                    
-                    last_progress_report = progress_percent
             
-            # Sonuçları hazırla
             best_parameters = dict(zip(keys, best_combination))
-            results = [best_total_time]
-            snr_values = [best_snr]
+        
+        # İyileştirme oranlarını hesapla
+        improvement_data = {}
+        for kod, optimum_sure in best_parameters.items():
+            if kod in gecmis_veriler:
+                historical = analyze_historical_data(gecmis_veriler, kod)
+                if historical:
+                    original = historical["ortalama"]
+                    improvement = ((original - optimum_sure) / original) * 100
+                    improvement_data[kod] = {
+                        "original": original,
+                        "optimized": optimum_sure,
+                        "improvement": improvement
+                    }
+        
+        # Her tasarım kodu için optimize edilmiş süreleri ve iyileştirme verilerini sakla
+        for kod, optimum_sure in best_parameters.items():
+            if kod not in tum_optimum_sureler:
+                tum_optimum_sureler[kod] = []
+            tum_optimum_sureler[kod].append(optimum_sure)
             
-            print(f"Tam faktöriyel değerlendirme tamamlandı. En iyi SNR: {best_snr:.2f}, Toplam süre: {best_total_time:.2f}")
+            if kod in improvement_data:
+                if kod not in tum_improvement_data:
+                    tum_improvement_data[kod] = []
+                tum_improvement_data[kod].append(improvement_data[kod])
+        
+        tum_snr_values.extend(snr_values)
     
-    # Geçmiş verilere dayalı iyileştirme oranlarını hesapla
-    improvement_data = {}
-    for kod, optimum_sure in best_parameters.items():
-        if kod in gecmis_veriler:
-            historical = analyze_historical_data(gecmis_veriler, kod)
-            if historical:
-                original = historical["ortalama"]
-                improvement = ((original - optimum_sure) / original) * 100
-                improvement_data[kod] = {
-                    "original": original,
-                    "optimized": optimum_sure,
-                    "improvement": improvement
-                }
-
-    return best_parameters, results, snr_values, improvement_data
+    # Ortalama sonuçları hesapla
+    final_best_parameters = {}
+    final_improvement_data = {}
+    
+    for kod in tum_optimum_sureler:
+        # Optimize edilmiş sürelerin ortalamasını al
+        ortalama_sure = np.mean(tum_optimum_sureler[kod])
+        final_best_parameters[kod] = ortalama_sure
+        
+        # İyileştirme verilerinin ortalamasını al
+        if kod in tum_improvement_data:
+            ortalama_improvement = np.mean([data["improvement"] for data in tum_improvement_data[kod]])
+            final_improvement_data[kod] = {
+                "original": tum_improvement_data[kod][0]["original"],  # İlk değeri kullan
+                "optimized": ortalama_sure,
+                "improvement": ortalama_improvement
+            }
+    
+    print("\nTüm çalıştırmaların ortalaması alındı.")
+    
+    return final_best_parameters, experiment_results, tum_snr_values, final_improvement_data
 
 def analyze_parameter_effects(parameter_levels, experiments, snr_values, is_random_sampling=False):
     """
