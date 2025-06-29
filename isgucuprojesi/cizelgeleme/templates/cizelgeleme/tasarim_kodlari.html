@@ -1,0 +1,170 @@
+{% extends "cizelgeleme/base.html" %}
+{% load static %}
+
+{% block title %}Tasarım Kodları{% endblock %}
+
+{% block styles %}
+<style>
+    .card {
+        border: none;
+        border-radius: 0.75rem;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        transition: all 0.3s ease;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+    .card-header {
+        background-color: #fff;
+        border-bottom: 1px solid #e9ecef;
+        padding: 1rem 1.25rem;
+        font-weight: 600;
+    }
+    .form-control {
+        border-radius: 0.5rem;
+    }
+    #tasarimKoduArama {
+        border-right: none;
+    }
+    #temizleArama {
+        border-left: none;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h2">Tasarım Kodu Yönetimi</h1>
+        <button class="btn btn-primary d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#yeniTasarimKoduModal">
+            <i class="bi bi-plus-circle me-2"></i> Yeni Tasarım Kodu
+        </button>
+    </div>
+
+    <!-- Arama kutusu -->
+    <div class="row mb-4">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-body p-2">
+                     <div class="input-group">
+                        <span class="input-group-text bg-transparent border-0 pe-0"><i class="bi bi-search"></i></span>
+                        <input type="text" class="form-control border-0 shadow-none" id="tasarimKoduArama" placeholder="Tasarım kodu veya ürün adı ara...">
+                         <button class="btn btn-light bg-transparent border-0" type="button" id="temizleArama">
+                            <i class="bi bi-x-lg"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        {% for tasarim in tasarim_kodlari %}
+        <div class="col-md-6 mb-4 tasarim-kart">
+            <div class="card h-100">
+                 <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0 tasarim-kodu">{{ tasarim.kod }}</h5>
+                     <div class="dropdown">
+                        <button class="btn btn-sm btn-light" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-three-dots-vertical"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><button class="dropdown-item text-danger" onclick="tasarimKoduSil('{{ tasarim.kod }}')">
+                                <i class="bi bi-trash me-2"></i>Sil
+                            </button></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-subtitle mb-3 text-muted urun-adi">{{ tasarim.urun_adi }}</h6>
+                    
+                    <div class="d-flex justify-content-between text-muted small">
+                        <span>Montaj Süresi:</span>
+                        <strong>{{ tasarim.tahmini_montaj_suresi }} dk</strong>
+                    </div>
+                     <hr class="my-2">
+                    <div class="d-flex justify-content-between text-muted small">
+                        <span>Yıllık Üretim Adedi:</span>
+                        <strong>{{ tasarim.ortalama_uretim_adedi }}/yıl</strong>
+                    </div>
+
+                    <div class="mt-3">
+                        <p class="mb-2 small text-muted">Personel İhtiyacı:</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            {% if tasarim.ustabasi > 0 %}
+                            <span class="badge bg-danger-subtle text-danger-emphasis rounded-pill">{{ tasarim.ustabasi }} Ustabaşı</span>
+                            {% endif %}
+                            {% if tasarim.kalifiyeli > 0 %}
+                            <span class="badge bg-warning-subtle text-warning-emphasis rounded-pill">{{ tasarim.kalifiyeli }} Kalifiye</span>
+                            {% endif %}
+                            {% if tasarim.cirak > 0 %}
+                            <span class="badge bg-info-subtle text-info-emphasis rounded-pill">{{ tasarim.cirak }} Çırak</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Yeni Tasarım Kodu Modal -->
+<div class="modal fade" id="yeniTasarimKoduModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Yeni Tasarım Kodu Ekle</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="yeniTasarimKoduForm">
+                    <div class="mb-3">
+                        <label class="form-label">Tasarım Kodu</label>
+                        <input type="text" class="form-control" name="kod" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Ürün Adı</label>
+                        <input type="text" class="form-control" name="urun_adi" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Tahmini Montaj Süresi (dk)</label>
+                        <input type="number" class="form-control" name="montaj_suresi" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Yıllık Üretim Adedi</label>
+                        <input type="number" class="form-control" name="uretim_adedi" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Personel İhtiyacı</label>
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <label class="form-label">Ustabaşı</label>
+                                <input type="number" class="form-control" name="ustabasi" min="0" value="0" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Kalifiye</label>
+                                <input type="number" class="form-control" name="kalifiyeli" min="0" value="0" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Çırak</label>
+                                <input type="number" class="form-control" name="cirak" min="0" value="0" required>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                <button type="button" class="btn btn-primary" id="tasarimKoduKaydet">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/tasarim_kodlari.js' %}"></script>
+{% endblock %}

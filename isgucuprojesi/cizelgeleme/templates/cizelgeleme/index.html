@@ -1,0 +1,183 @@
+{% extends "cizelgeleme/base.html" %}
+{% load static %}
+{% block title %}Ana Sayfa{% endblock %}
+
+{% block styles %}
+<style>
+    .welcome-header {
+        background: linear-gradient(135deg, #0d6efd, #0dcaf0);
+        color: white;
+        padding: 3rem 2rem;
+        border-radius: 0.75rem;
+        margin-bottom: 2.5rem;
+        box-shadow: 0 8px 24px rgba(13, 110, 253, 0.2);
+    }
+    .welcome-header h1 {
+        font-weight: 700;
+    }
+    .feature-card {
+        background-color: #fff;
+        border: none;
+        border-radius: 0.75rem;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        transition: all 0.3s ease;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+    .feature-card .card-body {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 1.5rem;
+    }
+    .feature-card .icon-container {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+    .feature-card .card-title {
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+    }
+    .feature-card .btn {
+        margin-top: 1.5rem;
+        font-weight: 500;
+        padding: 0.6rem 1.2rem;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="welcome-header d-flex justify-content-between align-items-center">
+        <div>
+            <h1 class="display-5">İş Gücü Planlama Sistemine Hoş Geldiniz</h1>
+            <p class="lead mb-0">Kaynaklarınızı verimli bir şekilde yönetin, iş akışlarınızı optimize edin ve üretkenliği en üst düzeye çıkarın.</p>
+        </div>
+        <img src="{% static 'img/sau_logo.png' %}" alt="SAU Logosu" style="height: 90px; border-radius: 8px;">
+    </div>
+    
+    <div class="row">
+        <!-- İş Çizelgesi Kartı -->
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="feature-card text-center">
+                <div class="card-body">
+                    <div>
+                        <div class="icon-container text-primary">
+                            <i class="bi bi-calendar3-week"></i>
+                        </div>
+                        <h5 class="card-title">İş Çizelgesi</h5>
+                        <p class="card-text text-muted small">Aktif işleri görüntüleyin, yeni işler ekleyin ve tüm süreçleri anlık olarak takip edin.</p>
+                    </div>
+                    <a href="{% url 'is_cizelgesi' %}" class="btn btn-primary">Çizelgeye Git</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tasarım Kodları Kartı -->
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="feature-card text-center">
+                <div class="card-body">
+                    <div>
+                        <div class="icon-container text-success">
+                            <i class="bi bi-code-square"></i>
+                        </div>
+                        <h5 class="card-title">Tasarım Kodları</h5>
+                        <p class="card-text text-muted small">Ürün ve operasyonlarınız için tasarım kodlarını yönetin, ihtiyaçları belirleyin.</p>
+                    </div>
+                    <a href="{% url 'tasarim_kodlari' %}" class="btn btn-success">Kodları Yönet</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Çalışanlar Kartı -->
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="feature-card text-center">
+                <div class="card-body">
+                    <div>
+                        <div class="icon-container text-info">
+                            <i class="bi bi-people"></i>
+                        </div>
+                        <h5 class="card-title">Çalışanlar</h5>
+                        <p class="card-text text-muted small">Personel listenizi, yetkinliklerini ve tecrübelerini kolayca yönetin.</p>
+                    </div>
+                    <a href="{% url 'calisanlar' %}" class="btn btn-info text-white">Personeli Yönet</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- İstatistik Kartı -->
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center bg-light">
+                    <h5 class="mb-0 text-dark-emphasis">
+                        <i class="bi bi-bar-chart-line-fill me-2"></i>Sistem İstatistikleri
+                    </h5>
+                    <div id="live-time" class="small fw-bold text-muted"></div>
+                </div>
+                <div class="card-body p-4">
+                    <div class="row text-center">
+                        <div class="col-lg-2 col-md-4 col-6 mb-3">
+                            <div class="display-6 text-primary"><i class="bi bi-people-fill"></i></div>
+                            <h6 class="mt-2 text-muted">Toplam Çalışan</h6>
+                            <p class="h4 mb-0 fw-bold">{{ total_calisan }}</p>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-6 mb-3">
+                            <div class="display-6 text-success"><i class="bi bi-box-seam-fill"></i></div>
+                            <h6 class="mt-2 text-muted">Tasarım Kodu</h6>
+                            <p class="h4 mb-0 fw-bold">{{ total_tasarim_kodu }}</p>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-6 mb-3">
+                            <div class="display-6 text-info"><i class="bi bi-stack"></i></div>
+                            <h6 class="mt-2 text-muted">Aktif İşler</h6>
+                            <p class="h4 mb-0 fw-bold">{{ aktif_isler }}</p>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-6 mb-3">
+                            <div class="display-6 text-warning"><i class="bi bi-hourglass-split"></i></div>
+                            <h6 class="mt-2 text-muted">Devam Eden</h6>
+                            <p class="h4 mb-0 fw-bold">{{ devam_eden_isler }}</p>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-6 mb-3">
+                            <div class="display-6 text-secondary"><i class="bi bi-pause-circle-fill"></i></div>
+                            <h6 class="mt-2 text-muted">Beklemede</h6>
+                            <p class="h4 mb-0 fw-bold">{{ beklemede_isler }}</p>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-6 mb-3">
+                            <div class="display-6" style="color: #198754;"><i class="bi bi-check-circle-fill"></i></div>
+                            <h6 class="mt-2 text-muted">Tamamlanan</h6>
+                            <p class="h4 mb-0 fw-bold">{{ tamamlanan_isler }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function updateTime() {
+    const timeElement = document.getElementById('live-time');
+    if (timeElement) {
+        const now = new Date();
+        const formattedTime = now.toLocaleDateString('tr-TR', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        }) + ' ' + now.toLocaleTimeString('tr-TR');
+        timeElement.textContent = formattedTime;
+    }
+}
+setInterval(updateTime, 1000);
+updateTime(); // initial call
+</script>
+{% endblock %}

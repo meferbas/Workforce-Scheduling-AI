@@ -1,0 +1,1111 @@
+{# is_cizelgesi.html #}
+{% extends "cizelgeleme/base.html" %}
+
+<span class="progress-bar 
+    {% if yuzde >= 75 %}
+        bg-success
+    {% elif yuzde >= 25 %}
+        bg-warning
+    {% else %}
+        bg-danger
+    {% endif %}
+">
+    {{ yuzde }}%
+</span>
+
+
+
+{% load static %}
+
+{% block title %}İş Çizelgesi{% endblock %}
+
+{% block styles %}
+<style>
+/* Genel stiller base.html'e taşındı. */
+
+/* Alternatif personel container stilleri */
+.alternatif-container {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    background: #fff;
+}
+
+/* Scrollbar stilleri */
+.alternatif-container::-webkit-scrollbar,
+.scrollable-montecarlo-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.alternatif-container::-webkit-scrollbar-track,
+.scrollable-montecarlo-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.alternatif-container::-webkit-scrollbar-thumb,
+.scrollable-montecarlo-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+.alternatif-container::-webkit-scrollbar-thumb:hover,
+.scrollable-montecarlo-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Modal stilleri */
+.modal-lg {
+    max-width: 90%;
+}
+
+/* Scroll to Top Button */
+#scrollToTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none; /* Başlangıçta gizli */
+    z-index: 99;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    line-height: 1;
+    padding: 0;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h2">İş Çizelgesi</h1>
+        <button class="btn btn-primary d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#yeniIsModal">
+            <i class="bi bi-plus-circle me-2"></i> Yeni İş Ekle
+        </button>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="row mb-4">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card dashboard-card">
+                <div class="card-body">
+                    <div class="icon bg-primary">
+                        <i class="bi bi-stack"></i>
+                    </div>
+                    <div>
+                        <h5 class="card-title">Toplam İş</h5>
+                        <h2 class="mb-0">{{ is_listesi|length }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card dashboard-card">
+                <div class="card-body">
+                    <div class="icon bg-warning">
+                         <i class="bi bi-hourglass-split"></i>
+                    </div>
+                    <div>
+                        <h5 class="card-title">Devam Eden</h5>
+                        <h2 class="mb-0">{{ devam_eden }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card dashboard-card">
+                 <div class="card-body">
+                     <div class="icon bg-success">
+                        <i class="bi bi-check2-circle"></i>
+                    </div>
+                    <div>
+                        <h5 class="card-title">Tamamlanan</h5>
+                        <h2 class="mb-0">{{ tamamlanan }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card dashboard-card">
+                <div class="card-body">
+                    <div class="icon bg-danger">
+                        <i class="bi bi-exclamation-triangle"></i>
+                    </div>
+                    <div>
+                        <h5 class="card-title">Geciken</h5>
+                        <h2 class="mb-0" id="gecikenIsSayisi">0</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- İş Listesi -->
+    
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="mb-0">Aktif İşler</h5>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th style="width: 5%">ID</th>
+                        <th style="width: 10%">Tasarım Kodu</th>
+                        <th style="width: 15%">Proje</th>
+                        <th style="width: 15%">Çalışan</th>
+                        <th style="width: 12%">Teslimat Tarihi</th>
+                        <th style="width: 8%">Öncelik</th>
+                        <th style="width: 10%">Durum</th>
+                        <th style="width: 12%">Kalan Süre (dk)</th>
+                        <th style="width: 4%">Güncelle</th>
+                        <th style="width: 4%">Sil</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for is in is_listesi %}
+                    {% if is.durum != 'tamamlandi' %}
+                    <tr data-tasarim-kodu="{{ is.kod }}">
+                        <td>{{ is.id }}</td>
+                        <td>{{ is.kod }}</td>
+                        <td>{{ is.proje_adi }}</td>
+                        <td>
+                            {% if is.atanan_calisanlar %}
+                                {% if is.atanan_calisanlar.ustabasi %}
+                                     <strong>Ustabaşı:</strong> {{ is.atanan_calisanlar.ustabasi|join:", " }}<br>
+                                {% endif %}
+                                {% if is.atanan_calisanlar.kalifiyeli %}
+                                    <strong>Kalifiyeli:</strong> {{ is.atanan_calisanlar.kalifiyeli|join:", " }}<br>
+                                {% endif %}
+                                {% if is.atanan_calisanlar.cirak %}
+                                    <strong>Çırak:</strong> {{ is.atanan_calisanlar.cirak|join:", " }}
+                                {% endif %}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+                        <td>{{ is.teslimat_tarihi }}</td>
+                        <td>
+                            <span class="badge oncelik-badge {% if is.oncelik == 'kritik' %}bg-danger{% else %}bg-info{% endif %}">
+                                {{ is.oncelik|title }}
+                            </span>
+                        </td>
+                        <td>
+                            <span class="badge {% if is.durum == 'devam_ediyor' %}bg-warning{% elif is.durum == 'tamamlandi' %}bg-success{% else %}bg-secondary{% endif %}">
+                                {{ is.durum_gosterim }}
+                            </span>
+                        </td>
+                        <td>
+                            <span class="kalanSureText" data-kod="{{ is.kod }}">{{ is.kalan_sure }}</span>
+                            <button class="btn btn-sm {% if is.durum == 'devam_ediyor' %}btn-danger{% else %}btn-primary{% endif %} startStopBtn" 
+                                    data-id="{{ is.id }}" 
+                                    data-durum="{{ is.durum }}">
+                                {% if is.durum == 'devam_ediyor' %}Durdur{% else %}Başlat{% endif %}
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="isGuncelle('{{ is.kod }}', '{{ is.id }}')">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-danger" onclick="isSil('{{ is.id }}')">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optimizasyon Filtreleme -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="mb-0">Optimizasyon Verilerini Filtrele</h5>
+        </div>
+        <div class="card-body">
+            <div class="d-flex flex-wrap">
+                <div class="form-check me-3 mb-2">
+                    <input class="form-check-input optimization-filter" type="checkbox" value="monte-carlo" id="filterMonteCarlo" checked>
+                    <label class="form-check-label" for="filterMonteCarlo">
+                        Monte Carlo Simülasyonu
+                    </label>
+                </div>
+                <div class="form-check me-3 mb-2">
+                    <input class="form-check-input optimization-filter" type="checkbox" value="genetik" id="filterGenetik" checked>
+                    <label class="form-check-label" for="filterGenetik">
+                        Genetik Algoritma Optimizasyonu
+                    </label>
+                </div>
+                <div class="form-check me-3 mb-2">
+                    <input class="form-check-input optimization-filter" type="checkbox" value="taguchi" id="filterTaguchi" checked>
+                    <label class="form-check-label" for="filterTaguchi">
+                        Taguchi Optimizasyonu
+                    </label>
+                </div>
+                <div class="form-check ms-auto mb-2">
+                    <input class="form-check-input" type="checkbox" id="filterHepsi" checked>
+                    <label class="form-check-label" for="filterHepsi">
+                        <strong>Hepsini Göster/Gizle</strong>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Performans Simülasyonu Card -->
+    <div class="card mb-4" id="monte-carlo-card">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">Performans Simülasyonu - Monte Carlo</h5>
+            <div class="ms-auto text-white-50 small">
+                <span id="monteCarloUpdateStatus" class="me-2"></span>
+                <span id="monteCarloLastUpdated">Son Güncelleme: Bekleniyor...</span>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-info" role="alert">
+                <i class="bi bi-info-circle"></i> 
+                Monte Carlo simülasyonu sonuçları her 5 dakikada bir otomatik olarak güncellenecektir.
+            </div>
+            <div id="monte-carlo-results">
+                <div class="scrollable-montecarlo-container" style="max-height: 600px; overflow-y: auto; padding-right: 8px;">
+                {% if monte_carlo_sonuclari %}
+                    <!-- Genel İstatistikler -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="alert alert-info">
+                                <h6 class="mb-2">Genel İstatistikler</h6>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <strong>Ortalama Performans:</strong> %{{ istatistikler.ortalama_performans|floatformat:1 }}
+                                    </div>
+                                    <div class="col-md-6">
+                                        <strong>Ortalama Risk:</strong> %{{ istatistikler.ortalama_risk|floatformat:1 }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Çalışan Kartları -->
+                    <div class="row" id="monteCarloSonuclari">
+                        {% for calisan, sonuc in monte_carlo_sonuclari.items %}
+                            <div class="col-xl-4 col-lg-6 mb-3">
+                                <div class="card h-100">
+                                    <div class="card-header">
+                                        <h6 class="mb-0 d-flex justify-content-between align-items-center">
+                                            {{ calisan }}
+                                            <span class="badge {% if sonuc.ortalama_performans >= 0.7 %}bg-success{% elif sonuc.ortalama_performans >= 0.5 %}bg-warning{% else %}bg-danger{% endif %}">
+                                                %{{ sonuc.ortalama_performans|floatformat:1 }}
+                                            </span>
+                                        </h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="mb-3">
+                                            <div class="d-flex justify-content-between mb-2">
+                                                <span>Risk Skoru:</span>
+                                                <span class="badge {% if sonuc.risk_skoru <= 0.3 %}bg-success{% elif sonuc.risk_skoru <= 0.6 %}bg-warning{% else %}bg-danger{% endif %}">
+                                                    %{{ sonuc.risk_skoru|floatformat:1 }}
+                                                </span>
+                                            </div>
+                                            <div class="d-flex justify-content-between mb-2">
+                                                <span>Gecikme Olasılığı:</span>
+                                                <span class="badge {% if sonuc.gecikme_olasiligi <= 0.3 %}bg-success{% elif sonuc.gecikme_olasiligi <= 0.6 %}bg-warning{% else %}bg-danger{% endif %}">
+                                                    %{{ sonuc.gecikme_olasiligi|floatformat:1 }}
+                                                </span>
+                                            </div>
+                                            <div class="d-flex justify-content-between">
+                                                <span>Performans Kararlılığı:</span>
+                                                <span class="badge bg-info">%{{ sonuc.performans_kararliligi|floatformat:1 }}</span>
+                                            </div>
+                                        </div>
+                                        {% if sonuc.tasarim_bazli_performans %}
+                                            <div class="mt-3">
+                                                <h6 class="border-bottom pb-2">Tasarım Bazlı Performans</h6>
+                                                <div class="table-responsive">
+                                                    <table class="table table-sm">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Tasarım</th>
+                                                                <th>Performans</th>
+                                                                <th>Risk</th>
+                                                                <th>Gecikme</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            {% for tasarim in sonuc.tasarim_bazli_performans %}
+                                                                <tr>
+                                                                    <td>{{ tasarim.tasarim_kodu }}</td>
+                                                                    <td>%{{ tasarim.performans_ort|floatformat:1 }}</td>
+                                                                    <td>%{{ tasarim.risk|floatformat:1 }}</td>
+                                                                    <td>%{{ tasarim.gecikme|floatformat:1 }}</td>
+                                                                </tr>
+                                                            {% endfor %}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        {% else %}
+                                            <div class="alert alert-info mt-3">
+                                                Tasarım bazlı performans verisi bulunmamaktadır.
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="alert alert-warning">
+                        <i class="bi bi-exclamation-triangle me-2"></i>
+                        Henüz simülasyon sonucu bulunmamaktadır.
+                    </div>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Genetik Algoritma Card -->
+    <div class="card mb-4" id="genetik-algoritma-card">
+        <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">Genetik Algoritma Optimizasyonu</h5>
+            <div class="ms-auto text-white-50 small">
+                <span id="geneticUpdateStatus" class="me-2"></span>
+                <span id="geneticLastUpdated">Son Güncelleme: Bekleniyor...</span>
+            </div>
+        </div>
+        <div class="card-body">
+            {% if genetik_gruplu %}
+                <ul class="nav nav-tabs mb-3" role="tablist">
+                    <li class="nav-item">
+                        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#normal" type="button">
+                            Normal Öncelikli Atamalar
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#kritik" type="button">
+                            Kritik Öncelikli Atamalar
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    {% for senaryo, sonuclar in genetik_gruplu.items %}
+                        <div class="tab-pane fade {% if senaryo == 'normal' %}show active{% endif %}" id="{{ senaryo }}">
+                            {% if sonuclar %}
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-hover">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>Tasarım Kodu</th>
+                                                <th>Atanan Çalışanlar</th>
+                                                <th>Alternatif Çalışanlar</th>
+                                                <th>Kayıt Tarihi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for sonuc in sonuclar %}
+                                                <tr>
+                                                    <td>{{ sonuc.tasarim_kodu }}</td>
+                                                    <td>
+                                                        {% for atama in sonuc.atamalar %}
+                                                            <div>
+                                                                <span class="badge {% if atama.seviye == 'ustabasi' %}bg-danger{% elif atama.seviye == 'kalifiyeli' %}bg-warning{% else %}bg-info{% endif %}">
+                                                                    {{ atama.seviye|title }}
+                                                                </span>
+                                                                {{ atama.calisan.ad_soyad }}
+                                                            </div>
+                                                        {% endfor %}
+                                                    </td>
+                                                    <td>
+                                                        {% if sonuc.alternatifler %}
+                                                            <div class="alternatif-container">
+                                                                {% regroup sonuc.alternatifler by seviye as seviye_gruplar %}
+                                                                {% for seviye_grup in seviye_gruplar %}
+                                                                <div class="mb-2">
+                                                                    <span class="badge {% if seviye_grup.grouper == 'ustabasi' %}bg-danger{% elif seviye_grup.grouper == 'kalifiyeli' %}bg-warning{% else %}bg-info{% endif %} mb-1">
+                                                                        {{ seviye_grup.grouper|title }} ({{ seviye_grup.list|length }})
+                                                                    </span>
+                                                                    <div class="table-responsive">
+                                                                        <table class="table table-sm mb-0">
+                                                                            <tbody>
+                                                                                {% for alt_atama in seviye_grup.list %}
+                                                                                <tr>
+                                                                                    <td style="width: 40%">{{ alt_atama.calisan.ad_soyad }}</td>
+                                                                                    <td style="width: 60%;">
+                                                                                        <span class="badge {% if alt_atama.uygunluk_orani >= 80 %}bg-success{% elif alt_atama.uygunluk_orani >= 60 %}bg-info{% elif alt_atama.uygunluk_orani >= 40 %}bg-warning{% else %}bg-danger{% endif %}">
+                                                                                            Uygunluk: {{ alt_atama.uygunluk_orani|floatformat:1 }}%
+                                                                                        </span>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                {% endfor %}
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                                {% endfor %}
+                                                            </div>
+                                                        {% else %}
+                                                            <span class="text-muted">Alternatif bulunamadı.</span>
+                                                        {% endif %}
+                                                    </td>
+                                                    <td>{{ sonuc.kayit_tarihi|date:"d.m.Y H:i" }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            {% else %}
+                                <div class="alert alert-info">
+                                    Bu senaryo için henüz atama yapılmamış.
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="alert alert-warning">
+                    <i class="bi bi-exclamation-triangle me-2"></i>
+                    Henüz genetik optimizasyon sonucu bulunmamaktadır.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Taguchi Optimizasyonu Card -->
+    <div class="card mb-4" id="taguchi-card">
+        <div class="card-header bg-info text-white d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">Taguchi Optimizasyonu</h5>
+            <div class="ms-auto text-white-50 small">
+                <span id="taguchiUpdateStatus" class="me-2"></span>
+                <span id="taguchiLastUpdated">Son Güncelleme: Bekleniyor...</span>
+            </div>
+        </div>
+        <div class="card-body">
+            {% if taguchi_sonuclari %}
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="alert alert-success">
+                            <h6 class="mb-2">Optimizasyon Özeti</h6>
+                            <p class="mb-0">Ortalama İyileştirme: <strong>%{{ istatistikler.ortalama_iyilestirme|floatformat:1 }}</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-sm table-hover">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Tasarım Kodu</th>
+                                <th>Optimum Süre (dk)</th>
+                                <th>İyileştirme</th>
+                                <th>Departman</th>
+                                <th>Son Güncelleme</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for sonuc in taguchi_sonuclari %}
+                                <tr>
+                                    <td>{{ sonuc.tasarim_kodu }}</td>
+                                    <td>{{ sonuc.optimum_sure|floatformat:1 }}</td>
+                                    <td>
+                                        <span class="badge {% if sonuc.iyilestirme_orani > 10 %}bg-success{% elif sonuc.iyilestirme_orani > 5 %}bg-info{% else %}bg-warning{% endif %}">
+                                            %{{ sonuc.iyilestirme_orani|floatformat:1 }}
+                                        </span>
+                                    </td>
+                                    <td>{{ sonuc.departman }}</td>
+                                    <td>{{ sonuc.guncellenme_tarihi|date:"d.m.Y H:i" }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="alert alert-warning">
+                    <i class="bi bi-exclamation-triangle me-2"></i>
+                    Henüz Taguchi optimizasyon sonucu bulunmamaktadır.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Tüm Atama Detayları Modal -->
+    <div class="modal fade" id="tumAtamaDetaylariModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Tüm Personel Atama Detayları</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Tarih</th>
+                                    <th>Tasarım Kodu</th>
+                                    <th>Proje</th>
+                                    <th>Atanan Personel</th>
+                                    <th>Uygunluk Skoru</th>
+                                    <th>Alternatif Personeller</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tumAtamaDetaylariTablo"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- İş Güncelleme Modal -->
+    <div class="modal fade" id="isGuncellemeModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">İş Güncelle</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="isGuncellemeForm">
+                        <input type="hidden" name="tasarim_kodu">
+                        <input type="hidden" name="is_id">
+                        <div class="mb-3">
+                            <label class="form-label">Durum</label>
+                            <select class="form-select" name="durum" required>
+                                <option value="beklemede">Beklemede</option>
+                                <option value="devam_ediyor">Devam Ediyor</option>
+                                <option value="tamamlandi">Tamamlandı</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Öncelik</label>
+                            <select class="form-select" name="oncelik" required>
+                                <option value="normal">Normal</option>
+                                <option value="kritik">Kritik</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                    <button type="button" class="btn btn-primary" id="isGuncellemeKaydet">Kaydet</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Yeni İş Modal -->
+    <div class="modal fade" id="yeniIsModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Yeni İş Ekle</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="yeniIsForm">
+                        <div class="mb-3">
+                            <label class="form-label">Tasarım Kodu</label>
+                            <select class="form-select" name="kod" id="tasarimKoduSelect" required>
+                                <option value="">Tasarım Kodu Seçiniz</option>
+                                {% for tasarim in tasarim_kodlari %}
+                                    <option value="{{ tasarim.kod }}">
+                                        {{ tasarim.kod }} - {{ tasarim.urun_adi }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Firma/Proje Adı</label>
+                            <input type="text" class="form-control" name="proje_adi" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Teslimat Tarihi</label>
+                            <input type="date" class="form-control" name="teslimat_tarihi" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Durum</label>
+                            <select class="form-select" name="durum" required>
+                                <option value="beklemede">Beklemede</option>
+                                <option value="devam_ediyor">Devam Ediyor</option>
+                            </select>
+                        </div>
+                        <!-- (İsteğe bağlı) Öncelik -->
+                        <div class="mb-3">
+                            <label class="form-label">Öncelik Durumu</label>
+                            <select class="form-select" name="oncelik">
+                                <option value="normal">Normal</option>
+                                <option value="kritik">Kritik</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                    <button type="button" class="btn btn-primary" id="isKaydet">Kaydet</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- İş Tamamlama Onay Modal -->
+    <div class="modal fade" id="isTamamlamaOnayModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">İşi Tamamla</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>İş tamamlandığı için aktif işler tablosundan kaldırılacaktır. Onaylıyor musunuz?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                    <button type="button" class="btn btn-primary" id="isTamamlamaOnayla">Onayla</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Taşeron Onay Modal -->
+    <div class="modal fade" id="taseronOnayModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Yetersiz Personel Onayı</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="taseronOnayMesaji"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hayır</button>
+                    <button type="button" class="btn btn-primary" id="taseronOnaylaBtn">Evet, Kaydet</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- İş Silme Onay Modal -->
+    <div class="modal fade" id="isSilmeOnayModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">İşi Silme Onayı</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Bu işi kalıcı olarak silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                    <button type="button" class="btn btn-danger" id="isSilmeOnayla">Sil</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Performans Değerlendirme Modal -->
+    <div class="modal fade" id="performansDegerlendirmeModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Performans Değerlendirmesi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-info">
+                        <i class="bi bi-info-circle"></i> Lütfen her çalışan için aşağıdaki listeden 1-10 arası bir puan seçin.
+                        <br>
+                        <small>1: Çok Kötü, 5: Ortalama, 10: Mükemmel</small>
+                    </div>
+                    <form id="performansDegerlendirmeForm">
+                        <input type="hidden" name="is_id" id="degerlendirmeIsId">
+                        <div id="calisanDegerlendirmeleri">
+                            <!-- Çalışan değerlendirme formları buraya dinamik olarak eklenecek -->
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Genel Notlar</label>
+                            <textarea class="form-control" name="notlar" rows="3" placeholder="Projeyle ilgili genel değerlendirmelerinizi yazabilirsiniz..."></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                    <button type="button" class="btn btn-primary" id="degerlendirmeKaydet">Değerlendirmeyi Kaydet</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scroll to Top Button -->
+<a href="#" id="scrollToTopBtn" class="btn btn-primary rounded-circle shadow">
+    <i class="bi bi-arrow-up"></i>
+</a>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/is_cizelgesi.js' %}"></script>
+<script>
+// Global updateTimestamp fonksiyonu
+function updateTimestamp(elementId) {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    console.log('updateTimestamp çağrıldı:', elementId, timeString);
+    const element = $('#' + elementId);
+    console.log('Element bulundu:', element.length > 0, element);
+    element.text('Son Güncelleme: ' + timeString);
+}
+
+// Global CSRF token fonksiyonu
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+$(document).ready(function() {
+    // Scroll to top button logic
+    const scrollToTopBtn = $('#scrollToTopBtn');
+    
+    $(window).scroll(function() {
+        if ($(window).scrollTop() > 200) {
+            // Butonu flex olarak göster ve ortala, ardından animasyonla görünür yap
+            scrollToTopBtn.stop(true, true).css({
+                'display': 'flex',
+                'justify-content': 'center',
+                'align-items': 'center'
+            }).fadeTo('fast', 1);
+        } else {
+            // Butonu animasyonla gizle ve sonra display:none yap
+            scrollToTopBtn.stop(true, true).fadeTo('fast', 0, function() {
+                $(this).css('display', 'none');
+            });
+        }
+    });
+
+    scrollToTopBtn.click(function(e) {
+        e.preventDefault();
+        $('html, body').animate({scrollTop: 0}, 500);
+    });
+
+    // İş Güncelleme Modalında durum değişikliğini dinle
+    $('#isGuncellemeModal select[name="durum"]').on('change', function() {
+        const oncelikDiv = $('#isGuncellemeModal').find('select[name="oncelik"]').closest('.mb-3');
+        if ($(this).val() === 'tamamlandi') {
+            oncelikDiv.hide();
+        } else {
+            oncelikDiv.show();
+        }
+    });
+
+    // Sayfa yüklendiğinde Monte Carlo sonuçlarını almak için AJAX isteği
+    $.ajax({
+        url: '/performans-simulasyonu/', // Bu URL doğru mu kontrol et
+        method: 'POST', // Bu method doğru mu kontrol et (views.py'de @require_http_methods(["POST"]) var)
+        headers: {
+            'X-CSRFToken': getCookie('csrftoken') // CSRF token eklemeyi unutma
+        },
+        success: function(response) {
+            console.log('Sayfa yüklenirken AJAX response:', response);
+            if (response && response.success && response.monte_carlo_sonuclari) {
+                updateMonteCarloCard(response.monte_carlo_sonuclari);
+                // Sayfa ilk yüklendiğinde de timestamp'i güncelleme işlemi kaldırıldı.
+            } else {
+                console.warn('Sayfa yüklenirken AJAXx   ten beklenen veri gelmedi.');
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('Sayfa yüklenirken Monte Carlo sonuçları alınırken AJAX hatası:', error, xhr.responseText);
+            if (typeof bildirimGoster === 'function') {
+                 bildirimGoster('error', 'Monte Carlo verileri yüklenirken bir sorun oluştu.');
+            }
+        }
+    });
+
+    // WebSocket bağlantısı
+    const wsScheme = window.location.protocol === 'https:' ? 'wss' : 'ws';
+    const optimizationSocket = new WebSocket(
+        `${wsScheme}://${window.location.host}/ws/optimizations/`
+    );
+
+    optimizationSocket.onopen = function(e) {
+        console.log('WebSocket bağlantısı başarıyla kuruldu');
+    };
+
+    optimizationSocket.onmessage = function(e) {
+        const data = JSON.parse(e.data);
+        console.log('WebSocket message data:', data);
+
+        // WebSocket mesaj formatı: {monte_carlo: {...}, taguchi: {...}, genetic: {...}}
+        if (data.monte_carlo && typeof data.monte_carlo === 'object') {
+            console.log('WebSocket Monte Carlo güncellemesi geldi:', data.monte_carlo);
+            updateMonteCarloCard(data.monte_carlo); 
+            updateTimestamp('monteCarloLastUpdated');
+        }
+        
+        if (data.genetic && typeof data.genetic === 'object') {
+            console.log('WebSocket Genetik algoritma güncellemesi geldi:', data.genetic);
+            // Genetik sonuçları güncelle
+            updateTimestamp('geneticLastUpdated');
+        }
+        
+        if (data.taguchi && typeof data.taguchi === 'object') {
+            console.log('WebSocket Taguchi güncellemesi geldi:', data.taguchi);
+            // Taguchi sonuçları güncelle
+            updateTimestamp('taguchiLastUpdated');
+        }
+
+        // Eski format desteği
+        if (data.type === 'monte_carlo_update' && data.payload) {
+            console.log('WebSocket Monte Carlo güncellemesi geldi (eski format):', data.payload);
+            updateMonteCarloCard(data.payload);
+            updateTimestamp('monteCarloLastUpdated');
+        } else if (data.type === 'genetic_update' && data.payload) {
+            console.log('WebSocket Genetik algoritma güncellemesi geldi (eski format):', data.payload);
+            updateTimestamp('geneticLastUpdated');
+        } else if (data.type === 'taguchi_update' && data.payload) {
+            console.log('WebSocket Taguchi güncellemesi geldi (eski format):', data.payload);
+            updateTimestamp('taguchiLastUpdated');
+        }
+    };
+
+    optimizationSocket.onerror = function(e) {
+        console.error('WebSocket hatası:', e);
+    };
+
+    optimizationSocket.onclose = function(e) {
+        console.log('WebSocket bağlantısı kapandı');
+    };
+
+    // Optimizasyon kart filtreleme mantığı
+    const filters = {
+        'monte-carlo': $('#monte-carlo-card'),
+        'genetik': $('#genetik-algoritma-card'),
+        'taguchi': $('#taguchi-card')
+    };
+
+    const filterCheckboxes = $('.optimization-filter');
+    const hepsiCheckbox = $('#filterHepsi');
+
+    function applyFilters() {
+        let allChecked = true;
+        filterCheckboxes.each(function() {
+            const value = $(this).val();
+            const isChecked = $(this).is(':checked');
+            
+            if (filters[value]) {
+                filters[value].toggle(isChecked);
+            }
+
+            if (!isChecked) {
+                allChecked = false;
+            }
+        });
+        hepsiCheckbox.prop('checked', allChecked);
+    }
+
+    filterCheckboxes.on('change', function() {
+        applyFilters();
+    });
+
+    hepsiCheckbox.on('change', function() {
+        const isChecked = $(this).is(':checked');
+        filterCheckboxes.prop('checked', isChecked);
+        applyFilters();
+    });
+
+    // Sayfa ilk yüklendiğinde filtreleri uygula
+    applyFilters();
+});
+
+let guncellenecekIsId = null;
+let guncellenecekTasarimKodu = null;
+
+function isGuncelle(tasarimKodu, isId) {
+    guncellenecekIsId = isId;
+    guncellenecekTasarimKodu = tasarimKodu;
+
+    const row = $(`tr[data-tasarim-kodu="${tasarimKodu}"]`);
+    const durumText = row.find('td:nth-child(7) .badge').text().trim();
+    const durumValue = durumText === 'Devam Ediyor' ? 'devam_ediyor' : (durumText === 'Beklemede' ? 'beklemede' : 'tamamlandi');
+    const oncelik = row.find('td:nth-child(6) .badge').text().trim().toLowerCase();
+    
+    const modal = $('#isGuncellemeModal');
+    const durumSelect = modal.find('select[name="durum"]');
+    const oncelikDiv = modal.find('select[name="oncelik"]').closest('.mb-3');
+
+    durumSelect.val(durumValue);
+    modal.find('select[name="oncelik"]').val(oncelik);
+
+    // Öncelik div'ini durum'a göre göster/gizle
+    if (durumValue === 'tamamlandi') {
+        oncelikDiv.hide();
+    } else {
+        oncelikDiv.show();
+    }
+    
+    modal.modal('show');
+}
+
+$('#isGuncellemeKaydet').on('click', function() {
+    const modal = $('#isGuncellemeModal');
+    const durum = modal.find('select[name="durum"]').val();
+
+    if (durum === 'tamamlandi') {
+        modal.modal('hide');
+        
+        $.ajax({
+            url: `/api/get-calisanlar-for-is/?is_id=${guncellenecekIsId}`,
+            method: 'GET',
+            success: function(response) {
+                if (response.success && response.calisanlar.length > 0) {
+                    const degerlendirmeModal = $('#performansDegerlendirmeModal');
+                    const formContainer = $('#calisanDegerlendirmeleri');
+                    formContainer.empty();
+
+                    response.calisanlar.forEach(calisan => {
+                        const calisanHtml = `
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title">${calisan.ad_soyad} <span class="badge bg-secondary">${calisan.seviye}</span></h5>
+                                    <input type="hidden" name="calisan_id_${calisan.id}" value="${calisan.id}">
+                                    <div class="mb-3">
+                                        <label class="form-label">Genel Performans Puanı (1-10)</label>
+                                        <select class="form-select" name="puan_${calisan.id}" required>
+                                            <option value="">Puan Seçiniz</option>
+                                            ${Array.from({length: 10}, (_, i) => `<option value="${i + 1}">${i + 1}</option>`).join('')}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        formContainer.append(calisanHtml);
+                    });
+
+                    degerlendirmeModal.find('#degerlendirmeIsId').val(guncellenecekIsId);
+                    degerlendirmeModal.modal('show');
+                } else {
+                    tamamlandiOlarakIsaretle(guncellenecekTasarimKodu, guncellenecekIsId);
+                }
+            },
+            error: function() {
+                alert('Çalışan bilgileri alınırken bir hata oluştu.');
+                tamamlandiOlarakIsaretle(guncellenecekTasarimKodu, guncellenecekIsId);
+            }
+        });
+    } else {
+        $.ajax({
+            url: `/api/is-guncelle/`,
+            method: 'POST',
+            headers: {'X-CSRFToken': getCookie('csrftoken')},
+            contentType: 'application/json',
+            data: JSON.stringify({
+                'is_id': guncellenecekIsId,
+                'durum': durum,
+                'oncelik': modal.find('select[name="oncelik"]').val()
+            }),
+            success: function() {
+                location.reload();
+            }
+        });
+    }
+});
+
+$('#degerlendirmeKaydet').on('click', function() {
+    const form = $('#performansDegerlendirmeForm');
+    const isId = form.find('#degerlendirmeIsId').val();
+    let degerlendirmeler = [];
+
+    $('#calisanDegerlendirmeleri .card').each(function() {
+        const card = $(this);
+        const calisanId = card.find('input[type="hidden"]').val();
+        const puan = card.find('select').val();
+
+        if (puan) {
+            degerlendirmeler.push({
+                calisan_id: calisanId,
+                puan: puan
+            });
+        }
+    });
+
+    const payload = {
+        is_id: isId,
+        degerlendirmeler: degerlendirmeler,
+        notlar: form.find('textarea[name="notlar"]').val()
+    };
+
+    $.ajax({
+        url: '/api/performans-degerlendirme-kaydet/',
+        method: 'POST',
+        headers: {'X-CSRFToken': getCookie('csrftoken')},
+        contentType: 'application/json',
+        data: JSON.stringify(payload),
+        success: function(response) {
+            if (response.success) {
+                $('#performansDegerlendirmeModal').modal('hide');
+                bildirimGoster('success', 'Değerlendirme başarıyla kaydedildi! İş tamamlandı olarak işaretlendi.');
+                $(`tr[data-tasarim-kodu="${guncellenecekTasarimKodu}"]`).remove();
+                setTimeout(function() {
+                location.reload();
+                }, 2000); // Bildirimi görmek için 2 saniye bekle
+            } else {
+                bildirimGoster('error', 'Değerlendirme kaydedilirken bir hata oluştu: ' + response.message);
+            }
+        },
+        error: function(xhr) {
+            let errorMessage = 'Sunucuyla iletişim kurulamadı.';
+            if (xhr.responseJSON && xhr.responseJSON.message) {
+                errorMessage = 'Bir hata oluştu: ' + xhr.responseJSON.message;
+                if (xhr.responseJSON.trace) {
+                    console.error("Sunucu Hatası:", xhr.responseJSON.trace);
+                }
+            } else if (xhr.responseText) {
+                console.error("Sunucu Yanıtı:", xhr.responseText);
+                errorMessage = 'Sunucudan beklenmeyen bir yanıt alındı. Detaylar için tarayıcı konsolunu (F12) kontrol edin.';
+            }
+            bildirimGoster('error', errorMessage);
+        }
+    });
+});
+
+function tamamlandiOlarakIsaretle(tasarimKodu, isId) {
+    $.ajax({
+        url: `/api/is-guncelle/`,
+        method: 'POST',
+        headers: {'X-CSRFToken': getCookie('csrftoken')},
+        contentType: 'application/json',
+        data: JSON.stringify({
+            'is_id': isId,
+            'durum': 'tamamlandi',
+            'oncelik': 'normal'
+        }),
+        success: function() {
+            alert('İş, çalışanı olmadığı için doğrudan tamamlandı olarak işaretlendi.');
+            location.reload();
+        },
+        error: function() {
+            alert('İş tamamlandı olarak işaretlenirken bir hata oluştu.');
+        }
+    });
+}
+</script>
+{% endblock %}

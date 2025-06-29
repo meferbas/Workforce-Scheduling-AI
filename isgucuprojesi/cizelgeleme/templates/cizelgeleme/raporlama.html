@@ -1,0 +1,220 @@
+{% extends "cizelgeleme/base.html" %}
+
+{% block title %}Raporlama ve Analiz{% endblock %}
+
+{% block styles %}
+<style>
+    /* Stil tanımlamaları base.html'e taşındığı için bu bölüm boş bırakılabilir veya sayfaya özel stiller eklenebilir. */
+    .table thead th {
+        font-weight: 600;
+        color: #6c757d;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h2">Raporlama & Analiz</h1>
+    </div>
+
+    <!-- Genel Performans Panosu -->
+    <div class="row mb-4">
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card dashboard-card h-100">
+                <div class="card-body">
+                    <div class="icon bg-primary"><i class="bi bi-people-fill"></i></div>
+                    <div>
+                        <h5 class="card-title text-muted mb-1">Toplam Personel</h5>
+                        <h2 class="mb-0">{{ toplam_personel_sayisi }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card dashboard-card h-100">
+                <div class="card-body">
+                    <div class="icon bg-warning"><i class="bi bi-person-workspace"></i></div>
+                    <div>
+                        <h5 class="card-title text-muted mb-1">Aktif Personel</h5>
+                        <h2 class="mb-0">{{ aktif_personel_sayisi }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card dashboard-card h-100">
+                <div class="card-body">
+                    <div class="icon bg-info"><i class="bi bi-check2-circle"></i></div>
+                    <div>
+                        <h5 class="card-title text-muted mb-1">Tamamlanan İşler</h5>
+                        <h2 class="mb-0">{{ tamamlanan_is_sayisi }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card dashboard-card h-100">
+                <div class="card-body">
+                    <div class="icon bg-success"><i class="bi bi-star-fill"></i></div>
+                    <div>
+                        <h5 class="card-title text-muted mb-1">Genel Performans</h5>
+                        <h2 class="mb-0">{{ genel_performans_skoru|floatformat:2 }}/10</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Performans Trendi Grafiği -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="card-title mb-0">Son 30 Günlük Performans Trendi</h5>
+        </div>
+        <div class="card-body">
+            <canvas id="performansTrendiGrafigi"></canvas>
+        </div>
+    </div>
+
+    <!-- Personel Performans Tablosu -->
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title mb-0">Personel Performans Detayları</h5>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Personel</th>
+                            <th>Seviye</th>
+                            <th>Tamamlanan İşler</th>
+                            <th>Ortalama Puan (10)</th>
+                            <th>MC Performans (%)</th>
+                            <th>MC Risk (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for p in personel_verileri %}
+                        <tr>
+                            <td>{{ p.ad_soyad }}</td>
+                            <td>
+                                <span class="badge 
+                                    {% if p.seviye == 'Ustabaşı' %}bg-danger
+                                    {% elif p.seviye == 'Kalifiyeli' %}bg-warning
+                                    {% else %}bg-info{% endif %}">
+                                    {{ p.seviye }}
+                                </span>
+                            </td>
+                            <td>{{ p.tamamladigi_isler }}</td>
+                            <td>
+                                <span class="badge {% if p.ortalama_puan >= 8 %}bg-success{% elif p.ortalama_puan >= 5 %}bg-warning{% else %}bg-danger{% endif %}">
+                                    {{ p.ortalama_puan|floatformat:2 }}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="badge {% if p.mc_performans >= 70 %}bg-success{% elif p.mc_performans >= 50 %}bg-warning{% else %}bg-danger{% endif %}">
+                                    {{ p.mc_performans|floatformat:2 }}%
+                                </span>
+                            </td>
+                            <td>
+                                <span class="badge {% if p.mc_risk <= 30 %}bg-success{% elif p.mc_risk <= 60 %}bg-warning{% else %}bg-danger{% endif %}">
+                                    {{ p.mc_risk|floatformat:2 }}%
+                                </span>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="6" class="text-center">Gösterilecek personel verisi bulunmamaktadır.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+$(document).ready(function() {
+    // Performans Trendi Grafiğini Çiz
+    $.ajax({
+        url: "{% url 'performans_trendi_api' %}",
+        method: 'GET',
+        success: function(response) {
+            if (response.success) {
+                const ctx = document.getElementById('performansTrendiGrafigi').getContext('2d');
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: response.labels,
+                        datasets: [{
+                            label: 'Ortalama Performans Puanı',
+                            data: response.data,
+                            fill: true,
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            tension: 0.1,
+                            pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+                            pointBorderColor: '#fff',
+                            pointHoverRadius: 7,
+                            pointHoverBackgroundColor: 'rgba(75, 192, 192, 1)',
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 10,
+                                ticks: {
+                                    stepSize: 2
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                mode: 'index',
+                                intersect: false,
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.dataset.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        if (context.parsed.y !== null) {
+                                            label += context.parsed.y.toFixed(2);
+                                        }
+                                        return label;
+                                    }
+                                }
+                            }
+                        },
+                        interaction: {
+                            mode: 'nearest',
+                            axis: 'x',
+                            intersect: false
+                        }
+                    }
+                });
+            } else {
+                console.error("Performans trendi verileri alınamadı:", response.mesaj);
+            }
+        },
+        error: function(xhr) {
+            console.error("Performans trendi API hatası:", xhr.responseText);
+        }
+    });
+});
+</script>
+{% endblock %} 
