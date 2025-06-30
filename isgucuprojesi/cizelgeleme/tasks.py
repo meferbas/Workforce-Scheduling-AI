@@ -40,12 +40,6 @@ def run_all_optimizations():
         # Taguchi Optimizasyonu
         print("Taguchi optimizasyonu başlatılıyor...")
         taguchi_result = taguchi_main()
-        taguchi_data = {
-            'latest_results': list(TaguchiSonucu.objects.order_by('-guncellenme_tarihi')
-                                .values('tasarim_kodu', 'optimum_sure', 
-                                      'iyilestirme_orani')[:5])
-        }
-        print(f"Taguchi sonuçları: {taguchi_data}")
         
         # Genetik Algoritma
         print("Genetik algoritma başlatılıyor...")
@@ -63,7 +57,7 @@ def run_all_optimizations():
             {
                 'type': 'optimization_update',
                 'monte_carlo': monte_carlo_data,
-                'taguchi': taguchi_data,
+                'taguchi': taguchi_result,
                 'genetic': genetic_data
             }
         )

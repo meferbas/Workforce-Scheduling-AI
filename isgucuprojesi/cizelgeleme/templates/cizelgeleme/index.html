@@ -64,7 +64,7 @@
     
     <div class="row">
         <!-- İş Çizelgesi Kartı -->
-        <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-lg-6 col-md-6 mb-4">
             <div class="feature-card text-center">
                 <div class="card-body">
                     <div>
@@ -80,7 +80,7 @@
         </div>
         
         <!-- Tasarım Kodları Kartı -->
-        <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-lg-6 col-md-6 mb-4">
             <div class="feature-card text-center">
                 <div class="card-body">
                     <div>
@@ -96,7 +96,7 @@
         </div>
         
         <!-- Çalışanlar Kartı -->
-        <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-lg-6 col-md-6 mb-4">
             <div class="feature-card text-center">
                 <div class="card-body">
                     <div>
@@ -107,6 +107,22 @@
                         <p class="card-text text-muted small">Personel listenizi, yetkinliklerini ve tecrübelerini kolayca yönetin.</p>
                     </div>
                     <a href="{% url 'calisanlar' %}" class="btn btn-info text-white">Personeli Yönet</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Raporlama Kartı -->
+        <div class="col-lg-6 col-md-6 mb-4">
+            <div class="feature-card text-center">
+                <div class="card-body">
+                    <div>
+                        <div class="icon-container text-danger">
+                            <i class="bi bi-graph-up-arrow"></i>
+                        </div>
+                        <h5 class="card-title">Raporlama ve Analiz</h5>
+                        <p class="card-text text-muted small">Performans metriklerini, trendleri ve detaylı analizleri inceleyin.</p>
+                    </div>
+                    <a href="{% url 'raporlama' %}" class="btn btn-danger">Raporlara Git</a>
                 </div>
             </div>
         </div>

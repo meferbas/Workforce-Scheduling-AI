@@ -115,9 +115,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'tr-tr'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Istanbul'
 
 USE_I18N = True
 
@@ -147,7 +147,7 @@ CELERY_TIMEZONE = 'Europe/Istanbul'
 CELERY_BEAT_SCHEDULE = {
     'run-all-optimizations-every-5-minutes': {
         'task': 'cizelgeleme.tasks.run_all_optimizations',
-        'schedule': 60.0 * 5,  # 5 dakikada bir
+        'schedule': 20.0 * 5,  # 5 dakikada bir
     },
 }
 

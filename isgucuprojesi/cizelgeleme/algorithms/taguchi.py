@@ -51,7 +51,11 @@ def analyze_historical_data(gecmis_veriler, kod):
     if kod not in gecmis_veriler:
         return None
         
-    sureler = gecmis_veriler[kod]["gecmis_sureler"]
+    sureler = gecmis_veriler[kod].get("gecmis_sureler", [])
+    
+    # Eğer bu tasarım kodu için hiç geçmiş süre verisi yoksa, analiz yapılamaz.
+    if not sureler:
+        return None
     
     # Temel istatistikler
     ortalama = np.mean(sureler)
@@ -274,6 +278,7 @@ def taguchi_optimization(parameter_levels, gecmis_veriler, level_count=3, snr_ty
     tum_optimum_sureler = {}
     tum_improvement_data = {}
     tum_snr_values = []
+    all_runs_experiments = [] # Tüm çalıştırmalardaki deneyleri topla
     
     for calistirma in range(CALISTIRMA_SAYISI):
         print(f"\nOptimizasyon çalıştırması {calistirma + 1}/{CALISTIRMA_SAYISI}")
@@ -319,10 +324,12 @@ def taguchi_optimization(parameter_levels, gecmis_veriler, level_count=3, snr_ty
             best_total_time = float('inf')
             
             # Rastgele kombinasyonları değerlendir
+            experiments = [] # Deneyleri saklamak için liste oluştur
             experiment_results = []
             snr_values = []
             for _ in range(max_combinations):
                 combination = [random.choice(levels) for levels in level_lists]
+                experiments.append(combination) # Deneyi listeye ekle
                 total_time = sum(combination)
                 snr_value = calculate_snr([total_time], snr_type)
                 
@@ -336,6 +343,8 @@ def taguchi_optimization(parameter_levels, gecmis_veriler, level_count=3, snr_ty
             
             best_parameters = dict(zip(keys, best_combination))
         
+        all_runs_experiments.extend(experiments) # Deneyleri ana listeye ekle
+
         # İyileştirme oranlarını hesapla
         improvement_data = {}
         for kod, optimum_sure in best_parameters.items():
@@ -383,7 +392,7 @@ def taguchi_optimization(parameter_levels, gecmis_veriler, level_count=3, snr_ty
     
     print("\nTüm çalıştırmaların ortalaması alındı.")
     
-    return final_best_parameters, experiment_results, tum_snr_values, final_improvement_data
+    return final_best_parameters, all_runs_experiments, tum_snr_values, final_improvement_data
 
 def analyze_parameter_effects(parameter_levels, experiments, snr_values, is_random_sampling=False):
     """
@@ -537,7 +546,7 @@ def create_taguchi_visualizations(parameter_effects, improvement_data):
     
     plt.close('all')  # Tüm grafikleri kapat
 
-def save_taguchi_results(tasarim_kodu, optimum_sure, iyilestirme_orani, method="Taguchi L27"):
+def save_taguchi_results(tasarim_kodu, optimum_sure, optimum_seviye, iyilestirme_orani, method="Taguchi L27"):
     """Taguchi optimizasyon sonuçlarını veritabanına kaydet"""
     try:
         tasarim = TasarimKodu.objects.get(kod=tasarim_kodu)
@@ -547,7 +556,7 @@ def save_taguchi_results(tasarim_kodu, optimum_sure, iyilestirme_orani, method="
             tasarim_kodu=tasarim_kodu,
             defaults={
                 'optimum_sure': optimum_sure,
-                'optimum_seviye': tasarim.optimum_yetkinlik_seviyesi,
+                'optimum_seviye': optimum_seviye,
                 'iyilestirme_orani': iyilestirme_orani,
                 'method': method,
                 'departman': tasarim.departman,
@@ -559,48 +568,78 @@ def save_taguchi_results(tasarim_kodu, optimum_sure, iyilestirme_orani, method="
         print(f"Taguchi sonuçları kaydedilemedi: {str(e)}")
         return False
 
-def main():
+def main(save_results_to_db=True):
     """Ana optimizasyon fonksiyonu"""
     try:
-    # Verileri yükle
+        # Verileri yükle
         tasarim_kodlari, gecmis_veriler, gecmis_veriler_ham = load_data()
         if not all([tasarim_kodlari, gecmis_veriler, gecmis_veriler_ham]):
-            return "Veri yükleme hatası!"
-        
-        sonuclar = {}
-        for departman, veriler in gecmis_veriler_ham.items():
-            print(f"\n{departman} departmanı için optimizasyon başlatılıyor...")
-            
-            for kod in veriler.keys():
-                if kod not in tasarim_kodlari:
-                    continue
-    
-    # Parametre seviyelerini oluştur
-                parameter_levels = create_parameter_levels(
-                    {kod: tasarim_kodlari[kod]}, 
-                    {kod: gecmis_veriler[kod]},
-                    level_count=3
-                )
+            return {"success": False, "message": "Veri yükleme hatası!"}
 
-                # Taguchi optimizasyonunu gerçekleştir
-                optimum_sure, iyilestirme = taguchi_optimization(
-        parameter_levels, 
-                    {kod: gecmis_veriler[kod]},
-                    level_count=3
-                )
-                
-                if optimum_sure is not None:
-                    # Sonuçları veritabanına kaydet
-                    save_taguchi_results(kod, optimum_sure, iyilestirme)
-                    sonuclar[kod] = {
-                        'optimum_sure': optimum_sure,
-                        'iyilestirme': iyilestirme
-                    }
+        # Parametre seviyelerini tüm tasarım kodları için oluştur
+        parameter_levels = create_parameter_levels(tasarim_kodlari, gecmis_veriler, level_count=3)
+
+        # Taguchi optimizasyonunu tüm parametrelerle bir kerede çalıştır
+        best_parameters, experiments, snr_values, all_improvement_data = taguchi_optimization(
+            parameter_levels,
+            gecmis_veriler,
+            level_count=3
+        )
         
-        return "Taguchi optimizasyonu başarıyla tamamlandı ve sonuçlar veritabanına kaydedildi."
+        # Parametre etkilerini analiz et
+        is_random = create_orthogonal_array(len(parameter_levels), 3) is None
+        parameter_effects = analyze_parameter_effects(parameter_levels, experiments, snr_values, is_random_sampling=is_random)
+
+        final_results = []
+        for kod, sonuc in parameter_effects.items():
+            # Her parametre için en iyi seviyeyi (en yüksek SNR'ye sahip olanı) bul
+            best_level_value = max(sonuc, key=sonuc.get)
+            
+            # Bu değere karşılık gelen seviye indeksini bul
+            levels_list = parameter_levels[kod]
+            try:
+                # Float karşılaştırması için hassasiyet
+                best_level_index = next(i for i, v in enumerate(levels_list) if np.isclose(v, best_level_value))
+            except StopIteration:
+                best_level_index = -1 # Bulunamazsa -1
+                print(f"Uyarı: {kod} için en iyi seviye değeri {best_level_value} seviye listesinde bulunamadı.")
+
+            optimum_sure = best_parameters.get(kod, 0)
+            iyilestirme = all_improvement_data.get(kod, {}).get('improvement', 0)
+
+            # Sonuçları kaydet
+            if save_results_to_db:
+                save_taguchi_results(
+                    tasarim_kodu=kod,
+                    optimum_sure=optimum_sure,
+                    optimum_seviye=best_level_index,
+                    iyilestirme_orani=iyilestirme,
+                    method=f"Taguchi L{len(experiments)}"
+                )
+            
+            final_results.append({
+                "tasarim_kodu": kod,
+                "optimum_sure": optimum_sure,
+                "iyilestirme_orani": iyilestirme,
+                "departman": tasarim_kodlari.get(kod, {}).get('departman', 'Bilinmiyor'),
+                "guncellenme_tarihi": datetime.now().isoformat()
+            })
+            
+        ortalama_iyilestirme = np.mean([res['iyilestirme_orani'] for res in final_results]) if final_results else 0
+        
+        return {
+            "success": True,
+            "message": "Taguchi optimizasyonu başarıyla tamamlandı.",
+            "taguchi_sonuclari": final_results,
+            "istatistikler": {
+                "ortalama_iyilestirme": ortalama_iyilestirme
+            }
+        }
         
     except Exception as e:
-        return f"Hata oluştu: {str(e)}"
+        import traceback
+        print(f"Hata oluştu: {str(e)}\n{traceback.format_exc()}")
+        return {"success": False, "message": f"Hata oluştu: {str(e)}"}
 
 if __name__ == "__main__":
     main()

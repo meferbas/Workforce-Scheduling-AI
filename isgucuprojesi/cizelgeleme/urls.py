@@ -33,4 +33,5 @@ urlpatterns = [
     # Raporlama sayfası
     path('raporlama/', views.raporlama_sayfasi, name='raporlama'),
     path('api/performans-trendi/', views.performans_trendi_api, name='performans_trendi_api'),
+    path('api/arsivlenmis-is-sil/', views.arsivlenmis_is_sil, name='arsivlenmis_is_sil'),
 ]

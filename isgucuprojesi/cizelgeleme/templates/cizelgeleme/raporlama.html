@@ -23,7 +23,7 @@
 
     <!-- Genel Performans Panosu -->
     <div class="row mb-4">
-        <div class="col-lg-3 col-md-6 mb-4">
+        <div class="col-lg-2 col-md-4 mb-4">
             <div class="card dashboard-card h-100">
                 <div class="card-body">
                     <div class="icon bg-primary"><i class="bi bi-people-fill"></i></div>
@@ -34,18 +34,18 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-6 mb-4">
+        <div class="col-lg-2 col-md-4 mb-4">
             <div class="card dashboard-card h-100">
                 <div class="card-body">
                     <div class="icon bg-warning"><i class="bi bi-person-workspace"></i></div>
                     <div>
-                        <h5 class="card-title text-muted mb-1">Aktif Personel</h5>
+                        <h5 class="card-title text-muted mb-1">Aktif Çalışan Personel</h5>
                         <h2 class="mb-0">{{ aktif_personel_sayisi }}</h2>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-6 mb-4">
+        <div class="col-lg-2 col-md-4 mb-4">
             <div class="card dashboard-card h-100">
                 <div class="card-body">
                     <div class="icon bg-info"><i class="bi bi-check2-circle"></i></div>
@@ -56,7 +56,29 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-6 mb-4">
+        <div class="col-lg-2 col-md-4 mb-4">
+            <div class="card dashboard-card h-100">
+                <div class="card-body">
+                    <div class="icon bg-danger"><i class="bi bi-exclamation-triangle"></i></div>
+                    <div>
+                        <h5 class="card-title text-muted mb-1">Geciken İşler</h5>
+                        <h2 class="mb-0">{{ geciken_is_sayisi }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-4">
+            <div class="card dashboard-card h-100">
+                <div class="card-body">
+                    <div class="icon bg-secondary"><i class="bi bi-bar-chart-line"></i></div>
+                    <div>
+                        <h5 class="card-title text-muted mb-1">Kapasite Kullanımı</h5>
+                        <h2 class="mb-0">%{{ kapasite_kullanimi|floatformat:1 }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-4">
             <div class="card dashboard-card h-100">
                 <div class="card-body">
                     <div class="icon bg-success"><i class="bi bi-star-fill"></i></div>
@@ -121,7 +143,7 @@
                                 </span>
                             </td>
                             <td>
-                                <span class="badge {% if p.mc_risk <= 30 %}bg-success{% elif p.mc_risk <= 60 %}bg-warning{% else %}bg-danger{% endif %}">
+                                <span class="badge {% if p.mc_risk <= 30 %}bg-success{% elif p.mc_risk <= 50 %}bg-warning{% else %}bg-danger{% endif %}">
                                     {{ p.mc_risk|floatformat:2 }}%
                                 </span>
                             </td>
@@ -137,12 +159,188 @@
         </div>
     </div>
 
+    <!-- Tamamlanmış İşler Arşivi -->
+    <div class="card mt-4">
+        <div class="card-header">
+            <h5 class="card-title mb-0">Tamamlanmış İşler Arşivi</h5>
+        </div>
+        <div class="card-body">
+            <!-- Filtreleme Formu -->
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <input type="text" id="projeFiltre" class="form-control" placeholder="Proje adına göre filtrele...">
+                </div>
+                <div class="col-md-4">
+                    <input type="text" id="tasarimFiltre" class="form-control" placeholder="Tasarım koduna göre filtrele...">
+                </div>
+                <div class="col-md-4">
+                    <input type="text" id="calisanFiltre" class="form-control" placeholder="Çalışan adına göre filtrele...">
+                </div>
+            </div>
+            
+            <!-- Sonuç Tablosu -->
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width: 15%;">Proje Adı</th>
+                            <th style="width: 10%;">Tasarım Kodu</th>
+                            <th style="width: 15%;">Tamamlanma Tarihi</th>
+                            <th style="width: 25%;">Çalışanlar ve Puanları</th>
+                            <th style="width: 35%;">Değerlendirme Notları</th>
+                            <th style="width: 5%;">Sil</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tamamlanmisIslerTablosu">
+                        {% for is in tamamlanmis_isler %}
+                        <tr data-is-id="{{ is.id }}">
+                            <td>{{ is.proje_adi }}</td>
+                            <td>{{ is.tasarim_kodu }}</td>
+                            <td>{{ is.tamamlanma_tarihi|date:"d.m.Y H:i" }}</td>
+                            <td>
+                                <ul class="list-unstyled mb-0">
+                                    {% for degerlendirme in is.degerlendirmeler %}
+                                    <li>
+                                        {{ degerlendirme.calisan_adi }}: 
+                                        <span class="badge {% if degerlendirme.puan >= 8 %}bg-success{% elif degerlendirme.puan >= 5 %}bg-warning{% else %}bg-danger{% endif %}">
+                                            {{ degerlendirme.puan }}/10
+                                        </span>
+                                    </li>
+                                    {% empty %}
+                                    <li class="text-muted">Değerlendirme yok.</li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
+                            <td>
+                                {% if is.notlar %}
+                                    {{ is.notlar }}
+                                {% else %}
+                                    <span class="text-muted">Not eklenmemiş.</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <button class="btn btn-sm btn-danger arsiv-sil-btn" data-is-id="{{ is.id }}">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="6" class="text-center">Arşivde tamamlanmış iş bulunmamaktadır.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- İş Arşiv Silme Onay Modal -->
+    <div class="modal fade" id="isArsivSilmeOnayModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Arşiv Kaydını Silme Onayı</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Bu tamamlanmış iş kaydını kalıcı olarak silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                    <button type="button" class="btn btn-danger" id="isArsivSilmeOnayla">Sil</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
 
 {% block scripts %}
 <script>
+// CSRF token için yardımcı fonksiyon
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+const csrftoken = getCookie('csrftoken');
+
 $(document).ready(function() {
+    // Arşiv Silme İşlemleri
+    let silinecekArsivIsId = null;
+    const arsivSilModal = new bootstrap.Modal(document.getElementById('isArsivSilmeOnayModal'));
+
+    $('#tamamlanmisIslerTablosu').on('click', '.arsiv-sil-btn', function() {
+        silinecekArsivIsId = $(this).data('is-id');
+        arsivSilModal.show();
+    });
+
+    $('#isArsivSilmeOnayla').on('click', function() {
+        if (!silinecekArsivIsId) return;
+
+        $.ajax({
+            url: "{% url 'arsivlenmis_is_sil' %}",
+            method: 'POST',
+            headers: {'X-CSRFToken': csrftoken},
+            contentType: 'application/json',
+            data: JSON.stringify({'is_id': silinecekArsivIsId}),
+            success: function(response) {
+                if (response.success) {
+                    $(`tr[data-is-id="${silinecekArsivIsId}"]`).fadeOut(500, function() {
+                        $(this).remove();
+                    });
+                    alert(response.message); // Daha gelişmiş bir bildirim sistemi kullanılabilir.
+                } else {
+                    alert('Hata: ' + response.message);
+                }
+            },
+            error: function() {
+                alert('Sunucuyla iletişim kurulamadı.');
+            },
+            complete: function() {
+                arsivSilModal.hide();
+                silinecekArsivIsId = null;
+            }
+        });
+    });
+
+    // Tamamlanmış İşler Arşivi Filtreleme
+    function applyFilters() {
+        const projeFiltre = $('#projeFiltre').val().toLowerCase();
+        const tasarimFiltre = $('#tasarimFiltre').val().toLowerCase();
+        const calisanFiltre = $('#calisanFiltre').val().toLowerCase();
+
+        $('#tamamlanmisIslerTablosu tr').each(function() {
+            const row = $(this);
+            const projeAdi = row.find('td:eq(0)').text().toLowerCase();
+            const tasarimKodu = row.find('td:eq(1)').text().toLowerCase();
+            const calisanListesi = row.find('td:eq(3)').text().toLowerCase();
+
+            const projeMatch = projeAdi.includes(projeFiltre);
+            const tasarimMatch = tasarimKodu.includes(tasarimFiltre);
+            const calisanMatch = calisanListesi.includes(calisanFiltre);
+
+            if (projeMatch && tasarimMatch && calisanMatch) {
+                row.show();
+            } else {
+                row.hide();
+            }
+        });
+    }
+
+    $('#projeFiltre, #tasarimFiltre, #calisanFiltre').on('keyup', applyFilters);
+
+
     // Performans Trendi Grafiğini Çiz
     $.ajax({
         url: "{% url 'performans_trendi_api' %}",

@@ -1,20 +1,30 @@
-from django.shortcuts import render
-from django.http import JsonResponse
+from django.shortcuts import render, get_object_or_404
+from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
+from django.contrib.auth.decorators import login_required
 import json
 from django.db import models, transaction
-from django.db.models import Avg, Q
+from django.db.models import Avg, Q, Sum
 from django.utils import timezone
 from datetime import timedelta
 from django.db.models.functions import TruncDate
+from django.core.serializers.json import DjangoJSONEncoder
+import logging
 
-from .models import Calisan, TasarimKodu, Is, IsAtama, MonteCarloSonuc, GenetikSonuc, TaguchiSonucu, MonteCarloTasarimSonuc, PerformansDegerlendirme, GecmisPerformansVerisi
+from .models import Calisan, TasarimKodu, Is, IsAtama, MonteCarloSonuc, GenetikSonuc, TaguchiSonucu, MonteCarloTasarimSonuc, PerformansDegerlendirme, GecmisPerformansVerisi, GecmisSureVerisi
 from django.utils.dateparse import parse_date
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import GenetikSonucSerializer
 from .algorithms.monte_carlo_simulasyon import monte_carlo_simulasyonu, performans_verilerini_oku
+from .algorithms.geneticalgorithm import main as run_genetic_algorithm
+from .algorithms.taguchi import main as taguchi_main_function
+from asgiref.sync import async_to_sync
+
+
+# Logger yapılandırması
+logger = logging.getLogger(__name__)
 
 
 def index(request):
@@ -247,13 +257,20 @@ def is_kaydet(request):
             })
 
         with transaction.atomic():
+            # Taguchi optimizasyonundan optimum süreyi al
+            taguchi_sonucu = TaguchiSonucu.objects.filter(tasarim_kodu=tasarim.kod).order_by('-guncellenme_tarihi').first()
+            if taguchi_sonucu:
+                kalan_sure = taguchi_sonucu.optimum_sure
+            else:
+                kalan_sure = tasarim.tahmini_montaj_suresi
+
             yeni_is = Is.objects.create(
                 tasarim=tasarim,
                 proje_adi=data.get("proje_adi"),
                 teslimat_tarihi=parse_date(data.get("teslimat_tarihi")),
                 durum=data.get("durum", "beklemede"),
                 oncelik=oncelik,
-                kalan_sure=tasarim.tahmini_montaj_suresi,
+                kalan_sure=kalan_sure,
                 # Taşeron sayılarını kaydet
                 taseron_ustabasi=eksik_personel.get('ustabasi', 0) if taseron_onayi else 0,
                 taseron_kalifiyeli=eksik_personel.get('kalifiyeli', 0) if taseron_onayi else 0,
@@ -354,78 +371,67 @@ def performans_degerlendirme_kaydet(request):
         degerlendirmeler = data.get('degerlendirmeler', [])
         notlar = data.get('notlar', '')
 
-        if not is_id or not degerlendirmeler:
-            return JsonResponse({'success': False, 'mesaj': 'Eksik veri: is_id ve değerlendirmeler gereklidir.'}, status=400)
+        if not is_id:
+            return JsonResponse({'success': False, 'message': 'İş ID eksik.'}, status=400)
 
-        is_nesnesi = Is.objects.get(id=is_id)
-        
-        # Değerlendirme tarihini burada bir kez alalım
-        degerlendirme_zamani = timezone.now()
+        is_nesnesi = get_object_or_404(Is, pk=is_id)
 
+        # İşlemi atomik hale getirerek veri bütünlüğünü sağlıyoruz
         with transaction.atomic():
-            # İşi 'tamamlandı' olarak güncelle
+            # Tamamlanma süresini ve durumunu güncelle
+            tamamlanma_suresi = data.get('tamamlanma_suresi')
             is_nesnesi.durum = 'tamamlandi'
-            is_nesnesi.tamamlanma_tarihi = degerlendirme_zamani
+            if tamamlanma_suresi:
+                # Geçmiş Süre Verisi'ni Taguchi için kaydet
+                GecmisSureVerisi.objects.create(
+                    tasarim=is_nesnesi.tasarim,
+                    departman=is_nesnesi.tasarim.departman,
+                    urun_adi=is_nesnesi.tasarim.urun_adi,
+                    sure=int(tamamlanma_suresi),
+                    kayit_index=GecmisSureVerisi.objects.count() + 1
+                )
             is_nesnesi.save()
 
-            for degerlendirme in degerlendirmeler:
-                calisan_id = degerlendirme.get('calisan_id')
-                puan = degerlendirme.get('puan')
+            # Performans Değerlendirmelerini kaydet/güncelle
+            for degerlendirme_data in degerlendirmeler:
+                calisan_id = degerlendirme_data.get('calisan_id')
+                puan = degerlendirme_data.get('puan')
 
-                if not calisan_id or puan is None:
-                    continue 
-
-                calisan = Calisan.objects.get(id=calisan_id)
-                
-                # Geçmiş Performans Verisini Güncelle veya Oluştur
-                # Yinelenen kayıt sorununu çözmek için sağlamlaştırılmış mantık
-                gecmis_veriler = GecmisPerformansVerisi.objects.filter(
-                    calisan=calisan,
-                    tasarim=is_nesnesi.tasarim
-                )
-
-                if gecmis_veriler.exists():
-                    # Mevcut tüm yinelenen kayıtların verilerini birleştir
-                    toplam_puan = 0
-                    toplam_is = 0
-                    for veri in gecmis_veriler:
-                        # Doğru alan adı 'verimlilik_puani' olarak düzeltildi
-                        toplam_puan += (veri.verimlilik_puani or 0) * (veri.proje_index or 1) # proje_index is_sayisi gibi kullanılabilir
-                        toplam_is += (veri.proje_index or 1)
-
-                    # Yeni puanı ekle ve genel ortalamayı hesapla
-                    toplam_puan += float(puan)
-                    toplam_is += 1
-                    yeni_ortalama = toplam_puan / toplam_is if toplam_is > 0 else 0
-
-                    # Ana kaydı güncelle
-                    ana_kayit = gecmis_veriler.first()
-                    ana_kayit.verimlilik_puani = yeni_ortalama
-                    ana_kayit.proje_index = toplam_is # Toplam iş sayısını temsil eder
-                    ana_kayit.save()
-
-                    # Geriye kalan tüm yinelenen kayıtları sil
-                    gecmis_veriler.exclude(pk=ana_kayit.pk).delete()
-                else:
-                    # Hiç kayıt yoksa yenisini oluştur
-                    GecmisPerformansVerisi.objects.create(
+                if calisan_id and puan:
+                    calisan = get_object_or_404(Calisan, pk=calisan_id)
+                    
+                    # update_or_create kullanarak veri tekrarını engelliyoruz
+                    PerformansDegerlendirme.objects.update_or_create(
+                        is_degerlendirmesi=is_nesnesi,
                         calisan=calisan,
-                        tasarim=is_nesnesi.tasarim,
-                        verimlilik_puani=puan, # Doğru alan adı
-                        proje_index=1 # İlk iş
+                        defaults={
+                            'puan': puan,
+                            'notlar': notlar
+                        }
                     )
+                    
+                    # Monte Carlo simülasyonu için geçmiş performans verisi oluştur
+                    verimlilik_puani = float(puan) / 10.0  # Puanı 0-1 arasına normalize et
+                    
+                    # Bu tasarıma ait yeni proje index'ini belirle
+                    proje_index = GecmisPerformansVerisi.objects.filter(
+                        tasarim=is_nesnesi.tasarim
+                    ).count() + 1
 
-        return JsonResponse({'success': True, 'mesaj': 'Performans değerlendirmeleri başarıyla kaydedildi ve iş tamamlandı.'})
+                    GecmisPerformansVerisi.objects.create(
+                        tasarim=is_nesnesi.tasarim,
+                        calisan=calisan,
+                        verimlilik_puani=verimlilik_puani,
+                        proje_index=proje_index
+                    )
+        
+        return JsonResponse({'success': True, 'message': 'Değerlendirme başarıyla kaydedildi.'})
 
     except Is.DoesNotExist:
-        return JsonResponse({'success': False, 'mesaj': 'İş bulunamadı.'}, status=404)
-    except Calisan.DoesNotExist:
-        return JsonResponse({'success': False, 'mesaj': 'Çalışan bulunamadı.'}, status=404)
+        return JsonResponse({'success': False, 'message': 'İş bulunamadı.'}, status=404)
     except Exception as e:
-        # Hata detaylarını loglamak önemlidir
-        import traceback
-        traceback.print_exc()
-        return JsonResponse({'success': False, 'mesaj': f'Beklenmedik bir hata oluştu: {str(e)}', 'trace': traceback.format_exc()}, status=500)
+        logger.error(f"Performans değerlendirme hatası: {e}", exc_info=True)
+        return JsonResponse({'success': False, 'message': str(e)}, status=500)
 
 
 @csrf_exempt
@@ -599,6 +605,8 @@ def is_cizelgesi(request):
     else:
         ortalama_iyilestirme = 0
 
+    is_listesi_json = json.dumps(gorsel_is_listesi, cls=DjangoJSONEncoder)
+
     context = {
         'is_listesi': gorsel_is_listesi,
         'tasarim_kodlari': tasarim_kodlari,
@@ -612,7 +620,8 @@ def is_cizelgesi(request):
             'ortalama_performans': ortalama_performans,
             'ortalama_risk': ortalama_risk,
             'ortalama_iyilestirme': ortalama_iyilestirme
-        }
+        },
+        'is_listesi_json': is_listesi_json
     }
 
     return render(request, 'cizelgeleme/is_cizelgesi.html', context)
@@ -724,6 +733,37 @@ def raporlama_sayfasi(request):
 
     tamamlanan_is_sayisi = Is.objects.filter(durum='tamamlandi').count()
 
+    # Tamamlanmış İşler Arşivi Verileri
+    tamamlanmis_isler = []
+    # İlgili tüm verileri önceden çekerek N+1 probleminden kaçınıyoruz
+    sorgu = Is.objects.filter(durum='tamamlandi').select_related('tasarim').prefetch_related(
+        'degerlendirmeler__calisan'
+    ).annotate(
+        son_degerlendirme_tarihi=models.Max('degerlendirmeler__degerlendirme_tarihi')
+    ).order_by('-son_degerlendirme_tarihi').distinct()
+
+    for is_nesnesi in sorgu:
+        degerlendirmeler_listesi = []
+        genel_notlar = ""
+        # Bu işe ait tüm değerlendirmeleri döngü ile alıyoruz
+        for degerlendirme in is_nesnesi.degerlendirmeler.all():
+            degerlendirmeler_listesi.append({
+                'calisan_adi': degerlendirme.calisan.ad_soyad,
+                'puan': degerlendirme.puan
+            })
+            # Genel notları (eğer varsa) alıyoruz
+            if degerlendirme.notlar:
+                genel_notlar = degerlendirme.notlar
+
+        tamamlanmis_isler.append({
+            'id': is_nesnesi.id,
+            'proje_adi': is_nesnesi.proje_adi,
+            'tasarim_kodu': is_nesnesi.tasarim.kod,
+            'tamamlanma_tarihi': is_nesnesi.son_degerlendirme_tarihi,
+            'degerlendirmeler': degerlendirmeler_listesi,
+            'notlar': genel_notlar
+        })
+
     en_yuksek_performansli = Calisan.objects.annotate(
         ortalama_puan=Avg('performansdegerlendirme__puan')
     ).order_by('-ortalama_puan').first()
@@ -758,15 +798,49 @@ def raporlama_sayfasi(request):
             'mc_risk': mc_risk,
         })
 
+    # Geciken iş sayısı
+    bugun = timezone.now().date()
+    geciken_is_sayisi = Is.objects.filter(durum__in=['beklemede', 'devam_ediyor'], teslimat_tarihi__lt=bugun).count()
+
+    # Kapasite kullanımı
+    kisi_basi_gunluk_kapasite = 480  # dakika
+    toplam_kapasite = aktif_personel_sayisi * kisi_basi_gunluk_kapasite
+    gerceklesen_is_yuku = Is.objects.filter(durum='devam_ediyor').aggregate(toplam=Sum('kalan_sure'))['toplam'] or 0
+    if toplam_kapasite > 0:
+        kapasite_kullanimi = (gerceklesen_is_yuku / toplam_kapasite) * 100
+    else:
+        kapasite_kullanimi = 0
+
     context = {
         'toplam_personel_sayisi': toplam_personel_sayisi,
         'aktif_personel_sayisi': aktif_personel_sayisi,
         'genel_performans_skoru': genel_performans_skoru,
         'tamamlanan_is_sayisi': tamamlanan_is_sayisi,
+        'geciken_is_sayisi': geciken_is_sayisi,
+        'kapasite_kullanimi': kapasite_kullanimi,
         'en_yuksek_performansli': en_yuksek_performansli,
         'personel_verileri': personel_verileri,
+        'tamamlanmis_isler': tamamlanmis_isler,
     }
     return render(request, 'cizelgeleme/raporlama.html', context)
+
+@csrf_exempt
+@require_http_methods(["POST"])
+def arsivlenmis_is_sil(request):
+    try:
+        data = json.loads(request.body)
+        is_id = data.get('is_id')
+        if not is_id:
+            return JsonResponse({'success': False, 'message': 'İş ID eksik.'}, status=400)
+        
+        is_nesnesi = Is.objects.get(pk=is_id, durum='tamamlandi')
+        is_nesnesi.delete()
+        
+        return JsonResponse({'success': True, 'message': 'İş başarıyla arşivden silindi.'})
+    except Is.DoesNotExist:
+        return JsonResponse({'success': False, 'message': 'İş bulunamadı veya zaten silinmiş.'}, status=404)
+    except Exception as e:
+        return JsonResponse({'success': False, 'message': str(e)}, status=500)
 
 @require_http_methods(["GET"])
 def performans_trendi_api(request):

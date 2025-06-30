@@ -1,6 +1,6 @@
 // Global değişken tanımlaması
-let isListesi = [];
 let silinecekIsId = null;
+let isListesi = [];
 
 // Global fonksiyonlar
 $(document).ready(function() {
@@ -196,16 +196,18 @@ window.showGenetikDetay = function(tasarimKodu, sonuc) {
 
 // İş çizelgesi ana fonksiyonları
 document.addEventListener('DOMContentLoaded', function() {
-    // İş listesini yükle
-    const isListesiData = document.getElementById('isListesiData');
-    if (isListesiData && isListesiData.value) {
-        try {
-            isListesi = JSON.parse(isListesiData.value);
-            console.log('İş listesi yüklendi:', isListesi);
-        } catch (error) {
-            console.error('İş listesi yüklenirken hata:', error);
-            isListesi = [];
+    // isListesi değişkenini JSON script etiketinden güvenle oku
+    try {
+        const isListesiElement = document.getElementById('is-listesi-json');
+        if (isListesiElement && isListesiElement.textContent.trim()) {
+            const parsedData = JSON.parse(isListesiElement.textContent);
+            if (Array.isArray(parsedData)) {
+                isListesi = parsedData;
+            }
         }
+    } catch (e) {
+        console.error("isListesi JSON verisi okunurken hata:", e);
+        // isListesi zaten boş bir dizi olarak başlatıldı.
     }
 
     initDashboard();
@@ -221,9 +223,17 @@ function initDashboard() {
         // isListesi'nin tanımlı ve dizi olduğundan emin ol
         if (isListesi && Array.isArray(isListesi)) {
             gecikenIs = isListesi.filter(is => {
-                if (is && is.durum !== 'tamamlandi' && is.teslimat_tarihi) {
+                if (
+                    is &&
+                    (is.durum === 'beklemede' || is.durum === 'devam_ediyor') &&
+                    is.teslimat_tarihi
+                ) {
                     const teslimatTarihi = new Date(is.teslimat_tarihi);
-                    return teslimatTarihi < bugun;
+                    // Sadece gün karşılaştırması için saatleri sıfırla
+                    teslimatTarihi.setHours(0,0,0,0);
+                    const bugunCopy = new Date(bugun);
+                    bugunCopy.setHours(0,0,0,0);
+                    return teslimatTarihi < bugunCopy;
                 }
                 return false;
             }).length;
@@ -1421,3 +1431,93 @@ $('#isSilmeOnayla').on('click', function() {
         silinecekIsId = null;
     });
 }); 
+
+function updateTaguchiCard(data) {
+    try {
+        console.log('updateTaguchiCard çağrıldı, data:', data);
+
+        const taguchiCard = $('#taguchi-card');
+        const cardBody = taguchiCard.find('.card-body');
+
+        if (!data || !data.taguchi_sonuclari || data.taguchi_sonuclari.length === 0) {
+            cardBody.html(`
+                <div class="alert alert-warning">
+                    <i class="bi bi-exclamation-triangle me-2"></i>
+                    Henüz Taguchi optimizasyon sonucu bulunmamaktadır.
+                </div>
+            `);
+            return;
+        }
+        
+        const sonuclar = data.taguchi_sonuclari;
+        const istatistikler = data.istatistikler;
+
+        let tableRows = '';
+        sonuclar.forEach(sonuc => {
+            const iyilestirme_orani = parseFloat(sonuc.iyilestirme_orani || 0);
+            let badgeClass = 'bg-warning';
+            if (iyilestirme_orani > 10) {
+                badgeClass = 'bg-success';
+            } else if (iyilestirme_orani > 5) {
+                badgeClass = 'bg-info';
+            }
+
+            const guncellenme_tarihi = new Date(sonuc.guncellenme_tarihi).toLocaleString('tr-TR', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+
+            tableRows += `
+                <tr>
+                    <td>${sonuc.tasarim_kodu}</td>
+                    <td>${(sonuc.optimum_sure || 0).toFixed(1)}</td>
+                    <td>
+                        <span class="badge ${badgeClass}">
+                            %${iyilestirme_orani.toFixed(1)}
+                        </span>
+                    </td>
+                    <td>${sonuc.departman}</td>
+                    <td>${guncellenme_tarihi}</td>
+                </tr>
+            `;
+        });
+
+        const cardBodyHtml = `
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="alert alert-success">
+                        <h6 class="mb-2">Optimizasyon Özeti</h6>
+                        <p class="mb-0">Ortalama İyileştirme: <strong>%${(istatistikler.ortalama_iyilestirme || 0).toFixed(1)}</strong></p>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-sm table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Tasarım Kodu</th>
+                            <th>Optimum Süre (dk)</th>
+                            <th>İyileştirme</th>
+                            <th>Departman</th>
+                            <th>Son Güncelleme</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${tableRows}
+                    </tbody>
+                </table>
+            </div>
+        `;
+        
+        cardBody.html(cardBodyHtml);
+
+    } catch (err) {
+        console.error('Taguchi kartı güncellenirken hata oluştu:', err);
+        if (typeof bildirimGoster === 'function') {
+            bildirimGoster('error', 'Taguchi kartı güncellenirken bir hata oluştu.');
+        }
+    }
+} 
